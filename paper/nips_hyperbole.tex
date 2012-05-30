@@ -28,6 +28,11 @@
 \usepackage{amssymb}
 \usepackage{apacite}
 \usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{array}
+
+\newcommand{\dictionary}{\ensuremath{\mathcal{D}}\xspace}
 
 
 \title{Halo, Hyperbole, and the Pragmatic Interpretation of Numbers}
@@ -114,9 +119,76 @@ The pragmatic halo effect is a related phenomenon that accounts for some aspects
 \section{Model}
 
 \subsection{Introduction and Motivation}
-Describe how it's related to other recursive pragmatic models.
+\subsection{Pragmatic halo}
 
-\subsection{Mathematical Formulation}
+We begin by trying to capture the basic ``pragmatic halo" effect: more complex utterances are interpreted as being more precise. Each listener will be associated with a dictionary $\dictionary$, which specifies the literal meaning of each possible utterance. The listener's dictionary determines how he will initially interpret the utternce. All utterances and meanings will be integers in the set $[a,...,b]$. For each utterance $u$, the dictionary entry $\dictionary_u$ for this utterance will be a one-dimensional normal distribution $f(x;u,\sigma^2)$. After hearing the utterance $u$, the listener $L_0$ updates his prior distribution $P$ over meanings \emph{m} by filtering $P$ through the dictionary entry for $u$:
+\begin{align}\label{eq:literallistener}
+L_0(m | u, \dictionary) &\propto \dictionary_u(m)P(m) \\
+&=f(m;u,\sigma^2)P(m).
+\end{align}
+For modeling pragmatic halo, we can assume that the prior $P$ is uniform over meanings.
+
+The literal listener provides the base case for the recursive social reasoning between the speaker and listener. In general, the speaker $S_n$ is assumed to be a rational planner who is optimizing the probability that her intended meaning \emph{m} will be understood by the listener $L_n$. The listener $L_n$ performs Bayesian inference over the intended meaning given his prior $P$ and his model of the speaker $S_{n-1}$.
+
+The speaker $S_n$ chooses utterances according to a softmax decision rule which describes an approximately rational planner \cite{sutton1998reinforcement}:
+\begin{equation}\label{eq:speakerprob}
+S_n(u | m,\dictionary) \propto e^{\lambda U_n(u | m,\dictionary)},
+\end{equation}
+where $\lambda$ is the inverse-temperature. 
+
+The speaker wants to minimize both the cost $c(u)$ of the utterance as well as the information-theoretic surprisal of the intended meaning $m$, so the utility function $U_n$ is defined by:
+\begin{equation}\label{eq:speakerutility}
+U_n(u | m, \dictionary) = \log (L_{n}(m | u, \dictionary)) - c(u),
+\end{equation}
+which combined with equation \ref{eq:speakerprob} leads to:
+\begin{equation}
+S_n(u | m, \dictionary) \propto (L_{n}(m | u,\dictionary)e^{-c(u)}) ^\lambda.
+\end{equation}
+
+The speaker $S_0$ reasons about the literal listener $L_0$, and assumes that this listener shares her dictionary $\dictionary$. However, in general the listener will be uncertain about the dictionary being used by the speaker, which we call \emph{lexical uncertainty}. To determine the speaker's intended meaning, he will therefore marginalize over the possible dictionaries being used:
+\begin{equation}
+L_n(m|u,\dictionary) \propto \sum_{\dictionary_i }P(m)P(\dictionary_i)S_{n-1}(u | m,\dictionary_i).
+\end{equation}
+The dictionary $\dictionary$ determines the standard deviation $\sigma_u$ associated with each utterance $u$, therefore specifying how precisely each utterance will be interpreted by the literal listener. Lexical uncertainty represents uncertainty about how precisely the speaker believes her utterances will be interpreted. We assume throughout that the prior probability on dictionaries $P(\dictionary_i)$ is uniformly distributed across the $|S|^|U|$ possible dictionaries, where $S$ is a finite set of possible standard deviations for the utterances and $U$ is the set of possible utterances. 
+
+Because the higher-level listeners marginalize over dictionaries, the dictionary $\dictionary$ plays no role in the reasoning of the listener $L_n(|u,\dictionary)$ or the speaker $S_n(| m, \dictionary)$ for $n>0$, leading us to define:
+\begin{equation}
+  L_n(m | u) :=  L_n(m | u, \dictionary) \text{ ~~~~~ if $n > 0$}
+\end{equation}
+\begin{equation}
+  S_n(u | m) :=  S_n(u | m, \dictionary) \text{ ~~~~~ if $n > 0$.}
+\end{equation}
+
+The model presented here is sufficient to explain the pragmatic halo effect. Consider the simplest possible case, in which the possible meanings are \emph{1} and \emph{2}, and the possible utterances are ``one" and ``two." Suppose that ``two" is much more expensive than ``one." First suppose the speaker wants to communicate \emph{1}. In this case, the speaker will almost never choose to communicate using the utterance ``two." The utterance ``two" is more expensive than the utterance ``one," and its literal meaning is strictly farther away from the speaker's intended meaning. In contrast, suppose the speaker wants to communicate \emph{2}. In this case the two utterances are more evenly balanced, and the speaker may choose the utterance ``one": this utterance is cheaper, though its literal meaning is worse for the speaker than that of ``two." The utterance ``one" will therefore be used by speakers trying to communicate either meaning, while the utterance ``two" will only be used by speakers trying to communicate \emph{2}. It follows that ``two" will be assigned a more precise meaning which is peaked on \emph{2}. 
+
+\subsection{Exaggeration}
+
+We now turn to a different pragmatic effect, \emph{exaggeration}, i.e. the non-literal interpretation of utterances with extreme meanings. Rather than cost, exaggeration is driven by the prior distribution over meanings. Pragmatic halo is the pragmatic effect that results from matched prior probabilities but different utterance costs; exaggeration is the pragmatic effect that results from matched costs but differing prior probabilities. 
+
+The model of exaggeration is nearly identical to the model of pragmatic halo presented in the previous section. The only differences are that we set the cost of the utterances $c(u)=0$, and set the prior distribution over meanings $P$ to be a unimodal distribution on the interval $[a,...,b]$. 
+
+The exaggeration effect follows straightforwardly from this model. Suppose again that there are two meanings, \emph{1} and \emph{2}, and two utterances, ``one" and ``two." Suppose that the meaning \emph{1} is much more likely than \emph{2}. If the speaker believes that the literal meaning of ``two" is vague, then he may use this utterance to communicate the meaning \emph{1} because the listener's priors will bias the interpretation of the utterance towards ``one." In contrast, the speaker would not use the utterance ``one" to communicate the meaning \emph{2}, regardless of how vague its literal meaning is, because the listener's priors will bias the interpretation of the utterance against this meaning. It follows that the utterance ``two" may be interpreted as exaggerated, and as intending to communicate the likely meaning \emph{1}, while the utterance ``one" will be interpreted literally.
+
+\subsection{Hyperbole}
+
+Hyperbole is similar to exaggeration, except that additional information about the \emph{valence} of the meaning is conveyed. Valence is a second dimension of meaning, separate from the number that the speaker wants to convey. If $V$ is the set of possible valences, then the set of possible meanings $M$ is given by:
+\begin{equation}
+M = [a,...,b] \times V.
+\end{equation}
+
+The model of hyperbole is similar to the exaggeration model, except that it needs to be compatible with meanings that consist of number-valence pairs. The dictionary entry $\dictionary_u$ for an utterance $u$ now consists of a Gaussian centered around $u$, as before, as well as a truth function $T_u:V\rightarrow \{0,1\}$ that determines which valences are compatible with $u$. This leads us to modify equation \ref{eq:literallistener} so that the literal listener is now defined by:
+
+\begin{align}\label{eq:valenceliteral}
+L_0((k,v) | u, \dictionary) &\propto \dictionary_u(k,v)P(k,v) \\
+&=f(k;u,\sigma^2)T_u(v)P(k)P(v),
+\end{align}
+where $k$ is the number that the speaker wants to communicate, $v$ is the valence, and we assume for simplicity that number and valence are independent under the prior. 
+
+The rest of the model is extended in a similar manner. We note that there are now many more possible dictionaries: each utterance is assigned both a standard deviation and a truth function, and there are $2^{|V|}$ truth functions on valences. 
+
+\subsection{The complete model}
+
+Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce valences into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. 
 
 \section{Behavioral Experiment}
 
@@ -127,8 +199,8 @@ We recruited $220$ subjects located in the United States through Amazon Mechanic
 
 Each scenario was structured in a similar manner. Below is an example of the weather scenario:\\\\
 \emph{Ann and Bob are friends. \\
-\textbf{Ann:}  ÒWhat's the weather like today?Ó\\
-\textbf{Bob:} ÒIt`s \{X\} degrees Fahrenheit.Ó\\
+\textbf{Ann:}  ï¿½What's the weather like today?ï¿½\\
+\textbf{Bob:} ï¿½It`s \{X\} degrees Fahrenheit.ï¿½\\
 }
 \\Subjects then answered the following questions:
 \emph{
