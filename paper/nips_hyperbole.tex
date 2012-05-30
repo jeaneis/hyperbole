@@ -173,6 +173,8 @@ where $k$ is the number that the speaker wants to communicate, $v$ is the valenc
 
 The rest of the model is extended in a similar manner. We note that there are now many more possible dictionaries: each utterance is assigned both a standard deviation and a truth function, and there are $2^{|V|}$ truth functions on valences. 
 
+We will now illustrate this model using the simplest example of hyperbole. We assume that there are two number meanings, \emph{1} and \emph{2}, and two valences, \emph{neutral} and \emph{negative}, so that there are four pairings of numbers and valences. We assume that \emph{1} is more likely than \emph{2}, and \emph{neutral} is more likely than \emph{negative}. There are two utterances, ``one" and ``two." If the speaker wants to communicate \emph{1}-\emph{neutral}, she is likely to succeed by saying ``one" whether its dictionary entries are vague or precise, because it is the most \emph{a priori} probable meaning. This speaker will assign small probability to the utterance ``two." On the other hand, there are two moderately likely meanings that may lead the speaker to say ``two": \emph{2}-\emph{neutral} and \emph{1}-\emph{negative}. It is clear why the speaker would say ``two" to communicate the first meaning. For the second meaning, \emph{1}-\emph{negative}, the speaker may use the utterance ``two" if she believes that the number meaning of this utterance is vague (and therefore compatible with meaning \emph{1}) and that it uniquely picks out the negative valence. Because ``two" may be used to communicate this meaning, it provides evidence to the listener that this meaning was intended. This is the hyperbolic interpretation of the utterance ``two." 
+
 \subsection{The complete model}
 
 Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce valences into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. 
@@ -188,8 +190,8 @@ We recruited $220$ subjects located in the United States through Amazon Mechanic
 
 Each scenario was structured in a similar manner. Below is an example of the textbook scenario:\\\\
 \emph{Ann and Bob are friends. They are taking the same class.\\
-\textbf{Ann:}  ÒHow much did the textbook cost?Ó\\
-\textbf{Bob:} Ò\{X\} dollars.Ó\\
+\textbf{Ann:}  ï¿½How much did the textbook cost?ï¿½\\
+\textbf{Bob:} ï¿½\{X\} dollars.ï¿½\\
 }
 \\After reading the scenario, subjects then answered the following questions:
 \emph{

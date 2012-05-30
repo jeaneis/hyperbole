@@ -1,6 +1,5 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  30 MAY 2012 04:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  30 MAY 2012 17:11
 entering extended mode
- \write18 enabled.
  %&-line parsing enabled.
 **nips_hyperbole.tex
 (./nips_hyperbole.tex
@@ -305,6 +304,30 @@ Underfull \hbox (badness 1102) in paragraph at lines 74--76
 bole, prag-matic halo, prag-mat-ics,
  []
 
+
+LaTeX Warning: Citation `mccarthy2004there' undefined on input line 97.
+
+
+LaTeX Warning: Citation `gibbs2000irony' undefined on input line 97.
+
+
+LaTeX Warning: Citation `cano2003risk' undefined on input line 97.
+
+
+LaTeX Warning: Citation `kreuz1995two' undefined on input line 97.
+
+
+LaTeX Warning: Citation `kreuz2007lexical' undefined on input line 97.
+
+
+LaTeX Warning: Citation `davidov2010semi' undefined on input line 97.
+
+
+LaTeX Warning: Citation `reyes2011mining' undefined on input line 97.
+
+
+LaTeX Warning: Citation `van2007algorithm' undefined on input line 97.
+
 [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
@@ -313,21 +336,29 @@ LaTeX Warning: Citation `sutton1998reinforcement' undefined on input line 120.
 
 [2] [3] [4]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 193.
-Missing character: There is no Ò in font ptmri7t!
-Missing character: There is no Ó in font ptmri7t!
-Missing character: There is no Ò in font ptmri7t!
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 195.
+Missing character: There is no ï in font ptmri7t!
+Missing character: There is no ¿ in font ptmri7t!
+Missing character: There is no ½ in font ptmri7t!
+Missing character: There is no ï in font ptmri7t!
+Missing character: There is no ¿ in font ptmri7t!
+Missing character: There is no ½ in font ptmri7t!
+Missing character: There is no ï in font ptmri7t!
+Missing character: There is no ¿ in font ptmri7t!
+Missing character: There is no ½ in font ptmri7t!
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 193.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 195.
 
-Missing character: There is no Ó in font ptmri7t!
+Missing character: There is no ï in font ptmri7t!
+Missing character: There is no ¿ in font ptmri7t!
+Missing character: There is no ½ in font ptmri7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--202
+Underfull \hbox (badness 10000) in paragraph at lines 191--204
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--202
+Underfull \hbox (badness 10000) in paragraph at lines 191--204
 
  []
 
@@ -337,36 +368,33 @@ File: halo_all.png Graphic file (type png)
 <textbook_humans_8_val_off.jpeg, id=26, 552.0625pt x 451.6875pt>
 File: textbook_humans_8_val_off.jpeg Graphic file (type jpg)
 
-<use textbook_humans_8_val_off.jpeg> [5 <./halo_all.png>]
-<inferred_val_textbook.png, id=32, 552.0625pt x 451.6875pt>
+<use textbook_humans_8_val_off.jpeg>
+<inferred_val_textbook.png, id=27, 552.0625pt x 451.6875pt>
 File: inferred_val_textbook.png Graphic file (type png)
 
 <use inferred_val_textbook.png>
-<affect_all.png, id=33, 602.25pt x 444.66125pt>
+<affect_all.png, id=28, 602.25pt x 444.66125pt>
 File: affect_all.png Graphic file (type png)
  <use affect_all.png>
-Overfull \hbox (23.97922pt too wide) in paragraph at lines 238--240
+Overfull \hbox (23.97922pt too wide) in paragraph at lines 240--242
 [][] [] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6 <./textbook_humans_8_val_off.jpeg> <./inferred_val_textbook.png> <./affect_
-all.png>]
-<textbook_human.jpeg, id=39, 552.0625pt x 451.6875pt>
+<textbook_human.jpeg, id=29, 552.0625pt x 451.6875pt>
 File: textbook_human.jpeg Graphic file (type jpg)
 
-<use textbook_human.jpeg>
-<textbook_model.jpeg, id=40, 552.0625pt x 451.6875pt>
+<use textbook_human.jpeg> [5]
+<textbook_model.jpeg, id=34, 552.0625pt x 451.6875pt>
 File: textbook_model.jpeg Graphic file (type jpg)
 
-<use textbook_model.jpeg> [7 <./textbook_human.jpeg>] (./nips_hyperbole.bbl
-[8 <./textbook_model.jpeg>]
-Missing character: There is no Õ in font ptmr7t!
-Missing character: There is no Ò in font ptmr7t!
-Missing character: There is no Ó in font ptmr7t!
-) [9] (./nips_hyperbole.aux)
+<use textbook_model.jpeg> [6 <./halo_all.png> <./textbook_humans_8_val_off.jpeg
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./inferred_val_textbook.png> <./affect_all.png> <./textbook_human.jpeg>] [
+8 <./textbook_model.jpeg>]
+No file nips_hyperbole.bbl.
+[9] (./nips_hyperbole.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.3pt have occurred.
@@ -376,13 +404,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2795 strings out of 493848
- 36449 string characters out of 3149207
- 92967 words of memory out of 3000000
- 5991 multiletter control sequences out of 15000+200000
+ 2759 strings out of 493848
+ 35705 string characters out of 3149207
+ 93722 words of memory out of 3000000
+ 5957 multiletter control sequences out of 15000+200000
  43398 words of font info for 98 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 30i,9n,22p,1538b,259s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,9n,24p,1535b,204s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2009/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -394,7 +422,7 @@ ype1/urw/times/utmb8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/t
 imes/utmbi8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></
 usr/local/texlive/2009/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on nips_hyperbole.pdf (9 pages, 412301 bytes).
+Output written on nips_hyperbole.pdf (9 pages, 408428 bytes).
 PDF statistics:
  87 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
