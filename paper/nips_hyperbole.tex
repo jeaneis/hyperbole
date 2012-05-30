@@ -69,54 +69,48 @@ Stanford, CA 94305\\
 \maketitle
 
 \begin{abstract}
-People do not always say what they mean. As a result, the ability to detect non-literal utterances and infer the intended meaning is critical to language understanding. In this paper, we explore how Bayesian models can be used to capture the relationship between a hyperbolic statement and its interpretation. We model hyperbole interpretation by incorporating various principles of pragmatics, and show that our model can successfully capture interesting patterns of humans' interpretation of hyperbole.
+[REWRITE] 
 
 \textbf{Keywords:} 
 Hyperbole, Bayesian models, Horn's principles, pragmatics, conversational implicature.
 \end{abstract}
 
 
+
 \section{Introduction}
 
-In the realm of mathematics, the meaning of numbers is usually thought of as fixed and precise. However, in everyday language, numbers are not always used to denote exact quantities. For example, if a friend says, ``I will be there in 30 minutes," the number $30$ is interpreted loosely to mean somewhere within a loose range of $20$ and $40$. (cite and describe papers on round numbers.) However, if a friend says ``I will be there in 32 minutes," the number $32$ is interpreted more precisely. Perhaps the friend is on a train that will arrive at the station in 32 minutes. 
+[KEEP] MOTIVATE INTERPRETATION OF NUMBERS In the realm of mathematics, the meaning of numbers is usually thought of as fixed and precise. However, in everyday language, numbers are not always used to denote exact quantities. For example, when a friend says, ``I will be there in 30 minutes," the number $30$ can be interpreted loosely to mean somewhere within a range of $25$ and $35$. This concept is known as round interpretation of numbers \cite{bastiaanse2011rationality}. However, if a friend instead says ``I will be there in 32 minutes," the number $32$ is interpreted more precisely. Perhaps the friend is on a train that will arrive at the station in 32 minutes. The reason behind this is because of the competing possible meanings for $32$, which is harder to utter and has a stronger precision value than $30$. We will explore this idea more in the following section.
 
+NUMBERS HAVE NON-LITERAL INTERPRETATIONS
+Some numbers can be appropriate as an approximate for other numbers close to them. 
 
-It is perhaps an understatement to say that people do not always mean what they say. In fact, everyday conversation is full of figurative expressions, hidden insinuations, and, especially among friends, sarcasm \cite{gibbs2000irony}. In this paper, we examine the kinds of inference mechanisms that people utilize in order to identify when an utterance is not meant to be taken literally. Furthermore, we model how a listener infers the true meaning that the speaker intends to convey through an intentionally false and exaggerated utterance.
+DISCUSS PRAGMATIC HALO AND NUMBER PRECISION
 
-What additional information do hyperbolic utterances convey beyond their literal counterparts, and how does a listener recover this information? For example, what is the advantage of saying: ``It takes 20 minutes just to scroll down that professor's list of publications!" over the literal utterance: ``It takes roughly 2 minutes to scroll down that professor's list of publications, and I think he is very prolific!"? We hypothesize that when people utter a hyperbolic statement, they express an opinion in addition to a description of the state of the world. Hyperboles thus allow speakers to minimize the cost of an utterance while maximizing the message conveyed. Meanwhile, the listener should be able to infer the additional information embedded in the utterance, namely the true state of the world in addition to the opinion. We will investigate these predictions using a Bayesian computational model and a behavioral experiment. 
+DISCUSS HYPERBOLE
 
-The rest of the paper is organized as follows. Section 2 provides an overview of previous work on hyperbole and pragmatics. Section 3 describes the computational model and its predictions. Section 4 describes the behavioral experiment and results. Section 5 compares the model results to the behavioral data and discusses implications. Section 6 proposes directions for future work.
+[KEEP] 
 
-\section{Background}
-\subsection{Verbal Irony and Hyperbole}
-
-Previous research has shown that hyperbolic utterances often express important interpersonal meaning beyond the literal meaning of the statement. Successful interpretation of such expressions hinges on the listener's ability to infer the speaker's intentions \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Through a corpus analysis study, \cite{cano2003risk} showed that speakers frequently introduce hyperbolic statements into everyday conversation. Furthermore, listeners rarely misunderstand these statements or interpret them literally. This suggests that hyperbole is an effective trope in communication, and that there is a standard and reliable way to interpret such utterances.
-
-Researchers have examined cues for verbal irony and exaggeration from various examples. For example, \cite{kreuz1995two} suggested that irony is often accompanied by a slow speaking rate, heavy stress, and nasalization. \cite{capelli1990children} showed that children rely more heavily on intonation than on contextual cues to detect sarcastic or hyperbolic statements that are not meant to be taken literally.   
-In addition, \cite{kreuz2007lexical} found that lexical influences such as the presence of interjections also significantly predicted people's ratings of sarcastic intent in written sentences. Researchers in natural language processing have utilized these characteristics to build sarcasm detection systems on large datasets, which can be useful for tasks such as sentiment analysis \cite{davidov2010semi, reyes2011mining, van2007algorithm}.
+Previous research has shown that hyperbolic utterances often express important interpersonal meaning beyond the literal meaning of the statement. Successful interpretation of such expressions hinges on the listener's ability to infer the speaker's intentions \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Researchers have examined cues for verbal irony and exaggeration, such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz1995two, kreuz2007lexical}. Researchers in natural language processing have utilized these characteristics to build sarcasm detection systems on large datasets, which can be useful for tasks such as sentiment analysis \cite{davidov2010semi, reyes2011mining, van2007algorithm}.
 
 Although lexical and prosodic information has been shown to be important for both human and machine detection of hyperbole, we argue that the relationship between expected value, actual value, and uttered value also play a role in hyperbole production and interpretation. For example, suppose that the cost of a tall latte at Starbucks is always $2.75$ dollars, and suppose someone who went to Starbucks every day told you, ``That Starbucks tall latte cost, like, two dollars and seventy-five cents!" Even if the statement was uttered with many interjections, a slow speaking rate, heavy stress, and nasalization, it would be difficult to interpret the utterance as being hyperbolic or sarcastic, because the uttered cost is exactly the same as the actual and expected costs. In this paper, we focus on statements involving natural numbers that the speaker may or may not intend to be interpreted literally. We aim to use the statistical properties and distributions of these numbers in the natural world as our main cue for hyperbole detection.
 
-\subsection{Pragmatic Implicature and Horn's Principles} 
-Previous studies have shown that successful interpretation of non-literal statements relies heavily on pragmatic implicature and contextual cues \cite{moreno2007creativity}. In particular, we believe that Horn's principles play an important role in identifying hyperbole as well as uncovering the speaker's intended meaning. 
+It is perhaps an understatement to say that people do not always mean what they say. In fact, everyday conversation is full of figurative expressions, hidden insinuations, and, especially among friends, sarcasm \cite{gibbs2000irony}. In this paper, we examine the kinds of inference mechanisms that people utilize in order to identify when an utterance is not meant to be taken literally. Furthermore, we model how a listener infers the true meaning that the speaker intends to convey through an intentionally false and exaggerated utterance.
 
-Horn proposed two conversational principles: 
-\begin{itemize}
-\item[(1)] Q Principle: Say as much as you can [given R]
-\item[(2)] R Principle: Say no more than you must [given Q].
-\end{itemize}
-These two principles suggest the following: suppose a speaker makes an utterance $U$ that can have two possible meanings, $M_1$ and $M_2$. Suppose a different utterance $U'$ can also mean $M_1$, and that $U'$ is shorter, less complex, and less costly than $U$. Since the listener assumes that the speaker follows the R Principle to say no more than he must, the listener would interpret $U$ to mean $M_2$, because if the speaker had intended to mean $M_1$, then he would have uttered $U'$. These principles have been shown to model interesting phenomena in pragmatics such as scalar implicature \cite{bergen2012, stiller2011ad}. 
 
-We argue that hyperbole interpretation may engage Horn's Principles as well. For example, suppose a speaker makes an utterance $U$ that has a literal meaning $M_L$ and a non-literal meaning $M_N$. We argue that the listener interprets the utterance as non-literal when the literal meaning $M_L$ is very unlikely and the non-literal meaning $M_N$ is fairly likely. Furthermore, we argue that $M_N$ becomes an even more likely meaning of $U$ if an alternative utterance $U'$ that also expresses $M_N$ is costlier to utter than $U$, which would make $U$ a better utterance for $M_N$ than $U'$. 
+VALENCE
 
-We believe that this is the case for hyperbole. For example, the utterance ``It takes 20 minutes to scroll down that professor's list of publications" has a literal meaning $M_L$ and a non-literal meaning $M_N$. $M_N$ can alternatively be expressed with the utterance $U'$: ``It takes roughly 2 minutes to scroll down that professor's list of publications, and I think he is very prolific." Since $M_L$ is very unlikely, $M_N$ is fairly likely, and $U'$ is costlier than $U$, we predict that the listener should interpret $U$ as meaning the non-literal meaning $M_N$.
+What additional information do hyperbolic utterances convey beyond their literal counterparts, and how does a listener recover this information? For example, what is the advantage of saying: ``It takes 20 minutes just to scroll down that professor's list of publications!" over the literal utterance: ``It takes roughly 2 minutes to scroll down that professor's list of publications, and I think he is very prolific!"? We hypothesize that when people utter a hyperbolic statement, they express an opinion in addition to a description of the state of the world. Hyperboles thus allow speakers to minimize the cost of an utterance while maximizing the message conveyed. Meanwhile, the listener should be able to infer the additional information embedded in the utterance, namely the true state of the world in addition to the opinion. We will investigate these predictions using a Bayesian computational model and a behavioral experiment. 
 
-The pragmatic halo effect is a related phenomenon that accounts for some aspects of hyperbole interpretation. For example, if a speaker utters, ``It takes exactly 21 minutes and 19 seconds to scroll down that professor's list of publications," then you might be more likely to interpret the sentence as being literal. This can also be explained using Horn's principles. If the speaker had meant to convey the non-literal meaning of the utterance $M_N$, then it would have been less costly to say ``It takes 20 minutes to scroll down that professor's list of publications" to convey the same meaning. Uttering a precise number instead of a ``round" number makes it more likely that the listener would interpret it as a literal utterance \cite{bastiaanse2011rationality}. 
+HOW THEY INTERACT
+PRAGMATIC RECURSIVE MODELS
 
+The rest of the paper is organized as follows. Section 2 provides an overview of previous work on hyperbole and pragmatics. Section 3 describes the computational model and its predictions. Section 4 describes the behavioral experiment and results. Section 5 compares the model results to the behavioral data and discusses implications. Section 6 proposes directions for future work.
 
 %%%%
 
 \section{Model}
+
+% Leon in charge
 
 \subsection{Introduction and Motivation}
 \subsection{Pragmatic halo}
@@ -197,10 +191,19 @@ We conducted a behavioral experiment to test whether human interpretations of po
 
 We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. $4$ of the subjects were non-native English speakers, and their responses were excluded from the analysis. Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express an opinion about these issues. 
 
+<<<<<<< HEAD
 Each scenario was structured in a similar manner. Below is an example of the weather scenario:\\\\
 \emph{Ann and Bob are friends. \\
 \textbf{Ann:}  ï¿½What's the weather like today?ï¿½\\
 \textbf{Bob:} ï¿½It`s \{X\} degrees Fahrenheit.ï¿½\\
+=======
+% How to best present this material?
+
+Each scenario was structured in a similar manner. Below is an example of the textbook scenario:\\\\
+\emph{Ann and Bob are friends. They are taking the same class.\\
+\textbf{Ann:}  ÒHow much did the textbook cost?Ó\\
+\textbf{Bob:} Ò\{X\} dollars.Ó\\
+>>>>>>> Graphs and drafts
 }
 \\Subjects then answered the following questions:
 \emph{
@@ -212,10 +215,21 @@ Each scenario was structured in a similar manner. Below is an example of the wea
 \end{itemize}
 }
 
+% A paragraph here explaining why we asked the questions we did and what effects we expect to see (our hypotheses).
+Predicted effects:
+\begin{itemize}
+\item[(1)] Pragmatic halo (precise numbers interpreted more literally)
+\item[(2)] Exaggeration (less likely numbers interpreted as closer to the mean)
+\item[(3)] Valence (exaggerated/hyperbolic utterances are interpreted as having marked meaning/valence)
+\item[(4)] Interaction of (1) - (3) 
+\end{itemize}
+%%%%
+
 \subsection{Results}
 
+
 \begin{figure}[t]
-\scalebox{0.45}{\includegraphics{percent_exagg_textbook.png}}
+\scalebox{0.45}{\includegraphics{halo_all.png}}
 \caption{Percentage of subjects who judged the utterance to be hyperbolic given an uttered price.}
 \end{figure}
 
@@ -268,8 +282,6 @@ Although our model is able to capture the fundamentals of hyperbolic interpretat
 
 \section{Acknowledgments}
 
-We thank Professor Noah Goodman, Professor Lera Boroditsky, and Leon Bergen for helpful comments. We would also like to extend our gratitude to Stanford students who participated in our study without being compensated for their time.
-
 
 
 \bibliographystyle{apacite}
@@ -277,7 +289,7 @@ We thank Professor Noah Goodman, Professor Lera Boroditsky, and Leon Bergen for 
 \setlength{\bibleftmargin}{.125in}
 \setlength{\bibindent}{-\bibleftmargin}
 
-\bibliography{CogSci_Template}
+\bibliography{nips_hyperbole}
 
 
 \end{document}
