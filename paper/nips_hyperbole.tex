@@ -80,24 +80,17 @@ Number interpretation, hyperbole, pragmatic halo, pragmatics, Bayesian model
 
 \section{Introduction}
 
-The meanings of numbers are usually thought to be fixed and precise. In mathematics, the number $30$ has a precise semantic meaning that clearly distinguishes it from numbers like $32$ and $1000$. However, in everyday language, the meanings of numbers are much more flexible, especially given the fact that people do not always mean what they say. In this paper we examine the kinds of inference mechanisms that people utilize in order to identify when a number is not intended to be interpreted literally. We explore two phenomena centered around the pragmatic interpretation of numbers: \emph{pragmatic halo} and \emph{hyperbole.} We propose a computational model that captures these effects as well as their interaction in the case of hyperbole interpretation. Furthermore, we show that the model predicts how a listener infers the true meaning that the speaker intends to convey through a potentially hyperbolic utterance. 
+The meanings of numbers are usually thought to be fixed and precise. In mathematics, the number $30$ has a precise meaning that clearly distinguishes it from numbers like $32$ and $1000$. However, in everyday language, the meanings of numbers are much more flexible, especially given the fact that people do not always mean what they say. In this paper we examine the kinds of inference mechanisms that people utilize in order to identify when a number is not intended to be interpreted literally. In particular, we explore two phenomena centered around the pragmatic interpretation of numbers: \emph{pragmatic halo} and \emph{hyperbole.} We propose a computational model for pragmatic implicature that captures these effects as well as their interaction in the case of hyperbole interpretation. Furthermore, we show that the model predicts how a listener infers the true meaning that the speaker intends to convey using a potentially hyperbolic utterance. 
 
-\subsection{Pragmatic halo}
+Previous research in pragmatics has shown that certain numbers tend to be interpreted as more precise than others. Suppose a friend calls and informs you: ``I will be there in $30$ minutes." The number $30$ can be interpreted to mean somewhere within the range of $25$ and $40$, depending on how punctual your friend usually is. On the other hand, if your friend says: ``I will be there in $32$ minutes," it is more likely that you would interpret the number to mean exactly $32$. The intuition behind this is that if your friend intended to convey the meaning of ``somewhere around $32$", she would have uttered $30$ instead, because $30$ conveys the same meaning and is less effortful to utter. [Krifka et al] showed that under the assumption that speakers prefer number expressions that are shorter and less costly to utter, listeners favor approximate interpretations of round numbers even if there is no general bias for approximate interpretations. [Bastiaanse] further showed that interpreting round numbers as approximate is a rational choice. Here we refer to this effect as the \emph{pragmatic halo}, where certain numbers tend to be interpreted with less precision than others. For example, the possible interpretations of the number $30$ is a distribution centered around $30$.
 
-(A few sentences citing and describing past work in pragmatic halo and pragmatic slack). Suppose a friend calls and informs you: ``I will be there in $30$ minutes." In this case, the number $30$ can be interpreted loosely to mean somewhere within a range of $25$ and $40$, depending on how punctual your friend usually is. On the other hand, if your friend says: ``I will be there in $32$ minutes," it is more likely that you would interpret the number to mean exactly $32$. The intuition behind this is that if your friend intended to convey the meaning of ``somewhere around $32$", she would have uttered $30$ instead, because $30$ conveys the same meaning and is less effortful to utter. (Mention lexical competition?)
+Not only can numbers be used loosely, they can also be used hyperbolically. Suppose you overhear a student saying, ``It takes 30 minutes just to scroll down that professor's list of publications!" Given that it is very unlikely for the literal meaning of the utterance to be true, the number $30$ in this utterance is not likely to be interpreted literally. Instead, the actual amount of time it takes to scroll down the professor's list of publications is more likely to be interpreted as much less than 30 minutes.
 
+Hyperbolic utterances often express important interpersonal meaning beyond the literal meaning of the statement, and successful interpretation of such expressions hinges on the listener's ability to infer the speaker's intentions \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work has focused on cues for verbal irony and exaggeration, such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz1995two, kreuz2007lexical}. Although lexical and prosodic information has been shown to be important for both human and machine detection of hyperbole \cite{davidov2010semi, reyes2011mining, van2007algorithm}, we argue that the distribution of numerical values associated with the relevant topic also plays an important role in numeric hyperbole interpretation. For example, suppose that the cost of a tall latte at Starbucks is always $2.75$ dollars, and suppose someone who went to Starbucks every day told you, ``That Starbucks tall latte cost, like, two dollars and seventy-five cents!" Even if the statement was uttered with many interjections, a slow speaking rate, heavy stress, and nasalization, it would be difficult to interpret the utterance as being hyperbolic, because the distribution of numerical values associated with Starbucks tall lattes is a single value at $2.75$. As a result, we propose that the statistical properties and distributions of numbers in the natural world should serve as a major cue for hyperbole detection.
 
-\subsection{Hyperbole}
-
-Not only can numbers be used loosely, they can also be used liberally. Suppose you overhear a student saying, ``It takes 30 minutes just to scroll down that professor's list of publications!" Given that it is very unlikely for the literal meaning of the utterance to be true, the number $30$ in this utterance is likely to be interpreted as a hyperbole, and the actual amount of time it takes to scroll down the professor's list of publications is interpreted as closer to $5$ minutes.
-
-Hyperbolic utterances often express important interpersonal meaning beyond the literal meaning of the statement. Successful interpretation of such expressions hinges on the listener's ability to infer the speaker's intentions \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work has focused on cues for verbal irony and exaggeration, such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz1995two, kreuz2007lexical}. Although lexical and prosodic information has been shown to be important for both human and machine detection of hyperbole \cite{davidov2010semi, reyes2011mining, van2007algorithm}, we argue that the distribution of numerical values associated with the relevant topic also play an important role in numeric hyperbole interpretation. For example, suppose that the cost of a tall latte at Starbucks is always $2.75$ dollars, and suppose someone who went to Starbucks every day told you, ``That Starbucks tall latte cost, like, two dollars and seventy-five cents!" Even if the statement was uttered with many interjections, a slow speaking rate, heavy stress, and nasalization, it would be difficult to interpret the utterance as being hyperbolic or sarcastic, because the distribution of numerical values associated with Starbucks tall lattes is a single value at $2.75$. As a result, we propose that the statistical properties and distributions of numbers in the natural world should serve as a major cue for hyperbole detection.
-
-\subsection{Valence}
-What additional information do hyperbolic utterances convey beyond their literal counterparts, and how does a listener recover this information? What is the advantage of saying: ``It takes 20 minutes just to scroll down that professor's list of publications!" over the literal utterance: ``It takes roughly 2 minutes to scroll down that professor's list of publications, and I think he is very prolific!"? We hypothesize that when people utter a hyperbolic statement, they express an opinion in addition to a description of the state of the world. Hyperbole allows speakers to minimize the cost of an utterance while maximizing the message conveyed. Meanwhile, the listener should be able to infer the additional information embedded in the utterance, namely the true state of the world in addition to the opinion. We will investigate these predictions using a Bayesian computational model and a behavioral experiment. 
+What additional information do hyperbolic utterances convey beyond their literal counterparts, and how does a listener recover this information? We hypothesize that when people utter a hyperbolic statement, they express an opinion in addition to a description of the state of the world. Hyperbole allows speakers to minimize the cost of an utterance while maximizing the message conveyed. Meanwhile, the listener should be able to infer the additional information embedded in the utterance, namely the true state of the world in addition to the opinion. We will investigate these predictions using a Bayesian computational model and a behavioral experiment. 
 
 The rest of the paper is organized as follows. Section 2 provides an overview of previous work on hyperbole and pragmatics. Section 3 describes the computational model and its predictions. Section 4 describes the behavioral experiment and results. Section 5 compares the model results to the behavioral data and discusses implications. Section 6 proposes directions for future work.
-
 %%%%
 
 \section{Model}
@@ -196,40 +189,64 @@ Our final model combines the elements of the previous models. It is intended to 
 
 \section{Behavioral Experiment}
 
-We conducted a behavioral experiment to test whether human interpretations of potentially hyperbolic statements can be explained using the model we proposed. We tested the model on five different scenarios. In each scenario, a speaker makes an utterance that contains a numerical value that conveys information about a particular item or state of the world, for example, the price of a textbook or the temperature outside. Subjects are asked to judge whether the utterance was an exaggeration or a literal statement, as well as what they think the actual state of the world was.
+We conducted a behavioral experiment to test whether humans' interpretation of potentially hyperbolic statements can be explained using the model we proposed. We tested the model on five different scenarios. In each scenario, a speaker makes an utterance that contains a numeric value that conveys information about a particular item or state of the world, for example, the price of a textbook or the temperature outside. Subjects are then asked to interpret the numeric expression.
+
 \subsection{Procedures}
 
-We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. $4$ of the subjects were non-native English speakers, and their responses were excluded from the analysis. Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the cost of a parking ticket, the number of pages in a reading assignment, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express an opinion about these issues. 
+We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express opinions about these issues. $8$ possible values for $X$ were systematically chosen for each scenario. These values consisted of four pairs of two numbers. Each pair contained one round number (e.g. $100$) and a neighboring number that cannot be evenly divided by 10 (e.g. $102$). These neighboring non-round numbers also contain more syllables than their ``rounder" counterparts and are presumably more difficult to utter. The first value pair is close to the mean of the underlying distribution; the second and third value pair are moderately close to the mean; and the fourth value pair is very far from the mean. We chose these values in order to best compare the various effects that we wish to examine as well as how these effects interact. Each scenario was structured in a similar manner, and each subject saw only one of the possible $8$ values for $X$. Table 1 shows an example of the textbook scenario.
+\begin{table}[h]
+\begin{tabular}{| p{9.7cm}| l |}\hline
+\multicolumn{1}{|c|}{\textbf{Scenario}} & \multicolumn{1}{|c|}{\textbf{Values for X}} \\\hline
+\multicolumn{1}{|l|}{Ann and Bob are friends. They are taking the same class.} & \multicolumn{1}{|l|}{[$100$, $102$, $150$, $152$,}\\
+\multicolumn{1}{|l|}{\textbf{Ann:} ``How much did the textbook cost you?"} & \multicolumn{1}{|l|}{$200$, $202$, $1000$, $1012$]}\\
+\multicolumn{1}{|l|}{\textbf{Bob:} ``\{X\} dollars."} & \multicolumn{1}{|l|}{}\\\hline
+\multicolumn{1}{|c|}{\textbf{Questions}} & \multicolumn{1}{|c|}{\textbf{Response}} \\\hline
+(1) Was Bob being literal about the cost of the textbook, or was he exaggerating? & [Literal / Exaggerating] \\
+(2) How much do you think the textbook actually cost? & [Free response] \\
+(3) How negative does Bob feel about the cost of the textbook? & [Likert scale]\\\hline
+\end{tabular}
+\caption{Example scenario on textbook costs}
+\label{tab:myfirsttable}
+\end{table}
 
-% How to best present this material?
+Based on our model and theory of the pragmatic interpretation of numbers, we predict that subjects' responses will exhibit the following phenomena. Firstly, round numbers, or numbers that can be evenly divided by $10$, will be interpreted less precisely and literally. Secondly, less likely numbers, or numbers further away from the mean of the underlying distribution, will be interpreted non-literallyÊand as closer to the mean. Thirdly, exaggerated utterances will be interpreted as having marked meaning and convey stronger affect. Furthermore, there will be an interaction among these three effects, such that non-round numbers closer to the mean will be interpreted as the most precise and convey the least affect, while round numbers further away from the mean will be interpreted as the most exaggerated and convey the most affect.
 
-Each scenario was structured in a similar manner. Below is an example of the textbook scenario:\\\\
-\emph{Ann and Bob are friends. They are taking the same class.\\
-\textbf{Ann:}  ``How much did the textbook cost?"\\
-\textbf{Bob:} ``\{X\} dollars."\\
-}
-\\After reading the scenario, subjects then answered the following questions:
-\emph{
-\begin{itemize}
-\item[(1)] Was Bob being literal about the temperature, or was he exaggerating? [literal / exaggerating]
-\item[(2)] What do you think the temperature actually is? [free response]
-\item[(3)] How negative does Bob feel about the temperature?
-\item[(4)] What was Bob most likely trying to communicate by saying: ``\{X\} degrees Fahrenheit?" [It is exactly \{X\} degrees Fahrenheit / It is approximately \{X\} degrees Fahrenheit / It is very hot and Bob is not happy about it.
-\end{itemize}
-}
-
-% A paragraph here explaining why we asked the questions we did and what effects we expect to see (our hypotheses).
-Based on our model and theory of the pragmatic interpretation of numbers, we predict that subjects' responses will exhibit the following phenomena:
-\begin{itemize}
-\item[(1)] Pragmatic halo: round numbers are interpreted less precisely and literally
-\item[(2)] Exaggeration: less likely numbers are interpreted as closer to the mean
-\item[(3)] Valence: exaggerated utterances are interpreted as having marked meaning and stronger valence
-\item[(4)] Interaction of all three elements above, such that it reflects the actual interpretation of how humans communicate with hyperbole.
-\end{itemize}
-%%%%
 
 \subsection{Results}
-\begin{figure}
+
+% halo and exaggeration
+
+\begin{figure}[t]
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \caption{Pragmatic Halo}
+		\includegraphics[width=\textwidth]{humans_halo.png}
+		
+	\end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \caption{Exaggeration}
+                \includegraphics[width=\textwidth]{humans_exagg.png}
+		
+	\end{subfigure}
+	\caption{Examples of pragmatic halo and exaggeration across all five domains}
+\end{figure}
+
+Of the $220$ subjects we recruited, we excluded $4$ that were non-native English speakers from the analysis. $1$ response from 1 subject contained an obvious typo and was also excluded. 
+% Report some stats here?
+
+Results are consistent with our model predictions. As shown in Figure 2, the proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. In order to examine the pragmatic halo effect, we selected a pair of values for each scenario that is moderately close to the mean of the underlying distribution (Figure 2(a)). We then compared the precision of subjects' interpretation of these numbers, where an interpretation is considered precise if it is identical to the uttered number and imprecise otherwise. For example, if a subject interprets the uttered number ``100" as meaning ``99," then the interpretation is imprecise. Consistent with \cite{someone} findings, we see that number expressions that contain more syllables are more likely to be interpreted precisely, or exactly as they are uttered. In order to examine the effect of prior probability on hyperbolic interpretation, for each scenario we selected a pair of values that contains one non-round number close to the mean of the underlying distribution and one non-round number far from the mean. We then compared how likely subjects are to interpret the numbers as exaggerated, where an exaggerated interpretation is one that is lower than the uttered value. For example, if a subject interprets the uttered number ``1012" as meaning ``100," then ``1012" is interpreted as an exaggeration. 
+
+Subjects are also more likely to judge an utterance as exaggeration when the literal meaning of the numeric value becomes less likely in a particular domain. For instance, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
+
+% exaggeration and affect (should we still add a plot that just has affect?)
+% add something about how affect is computed: median split ( > 5 is affect).
+
+We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and the relationship between uttered values and their probability of being perceived to convey affect. In the textbook scenario, the utterance ``100" is most likely to be interpreted as close to the literal meaning and without affective information. On the other hand, the utterance ``1000" is most likely to be interpreted as much lower than the literal meaning and with affective information. We also see a slight effect of pragmatic halo, in which non-round numbers are more likely to be interpreted literally than their nearest round counterparts. 
+
+Interestingly, the proportion of ``affect" responses varies across the five scenarios. In the parking ticket scenario, subjects are asked to judge how negatively a speaker who has just received a parking ticket feels about the ticket cost. Since the speaker is very likely to feel negatively about the ticket cost, the utterances are generally interpreted as having more negative affect than utterances in the textbook scenario. Our model can capture this effect by adjusting the prior probability of having an affective state regarding a particular scenario. 
+% plots for all 5 domains
+\begin{figure}[t]
         \begin{subfigure}[b]{0.5\textwidth}
                 \centering
 		\includegraphics[width=\textwidth]{humans_all_textbook.png}
@@ -255,32 +272,8 @@ Based on our model and theory of the pragmatic interpretation of numbers, we pre
                 \includegraphics[width=\textwidth]{humans_all_weather.png}
 		\caption{weather temperature}
 	\end{subfigure}
-	\caption{These graphs show the relationship between uttered values and its probability of being perceived to convey affect.}
+	\caption{Distribution of interpretations for each utterance across five scenarios}
 \end{figure}
-
-
-% halo and exaggeration
-
-\begin{figure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \centering
-		\includegraphics[width=\textwidth]{humans_halo.png}
-		\caption{halo effect}
-	\end{subfigure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{humans_exagg.png}
-		\caption{exaggeration}
-	\end{subfigure}
-	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
-\end{figure}
-
-% halo & exaggeration
-The results are consistent with our model predictions. The proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the distance between uttered and expected values as well as the ``roundness" of the uttered value. 
-As shown in Figure 1, subjects' responses demonstrates a pragmatic halo effect, in which precise numbers are interpreted more literally than round numbers. Subjects are also more likely to judge an utterance as exaggeration when the literal meaning of the numeric value becomes less likely in a particular domain. For instant, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
-
-% exaggeration and affect
-We then analyzed how perception of hyperbolic intent and distance between the uttered price and expected price interacted to form subjects' inferences of the actual price. Figure 3(a) shows the average of subjects' inferred prices given different uttered prices and whether or not they interpreted the utterance as a hyperbole. When subjects perceived a hyperbolic intent, they inferred that the actual price was less than the uttered price and closer to the expected (mean) price. When the uttered price became very unlikely, for example when the uttered price was \texttt{1000}, subjects inferred that the actual price is very close to the mean. When subjects did not perceive a hyperbolic intent, however, they inferred that the actual price was close to the uttered price. Figure 3(b) shows the relationship between exaggeration and valence effects. Utterances that were interpreted as exaggeration conveyed significantly higher negative affect than utterances that were interpreted literally. 
 
 % everything
 
@@ -288,8 +281,7 @@ We then analyzed how perception of hyperbolic intent and distance between the ut
 Our model captures some important intuitions regarding the numerical values and statistical properties of the uttered price. Here we compare our model results and behavioral data on two aspects: (1) Probability of interpreting the utterance as hyperbolic (2) Most likely inferred price given that the utterance is interpreted as hyperbolic or literal.
 
 
-As shown in Figure 7, the probability that the model interprets the utterance as hyperbolic roughly matches that of the behavioral data, at least in the general trend. It appears that humans are less affected by the actual uttered price and are similarly likely to interpret the utterance as hyperbole when $U = 200$ and when $U = 1000$.
-
+As shown in Figure 7, the probability that the model interprets the utterance as hyperbolic roughly matches that of the behavioral data, at least in the general trend. 
 
 \begin{figure}
         \begin{subfigure}[b]{0.5\textwidth}
@@ -305,33 +297,25 @@ As shown in Figure 7, the probability that the model interprets the utterance as
 	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
 \end{figure}
 
-
-Figure 8 shows the model and humans' inferred prices when there is no perceived hyperbolic intent. Since the model and participants alike interpret the utterance literally and believe that $A = U$, the model predictions almost perfectly match the human responses. Interestingly, the model and humans also infer a similar price when $U = 1000$. Our model infers a value of close to $100$ even when it detects no hyperbolic intent, because the prior probability $P(A = 1000, O = \text{no opinion})$ is extremely low. We are not sure why humans also have this interpretation, although it would  be interesting to examine and verify with further data.
-
-
-Figure 9 shows the model and humans' inferred prices when listener interprets utterance as hyperbolic. We see that there is a fairly good fit when the uttered prices are close to the mean. However, while the model prediction drops close to the mean when $U > 200$, humans' inferred prices follow the uttered prices fairly closely until $U = 1000$. However, since we did not ask humans to make these inferences when $ 250 < U < 1000$, it is unclear if humans' inferred price will also fall back to the mean steadily after a certain threshold price. In general, it appears that human subjects are more willing to believe the speaker. It may also be that Stanford students are more cynical about textbook prices and readily believe in textbooks that cost $250$ dollars.
-
-
 \section{Future Directions \& Conclusion}
-Although our model is able to capture the fundamentals of hyperbolic interpretation in this particularly simplistic scenario, more work is needed to extend the model to more complicated settings and generic domains. We would also like to focus on improving the recursive model of a speaker and a listener to better represent the listener's internal model for the speaker, and vice versa. Lastly, our future work will attempt at modeling a speaker's opinion as part of her communicative goals in a conversation, and how a listener can infer the intended meaning.
 
-\subsubsection*{References}
-
-\small{
-[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
-for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
-and T.K. Leen (eds.), {\it Advances in Neural Information Processing
-Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
-
-[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
-Realistic Neural Models with the GEneral NEural SImulation System.}
-New York: TELOS/Springer-Verlag.
-
-[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
-and recall at excitatory recurrent synapses and cholinergic modulation
-in rat hippocampal region CA3. {\it Journal of Neuroscience}
-{\bf 15}(7):5249-5262.
-}
+%\subsubsection*{References}
+%
+%\small{
+%[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
+%for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
+%and T.K. Leen (eds.), {\it Advances in Neural Information Processing
+%Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
+%
+%[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
+%Realistic Neural Models with the GEneral NEural SImulation System.}
+%New York: TELOS/Springer-Verlag.
+%
+%[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
+%and recall at excitatory recurrent synapses and cholinergic modulation
+%in rat hippocampal region CA3. {\it Journal of Neuroscience}
+%{\bf 15}(7):5249-5262.
+%}
 
 \bibliographystyle{apacite}
 
