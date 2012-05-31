@@ -31,9 +31,11 @@
 \usepackage{xspace}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \newcommand{\dictionary}{\ensuremath{\mathcal{D}}\xspace}
-
+\newcommand{\citey}{\cite}
 
 \title{Halo, Hyperbole, and the Pragmatic Interpretation of Numbers}
  
@@ -77,11 +79,6 @@ Number interpretation, hyperbole, pragmatic halo, pragmatics, Bayesian model
 
 
 \section{Introduction}
-
-\emph{God created the natural number, and all the rest is the work of man}
- \begin{flushright}
- ---Leopold Kronecker (1823-1891)
- \end{flushright} 
 
 The meanings of numbers are usually thought to be fixed and precise. In mathematics, the number $30$ has a precise semantic meaning that clearly distinguishes it from numbers like $32$ and $1000$. However, in everyday language, the meanings of numbers are much more flexible, especially given the fact that people do not always mean what they say. In this paper we examine the kinds of inference mechanisms that people utilize in order to identify when a number is not intended to be interpreted literally. We explore two phenomena centered around the pragmatic interpretation of numbers: \emph{pragmatic halo} and \emph{hyperbole.} We propose a computational model that captures these effects as well as their interaction in the case of hyperbole interpretation. Furthermore, we show that the model predicts how a listener infers the true meaning that the speaker intends to convey through a potentially hyperbolic utterance. 
 
@@ -160,6 +157,20 @@ The model of exaggeration is nearly identical to the model of pragmatic halo pre
 
 The exaggeration effect follows straightforwardly from this model. Suppose again that there are two meanings, \emph{1} and \emph{2}, and two utterances, ``one" and ``two." Suppose that the meaning \emph{1} is much more likely than \emph{2}. If the speaker believes that the literal meaning of ``two" is vague, then he may use this utterance to communicate the meaning \emph{1} because the listener's priors will bias the interpretation of the utterance towards ``one." In contrast, the speaker would not use the utterance ``one" to communicate the meaning \emph{2}, regardless of how vague its literal meaning is, because the listener's priors will bias the interpretation of the utterance against this meaning. It follows that the utterance ``two" may be interpreted as exaggerated, and as intending to communicate the likely meaning \emph{1}, while the utterance ``one" will be interpreted literally.
 
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{model_halo_exaggeration.png}
+		\caption{Pragmatic Halo and Exaggeration}
+	\end{subfigure}
+	 \begin{subfigure}[b]{0.33\textwidth}
+                \centering
+                %\includegraphics[width=\textwidth]{}
+		\caption{can fit more plot here}
+	\end{subfigure}
+	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+\end{figure}
+
 \subsection{Hyperbole}
 
 Hyperbole is similar to exaggeration, except that additional information about the \emph{valence} of the meaning is conveyed. Valence is a second dimension of meaning, separate from the number that the speaker wants to convey. If $V$ is the set of possible valences, then the set of possible meanings $M$ is given by:
@@ -185,17 +196,17 @@ Our final model combines the elements of the previous models. It is intended to 
 
 \section{Behavioral Experiment}
 
-We conducted a behavioral experiment to test whether human interpretations of potentially hyperbolic statements can be explained using the model we proposed. We tested the model on five different scenarios. In each scenario, a speaker makes an utterance that contains a numeric value that conveys information about a particular item or state of the world, for example, the price of a textbook or the temperature outside. Subjects are asked to judge whether the utterance was an exaggeration or a literal statement, as well as what they think the actual state of the world is. 
+We conducted a behavioral experiment to test whether human interpretations of potentially hyperbolic statements can be explained using the model we proposed. We tested the model on five different scenarios. In each scenario, a speaker makes an utterance that contains a numerical value that conveys information about a particular item or state of the world, for example, the price of a textbook or the temperature outside. Subjects are asked to judge whether the utterance was an exaggeration or a literal statement, as well as what they think the actual state of the world was.
 \subsection{Procedures}
 
-We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. $4$ of the subjects were non-native English speakers, and their responses were excluded from the analysis. Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express an opinion about these issues. 
+We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. $4$ of the subjects were non-native English speakers, and their responses were excluded from the analysis. Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the cost of a parking ticket, the number of pages in a reading assignment, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express an opinion about these issues. 
 
 % How to best present this material?
 
 Each scenario was structured in a similar manner. Below is an example of the textbook scenario:\\\\
 \emph{Ann and Bob are friends. They are taking the same class.\\
-\textbf{Ann:}  �How much did the textbook cost?�\\
-\textbf{Bob:} �\{X\} dollars.�\\
+\textbf{Ann:}  ``How much did the textbook cost?"\\
+\textbf{Bob:} ``\{X\} dollars."\\
 }
 \\After reading the scenario, subjects then answered the following questions:
 \emph{
@@ -213,80 +224,114 @@ Based on our model and theory of the pragmatic interpretation of numbers, we pre
 \item[(1)] Pragmatic halo: round numbers are interpreted less precisely and literally
 \item[(2)] Exaggeration: less likely numbers are interpreted as closer to the mean
 \item[(3)] Valence: exaggerated utterances are interpreted as having marked meaning and stronger valence
-\item[(4)] Interaction of (1) - (3), such that %blah blah blah
+\item[(4)] Interaction of all three elements above, such that it reflects the actual interpretation of how humans communicate with hyperbole.
 \end{itemize}
 %%%%
 
 \subsection{Results}
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+		\includegraphics[width=\textwidth]{humans_all_textbook.png}
+		\caption{textbooks}
+	\end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_all_ticket.png}
+		\caption{tickets}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.33\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_all_bus.png}
+		\caption{bus wait time}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.33\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_all_reading.png}
+		\caption{reading assignment}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.33\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_all_weather.png}
+		\caption{weather temperature}
+	\end{subfigure}
+	\caption{These graphs show the relationship between uttered values and its probability of being perceived to convey affect.}
+\end{figure}
+
 
 % halo and exaggeration
 
-\begin{figure}[t]
-\scalebox{0.45}{\includegraphics{halo_all.png}}
-\caption{Percentage of subjects who judged the utterance to be hyperbolic given an uttered number in all five domains.}
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+		\includegraphics[width=\textwidth]{humans_halo.png}
+		\caption{halo effect}
+	\end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_exagg.png}
+		\caption{exaggeration}
+	\end{subfigure}
+	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
 \end{figure}
 
-Consistent with our predictions, results showed that the proportion of subjects who perceived the utterance as hyperbolic varied as a function of both the distance between uttered and expected price as well as the ``roundness" of the uttered price. As shown in Figure 1, subjects' responses demonstrates a pragmatic halo effect, in which precise numbers are interpreted more literally than round numbers. Subjects are also more likely to judge an utterance as hyperbolic when the literal meaning of the numeric value becomes less likely in a particular domain. 
-
-% halo and exaggeration
-
-\begin{figure}[t]
-\scalebox{0.7}{\includegraphics{textbook_humans_8_val_off.jpeg}}
-\caption{halo and exaggeration, no valence}
-\end{figure}
-
-Figure 2 shows the halo and exaggeration.
-
+% halo & exaggeration
+The results are consistent with our model predictions. The proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the distance between uttered and expected values as well as the ``roundness" of the uttered value. 
+As shown in Figure 1, subjects' responses demonstrates a pragmatic halo effect, in which precise numbers are interpreted more literally than round numbers. Subjects are also more likely to judge an utterance as exaggeration when the literal meaning of the numeric value becomes less likely in a particular domain. For instant, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
 
 % exaggeration and affect
-
-\begin{figure}[t]
-\scalebox{0.4}{\includegraphics{inferred_val_textbook.png}}
-\scalebox{0.33}{\includegraphics{affect_all.png}}
-\caption{(a) inferred value given different uttered numbers (b) compares the perceived negative affect when utterances are interpreted as literal or exaggerated}
-\end{figure}
-
 We then analyzed how perception of hyperbolic intent and distance between the uttered price and expected price interacted to form subjects' inferences of the actual price. Figure 3(a) shows the average of subjects' inferred prices given different uttered prices and whether or not they interpreted the utterance as a hyperbole. When subjects perceived a hyperbolic intent, they inferred that the actual price was less than the uttered price and closer to the expected (mean) price. When the uttered price became very unlikely, for example when the uttered price was \texttt{1000}, subjects inferred that the actual price is very close to the mean. When subjects did not perceive a hyperbolic intent, however, they inferred that the actual price was close to the uttered price. Figure 3(b) shows the relationship between exaggeration and valence effects. Utterances that were interpreted as exaggeration conveyed significantly higher negative affect than utterances that were interpreted literally. 
 
 % everything
 
-\begin{figure}[t]
-\scalebox{0.7}{\includegraphics{textbook_human.jpeg}}
-\caption{Halo, hyperbole, and valence}
-\end{figure}
-
-
 \section{Comparison and Discussion}
 Our model captures some important intuitions regarding the numerical values and statistical properties of the uttered price. Here we compare our model results and behavioral data on two aspects: (1) Probability of interpreting the utterance as hyperbolic (2) Most likely inferred price given that the utterance is interpreted as hyperbolic or literal.
 
-\begin{figure}[tl]
-\scalebox{0.7}{\includegraphics{textbook_model.jpeg}}
-\caption{Model full}
-\end{figure}
 
 As shown in Figure 7, the probability that the model interprets the utterance as hyperbolic roughly matches that of the behavioral data, at least in the general trend. It appears that humans are less affected by the actual uttered price and are similarly likely to interpret the utterance as hyperbole when $U = 200$ and when $U = 1000$.
 
-\begin{figure}[tl]
-%\scalebox{0.46}{\includegraphics{no_intent.png}}
-\caption{Comparison of model and human inferred price when listener interprets utterance literally}
+
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+		\includegraphics[width=\textwidth]{model_all_textbook.png}
+		\caption{model all textbook}
+	\end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_all_textbook.png}
+		\caption{humans all textbook}
+	\end{subfigure}
+	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
 \end{figure}
+
 
 Figure 8 shows the model and humans' inferred prices when there is no perceived hyperbolic intent. Since the model and participants alike interpret the utterance literally and believe that $A = U$, the model predictions almost perfectly match the human responses. Interestingly, the model and humans also infer a similar price when $U = 1000$. Our model infers a value of close to $100$ even when it detects no hyperbolic intent, because the prior probability $P(A = 1000, O = \text{no opinion})$ is extremely low. We are not sure why humans also have this interpretation, although it would  be interesting to examine and verify with further data.
 
-\begin{figure}[tl]
-%\scalebox{0.46}{\includegraphics{has_intent.png}}
-\caption{Comparison of model and human inferred price when listener interprets utterance as hyperbolic}
-\end{figure}
 
 Figure 9 shows the model and humans' inferred prices when listener interprets utterance as hyperbolic. We see that there is a fairly good fit when the uttered prices are close to the mean. However, while the model prediction drops close to the mean when $U > 200$, humans' inferred prices follow the uttered prices fairly closely until $U = 1000$. However, since we did not ask humans to make these inferences when $ 250 < U < 1000$, it is unclear if humans' inferred price will also fall back to the mean steadily after a certain threshold price. In general, it appears that human subjects are more willing to believe the speaker. It may also be that Stanford students are more cynical about textbook prices and readily believe in textbooks that cost $250$ dollars.
 
 
-\section{Future Directions}
+\section{Future Directions \& Conclusion}
 Although our model is able to capture the fundamentals of hyperbolic interpretation in this particularly simplistic scenario, more work is needed to extend the model to more complicated settings and generic domains. We would also like to focus on improving the recursive model of a speaker and a listener to better represent the listener's internal model for the speaker, and vice versa. Lastly, our future work will attempt at modeling a speaker's opinion as part of her communicative goals in a conversation, and how a listener can infer the intended meaning.
 
-\section{Acknowledgments}
+\subsubsection*{References}
 
+\small{
+[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
+for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
+and T.K. Leen (eds.), {\it Advances in Neural Information Processing
+Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
 
+[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
+Realistic Neural Models with the GEneral NEural SImulation System.}
+New York: TELOS/Springer-Verlag.
+
+[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
+and recall at excitatory recurrent synapses and cholinergic modulation
+in rat hippocampal region CA3. {\it Journal of Neuroscience}
+{\bf 15}(7):5249-5262.
+}
 
 \bibliographystyle{apacite}
 
