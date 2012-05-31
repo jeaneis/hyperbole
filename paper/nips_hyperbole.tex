@@ -106,9 +106,13 @@ The rest of the paper is organized as follows. Section 2 provides an overview of
 \section{Model}
 
 \subsection{Introduction and Motivation}
+We will be building on a traditional approach within linguistics, which views communication as an interaction between rational, cooperative agents \cite{grice1975}. The speaker in a conversation has a meaning to communicate, and her goal is for the listener to understand this meaning. The listener's goal is to infer this intended meaning from the speaker's utterances. The listener performs Bayesian inference to infer the intended meaning, while the speaker is a rational planner who takes into account how the listener will interpret each utterance. 
+
+Recent work \cite{frankgoodmanscience} has proposed a simple formal model of this interaction, in which the listener interprets utterances and the speaker optimizes the informativeness of her utterances for this listener. We will be working with extensions of this model, in which the speaker and listener recursively reason about one another \cite{jager2009pragmatic, bergen2012}. Here, the listener reasons about the speaker optimizing for informativeness; the speaker optimizes given that the listener is reasoning about the speaker; and so on. These models of recursive social reasoning are closely related to the signaling games studied in game theory \cite{cho1987signaling, chen2008selecting}.
+
 \subsection{Pragmatic halo}
 
-We begin by trying to capture the basic ``pragmatic halo" effect: more complex utterances are interpreted as being more precise. Each listener will be associated with a dictionary $\dictionary$, which specifies the literal meaning of each possible utterance. The listener's dictionary determines how he will initially interpret the utternce. All utterances and meanings will be integers in the set $[a,...,b]$. For each utterance $u$, the dictionary entry $\dictionary_u$ for this utterance will be a one-dimensional normal distribution $f(x;u,\sigma^2)$. After hearing the utterance $u$, the listener $L_0$ updates his prior distribution $P$ over meanings \emph{m} by filtering $P$ through the dictionary entry for $u$:
+We begin by trying to capture the basic ``pragmatic halo" effect: more complex utterances are interpreted as being more precise. Each listener will be associated with a dictionary $\dictionary$, which specifies the literal meaning of each possible utterance. The listener's dictionary determines how he will initially interpret the utterance. All utterances and meanings will be integers in the set $[a,...,b]$. For each utterance $u$, the dictionary entry $\dictionary_u$ for this utterance will be a one-dimensional normal distribution $f(x;u,\sigma^2)$. After hearing the utterance $u$, the listener $L_0$ updates his prior distribution $P$ over meanings \emph{m} by filtering $P$ through the dictionary entry for $u$:
 \begin{align}\label{eq:literallistener}
 L_0(m | u, \dictionary) &\propto \dictionary_u(m)P(m) \\
 &=f(m;u,\sigma^2)P(m).
@@ -132,7 +136,7 @@ which combined with equation \ref{eq:speakerprob} leads to:
 S_n(u | m, \dictionary) \propto (L_{n}(m | u,\dictionary)e^{-c(u)}) ^\lambda.
 \end{equation}
 
-The speaker $S_0$ reasons about the literal listener $L_0$, and assumes that this listener shares her dictionary $\dictionary$. However, in general the listener will be uncertain about the dictionary being used by the speaker, which we call \emph{lexical uncertainty}. To determine the speaker's intended meaning, he will therefore marginalize over the possible dictionaries being used:
+The speaker $S_0$ reasons about the literal listener $L_0$, and assumes that this listener shares her dictionary $\dictionary$. However, in general the listener will be uncertain about the dictionary being used by the speaker, which we call \emph{lexical uncertainty} \cite{bergen2012}. To determine the speaker's intended meaning, he will therefore marginalize over the possible dictionaries being used:
 \begin{equation}
 L_n(m|u,\dictionary) \propto \sum_{\dictionary_i }P(m)P(\dictionary_i)S_{n-1}(u | m,\dictionary_i).
 \end{equation}
