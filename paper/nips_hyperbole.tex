@@ -221,11 +221,11 @@ We will now illustrate how this model predicts hyperbolic interpretations of ext
 
 \begin{table}[h]
 \begin{tabular}{| p{0.15cm}  p{8.15cm}| p{0.15cm}p{4cm} |}\hline
-\multicolumn{2}{|c|}{\textbf{Scenario}} & \multicolumn{2}{|c|}{\textbf{Values for X}} \\\hline
-\multicolumn{2}{|l|}{Ann and Bob are friends. They are taking the same class.} & \multicolumn{2}{|l|}{[$100$, $102$, $150$, $152$,}\\
-\multicolumn{2}{|l|}{\textbf{Ann:} ``How much did the textbook cost you?"} & \multicolumn{2}{|l|}{$200$, $202$, $1000$, $1012$]}\\
-\multicolumn{2}{|l|}{\textbf{Bob:} ``\{X\} dollars."} & \multicolumn{2}{|l|}{}\\\hline
-\multicolumn{2}{|c|}{\textbf{Questions}} & \multicolumn{2}{|c|}{\textbf{Responses}} \\\hline
+\multicolumn{2}{|c|}{\textbf{Scenario}} & \multicolumn{2}{c|}{\textbf{Values for X}} \\\hline
+\multicolumn{2}{|l|}{Ann and Bob are friends. They are taking the same class.} & \multicolumn{2}{l|}{[$100$, $102$, $150$, $152$,}\\
+\multicolumn{2}{|l|}{\textbf{Ann:} ``How much did the textbook cost you?"} & \multicolumn{2}{l|}{$200$, $202$, $1000$, $1012$]}\\
+\multicolumn{2}{|l|}{\textbf{Bob:} ``\{X\} dollars."} & \multicolumn{2}{l|}{}\\\hline
+\multicolumn{2}{|c|}{\textbf{Questions}} & \multicolumn{2}{c|}{\textbf{Responses}} \\\hline
 (1) & Was Bob being literal about the cost of the textbook, & (1) &[Literal / Exaggerating] \\
  & or was he exaggerating? & (2) & [Free response] \\
 (2) & How much do you think the textbook actually cost? & (3) & [Likert scale] \\
@@ -361,7 +361,7 @@ Building upon recent theoretical work, our computational model shows that ration
                 \caption{Humans: Length of reading}         
                 \includegraphics[width=\textwidth]{humans_reading_all.png}
         \end{subfigure} 
-        \caption{blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah}
+        \caption{Each row compares distributions of the model and subjects' interpretations of utterances. \textbf{Model:} Meaning prior $P(m) \propto a^m + c$  in all scenarios. For textbook costs, $(a, c) = (4 \times 10^4, 0.04)$; weather: $(a, c) = (2 \times 10^4, 0)$; reading length: $(a, c) = (8 \times 10^5, 0.04)$. Cost of round numbers is $0.25$; cost of non-round numbers is $0.286$. \textbf{Humans:} Subject's interpretations for each utterance are taken from Question (2) in Table 1. Interpretations are categorized as ``no affect" or ``affect" using a median split of subjects' responses to Question (3). Each bar indicates the probability of an utterance being interpreted as a certain meaning.}
         \label{fig:results}
   \end{figure}
 
