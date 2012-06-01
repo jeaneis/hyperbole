@@ -85,15 +85,15 @@ The meanings of numbers are usually thought to be fixed and precise. In mathemat
 In particular, we explore the phenomena of \emph{pragmatic halo} and \emph{hyperbole.} Halo refers to imprecise use of number words (for instance, ``I'll be there in 30 minutes'' means \emph{about} 30 minutes); hyperbole refers to the use of exaggeration to convey affective subtext (for instance, ``I waited for a million hours'' means roughly ``I waited for a while and I didn't like it'').
 Building on recent models of pragmatics as rational inference by a speaker and listener about each other, we propose a computational model that captures both halo and hyperbole effects, as well as their interaction.
 
-We will start by looking at pragmatic halo, i.e. the imprecise interpretation of simple number expressions coupled with the precise interpretation of complex number expressions \cite{lasersohn1999pragmatic}. Suppose a friend tells you: ``I will be there in $30$ minutes." The number $30$ can be interpreted as meaning somewhere within a broad range, say from $25$ to $40$ minutes. On the other hand, if your friend says: ``I will be there in $32$ minutes," it is more likely that you would interpret the number to mean exactly $32$. 
+Pragmatic halo refers to the tendency toward imprecise interpretation of simple number expressions coupled with the precise interpretation of complex number expressions \cite{lasersohn1999pragmatic}. Suppose a friend tells you: ``I will be there in $30$ minutes." The number $30$ can be interpreted as meaning somewhere within a broad range, say from $25$ to $40$ minutes. On the other hand, if your friend says: ``I will be there in $32$ minutes," it is more likely that you would interpret the number to mean exactly $32$. 
 %The intuition behind this is that if your friend intended to convey the meaning of ``somewhere around $32$", she would have uttered $30$ instead, because $30$ conveys the same meaning and is less effortful to utter. 
-Krifka \cite{krifka2007approximate} described how this \emph{pragmatic halo} effect can be explained under the assumption that speakers prefer number expressions that are shorter and less costly to utter. Listeners will then favor approximate interpretations of round numbers even if there is no general bias for approximate interpretations. Bastiaanse \cite{bastiaanse2011rationality} further argued that interpreting round numbers as approximate is a rational choice, as can be formalized via game theory \cite{jager2008game}. 
+Krifka \cite{krifka2007approximate} described how this pragmatic halo effect can be explained under the assumption that speakers prefer number expressions that are shorter and less costly to utter. Listeners will then favor approximate interpretations of round numbers even if there is no general bias for approximate interpretations. Bastiaanse \cite{bastiaanse2011rationality} further argued that interpreting round numbers as approximate is a rational choice, as can be formalized via game theory \cite{jager2008game}. 
 %note: this cite should be:  http://www.sfs.uni-tuebingen.de/~gjaeger/publications/hskArticleGJ-2011.pdf
 Here we capture these arguments within a Bayesian framework for pragmatic inference: if number words could be interpreted precisely or approximately, and some number words are more costly than others, we show that a rational listener will interpret the more costly number words as more precise.
 %Here we refer to this effect as the \emph{pragmatic halo}, where certain numbers tend to be interpreted with less precision than others. For example, the possible interpretations of the number $30$ is a distribution centered around $30$.
 
-%Not only can numbers be used loosely, they can also be used hyperbolically.
-We will next turn to the hyperbolic use of numbers. Suppose you overhear a student saying, ``It takes 30 minutes to scroll down that professor's list of publications!" Given that it is very unlikely for the literal meaning of the utterance to be true, the number $30$ in this utterance is likely to be interpreted as much less than 30 minutes, though still greater than average. Moreover, an affective subtext is likely to be conveyed: the list of publications is strikingly long.
+Not only can numbers be used loosely, they can also be used hyperbolically.
+Suppose you overhear a student saying, ``It takes 30 minutes to scroll down that professor's list of publications!" Given that it is very unlikely for the literal meaning of the utterance to be true, the number $30$ in this utterance is likely to be interpreted as much less than 30 minutes, though still greater than average. Moreover, an affective subtext is likely to be conveyed: the list of publications is strikingly long.
 Hyperbolic utterances often express important interpersonal meaning beyond the literal meaning of the statement, and successful interpretation of such expressions hinges on the listener's ability to infer the speaker's intentions \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work has focused on cues for verbal irony and exaggeration, such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz1995two, kreuz2007lexical}. Although lexical and prosodic information has been shown to be important for human and machine detection of hyperbole \cite{davidov2010semi, reyes2011mining, van2007algorithm}, we argue that common prior knowledge about the relevant topic
 %the distribution of numerical values associated with the relevant topic 
 also plays an important role in identification and interpretation of hyperbolic statements. That is, part of what makes a statement likely to receive a hyperbolic interpretation is that both speaker and listener know the literal meaning is very unlikely. 
@@ -233,7 +233,6 @@ We conducted a behavioral experiment to test whether humans' interpretation of n
 
 We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. (We excluded responses from $4$ non-native English speakers and $1$ response that contained an obvious typo.) Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express opinions about these issues. Eight possible number values, $X$, were systematically chosen for each scenario. These values consisted of four pairs of two numbers. Each pair contained one round number (e.g. $100$) and a neighboring number that cannot be evenly divided by 10 (e.g. $102$). These neighboring non-round numbers also contain more syllables than their ``rounder" counterparts and are presumably more difficult to utter. The first value pair is close to the mean of the underlying distribution; the second and third value pair are moderately close to the mean; and the fourth value pair is very far from the mean. We chose these values in order to best compare the various effects that we wish to examine as well as how these effects interact. Each scenario was structured in a similar manner, and each subject saw only one of the possible $8$ values for $X$. Table 1 shows an example of the textbook scenario (remaining  scenarios are described in SI).
 
-Based on our model of pragmatic interpretation for numbers, we predicted that subjects' responses would exhibit the following phenomena. First, round numbers will be interpreted less literally. Second, less likely numbers will be interpreted non-literally and as closer to the mean. Third, exaggerated utterances will be interpreted as conveying stronger affect. Furthermore, there will be an interaction among these three effects, such that non-round numbers closer to the mean will be interpreted as the most precise and convey the least affect, while round numbers farther from the mean will be interpreted as the most exaggerated and will convey the most affect.
 
 \begin{table}[h]
 \begin{tabular}{| p{0.15cm}  p{8.15cm}| p{0.15cm}p{4cm} |}\hline
@@ -256,6 +255,51 @@ Based on our model of pragmatic interpretation for numbers, we predicted that su
 \subsection{Results}
 
 % halo and exaggeration
+
+
+
+Based on our model of pragmatic interpretation for numbers, we predicted that subjects' responses would exhibit the following phenomena. First, round numbers will be interpreted less literally. Second, less likely numbers will be interpreted non-literally and as closer to the mean. Third, exaggerated utterances will be interpreted as conveying stronger affect. Furthermore, there will be an interaction among these three effects, such that non-round numbers closer to the mean will be interpreted as the most precise and convey the least affect, while round numbers farther from the mean will be interpreted as the most exaggerated and will convey the most affect.
+
+Overall results for three scenarios, with comparable model predictions, are shown in Figure \ref{fig:results} (remaining data are presented in SI). Before considering the full results, we explore halo and exaggeration effects. As shown in Figure \ref{fig:effects}, the proportion of subjects who interpreted an utterance literally varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. To examine the pragmatic halo effect, we compared the precision of subjects' interpretation of round versus non-round numbers.
+An interpretation is considered precise if it is identical to the uttered number. Figure \ref{fig:effects}a shows that round numbers are less likely to be interpreted exactly as they are uttered. 
+%In other words, non-round numbers tend to invite a literal and precise interpretation. 
+To examine the effect of prior probability on interpretation we compared exaggeration among the non-round numbers, where an exaggerated interpretation is one that is lower than the uttered value. Figure \ref{fig:effects}b shows that subjects are more likely to judge an utterance as exaggeration when the literal meaning of the numerical value becomes less likely in the particular domain under discussion. 
+
+%For instance, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
+
+% exaggeration and affect (should we still add a plot that just has affect?)
+% add something about how affect is computed: median split ( > 5 is affect).
+
+%We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and illustrate the relationship between uttered values and their probability of being perceived to convey affect. 
+To compare the full model with our behavioral results, we took the set $\mathcal I$ of meanings and utterances to be the eight values that subjects saw in each scenario. Because the prior distribution in each domain is roughly unimodal with mode at the lowest number considered, but the variance and the heaviness of the tail vary between domains, we model the prior distribution as geometric plus constant:
+$P(m)\propto b^{m} + c$. Parameters for the priors and cost of utterances are described in Figure \ref{fig:results}.
+%A small value of $c$ indicates that the listener is confident that the probability of extreme values is low in that particular domain, while a high value indicates that the listener still reserves significant mass to the prior probability of extreme values. 
+We use the textbook scenario to illustrate. Our model interprets the utterance ``100" as most likely to mean $100$ without affective information. Since the model of the listener assumes that the speaker provides the most informative utterance, the model similarly interprets other numbers that have fairly high prior probabilities as literal. As the literal meaning of the utterance becomes less likely, the model begins to interpret the utterance as an exaggeration. This effect interacts with the pragmatic halo, such that the costlier utterances ``202" and ``1012" are not interpreted hyperbolically, while the less costly utterance ``1000" is interpreted as a value closer to the mean with affective information. These results from our model capture the patterns in our human data (Figure \ref{fig:results}b). 
+
+%We now discuss ways in which differences across scenarios can be modeled by adjusting the prior distribution of meanings. 
+The strength of the priors associated with the values in each scenario affects the values at which the probability of perceived exaggeration increases. People have extensive experience with weather temperatures and likely know that the probability of the temperature being $150$ F is close to $0$. In other words, the prior distribution of weather temperatures drops off sharply after a certain value and has a very thin tail. Figure \ref{fig:results}d shows that people no longer interpret utterances above ``150" as literal. Adjusting the prior distribution in our model captures this abrupt transition.  On the other hand, subjects have weak prior knowledge about the probability of extreme quantities of reading for a class. Figure \ref{fig:results}f shows that even for utterances with extremely high values such as ``1018," a significant proportion of subjects still make literal interpretations (note, however, that due to the pragmatic halo effect, subjects do not interpret ``1000" as literal). This behavior can also be captured by setting the prior in our model to have a heavier tail. Figure \ref{fig:results}e shows that the model assigns significant probability to the literal meaning of ``1018" and demonstrates a pragmatic halo effect similar to that observed in the human data, such that the literal interpretation of non-round numbers is more likely than the literal interpretation of their neighboring round counterparts.
+
+\section{Discussion and Future Directions}
+
+%Despite having highly standard literal meanings, numbers are often used non-literally in everyday language. 
+Our behavioral results show that people often interpret numerical expressions in imprecise or non-literal ways, even in the absence of phonological cues. However, there are complex patterns in this non-literal usage: hyperbole depends on prior probability, conveys affective subtext, and interacts with the halo of round numbers.
+Building upon recent theoretical work, our computational model shows that rational recursive reasoning between speaker and listener can capture these effects of pragmatic halo and hyperbole. Our model introduces an ``affect" dimension to language interpretation, such that hyperbolic utterances efficiently convey information regarding the speaker's opinion and affective state. However, the subtext conveyed by language often goes beyond the binary valence information used here. Future work will explore both the rich structure of subtext and the extension of this modeling framework to other cases of non-literal speech: ``Bayesian models can explain \emph{everything}."
+
+
+%\begin{figure}
+%        \begin{subfigure}[b]{0.5\textwidth}
+%                \centering
+%		\includegraphics[width=\textwidth]{model_all_textbook.png}
+%		\caption{model all textbook}
+%	\end{subfigure}
+%        \begin{subfigure}[b]{0.5\textwidth}
+%                \centering
+%                \includegraphics[width=\textwidth]{humans_all_textbook.png}
+%		\caption{humans all textbook}
+%	\end{subfigure}
+%	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+%\end{figure}
+
 
 \begin{figure}[t]
         \begin{subfigure}[b]{0.4\textwidth}
@@ -320,49 +364,6 @@ Based on our model of pragmatic interpretation for numbers, we predicted that su
         \caption{Each row compares distributions of the model and subjects' interpretations of utterances. \textbf{Model:} Meaning prior $P(m) \propto b^m + c$  in all scenarios. For textbook costs, $(b, c) = (4 \times 10^4, 0.04)$; weather: $(b, c) = (2 \times 10^4, 0)$; reading length: $(b, c) = (8 \times 10^5, 0.04)$. Cost of round numbers is $0.25$; cost of non-round numbers is $0.286$. \textbf{Humans:} Subject's interpretations for each utterance are taken from Question (2) in Table 1. Interpretations are categorized as ``no affect" or ``affect" using a median split of subjects' responses to Question (3). Each bar indicates the probability of an utterance being interpreted as a certain meaning.}
         \label{fig:results}
   \end{figure}
-
-
-
-Overall results for three scenarios, with comparable model predictions, are shown in Figure \ref{fig:results} (remaining data are presented in SI). Before considering the full results, we explore halo and exaggeration effects. As shown in Figure \ref{fig:effects}, the proportion of subjects who interpreted an utterance literally varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. To examine the pragmatic halo effect, we compared the precision of subjects' interpretation of round versus non-round numbers.
-An interpretation is considered precise if it is identical to the uttered number. Figure \ref{fig:effects}a shows that round numbers are less likely to be interpreted exactly as they are uttered. 
-%In other words, non-round numbers tend to invite a literal and precise interpretation. 
-To examine the effect of prior probability on interpretation we compared exaggeration among the non-round numbers, where an exaggerated interpretation is one that is lower than the uttered value. Figure \ref{fig:effects}b shows that subjects are more likely to judge an utterance as exaggeration when the literal meaning of the numerical value becomes less likely in the particular domain under discussion. 
-
-%For instance, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
-
-% exaggeration and affect (should we still add a plot that just has affect?)
-% add something about how affect is computed: median split ( > 5 is affect).
-
-%We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and illustrate the relationship between uttered values and their probability of being perceived to convey affect. 
-To compare the full model with our behavioral results, we took the set $\mathcal I$ of meanings and utterances to be the eight values that subjects saw in each scenario. Because the prior distribution in each domain is roughly unimodal with mode at the lowest number considered, but the variance and the heaviness of the tail vary between domains, we model the prior distribution as geometric plus constant:
-$P(m)\propto b^{m} + c$. Parameters for the priors and cost of utterances are described in Figure \ref{fig:results}.
-%A small value of $c$ indicates that the listener is confident that the probability of extreme values is low in that particular domain, while a high value indicates that the listener still reserves significant mass to the prior probability of extreme values. 
-We use the textbook scenario to illustrate. Our model interprets the utterance ``100" as most likely to mean $100$ without affective information. Since the model of the listener assumes that the speaker provides the most informative utterance, the model similarly interprets other numbers that have fairly high prior probabilities as literal. As the literal meaning of the utterance becomes less likely, the model begins to interpret the utterance as an exaggeration. This effect interacts with the pragmatic halo, such that the costlier utterances ``202" and ``1012" are not interpreted hyperbolically, while the less costly utterance ``1000" is interpreted as a value closer to the mean with affective information. These results from our model capture the patterns in our human data (Figure \ref{fig:results}b). 
-
-%We now discuss ways in which differences across scenarios can be modeled by adjusting the prior distribution of meanings. 
-The strength of the priors associated with the values in each scenario affects the values at which the probability of perceived exaggeration increases. People have extensive experience with weather temperatures and likely know that the probability of the temperature being $150$ F is close to $0$. In other words, the prior distribution of weather temperatures drops off sharply after a certain value and has a very thin tail. Figure \ref{fig:results}d shows that people no longer interpret utterances above ``150" as literal. Adjusting the prior distribution in our model captures this abrupt transition.  On the other hand, subjects have weak prior knowledge about the probability of extreme quantities of reading for a class. Figure \ref{fig:results}f shows that even for utterances with extremely high values such as ``1018," a significant proportion of subjects still make literal interpretations (note, however, that due to the pragmatic halo effect, subjects do not interpret ``1000" as literal). This behavior can also be captured by setting the prior in our model to have a heavier tail. Figure \ref{fig:results}e shows that the model assigns significant probability to the literal meaning of ``1018" and demonstrates a pragmatic halo effect similar to that observed in the human data, such that the literal interpretation of non-round numbers is more likely than the literal interpretation of their neighboring round counterparts.
-
-\section{Discussion and Future Directions}
-
-%Despite having highly standard literal meanings, numbers are often used non-literally in everyday language. 
-Our behavioral results show that people often interpret numerical expressions in imprecise or non-literal ways, even in the absence of phonological cues. However, there are complex patterns in this non-literal usage: hyperbole depends on prior probability, conveys affective subtext, and interacts with the halo of round numbers.
-Building upon recent theoretical work, our computational model shows that rational recursive reasoning between speaker and listener can capture these effects of pragmatic halo and hyperbole. Our model introduces an ``affect" dimension to language interpretation, such that hyperbolic utterances efficiently convey information regarding the speaker's opinion and affective state. However, the subtext conveyed by language often goes beyond the binary valence information used here. Future work will explore both the rich structure of subtext and the extension of this modeling framework to other cases of non-literal speech: ``Bayesian models can explain \emph{everything}."
-
-
-%\begin{figure}
-%        \begin{subfigure}[b]{0.5\textwidth}
-%                \centering
-%		\includegraphics[width=\textwidth]{model_all_textbook.png}
-%		\caption{model all textbook}
-%	\end{subfigure}
-%        \begin{subfigure}[b]{0.5\textwidth}
-%                \centering
-%                \includegraphics[width=\textwidth]{humans_all_textbook.png}
-%		\caption{humans all textbook}
-%	\end{subfigure}
-%	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
-%\end{figure}
-
 
 
 %\subsubsection*{References}
