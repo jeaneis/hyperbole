@@ -147,6 +147,27 @@ Substituting equation \ref{eq:speakerprob} into equation \ref{eq:listenerdict} w
 We assume in this paper that the prior probability on dictionaries $P(\dictionary_i)$ is uniformly distributed across a set of possible dictionaries. 
 Here the dictionary $\dictionary$ simply determines the standard deviation $\sigma_u$ associated with each number utterance $u$, therefore specifying how precisely each utterance will be interpreted by the literal listener--lexical uncertainty represents uncertainty about how precisely the speaker believes her utterances will be interpreted. 
 
+\begin{figure}[t]
+        \begin{subfigure}[t]{0.33\textwidth}
+                \centering
+                \caption{Pragmatic Halo}
+		\includegraphics[width=\textwidth]{model_halo.png}
+		
+	\end{subfigure}
+        \begin{subfigure}[t]{0.33\textwidth}
+                \centering
+                \caption{Exaggeration}
+                \includegraphics[width=\textwidth]{model_exagg.png}
+		
+	\end{subfigure}
+	\begin{subfigure}[t]{0.33\textwidth}
+                \centering
+                \caption{Affect}
+                \includegraphics[width=\textwidth]{model_valence.png}
+		
+	\end{subfigure}
+	\caption{Halo and hyperbole effects in the model's interpretation of utterances ``one" and ``two"}
+\end{figure}
 
 \subsection{Pragmatic halo}
 
@@ -154,7 +175,8 @@ The model presented here is sufficient to explain the pragmatic halo effect. For
 
 To understand why the model predicts that more complex utterances will be interpreted more precisely, we will look at the simplest possible example of this effect. Suppose there are two possible meanings, \emph{1} and \emph{2}, and two possible utterances, ``one" and ``two." Suppose that ``two" is much more expensive than ``one." First suppose the speaker wants to communicate \emph{1}. In this case, the speaker will almost never choose to communicate using the utterance ``two." The utterance ``two" is more expensive than utterance ``one," and its literal meaning is strictly farther away from the speaker's intended meaning, implying that it receives a small likelihood from equation \ref{eq:speakersimplified}. Because utterance ``one" is cheaper and closer to the intended meaning, it will receive most of the mass allocated by this equation.
 
-In contrast, suppose the speaker wants to communicate \emph{2}. In this case the two utterances are more evenly balanced, with two factors pulling against each other in equation \ref{eq:speakersimplified}. The literal meaning of utterance ``two" is closer to the intended meaning, but utterance ``one" is cheaper. The utterance ``one" will therefore be used by speakers trying to communicate either meaning, while the utterance ``two" will only be used by speakers trying to communicate \emph{2}. When the listener uses equation \ref{eq:listenerdict} to infer the speaker's intended meaning, he will reason about the likelihood of the utterances being produced by each speaker, and infer that the utterance ``two" means \emph{2}, while the utterance ``one"  is ambiguous between the two meanings. It follows that ``two" will be assigned a more precise meaning which is peaked on \emph{2}. 
+In contrast, suppose the speaker wants to communicate \emph{2}. In this case the two utterances are more evenly balanced, with two factors pulling against each other in equation \ref{eq:speakersimplified}. The literal meaning of utterance ``two" is closer to the intended meaning, but utterance ``one" is cheaper. The utterance ``one" will therefore be used by speakers trying to communicate either meaning, while the utterance ``two" will only be used by speakers trying to communicate \emph{2}. When the listener uses equation \ref{eq:listenerdict} to infer the speaker's intended meaning, he will reason about the likelihood of the utterances being produced by each speaker, and infer that the utterance ``two" means \emph{2}, while the utterance ``one"  is ambiguous between the two meanings. It follows that ``two" will be assigned a more precise meaning which is peaked on \emph{2}.  Figure 1 (a) illustrates the pragmatic effect that our model produces. Utterance ``two" is assigned a higher cost than utterance ``one", and the prior probabilities of the meanings \emph{1} and \emph{2} are identical. After eight levels of recursion between the listener and speaker models, the listener assigns similar probabilities for meanings \emph{1} and \emph{2} to the utterance ``one," and a probability of $1$ for meaning \emph{2} to the more expensive utterance ``two." Our model thus interprets the less expensive utterance loosely and the expensive utterance precisely.
+
 
 \subsection{Exaggeration}
 
@@ -163,23 +185,9 @@ We now turn to the effect of the prior distribution over meanings, $P(m)$, and p
 Pragmatic halo is the pragmatic effect that results from matched prior probabilities but different utterance costs; exaggeration is the pragmatic effect that results from matched costs but differing prior probabilities. 
 Hence, we set the cost of the utterances $c(u)=0$, and set the prior distribution over meanings $P$ to be a unimodal distribution over the numbers $\mathcal I$. 
 
-Given these assumptions, the model predicts that utterances with unlikely literal meanings will have their interpretations shifted towards the prior, while utterances with likely meanings will be interpreted literally. To illustrate this, we again consider an example with two meanings, \emph{1} and \emph{2}, and two utterances, ``one" and ``two." Suppose that the meaning \emph{1} is much more likely than \emph{2}. If the dictionary entry $\dictionary_{\text{``two"}}$ for the utterance ``two" is vague, then the literal listener in equation \ref{eq:literallistener} will revert to his prior and interpret this utterance as likely meaning \emph{1}. In contrast, the literal listener will never interpret ``one" as meaning \emph{2}: whether the dictionary entry for $\dictionary_{\text{``one"}}$ is vague or precise, the listener's prior will bias him towards interpreting the utterance as meaning \emph{1}. It follows that when the speaker reasons about the listener and chooses an utterance according to equation \ref{eq:speakersimplified}, she will sometimes use the utterance ``two" to convey the meaning \emph{1}, but will never use the utterance ``one" to convey the meaning \emph{2}. It follows that the utterance ``two" may be used by speakers intending either meaning, and therefore may be interpreted as exaggerated, while the utterance ``one" will only be used by speakers intending meaning \emph{1}, and will be interpreted literally.
+Given these assumptions, the model predicts that utterances with unlikely literal meanings will have their interpretations shifted towards the prior, while utterances with likely meanings will be interpreted literally. To illustrate this, we again consider an example with two meanings, \emph{1} and \emph{2}, and two utterances, ``one" and ``two." Suppose that the meaning \emph{1} is much more likely than \emph{2}. If the dictionary entry $\dictionary_{\text{``two"}}$ for the utterance ``two" is vague, then the literal listener in equation \ref{eq:literallistener} will revert to his prior and interpret this utterance as likely meaning \emph{1}. In contrast, the literal listener will never interpret ``one" as meaning \emph{2}: whether the dictionary entry for $\dictionary_{\text{``one"}}$ is vague or precise, the listener's prior will bias him towards interpreting the utterance as meaning \emph{1}. It follows that when the speaker reasons about the listener and chooses an utterance according to equation \ref{eq:speakersimplified}, she will sometimes use the utterance ``two" to convey the meaning \emph{1}, but will never use the utterance ``one" to convey the meaning \emph{2}. It follows that the utterance ``two" may be used by speakers intending either meaning, and therefore may be interpreted as exaggerated, while the utterance ``one" will only be used by speakers intending meaning \emph{1}, and will be interpreted literally. Figure 1 (b) illustrates the exaggeration effect that our model produces. The meaning \emph{1} is assigned a higher probability than meaning \emph{2}, and the costs of utterances ``one" and ``two" are identical. After eight levels of recursion between the listener and speaker models, the listener assigns a probability of $1$ for meaning \emph{1} to utterance ``one." Interestingly, it assigns a higher probability of meaning \emph{1} to utterance ``two" as well, even though the literal meaning of ``two" is \emph{2}. Our model thus interprets the utterance with the highly unlikely literal meaning as exaggerated and non-literal.
 
-\begin{figure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{model_halo_exaggeration.png}
-		\caption{Pragmatic Halo and Exaggeration}
-	\end{subfigure}
-	 \begin{subfigure}[b]{0.33\textwidth}
-                \centering
-                %\includegraphics[width=\textwidth]{}
-		\caption{can fit more plot here}
-	\end{subfigure}
-	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
-\end{figure}
-
-\subsection{Hyperbole}
+\subsection{Valence and subtext}
 
 How can we capture the subtext of a hyperbolic statement? Hyperbole is similar to exaggeration, except that additional information about the \emph{affect} of the meaning is conveyed. Affect is a second dimension of meaning, separate from the number that the speaker wants to convey. If $A$ is the set of possible affects, then the set of possible meanings $M$ is given by:
 \begin{equation}
@@ -197,11 +205,11 @@ where $k$ is the number that the speaker wants to communicate, $a$ is the affect
 
 The rest of the model is extended in a similar manner. Lexical uncertainty now means that the listener is uncertain about which truth function is associated with each utterance $u$. This means that while speakers may believe that a specific affect is part of the literal meaning of their utterance, listeners are uncertain about these beliefs. In expectation, each utterance is unbiased towards the affects. We note that there are now many more possible dictionaries: each utterance is assigned both a standard deviation and a truth function, and there are $2^{|A|}$ truth functions on affects. 
 
-We will now illustrate how this model predicts hyperbolic interpretations of extreme utterances. We assume that there are two number meanings, \emph{1} and \emph{2}, and two affects, \emph{neutral} and \emph{negative}, so that there are four pairings of numbers and affects. We assume that \emph{1} is more likely than \emph{2}, and \emph{neutral} is more likely than \emph{negative}. There are two utterances, ``one" and ``two." If the speaker wants to communicate \emph{1}-\emph{neutral}, she is likely to succeed by saying ``one" whether its dictionary entry $\dictionary_{\text{``one"}}$ is vague or precise: as long as the dictionary entry $\dictionary_{\text{``one"}}$ is compatible with this meaning, the literal listener in equation \ref{eq:affectliteral} will be biased towards it. This speaker will therefore assign small probability to the utterance ``two," which is less likely to be interpreted correctly. On the other hand, there are two moderately likely meanings that may lead the speaker to say ``two": \emph{2}-\emph{neutral} and \emph{1}-\emph{negative}. It is clear why the speaker would say ``two" to communicate the first meaning \emph{2}-\emph{neutral}. For the second meaning, \emph{1}-\emph{negative}, the speaker may use the utterance ``two" if she believes that the dictionary entry  $\dictionary_{\text{``two"}}$ has a vague number meaning (and is therefore compatible with meaning \emph{1}) and that it uniquely picks out the negative affect. Because the speaker may use ``two" to communicate \emph{1}-\emph{negative}, it provides evidence to the listener in equation \ref{eq:listenerdict}, who is reasoning about the speaker, that this meaning was intended. This is the hyperbolic interpretation of the utterance ``two." 
+We will now illustrate how this model predicts hyperbolic interpretations of extreme utterances. We assume that there are two number meanings, \emph{1} and \emph{2}, and two affects, \emph{neutral} and \emph{negative}, so that there are four pairings of numbers and affects. We assume that \emph{1} is more likely than \emph{2}, and \emph{neutral} is more likely than \emph{negative}. There are two utterances, ``one" and ``two." If the speaker wants to communicate \emph{1}-\emph{neutral}, she is likely to succeed by saying ``one" whether its dictionary entry $\dictionary_{\text{``one"}}$ is vague or precise: as long as the dictionary entry $\dictionary_{\text{``one"}}$ is compatible with this meaning, the literal listener in equation \ref{eq:affectliteral} will be biased towards it. This speaker will therefore assign small probability to the utterance ``two," which is less likely to be interpreted correctly. On the other hand, there are two moderately likely meanings that may lead the speaker to say ``two": \emph{2}-\emph{neutral} and \emph{1}-\emph{negative}. It is clear why the speaker would say ``two" to communicate the first meaning \emph{2}-\emph{neutral}. For the second meaning, \emph{1}-\emph{negative}, the speaker may use the utterance ``two" if she believes that the dictionary entry  $\dictionary_{\text{``two"}}$ has a vague number meaning (and is therefore compatible with meaning \emph{1}) and that it uniquely picks out the negative affect. Because the speaker may use ``two" to communicate \emph{1}-\emph{negative}, it provides evidence to the listener in equation \ref{eq:listenerdict}, who is reasoning about the speaker, that this meaning was intended. This is the hyperbolic interpretation of the utterance ``two." Figure 1 (c) illustrates the effect of valence that our model produces. After eight levels of recursion between the listener and speaker models, the listener model assigns no affective information to utterance ``one," but assigns a higher probability of affect \emph{1} to utterance ``two." Our model thus interprets the utterance with the unlikely literal meaning as conveying a subtext of valence.
 
 \subsection{The complete model}
 
-Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce affects into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. 
+Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce affects into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. We will describe and discuss the behavior of the complete model in comparison with results from our behavioral experiment (Figure 3).
 
 \section{Behavioral Experiment}
 
@@ -211,17 +219,18 @@ We conducted a behavioral experiment to test whether humans' interpretation of p
 
 We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express opinions about these issues. $8$ possible values for $X$ were systematically chosen for each scenario. These values consisted of four pairs of two numbers. Each pair contained one round number (e.g. $100$) and a neighboring number that cannot be evenly divided by 10 (e.g. $102$). These neighboring non-round numbers also contain more syllables than their ``rounder" counterparts and are presumably more difficult to utter. The first value pair is close to the mean of the underlying distribution; the second and third value pair are moderately close to the mean; and the fourth value pair is very far from the mean. We chose these values in order to best compare the various effects that we wish to examine as well as how these effects interact. Each scenario was structured in a similar manner, and each subject saw only one of the possible $8$ values for $X$. Table 1 shows an example of the textbook scenario.
 \begin{table}[h]
-\begin{tabular}{| p{9.7cm}| l |}\hline
-\multicolumn{1}{|c|}{\textbf{Scenario}} & \multicolumn{1}{|c|}{\textbf{Values for X}} \\\hline
-\multicolumn{1}{|l|}{Ann and Bob are friends. They are taking the same class.} & \multicolumn{1}{|l|}{[$100$, $102$, $150$, $152$,}\\
-\multicolumn{1}{|l|}{\textbf{Ann:} ``How much did the textbook cost you?"} & \multicolumn{1}{|l|}{$200$, $202$, $1000$, $1012$]}\\
-\multicolumn{1}{|l|}{\textbf{Bob:} ``\{X\} dollars."} & \multicolumn{1}{|l|}{}\\\hline
-\multicolumn{1}{|c|}{\textbf{Questions}} & \multicolumn{1}{|c|}{\textbf{Response}} \\\hline
-(1) Was Bob being literal about the cost of the textbook, or was he exaggerating? & [Literal / Exaggerating] \\
-(2) How much do you think the textbook actually cost? & [Free response] \\
-(3) How negative does Bob feel about the cost of the textbook? & [Likert scale]\\\hline
+\begin{tabular}{| p{0.15cm}  p{8.2cm}| p{4.3cm} |}\hline
+\multicolumn{2}{|c|}{\textbf{Scenario}} & \multicolumn{1}{|c|}{\textbf{Values for X}} \\\hline
+\multicolumn{2}{|l|}{Ann and Bob are friends. They are taking the same class.} & \multicolumn{1}{|l|}{[$100$, $102$, $150$, $152$,}\\
+\multicolumn{2}{|l|}{\textbf{Ann:} ``How much did the textbook cost you?"} & \multicolumn{1}{|l|}{$200$, $202$, $1000$, $1012$]}\\
+\multicolumn{2}{|l|}{\textbf{Bob:} ``\{X\} dollars."} & \multicolumn{1}{|l|}{}\\\hline
+\multicolumn{2}{|c|}{\textbf{Questions}} & \multicolumn{1}{|c|}{\textbf{Response}} \\\hline
+(1) & Was Bob being literal about the cost of the textbook, or was he exaggerating? & [Literal / Exaggerating] \\
+(2) & How much do you think the textbook actually cost? & [Free response] \\
+(3) & How negative does Bob feel about the cost of the textbook? & [Likert scale]\\
+(4) & What is Bob most likely trying to communicate by saying  ``\{X\} dollars"? & [Exactly \{X\} / Approximately \{X\} / The textbook is expensive and Bob is not happy.]\\\hline
 \end{tabular}
-\caption{Example scenario on textbook costs}
+\caption{Example scenario of textbook costs}
 \label{tab:myfirsttable}
 \end{table}
 
@@ -231,11 +240,11 @@ Based on our model and theory of the pragmatic interpretation of numbers, we pre
 
 % halo and exaggeration
 
-\begin{figure}[h]
+\begin{figure}[t]
         \begin{subfigure}[b]{0.4\textwidth}
                 \centering
                 \caption{Pragmatic Halo}
-		\includegraphics[width=\textwidth]{humans_halo_all.png}
+		\includegraphics[width=\textwidth]{humans_halo_final.png}
 		
 	\end{subfigure}
         \begin{subfigure}[b]{0.6\textwidth}
@@ -247,10 +256,7 @@ Based on our model and theory of the pragmatic interpretation of numbers, we pre
 	\caption{Examples of pragmatic halo and exaggeration across all five domains}
 \end{figure}
 
-Of the $220$ subjects we recruited, we excluded $4$ that were non-native English speakers from the analysis. $1$ response from 1 subject contained an obvious typo and was also excluded. 
-% Report some stats here?
-
-Results are consistent with our model predictions. As shown in Figure 2, the proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. In order to examine the pragmatic halo effect, we selected a pair of values for each scenario that is moderately close to the mean of the underlying distribution (Figure 2(a)). We then compared the precision of subjects' interpretation of these numbers, where an interpretation is considered precise if it is identical to the uttered number and imprecise otherwise. For example, if a subject interprets the uttered number ``100" as meaning ``99," then the interpretation is imprecise. Consistent with \cite{someone} findings, we see that number expressions that contain more syllables are more likely to be interpreted precisely, or exactly as they are uttered. In order to examine the effect of prior probability on hyperbolic interpretation, for each scenario we selected a pair of values that contains one non-round number close to the mean of the underlying distribution and one non-round number far from the mean. We then compared how likely subjects are to interpret the numbers as exaggerated, where an exaggerated interpretation is one that is lower than the uttered value. For example, if a subject interprets the uttered number ``1012" as meaning ``100," then ``1012" is interpreted as an exaggeration. 
+Results are consistent with our model predictions.\footnote[1]{Of the $220$ subjects we recruited, we excluded $4$ that were non-native English speakers from the analysis. One response from one subject contained an obvious typo and was also excluded.} As shown in Figure 2, the proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. In order to examine the pragmatic halo effect, we selected a pair of values for each scenario that is moderately close to the mean of the underlying distribution (Figure 2(a)). We then compared the precision of subjects' interpretation of these numbers, where an interpretation is considered precise if it is identical to the uttered number and imprecise otherwise. For example, if a subject interprets the uttered number ``100" as meaning ``99," then the interpretation is imprecise. Consistent with \cite{someone} findings, we see that number expressions that contain more syllables are more likely to be interpreted precisely, or exactly as they are uttered. In order to examine the effect of prior probability on hyperbolic interpretation, for each scenario we selected a pair of values that contains one non-round number close to the mean of the underlying distribution and one non-round number far from the mean. We then compared how likely subjects are to interpret the numbers as exaggerated, where an exaggerated interpretation is one that is lower than the uttered value. For example, if a subject interprets the uttered number ``1012" as meaning ``100," then ``1012" is interpreted as an exaggeration. 
 
 Subjects are also more likely to judge an utterance as exaggeration when the literal meaning of the numeric value becomes less likely in a particular domain. For instance, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
 
@@ -261,43 +267,7 @@ We then analyzed the relationship between exaggeration and speaker's affect. The
 
 Interestingly, the proportion of ``affect" responses varies across the five scenarios. In the parking ticket scenario, subjects are asked to judge how negatively a speaker who has just received a parking ticket feels about the ticket cost. Since the speaker is very likely to feel negatively about the ticket cost, the utterances are generally interpreted as having more negative affect than utterances in the textbook scenario. Our model can capture this effect by adjusting the prior probability of having an affective state regarding a particular scenario. 
 
-%% plots for all 5 domains
-%\begin{figure}[t]
-%        \begin{subfigure}[b]{0.5\textwidth}
-%                \centering
-%		\includegraphics[width=\textwidth]{humans_all_textbook.png}
-%		\caption{textbooks}
-%	\end{subfigure}
-%        \begin{subfigure}[b]{0.5\textwidth}
-%                \centering
-%                \includegraphics[width=\textwidth]{humans_all_ticket.png}
-%		\caption{tickets}
-%	\end{subfigure}
-%	\begin{subfigure}[b]{0.33\textwidth}
-%                \centering
-%                \includegraphics[width=\textwidth]{humans_all_bus.png}
-%		\caption{bus wait time}
-%	\end{subfigure}
-%	\begin{subfigure}[b]{0.33\textwidth}
-%                \centering
-%                \includegraphics[width=\textwidth]{humans_all_reading.png}
-%		\caption{reading assignment}
-%	\end{subfigure}
-%	\begin{subfigure}[b]{0.33\textwidth}
-%                \centering
-%                \includegraphics[width=\textwidth]{humans_all_weather.png}
-%		\caption{weather temperature}
-%	\end{subfigure}
-%	\caption{Distribution of interpretations for each utterance across five scenarios}
-%\end{figure}
-
-% everything
-
-\section{Comparison and Discussion}
-Our model captures some important intuitions regarding the numerical values and statistical properties of the uttered price. Here we compare our model results and behavioral data on two aspects: (1) Probability of interpreting the utterance as hyperbolic (2) Most likely inferred price given that the utterance is interpreted as hyperbolic or literal.
-
-
-As shown in Figure 7, the probability that the model interprets the utterance as hyperbolic roughly matches that of the behavioral data, at least in the general trend. 
+\section{Discussion and Future Directions}
 
 %\begin{figure}
 %        \begin{subfigure}[b]{0.5\textwidth}
@@ -315,17 +285,17 @@ As shown in Figure 7, the probability that the model interprets the utterance as
 
 
 \begin{figure}[h]
-        \begin{subfigure}[b]{0.5\textwidth}
+        \begin{subfigure}[b]{0.51\textwidth}
                 \centering
-		\includegraphics[width=\textwidth]{humans_textbook_all.png}
-		\caption{model all textbook}
+		\includegraphics[width=\textwidth]{model_textbook_all.png}
+		\caption{Human textbooks}
 	\end{subfigure}
-        \begin{subfigure}[b]{0.5\textwidth}
+        \begin{subfigure}[b]{0.51\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{humans_textbook_all.png}
-		\caption{humans all textbook}
+		\caption{Model textbooks}
 	\end{subfigure}
-	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+	\caption{}
 \end{figure}
 
 
@@ -333,14 +303,14 @@ As shown in Figure 7, the probability that the model interprets the utterance as
         \begin{subfigure}[b]{0.5\textwidth}
                 \centering
 		\includegraphics[width=\textwidth]{humans_reading_all.png}
-		\caption{model all textbook}
+		\caption{Human reading}
 	\end{subfigure}
         \begin{subfigure}[b]{0.5\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{humans_reading_all.png}
-		\caption{humans all textbook}
+		\caption{Model reading}
 	\end{subfigure}
-	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+	\caption{}
 \end{figure}
 
 \begin{figure}[h]
@@ -354,10 +324,9 @@ As shown in Figure 7, the probability that the model interprets the utterance as
                 \includegraphics[width=\textwidth]{humans_weather_all.png}
 		\caption{humans all textbook}
 	\end{subfigure}
-	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+	\caption{}
 \end{figure}
 
-\section{Future Directions \& Conclusion}
 
 %\subsubsection*{References}
 %
