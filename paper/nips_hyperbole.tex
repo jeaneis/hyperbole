@@ -219,15 +219,6 @@ We will now illustrate how this model predicts hyperbolic interpretations of ext
 
 %\subsection{The complete model}
 
-Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce affects into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. In addition to the effects already described, the complete model shows interactions. For instance, pragmatic halo is more extreme for unlikely utterances. We will describe and discuss the behavior of the complete model in comparison with results from our behavioral experiment (Figure 3).
-
-\section{Behavioral Experiment}
-
-We conducted a behavioral experiment to test whether humans' interpretation of number words can be explained using the model described above. We tested the model on five different scenarios. In each scenario, a speaker makes an utterance that contains a numerical value that conveys information about a particular item or state of the world, for example, the price of a textbook or the temperature outside. Subjects are then asked to interpret the numerical expression. Critically, by varying the prior probability of the number and whether it is round we can explore factors leading to non-literal interpretation.
-
-\subsection{Procedures}
-
-We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. (We excluded responses from $4$ non-native English speakers and $1$ response that contained an obvious typo.) Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express opinions about these issues. $8$ possible number values, $X$, were systematically chosen for each scenario. These values consisted of four pairs of two numbers. Each pair contained one round number (e.g. $100$) and a neighboring number that cannot be evenly divided by 10 (e.g. $102$). These neighboring non-round numbers also contain more syllables than their ``rounder" counterparts and are presumably more difficult to utter. The first value pair is close to the mean of the underlying distribution; the second and third value pair are moderately close to the mean; and the fourth value pair is very far from the mean. We chose these values in order to best compare the various effects that we wish to examine as well as how these effects interact. Each scenario was structured in a similar manner, and each subject saw only one of the possible $8$ values for $X$. Table 1 shows an example of the textbook scenario (remaining  scenarios are described in SI).
 \begin{table}[h]
 \begin{tabular}{| p{0.15cm}  p{8.15cm}| p{0.15cm}p{4cm} |}\hline
 \multicolumn{2}{|c|}{\textbf{Scenario}} & \multicolumn{2}{|c|}{\textbf{Values for X}} \\\hline
@@ -245,8 +236,21 @@ We recruited $220$ subjects located in the United States through Amazon Mechanic
 \label{tab:myfirsttable}
 \end{table}
 
-\subsection{Results}
 
+Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce affects into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. In addition to the effects already described, the complete model shows interactions. For instance, pragmatic halo is more extreme for unlikely utterances. We will describe and discuss the behavior of the complete model in comparison with results from our behavioral experiment (Figure 3).
+
+
+
+
+\section{Experiment}
+
+We conducted a behavioral experiment to test whether humans' interpretation of number words can be explained using the model described above. We tested the model on five different scenarios. In each scenario, a speaker makes an utterance that contains a numerical value that conveys information about a particular item or state of the world, for example, the price of a textbook or the temperature outside. Subjects are then asked to interpret the numerical expression. Critically, by varying the prior probability of the number and whether it is round we can explore factors leading to non-literal interpretation.
+
+\subsection{Procedures}
+
+We recruited $220$ subjects located in the United States through Amazon Mechanical Turk. (We excluded responses from $4$ non-native English speakers and $1$ response that contained an obvious typo.) Each subject read five short scenarios in random order regarding the following five domains: the number of minutes a bus is behind schedule, the price of a college textbook, the price of a parking ticket, the number of pages in a reading, and the weather temperature (in degrees Fahrenheit). We selected these domains because we believe people have reliable intuitions about the true distributions of such values, and also because people are likely to exaggerate and express opinions about these issues. $8$ possible number values, $X$, were systematically chosen for each scenario. These values consisted of four pairs of two numbers. Each pair contained one round number (e.g. $100$) and a neighboring number that cannot be evenly divided by 10 (e.g. $102$). These neighboring non-round numbers also contain more syllables than their ``rounder" counterparts and are presumably more difficult to utter. The first value pair is close to the mean of the underlying distribution; the second and third value pair are moderately close to the mean; and the fourth value pair is very far from the mean. We chose these values in order to best compare the various effects that we wish to examine as well as how these effects interact. Each scenario was structured in a similar manner, and each subject saw only one of the possible $8$ values for $X$. Table 1 shows an example of the textbook scenario (remaining  scenarios are described in SI).
+
+\subsection{Results}
 Based on our model of pragmatic interpretation for numbers, we predicted that subjects' responses would exhibit the following phenomena. First, round numbers, will be interpreted less literally. Second, less likely numbers will be interpreted non-literally and as closer to the mean. Third, exaggerated utterances will be interpreted as conveying stronger affect. Furthermore, there will be an interaction among these three effects, such that non-round numbers closer to the mean will be interpreted as the most precise and convey the least affect, while round numbers further away from the mean will be interpreted as the most exaggerated and convey the most affect.
 
 
@@ -295,7 +299,11 @@ The strength of the priors associated with the values in each scenario affects t
 
 \section{Discussion and Future Directions}
 
-Despite having highly standard literal meanings, numbers are often used non-literally in everyday language. Results from our behavioral experiment show that people are aware of the flexible nature of number meanings and often interpret number expressions in imprecise or non-literal ways. Building upon recent work on models of pragmatic reasoning, our computational model shows that rational recursive reasoning between speaker and listener can capture the effects of pragmatic halo and hyperbole that we observed in the behavioral experiment. Furthermore, our model introduces an ``affect" dimension to language interpretation, such that hyperbolic utterances efficiently convey information regarding the speaker's opinion and affective state. However, the subtext of such non-literal utterances often goes beyond the binary valence information that our model captures. Future work should explore additional ways in which the listener infers rich subtext from a speaker's utterances, such as whether the speaker's goal is to communicate a fact about the world or her subjective opinion, in addition to other kinds of rich social information. We argue that formal models of recursive social reasoning such as the one we describe here can capture interesting phenomenon in pragmatic interpretation, as well as contribute to our understanding of communication and non-literal language understanding.
+%Despite having highly standard literal meanings, numbers are often used non-literally in everyday language. 
+Our behavioral results show that people often interpret number expressions in imprecise or non-literal ways, even in the absence of phonological cues. However there are complex patterns in this non-literal usage: hyperbole depends on prior probability, conveys affective subtext, and interacts with the halo of round numbers.
+Building upon recent theoretical work, our computational model shows that rational recursive reasoning between speaker and listener can capture these effects of pragmatic halo and hyperbole. Our model introduces an ``affect" dimension to language interpretation, such that hyperbolic utterances efficiently convey information regarding the speaker's opinion and affective state. However, the subtext conveyed by language often goes beyond the binary valence information used here. Future work will explore both the rich structure of subtext and the extension of this modeling framework to other cases of non-literal speech: Bayesian models can explain \emph{everything}.
+
+
 %\begin{figure}
 %        \begin{subfigure}[b]{0.5\textwidth}
 %                \centering
