@@ -26,16 +26,16 @@
 \usepackage{amsfonts}
 \usepackage{latexsym}
 \usepackage{amssymb}
-\usepackage{apacite}
+%\usepackage{apacite}
 \usepackage{graphicx}
 \usepackage{xspace}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[numbers]{natbib}
 
 \newcommand{\dictionary}{\ensuremath{\mathcal{D}}\xspace}
-\newcommand{\citey}{\cite}
 
 \title{Halo, Hyperbole, and the Pragmatic \\ Interpretation of Numbers}
  
@@ -71,8 +71,7 @@ Stanford, CA 94305\\
 \maketitle
 
 \begin{abstract}
-[REWRITE] 
-
+[REWRITE] %%%%%% NEED WORK !!!
 \textbf{Keywords:} 
 Number interpretation, hyperbole, pragmatic halo, pragmatics, Bayesian model
 \end{abstract}
@@ -85,9 +84,9 @@ The meanings of numbers are usually thought to be fixed and precise. In mathemat
 In particular, we explore the phenomena of \emph{pragmatic halo} and \emph{hyperbole.} Halo refers to imprecise use of number words (for instance, ``I'll be there in 30 minutes'' means \emph{about} 30 minutes), hyperbole refers to the use of exaggeration to convey affective subtext (for instance, ``I waited for a million hours'' means roughly ``I waited for a while and I didn't like it'').
 Building on recent models of pragmatics as rational inference by a speaker and listener about each other, we propose a computational model that captures both halo and hyperbole effects, as well as their interaction.
 
-Some numbers tend to be interpreted as more precise than others \cite{lasersohn}. Suppose a friend tells you: ``I will be there in $30$ minutes." The number $30$ can be interpreted to mean somewhere within the range of $25$ and $40$, depending on how punctual your friend usually is. On the other hand, if your friend says: ``I will be there in $32$ minutes," it is more likely that you would interpret the number to mean exactly $32$. 
+Some numbers tend to be interpreted as more precise than others \cite{lasersohn1999pragmatic}. Suppose a friend tells you: ``I will be there in $30$ minutes." The number $30$ can be interpreted to mean somewhere within the range of $25$ and $40$, depending on how punctual your friend usually is. On the other hand, if your friend says: ``I will be there in $32$ minutes," it is more likely that you would interpret the number to mean exactly $32$. 
 %The intuition behind this is that if your friend intended to convey the meaning of ``somewhere around $32$", she would have uttered $30$ instead, because $30$ conveys the same meaning and is less effortful to utter. 
-[Krifka et al] described how this \emph{pragmatic halo} effect can be explained under the assumption that speakers prefer number expressions that are shorter and less costly to utter. Listeners will then favor approximate interpretations of round numbers even if there is no general bias for approximate interpretations. [Bastiaanse] further argued that interpreting round numbers as approximate is a rational choice. Here we formalize these arguments within a Bayesian framework for pragmatic inference: if number words could be interpreted precisely or approximately, and some number words are more costly than others, we show that a rational listener will interpret the more costly number words as more precise.
+Krifka \cite{krifka2007approximate} described how this \emph{pragmatic halo} effect can be explained under the assumption that speakers prefer number expressions that are shorter and less costly to utter. Listeners will then favor approximate interpretations of round numbers even if there is no general bias for approximate interpretations. Bastiaanse \cite{bastiaanse2011rationality} further argued that interpreting round numbers as approximate is a rational choice. Here we formalize these arguments within a Bayesian framework for pragmatic inference: if number words could be interpreted precisely or approximately, and some number words are more costly than others, we show that a rational listener will interpret the more costly number words as more precise.
 %Here we refer to this effect as the \emph{pragmatic halo}, where certain numbers tend to be interpreted with less precision than others. For example, the possible interpretations of the number $30$ is a distribution centered around $30$.
 
 Not only can numbers be used loosely, they can also be used hyperbolically. Suppose you overhear a student saying, ``It takes 30 minutes to scroll down that professor's list of publications!" Given that it is very unlikely for the literal meaning of the utterance to be true, the number $30$ in this utterance is not likely to be interpreted literally. Instead, the actual amount of time it takes to scroll down the professor's list of publications is more likely to be interpreted as much less than 30 minutes, though still greater than average. Moreover, an affective subtext is likely to be conveyed: the list of publications is strikingly long.
@@ -182,27 +181,27 @@ Given these assumptions, the model predicts that utterances with unlikely litera
 
 \subsection{Hyperbole}
 
-How can we capture the subtext of a hyperbolic statement? Hyperbole is similar to exaggeration, except that additional information about the \emph{valence} of the meaning is conveyed. Valence is a second dimension of meaning, separate from the number that the speaker wants to convey. If $V$ is the set of possible valences, then the set of possible meanings $M$ is given by:
+How can we capture the subtext of a hyperbolic statement? Hyperbole is similar to exaggeration, except that additional information about the \emph{affect} of the meaning is conveyed. Affect is a second dimension of meaning, separate from the number that the speaker wants to convey. If $A$ is the set of possible affects, then the set of possible meanings $M$ is given by:
 \begin{equation}
-M = {\mathcal I} \times V.
+M = {\mathcal I} \times A.
 \end{equation}
 
 %LEON: fix this par:
-The model of hyperbole is similar to the exaggeration model, except that it needs to be compatible with meanings that consist of number-valence pairs. The dictionary entry $\dictionary_u$ for an utterance $u$ now consists of a Gaussian centered around $u$, as before, as well as a truth function $T_u:V\rightarrow \{0,1\}$ that determines which valences are compatible with $u$. The truth function $T_u$ will be determined by the context. This means that in some contexts, an utterance $u$ will convey a negative valence along with its number meaning; in other contexts it will pick out a positive valence; and in still others it will be compatible with any valence. This leads us to modify equation \ref{eq:literallistener} so that the literal listener is now defined by:
+The model of hyperbole is similar to the exaggeration model, except that it needs to be compatible with meanings that consist of number-affect pairs. The dictionary entry $\dictionary_u$ for an utterance $u$ now consists of a Gaussian centered around $u$, as before, as well as a truth function $T_u:A\rightarrow \{0,1\}$ that determines which affects are compatible with $u$. The truth function $T_u$ will be determined by the context. This means that in some contexts, an utterance $u$ will convey a negative affect along with its number meaning; in other contexts it will pick out a positive affect; and in still others it will be compatible with any affect. This leads us to modify equation \ref{eq:literallistener} so that the literal listener is now defined by:
 
-\begin{align}\label{eq:valenceliteral}
-L_0((k,v) | u, \dictionary) &\propto \dictionary_u(k,v)P(k,v) \\
-&\propto f(k;u,\sigma^2)T_u(v)P(k)P(v),
+\begin{align}\label{eq:affectliteral}
+L_0((k,a) | u, \dictionary) &\propto \dictionary_u(k,a)P(k,a) \\
+&\propto f(k;u,\sigma^2)T_u(a)P(k)P(a),
 \end{align}
-where $k$ is the number that the speaker wants to communicate, $v$ is the valence, and we assume for simplicity that number and valence are independent under the prior. 
+where $k$ is the number that the speaker wants to communicate, $a$ is the affect, and we assume for simplicity that number and affect are independent under the prior. 
 
-The rest of the model is extended in a similar manner. Lexical uncertainty now means that the listener is uncertain about which truth function is associated with each utterance $u$. This means that while speakers may believe that a specific valence is part of the literal meaning of their utterance, listeners are uncertain about these beliefs. In expectation, each utterance is unbiased towards the valences. We note that there are now many more possible dictionaries: each utterance is assigned both a standard deviation and a truth function, and there are $2^{|V|}$ truth functions on valences. 
+The rest of the model is extended in a similar manner. Lexical uncertainty now means that the listener is uncertain about which truth function is associated with each utterance $u$. This means that while speakers may believe that a specific affect is part of the literal meaning of their utterance, listeners are uncertain about these beliefs. In expectation, each utterance is unbiased towards the affects. We note that there are now many more possible dictionaries: each utterance is assigned both a standard deviation and a truth function, and there are $2^{|A|}$ truth functions on affects. 
 
-We will now illustrate how this model predicts hyperbolic interpretations of extreme utterances. We assume that there are two number meanings, \emph{1} and \emph{2}, and two valences, \emph{neutral} and \emph{negative}, so that there are four pairings of numbers and valences. We assume that \emph{1} is more likely than \emph{2}, and \emph{neutral} is more likely than \emph{negative}. There are two utterances, ``one" and ``two." If the speaker wants to communicate \emph{1}-\emph{neutral}, she is likely to succeed by saying ``one" whether its dictionary entry $\dictionary_{\text{``one"}}$ is vague or precise: as long as the dictionary entry $\dictionary_{\text{``one"}}$ is compatible with this meaning, the literal listener in equation \ref{eq:valenceliteral} will be biased towards it. This speaker will therefore assign small probability to the utterance ``two," which is less likely to be interpreted correctly. On the other hand, there are two moderately likely meanings that may lead the speaker to say ``two": \emph{2}-\emph{neutral} and \emph{1}-\emph{negative}. It is clear why the speaker would say ``two" to communicate the first meaning \emph{2}-\emph{neutral}. For the second meaning, \emph{1}-\emph{negative}, the speaker may use the utterance ``two" if she believes that the dictionary entry  $\dictionary_{\text{``two"}}$ has a vague number meaning (and is therefore compatible with meaning \emph{1}) and that it uniquely picks out the negative valence. Because the speaker may use ``two" to communicate \emph{1}-\emph{negative}, it provides evidence to the listener in equation \ref{eq:listenerdict}, who is reasoning about the speaker, that this meaning was intended. This is the hyperbolic interpretation of the utterance ``two." 
+We will now illustrate how this model predicts hyperbolic interpretations of extreme utterances. We assume that there are two number meanings, \emph{1} and \emph{2}, and two affects, \emph{neutral} and \emph{negative}, so that there are four pairings of numbers and affects. We assume that \emph{1} is more likely than \emph{2}, and \emph{neutral} is more likely than \emph{negative}. There are two utterances, ``one" and ``two." If the speaker wants to communicate \emph{1}-\emph{neutral}, she is likely to succeed by saying ``one" whether its dictionary entry $\dictionary_{\text{``one"}}$ is vague or precise: as long as the dictionary entry $\dictionary_{\text{``one"}}$ is compatible with this meaning, the literal listener in equation \ref{eq:affectliteral} will be biased towards it. This speaker will therefore assign small probability to the utterance ``two," which is less likely to be interpreted correctly. On the other hand, there are two moderately likely meanings that may lead the speaker to say ``two": \emph{2}-\emph{neutral} and \emph{1}-\emph{negative}. It is clear why the speaker would say ``two" to communicate the first meaning \emph{2}-\emph{neutral}. For the second meaning, \emph{1}-\emph{negative}, the speaker may use the utterance ``two" if she believes that the dictionary entry  $\dictionary_{\text{``two"}}$ has a vague number meaning (and is therefore compatible with meaning \emph{1}) and that it uniquely picks out the negative affect. Because the speaker may use ``two" to communicate \emph{1}-\emph{negative}, it provides evidence to the listener in equation \ref{eq:listenerdict}, who is reasoning about the speaker, that this meaning was intended. This is the hyperbolic interpretation of the utterance ``two." 
 
 \subsection{The complete model}
 
-Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce valences into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. 
+Our final model combines the elements of the previous models. It is intended to simultaneously capture three effects: pragmatic halo, the interpretation of extreme utterances as exaggerated, and the interpretation of exaggerated utterances as hyperbolic. This model will allow the costs of utterances to vary, as in the model of pragmatic halo; allow prior probabilities of meanings to vary, as in the model of exaggeration; and introduce affects into the meaning, as in the model of hyperbole. Formally, the model will be identical to the model of hyperbole, except that we allow for utterance costs $c(u) > 0$. 
 
 \section{Behavioral Experiment}
 
@@ -226,24 +225,23 @@ We recruited $220$ subjects located in the United States through Amazon Mechanic
 \label{tab:myfirsttable}
 \end{table}
 
-Based on our model and theory of the pragmatic interpretation of numbers, we predict that subjects' responses will exhibit the following phenomena. Firstly, round numbers, or numbers that can be evenly divided by $10$, will be interpreted less precisely and literally. Secondly, less likely numbers, or numbers further away from the mean of the underlying distribution, will be interpreted non-literally�and as closer to the mean. Thirdly, exaggerated utterances will be interpreted as having marked meaning and convey stronger affect. Furthermore, there will be an interaction among these three effects, such that non-round numbers closer to the mean will be interpreted as the most precise and convey the least affect, while round numbers further away from the mean will be interpreted as the most exaggerated and convey the most affect.
-
+Based on our model and theory of the pragmatic interpretation of numbers, we predict that subjects' responses will exhibit the following phenomena. Firstly, round numbers, or numbers that are divisible by $10$, will be interpreted less precisely and literally. Secondly, less likely numbers, or numbers further away from the mean of the underlying distribution, will be interpreted non-literally and as closer to the mean. Thirdly, exaggerated utterances will be interpreted as having marked meaning and convey stronger affect. Furthermore, there will be an interaction among these three effects, such that non-round numbers closer to the mean will be interpreted as the most precise and convey the least affect, while round numbers further away from the mean will be interpreted as the most exaggerated and convey the most affect.
 
 \subsection{Results}
 
 % halo and exaggeration
 
-\begin{figure}[t]
-        \begin{subfigure}[b]{0.5\textwidth}
+\begin{figure}[h]
+        \begin{subfigure}[b]{0.4\textwidth}
                 \centering
                 \caption{Pragmatic Halo}
-		\includegraphics[width=\textwidth]{humans_halo.png}
+		\includegraphics[width=\textwidth]{humans_halo_all.png}
 		
 	\end{subfigure}
-        \begin{subfigure}[b]{0.5\textwidth}
+        \begin{subfigure}[b]{0.6\textwidth}
                 \centering
                 \caption{Exaggeration}
-                \includegraphics[width=\textwidth]{humans_exagg.png}
+                \includegraphics[width=\textwidth]{humans_exagg_all.png}
 		
 	\end{subfigure}
 	\caption{Examples of pragmatic halo and exaggeration across all five domains}
@@ -262,35 +260,36 @@ Subjects are also more likely to judge an utterance as exaggeration when the lit
 We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and the relationship between uttered values and their probability of being perceived to convey affect. In the textbook scenario, the utterance ``100" is most likely to be interpreted as close to the literal meaning and without affective information. On the other hand, the utterance ``1000" is most likely to be interpreted as much lower than the literal meaning and with affective information. We also see a slight effect of pragmatic halo, in which non-round numbers are more likely to be interpreted literally than their nearest round counterparts. 
 
 Interestingly, the proportion of ``affect" responses varies across the five scenarios. In the parking ticket scenario, subjects are asked to judge how negatively a speaker who has just received a parking ticket feels about the ticket cost. Since the speaker is very likely to feel negatively about the ticket cost, the utterances are generally interpreted as having more negative affect than utterances in the textbook scenario. Our model can capture this effect by adjusting the prior probability of having an affective state regarding a particular scenario. 
-% plots for all 5 domains
-\begin{figure}[t]
-        \begin{subfigure}[b]{0.5\textwidth}
-                \centering
-		\includegraphics[width=\textwidth]{humans_all_textbook.png}
-		\caption{textbooks}
-	\end{subfigure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{humans_all_ticket.png}
-		\caption{tickets}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.33\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{humans_all_bus.png}
-		\caption{bus wait time}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.33\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{humans_all_reading.png}
-		\caption{reading assignment}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.33\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{humans_all_weather.png}
-		\caption{weather temperature}
-	\end{subfigure}
-	\caption{Distribution of interpretations for each utterance across five scenarios}
-\end{figure}
+
+%% plots for all 5 domains
+%\begin{figure}[t]
+%        \begin{subfigure}[b]{0.5\textwidth}
+%                \centering
+%		\includegraphics[width=\textwidth]{humans_all_textbook.png}
+%		\caption{textbooks}
+%	\end{subfigure}
+%        \begin{subfigure}[b]{0.5\textwidth}
+%                \centering
+%                \includegraphics[width=\textwidth]{humans_all_ticket.png}
+%		\caption{tickets}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{0.33\textwidth}
+%                \centering
+%                \includegraphics[width=\textwidth]{humans_all_bus.png}
+%		\caption{bus wait time}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{0.33\textwidth}
+%                \centering
+%                \includegraphics[width=\textwidth]{humans_all_reading.png}
+%		\caption{reading assignment}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{0.33\textwidth}
+%                \centering
+%                \includegraphics[width=\textwidth]{humans_all_weather.png}
+%		\caption{weather temperature}
+%	\end{subfigure}
+%	\caption{Distribution of interpretations for each utterance across five scenarios}
+%\end{figure}
 
 % everything
 
@@ -300,15 +299,59 @@ Our model captures some important intuitions regarding the numerical values and 
 
 As shown in Figure 7, the probability that the model interprets the utterance as hyperbolic roughly matches that of the behavioral data, at least in the general trend. 
 
-\begin{figure}
+%\begin{figure}
+%        \begin{subfigure}[b]{0.5\textwidth}
+%                \centering
+%		\includegraphics[width=\textwidth]{model_all_textbook.png}
+%		\caption{model all textbook}
+%	\end{subfigure}
+%        \begin{subfigure}[b]{0.5\textwidth}
+%                \centering
+%                \includegraphics[width=\textwidth]{humans_all_textbook.png}
+%		\caption{humans all textbook}
+%	\end{subfigure}
+%	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+%\end{figure}
+
+
+\begin{figure}[h]
         \begin{subfigure}[b]{0.5\textwidth}
                 \centering
-		\includegraphics[width=\textwidth]{model_all_textbook.png}
+		\includegraphics[width=\textwidth]{humans_textbook_all.png}
 		\caption{model all textbook}
 	\end{subfigure}
         \begin{subfigure}[b]{0.5\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{humans_all_textbook.png}
+                \includegraphics[width=\textwidth]{humans_textbook_all.png}
+		\caption{humans all textbook}
+	\end{subfigure}
+	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+\end{figure}
+
+
+\begin{figure}[h]
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+		\includegraphics[width=\textwidth]{humans_reading_all.png}
+		\caption{model all textbook}
+	\end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_reading_all.png}
+		\caption{humans all textbook}
+	\end{subfigure}
+	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
+\end{figure}
+
+\begin{figure}[h]
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+		\includegraphics[width=\textwidth]{humans_weather_all.png}
+		\caption{model all textbook}
+	\end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{humans_weather_all.png}
 		\caption{humans all textbook}
 	\end{subfigure}
 	\caption{The graph on the left shows rah rah rah and the one on the right shows roar roar roar}
@@ -334,12 +377,12 @@ As shown in Figure 7, the probability that the model interprets the utterance as
 %{\bf 15}(7):5249-5262.
 %}
 
-\bibliographystyle{apacite}
-
-\setlength{\bibleftmargin}{.125in}
-\setlength{\bibindent}{-\bibleftmargin}
-
+\bibliographystyle{unsrt}
+%\setlength{\bibleftmargin}{.125in}
+%\setlength{\bibindent}{-\bibleftmargin}
+%\bibnumfmt
+\small{
 \bibliography{nips_hyperbole}
-
+}
 
 \end{document}
