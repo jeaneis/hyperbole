@@ -272,21 +272,21 @@ Results are consistent with our model predictions.\footnote[1]{We excluded respo
 % exaggeration and affect (should we still add a plot that just has affect?)
 % add something about how affect is computed: median split ( > 5 is affect).
 
-We compare subjects' responses to our model's predictions using three scenarios. Figure 3 illustrates how each utterance is interpreted, both in numerical value and affective valence, by our model and in the behavioral experiment. 
 %We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and illustrate the relationship between uttered values and their probability of being perceived to convey affect. 
-First we discuss the textbook scenario. Our model interprets the utterance ``100" as most likely to mean $100$ without affective information. Since the model of the listener assumes that the speaker provides the most informative utterance, the model similarly interprets other numbers with high 
+To compare the full model with our behavioral results, we set up the meaning space and utterance space in the model as identical to the eight utterance values that subjects saw in each scenario. The prior probability of meanings is a geometric distribution with greatest probability mass at the lowest meaning value. In order to model the degree of confidence subjects have in the probabilities of extreme values, we uniformly added a constant $c$ to the probabilities of each meaning. A small value of $c$ indicates that the listener is confident that the probability of extreme values is low in that particular domain, while a high value indicates that the listener still reserves significant mass to the prior probability of extreme values. The cost of non-round numbers is uniformly greater than the cost of round numbers. 
 
-close to the literal meaning and without affective information. On the other hand, the utterance ``1000" is most likely to be interpreted as much lower than the literal meaning and with affective information. We also see a slight effect of pragmatic halo, in which non-round numbers are more likely to be interpreted literally than their nearest round counterparts. 
+We will use the textbook scenario as our main example for discussion. Our model computes the distribution over meanings $\{100, 102, 150, 152, 200, 202, 1000, 1012\}$ for each utterance. The meaning prior is set to be a geometric distribution with mean $X$, and $c = 0.04$. Under these parameters, our model interprets the utterance ``100" as most likely to mean $100$ without affective information. Since the model of the listener assumes that the speaker provides the most informative utterance, the model similarly interprets other numbers with fairly high prior probabilities as literal. As the literal meaning of the utterance becomes less likely, as in the case of ``200", the model begins to interpret the utterance as an exaggeration. This effect interacts with the pragmatic halo, such that the costlier utterances ``202" and ``1012" are not interpreted hyperbolically, while the less costly utterance ``1000" is interpreted as a value closer to the mean with affective information. These results capture the patterns in our human data (Figure 3 (b)). 
 
-The strength of the priors associated with the values in each scenario affected the values at which the probability of perceived exaggeration starts to sharply increase. Consistent with our intuition, if we have a clear idea of an item's common value, we can confidently judge any values outside the common range to be unlikely. Conversely, we will have a weak judgement if our prior associated with the item's common value is also weak. Figure 3(c)-(d) illustrates the scenario where subjects have a weak prior since length of reading assignments are somewhat arbitrary depending on the type and the level of classes. We see that the probability of each utterance being interpreted precisely spreads wider among all possible meanings. Figure 3(e)-(f) show the opposite effect when subjects have a strong prior associated with the weather temperature. Once the uttered temperature exceeded 100, it becomes highly likely an exaggeration.
+We now discuss the way in which differences across scenarios can be modeled by adjusting the prior distribution of meanings. The strength of the priors associated with the values in each scenario affects the values at which the probability of perceived exaggeration increases. Since people have extensive experience with weather temperatures and know that the probability of the temperature being $150$ F is close to $0$. In other words, the prior distribution of weather temperatures drops off sharply after a certain value and has a very thin tail. Figure 3 (d) shows that people no longer interpret utterances above ``150" as literal. By adjusting the prior distribution in our model to have a thinner tail (geometric 
 
-% Do we really want to discuss parking tickets here? We need to point readers to supplementary if we do.
-Interestingly, the proportion of ``affect" responses varies across the five scenarios. In the parking ticket scenario, subjects are asked to judge how negatively a speaker who has just received a parking ticket feels about the ticket cost. Since the speaker is very likely to feel negatively about the ticket cost, the utterances are generally interpreted as having more negative affect than utterances in the textbook scenario. Our model can capture this effect by adjusting the prior probability of having an affective state regarding a particular scenario. 
+We compare subjects' responses to our model's predictions using three scenarios. Figure 3 illustrates how each utterance is interpreted, both in numerical value and affective valence, by our model and in the behavioral experiment. 
+
+Conversely, we will have a weak judgement if our prior associated with the item's common value is also weak. Figure 3(c)-(d) illustrates the scenario where subjects have a weak prior since length of reading assignments are somewhat arbitrary depending on the type and the level of classes. We see that the probability of each utterance being interpreted precisely spreads wider among all possible meanings. Figure 3(e)-(f) show the opposite effect when subjects have a strong prior associated with the weather temperature. Once the uttered temperature exceeded 100, it becomes highly likely an exaggeration.
+
 
 \section{Discussion and Future Directions}
 
 
-texttexttexttexttexttexttext texttexttexttexttexttextt exttexttexttexttexttexttextt exttexttexttexttexttexttexttextt exttext texttexttexttexttexttexttexttexttexttextt exttextt exttexttextte xttextt exttextt exttextte xttexttexttexttex ttexttexttextt exttextt exttexttextte xttextte xt texttexttexttextt exttextte xttexttexttextte xttexttexttextte xttext texttex ttexttex ttextte xttexttext texttexttextte xttexttexttext texttexttexttexttexttextt exttexttexttexttexttexttextt exttexttexttexttexttexttexttextt exttext texttexttexttexttexttexttexttexttexttextt exttextt exttexttextte xttextt exttextt exttextte xttexttexttexttex ttexttexttextt exttextt exttexttextte xttextte xt texttexttexttextt exttextte xttexttexttextte xttexttexttextte xttext texttex ttexttex ttextte xttexttext texttexttex ttexttexttextt exttexttexttexttexttexttextt exttexttexttexttexttexttexttextt exttext texttexttexttexttexttexttexttexttexttextt exttextt exttexttextte xttextt exttextt exttextte xttexttexttexttex ttexttexttextt exttextt exttexttextte xttextte xt texttexttexttextt exttextte xttexttexttextte xttexttexttextte xttext texttex ttexttex ttextte xttexttext texttexttexttexttexttexttext texttexttexttexttexttextt exttexttexttexttexttexttextt exttexttexttexttexttexttexttextt exttext texttexttexttexttexttexttexttexttexttextt exttextt exttexttextte xttextt exttextt exttextte xttexttexttexttex ttexttexttextt exttextt exttexttextte xttextte xt texttexttexttextt exttextte xttexttexttextte xttexttexttextte xttext texttex ttexttex ttextte xttexttext 
 %\begin{figure}
 %        \begin{subfigure}[b]{0.5\textwidth}
 %                \centering
@@ -319,20 +319,6 @@ texttexttexttexttexttexttext texttexttexttexttexttextt exttexttexttexttexttextte
 %\begin{figure}[t]
         \begin{subfigure}[b]{0.51\textwidth}
                 \centering
-                \caption{Model: Length of reading}
-                \includegraphics[width=\textwidth]{model_reading_all.png}
-	\end{subfigure}
-        \begin{subfigure}[b]{0.51\textwidth}
-                \centering       
-                \caption{Humans: Length of reading}         
-                \includegraphics[width=\textwidth]{humans_reading_all.png}
-        \end{subfigure}
-        \qquad
-        
-%\end{figure}
-%\begin{figure}[t]
-        \begin{subfigure}[b]{0.51\textwidth}
-                \centering
                 \caption{Model: Weather temperature}
                 \includegraphics[width=\textwidth]{model_weather_all.png}
 	\end{subfigure}
@@ -341,8 +327,24 @@ texttexttexttexttexttexttext texttexttexttexttexttextt exttexttexttexttexttextte
                 \caption{Humans: Weather temperature}
                 \includegraphics[width=\textwidth]{humans_weather_all.png}
         \end{subfigure}
-	\caption{}
-\end{figure}
+	
+
+        \qquad
+        
+%\end{figure}
+%\begin{figure}[t]
+       
+       \begin{subfigure}[b]{0.51\textwidth}
+                \centering
+                \caption{Model: Length of reading}
+                \includegraphics[width=\textwidth]{model_reading_all.png}
+	\end{subfigure}
+        \begin{subfigure}[b]{0.51\textwidth}
+                \centering       
+                \caption{Humans: Length of reading}         
+                \includegraphics[width=\textwidth]{humans_reading_all.png}
+        \end{subfigure} 
+        \caption{}\end{figure}
 
 
 %\subsubsection*{References}
