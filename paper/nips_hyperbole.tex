@@ -71,7 +71,7 @@ Stanford, CA 94305\\
 \maketitle
 
 \begin{abstract}
-[REWRITE] %%%%%% NEED WORK !!!
+While the meanings of numbers are usually thought to be fixed and precise, numbers are interpreted much more flexibly in everyday language. Here we propose a computational model that captures two effects of the pragmatic interpretation of numbers, \emph{pragmatic halo} and \emph{hyperbole,} by building upon recent models of pragmatics as rational inference. We hypothesize that hyperbole allows speakers to minimize the cost of an utterance while maximizing the message conveyed. Meanwhile, the listener infers additional information embedded in the utterance, namely the true state of the world in addition to the speaker's opinion. We investigate these predictions using a Bayesian computational model and a behavioral experiment and show that our model is able to exhibit the effects of pragmatic halo and hyperbole as well as their interaction.
 \textbf{Keywords:} 
 Number interpretation, hyperbole, pragmatic halo, pragmatics, Bayesian model
 \end{abstract}
@@ -195,7 +195,7 @@ How can we capture the subtext of a hyperbolic statement? Hyperbole is similar t
 M = {\mathcal I} \times A.
 \end{equation}
 
-%LEON: fix this par:
+%LEON: fix this part:
 The model of hyperbole is similar to the exaggeration model, except that it needs to be compatible with meanings that consist of number-affect pairs. The dictionary entry $\dictionary_u$ for an utterance $u$ now consists of a Gaussian centered around $u$, as before, as well as a truth function $T_u:A\rightarrow \{0,1\}$ that determines which affects are compatible with $u$. The truth function $T_u$ will be determined by the context. This means that in some contexts, an utterance $u$ will convey a negative affect along with its number meaning; in other contexts it will pick out a positive affect; and in still others it will be compatible with any affect. This leads us to modify equation \ref{eq:literallistener} so that the literal listener is now defined by:
 
 \begin{align}\label{eq:affectliteral}
@@ -248,7 +248,7 @@ Based on our model and theory of the pragmatic interpretation of numbers, we pre
                 \caption{Pragmatic Halo}
 		\includegraphics[width=\textwidth]{humans_halo_final.png}
 		
-	\end{subfigure}
+	\end{subfigure} 
         \begin{subfigure}[b]{0.6\textwidth}
                 \centering
                 \caption{Exaggeration}
@@ -258,15 +258,22 @@ Based on our model and theory of the pragmatic interpretation of numbers, we pre
 	\caption{Behavioral evidence for pragmatic halo and exaggeration effects across five scenarios}
 \end{figure}
 
-Results are consistent with our model predictions.\footnote[1]{We excluded responses from $4$ non-native English speakers and $1$ response that contained an obvious typo.} As shown in Figure 2, the proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. In order to examine the pragmatic halo effect, we selected a pair of values for each scenario that is moderately close to the mean of the underlying distribution (Figure 2(a)). We then compared the precision of subjects' interpretation of these numbers, where an interpretation is considered precise if it is identical to the uttered number and imprecise otherwise. For example, if a subject interprets the uttered number ``100" as meaning ``99," then the interpretation is imprecise. Consistent with \cite{someone} findings, we see that number expressions that contain more syllables are more likely to be interpreted precisely, or exactly as they are uttered. In order to examine the effect of prior probability on hyperbolic interpretation, for each scenario we selected a pair of values that contains one non-round number close to the mean of the underlying distribution and one non-round number far from the mean. We then compared how likely subjects are to interpret the numbers as exaggerated, where an exaggerated interpretation is one that is lower than the uttered value. For example, if a subject interprets the uttered number ``1012" as meaning ``100," then ``1012" is interpreted as an exaggeration. 
+Results are consistent with our model predictions.\footnote[1]{We excluded responses from $4$ non-native English speakers and $1$ response that contained an obvious typo.} As shown in Figure 2, the proportion of subjects who interpreted an utterance as hyperbolic varies as a function of the ``roundness" of the uttered value as well as the distance between the uttered value and the mean of the underlying distribution. In order to examine the pragmatic halo effect, we compared the precision of subjects' interpretation of round versus non-round numbers. An interpretation is considered precise if it is identical to the uttered number. Figure 2 (a) shows that round numbers are less likely to be interpreted exactly as they are uttered. In other words, non-round numbers tend to invite a literal and precise interpretation. Secondly, to examine the effect of prior probability on hyperbolic interpretation, we compared how likely subjects are to interpret different numbers as exaggerated, where an exaggerated interpretation is one that is lower than the uttered value. Figure 2 (b) shows that subjects are more likely to judge an utterance as exaggeration when the literal meaning of the numerical value becomes less likely in a particular domain. 
 
-Subjects are also more likely to judge an utterance as exaggeration when the literal meaning of the numerical value becomes less likely in a particular domain. For instance, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
+%For instance, when prompting subjects to a temperature of 107 degrees Fahrenheit, they judged it as exaggeration because it is unlikely that the weather gets that high in the United States, from which these subjects were recruited.
 
 % exaggeration and affect (should we still add a plot that just has affect?)
 % add something about how affect is computed: median split ( > 5 is affect).
 
-We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and the relationship between uttered values and their probability of being perceived to convey affect. In the textbook scenario, the utterance ``100" is most likely to be interpreted as close to the literal meaning and without affective information. On the other hand, the utterance ``1000" is most likely to be interpreted as much lower than the literal meaning and with affective information. We also see a slight effect of pragmatic halo, in which non-round numbers are more likely to be interpreted literally than their nearest round counterparts. 
+We compare subjects' responses to our model's predictions using three scenarios. Figure 3 illustrates how each utterance is interpreted, both in numerical value and affective valence, by our model and in the behavioral experiment. 
+%We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and illustrate the relationship between uttered values and their probability of being perceived to convey affect. 
+First we discuss the textbook scenario. Our model interprets the utterance ``100" as most likely to mean $100$ without affective information. Since the model of the listener assumes that the speaker provides the most informative utterance, the model similarly interprets other numbers with high 
 
+close to the literal meaning and without affective information. On the other hand, the utterance ``1000" is most likely to be interpreted as much lower than the literal meaning and with affective information. We also see a slight effect of pragmatic halo, in which non-round numbers are more likely to be interpreted literally than their nearest round counterparts. 
+
+The strength of the priors associated with the values in each scenario affected the values at which the probability of perceived exaggeration starts to sharply increase. Consistent with our intuition, if we have a clear idea of an item's common value, we can confidently judge any values outside the common range to be unlikely. Conversely, we will have a weak judgement if our prior associated with the item's common value is also weak. Figure 3(c)-(d) illustrates the scenario where subjects have a weak prior since length of reading assignments are somewhat arbitrary depending on the type and the level of classes. We see that the probability of each utterance being interpreted precisely spreads wider among all possible meanings. Figure 3(e)-(f) show the opposite effect when subjects have a strong prior associated with the weather temperature. Once the uttered temperature exceeded 100, it becomes highly likely an exaggeration.
+
+% Do we really want to discuss parking tickets here? We need to point readers to supplementary if we do.
 Interestingly, the proportion of ``affect" responses varies across the five scenarios. In the parking ticket scenario, subjects are asked to judge how negatively a speaker who has just received a parking ticket feels about the ticket cost. Since the speaker is very likely to feel negatively about the ticket cost, the utterances are generally interpreted as having more negative affect than utterances in the textbook scenario. Our model can capture this effect by adjusting the prior probability of having an affective state regarding a particular scenario. 
 
 \section{Discussion and Future Directions}
@@ -288,64 +295,52 @@ texttexttexttexttexttexttext texttexttexttexttexttextt exttexttexttexttexttextte
 %\end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[t]
         \begin{subfigure}[b]{0.51\textwidth}
                 \centering
-		\caption{Model: Textbook costs}
-		\includegraphics[width=\textwidth]{model_textbook_all.png}
-		
+                \caption{Model: Textbook costs}
+                \includegraphics[width=\textwidth]{model_textbook_all.png}
 	\end{subfigure}
         \begin{subfigure}[b]{0.51\textwidth}
                 \centering
                 \caption{Human: Textbook costs}
                 \includegraphics[width=\textwidth]{humans_textbook_all.png}
 	\end{subfigure}
-	\end{figure}
-	\begin{figure}[h]
+	\qquad
+	
+%\end{figure}
+%\begin{figure}[t]
         \begin{subfigure}[b]{0.51\textwidth}
                 \centering
                 \caption{Model: Length of reading}
-		\includegraphics[width=\textwidth]{model_reading_all.png}
-		
+                \includegraphics[width=\textwidth]{model_reading_all.png}
 	\end{subfigure}
         \begin{subfigure}[b]{0.51\textwidth}
-                \centering
-                \caption{Humans: Length of reading}
+                \centering       
+                \caption{Humans: Length of reading}         
                 \includegraphics[width=\textwidth]{humans_reading_all.png}
-	\end{subfigure}
+        \end{subfigure}
+        \qquad
+        
+%\end{figure}
+%\begin{figure}[t]
         \begin{subfigure}[b]{0.51\textwidth}
                 \centering
                 \caption{Model: Weather temperature}
-		\includegraphics[width=\textwidth]{model_weather_all.png}
-		
+                \includegraphics[width=\textwidth]{model_weather_all.png}
 	\end{subfigure}
         \begin{subfigure}[b]{0.51\textwidth}
                 \centering
                 \caption{Humans: Weather temperature}
                 \includegraphics[width=\textwidth]{humans_weather_all.png}
-		\end{subfigure}
+        \end{subfigure}
 	\caption{}
 \end{figure}
 
 
 %\subsubsection*{References}
-%
-%\small{
-%[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
-%for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
-%and T.K. Leen (eds.), {\it Advances in Neural Information Processing
-%Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
-%
-%[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
-%Realistic Neural Models with the GEneral NEural SImulation System.}
-%New York: TELOS/Springer-Verlag.
-%
-%[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
-%and recall at excitatory recurrent synapses and cholinergic modulation
-%in rat hippocampal region CA3. {\it Journal of Neuroscience}
-%{\bf 15}(7):5249-5262.
-%}
 
+\clearpage
 \bibliographystyle{unsrt}
 %\setlength{\bibleftmargin}{.125in}
 %\setlength{\bibindent}{-\bibleftmargin}
