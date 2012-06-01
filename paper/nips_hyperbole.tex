@@ -130,7 +130,7 @@ The speaker $S_n$ chooses utterances according to a softmax decision rule that d
 \begin{equation}\label{eq:speakerprob}
 S_n(u | m,\dictionary) \propto e^{\lambda U_n(u | m,\dictionary)},
 \end{equation}
-where the constant $\lambda$ captures the degree of optimality of the speaker. 
+where the constant $\lambda$ captures the degree of optimality of the speaker. (We used $\lambda=2$ in the model simulations for this section).
 The speaker wants to minimize both the cost $c(u)$ of the utterance and the surprisal of the intended meaning $m$, so the utility function $U_n$ is defined by:
 \begin{equation}\label{eq:speakerutility}
 U_n(u | m, \dictionary) = \log (L_{n}(m | u, \dictionary)) - c(u),
@@ -270,7 +270,7 @@ To examine the effect of prior probability on interpretation we compared exagger
 
 %We then analyzed the relationship between exaggeration and speaker's affect. The graphs in Figure 3 show how each utterance is interpreted and illustrate the relationship between uttered values and their probability of being perceived to convey affect. 
 To compare the full model with our behavioral results, we took the set $\mathcal I$ of meanings and utterances to be the eight values that subjects saw in each scenario. Because the prior distribution in each domain is roughly unimodal with mode at the lowest number considered, but the variance and the heaviness of the tail vary between domains, we model the prior distribution as geometric plus constant:
-$P(m)\propto b^{m} + c$. Parameters for the priors and cost of utterances are described in Figure \ref{fig:results}.
+$P(m)\propto b^{m} + c$. Parameters for the priors and cost of utterances are described in Figure \ref{fig:results}. We used $\lambda = 2$ and recursion depth $= 5$. Results are shown in Figure \ref{fig:results}. Note that since the model is restricted to eight discrete meanings, while subjects are free to choose whichever numeric interpretation they wish for each utterance, the scales for the $x$ axes on the plots are different. Subjects' interpretations are binned into widths of $50$ between the values of $0$ and $1050$. 
 %A small value of $c$ indicates that the listener is confident that the probability of extreme values is low in that particular domain, while a high value indicates that the listener still reserves significant mass to the prior probability of extreme values. 
 We use the textbook scenario to illustrate. Our model interprets the utterance ``100" as most likely to mean $100$ without affective information. Since the model of the listener assumes that the speaker provides the most informative utterance, the model similarly interprets other numbers that have fairly high prior probabilities as literal. As the literal meaning of the utterance becomes less likely, the model begins to interpret the utterance as an exaggeration. This effect interacts with the pragmatic halo, such that the costlier utterances ``202" and ``1012" are not interpreted hyperbolically, while the less costly utterance ``1000" is interpreted as a value closer to the mean that carries affective information. These results from our model capture the patterns in our human data (Figure \ref{fig:results}b). 
 
