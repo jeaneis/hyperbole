@@ -63,13 +63,13 @@ def printPriceList(prices, fileName):
 def tryParseInt(s):
   try:
     return int(s)
-  except ValueError, TypeError:
+  except (ValueError, TypeError):
     return False
         
 def tryParseFloat(s):
   try:
     return float(s.strip())
-  except ValueError, TypeError:
+  except (ValueError, TypeError):
     return False
 
 if len(sys.argv) != 4:
