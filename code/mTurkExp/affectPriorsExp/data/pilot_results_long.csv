@@ -1,0 +1,601 @@
+workerID, gender, nativeLanguage, income, age, condition, domain, price, result, order, buyer
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 13.99, 1, 56, Beverly 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 21.99, 3, 48, Devin 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 29.99, 2, 44, Felix 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 37.99, 1, 45, Heather 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 45.99, 11, 32, Jessie 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 53.99, 30, 8, Leslie 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 61.99, 28, 29, Nell 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 69.99, 11, 19, Percy 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 77.99, 31, 37, Steph 
+A3HFCPLK243DXL, F, English, 0, 35, 2, electric kettle, 85.99, 40, 7, Uri 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 15.95, 2, 10, Terrance 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 30.84, 2, 35, Randy 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 45.73, 0, 51, Owen 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 60.63, 11, 40, Morgan 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 75.52, 10, 47, Kasey 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 90.42, 9, 30, Iris 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 105.31, 9, 38, George 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 120.2, 10, 46, Ellis 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 135.1, 10, 12, Chris 
+A3HFCPLK243DXL, F, English, 0, 35, 2, coffee maker, 149.99, 11, 11, Alex 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 19.57, 2, 25, Beverly 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 50.73, 7, 52, Devin 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 81.89, 10, 27, Felix 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 113.05, 11, 39, Heather 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 144.21, 11, 13, Jessie 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 175.36, 12, 50, Leslie 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 206.52, 29, 2, Nell 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 237.68, 22, 57, Percy 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 268.84, 30, 17, Steph 
+A3HFCPLK243DXL, F, English, 0, 35, 2, headphones, 300, 39, 3, Uri 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 16.58, 2, 21, Terrance 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 29.74, 4, 58, Randy 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 42.89, 10, 6, Owen 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 56.05, 11, 23, Morgan 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 69.21, 10, 36, Kasey 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 82.37, 11, 16, Iris 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 95.53, 29, 20, George 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 108.68, 40, 43, Ellis 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 121.84, 36, 54, Chris 
+A3HFCPLK243DXL, F, English, 0, 35, 2, sweater, 135, 30, 4, Alex 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 46.83, 2, 15, Beverly 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 130.52, 10, 26, Devin 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 214.2, 10, 18, Felix 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 297.89, 29, 60, Heather 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 381.57, 28, 24, Jessie 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 465.26, 31, 1, Leslie 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 548.94, 39, 9, Nell 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 632.63, 39, 14, Percy 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 716.31, 39, 34, Steph 
+A3HFCPLK243DXL, F, English, 0, 35, 2, watch, 800, 38, 28, Uri 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 314.44, 1, 55, Terrance 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 468.39, 6, 49, Randy 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 622.34, 8, 41, Owen 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 776.29, 10, 5, Morgan 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 930.24, 10, 22, Kasey 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 1084.19, 11, 31, Iris 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 1238.14, 22, 59, George 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 1392.09, 29, 33, Ellis 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 1546.04, 34, 53, Chris 
+A3HFCPLK243DXL, F, English, 0, 35, 2, laptop, 1699.99, 40, 42, Alex 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 13.99, 1, 29, Beverly 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 21.99, 10, 48, Devin 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 29.99, 4, 39, Felix 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 37.99, 10, 53, Heather 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 45.99, 12, 38, Jessie 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 53.99, 22, 20, Leslie 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 61.99, 22, 37, Nell 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 69.99, 18, 15, Percy 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 77.99, 22, 43, Steph 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, electric kettle, 85.99, 22, 33, Uri 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 15.95, 1, 45, Terrance 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 30.84, 4, 11, Randy 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 45.73, 10, 52, Owen 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 60.63, 10, 23, Morgan 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 75.52, 23, 6, Kasey 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 90.42, 28, 4, Iris 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 105.31, 20, 54, George 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 120.2, 33, 7, Ellis 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 135.1, 22, 36, Chris 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, coffee maker, 149.99, 39, 2, Alex 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 19.57, 1, 30, Beverly 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 50.73, 15, 42, Devin 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 81.89, 16, 44, Felix 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 113.05, 22, 47, Heather 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 144.21, 23, 40, Jessie 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 175.36, 29, 16, Leslie 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 206.52, 28, 32, Nell 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 237.68, 30, 55, Percy 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 268.84, 32, 57, Steph 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, headphones, 300, 34, 59, Uri 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 16.58, 0, 28, Terrance 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 29.74, 5, 56, Randy 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 42.89, 10, 12, Owen 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 56.05, 18, 9, Morgan 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 69.21, 20, 19, Kasey 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 82.37, 22, 51, Iris 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 95.53, 30, 3, George 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 108.68, 25, 10, Ellis 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 121.84, 30, 14, Chris 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, sweater, 135, 30, 22, Alex 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 46.83, 10, 50, Beverly 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 130.52, 16, 26, Devin 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 214.2, 19, 41, Felix 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 297.89, 22, 46, Heather 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 381.57, 30, 49, Jessie 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 465.26, 26, 34, Leslie 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 548.94, 28, 21, Nell 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 632.63, 28, 25, Percy 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 716.31, 32, 58, Steph 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, watch, 800, 30, 24, Uri 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 314.44, 0, 18, Terrance 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 468.39, 6, 60, Randy 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 622.34, 10, 1, Owen 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 776.29, 20, 5, Morgan 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 930.24, 18, 17, Kasey 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 1084.19, 19, 35, Iris 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 1238.14, 26, 31, George 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 1392.09, 34, 27, Ellis 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 1546.04, 31, 13, Chris 
+AYCHPTQRYDT7G, F, English, 11, 45, 2, laptop, 1699.99, 40, 8, Alex 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 13.99, 5, 13, Beverly 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 21.99, 7, 60, Devin 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 29.99, 10, 38, Felix 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 37.99, 13, 54, Heather 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 45.99, 17, 23, Jessie 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 53.99, 17, 9, Leslie 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 61.99, 35, 1, Nell 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 69.99, 23, 46, Percy 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 77.99, 23, 49, Steph 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, electric kettle, 85.99, 27, 58, Uri 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 15.95, 4, 12, Terrance 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 30.84, 15, 48, Randy 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 45.73, 18, 57, Owen 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 60.63, 23, 24, Morgan 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 75.52, 23, 56, Kasey 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 90.42, 26, 53, Iris 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 105.31, 35, 14, George 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 120.2, 28, 26, Ellis 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 135.1, 40, 10, Chris 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, coffee maker, 149.99, 33, 39, Alex 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 19.57, 4, 33, Beverly 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 50.73, 16, 11, Devin 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 81.89, 16, 43, Felix 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 113.05, 24, 45, Heather 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 144.21, 29, 29, Jessie 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 175.36, 30, 59, Leslie 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 206.52, 34, 32, Nell 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 237.68, 28, 36, Percy 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 268.84, 35, 22, Steph 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, headphones, 300, 40, 4, Uri 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 16.58, 4, 7, Terrance 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 29.74, 11, 52, Randy 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 42.89, 17, 6, Owen 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 56.05, 17, 25, Morgan 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 69.21, 25, 30, Kasey 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 82.37, 18, 37, Iris 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 95.53, 29, 50, George 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 108.68, 26, 42, Ellis 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 121.84, 32, 34, Chris 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, sweater, 135, 35, 44, Alex 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 46.83, 10, 19, Beverly 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 130.52, 22, 31, Devin 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 214.2, 28, 20, Felix 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 297.89, 28, 3, Heather 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 381.57, 26, 40, Jessie 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 465.26, 29, 41, Leslie 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 548.94, 30, 17, Nell 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 632.63, 34, 21, Percy 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 716.31, 34, 27, Steph 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, watch, 800, 32, 5, Uri 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 314.44, 2, 15, Terrance 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 468.39, 10, 2, Randy 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 622.34, 20, 18, Owen 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 776.29, 25, 8, Morgan 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 930.24, 34, 51, Kasey 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 1084.19, 38, 16, Iris 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 1238.14, 39, 28, George 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 1392.09, 40, 55, Ellis 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 1546.04, 39, 47, Chris 
+A2GNG3WN85SAY6, M, ENGLISH, 4, 35, 2, laptop, 1699.99, 34, 35, Alex 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 13.99, 0, 55, Beverly 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 21.99, 16, 8, Devin 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 29.99, 8, 40, Felix 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 37.99, 15, 31, Heather 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 45.99, 21, 54, Jessie 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 53.99, 26, 30, Leslie 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 61.99, 29, 5, Nell 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 69.99, 31, 4, Percy 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 77.99, 32, 36, Steph 
+A1S877ZW1XM95, F, english, 4, 45, 2, electric kettle, 85.99, 35, 21, Uri 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 15.95, 0, 17, Terrance 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 30.84, 3, 41, Randy 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 45.73, 10, 27, Owen 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 60.63, 15, 38, Morgan 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 75.52, 21, 6, Kasey 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 90.42, 21, 53, Iris 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 105.31, 19, 13, George 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 120.2, 21, 16, Ellis 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 135.1, 21, 58, Chris 
+A1S877ZW1XM95, F, english, 4, 45, 2, coffee maker, 149.99, 25, 2, Alex 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 19.57, 0, 29, Beverly 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 50.73, 29, 48, Devin 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 81.89, 32, 42, Felix 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 113.05, 28, 26, Heather 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 144.21, 35, 28, Jessie 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 175.36, 33, 35, Leslie 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 206.52, 39, 46, Nell 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 237.68, 39, 52, Percy 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 268.84, 40, 39, Steph 
+A1S877ZW1XM95, F, english, 4, 45, 2, headphones, 300, 40, 14, Uri 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 16.58, 0, 51, Terrance 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 29.74, 17, 56, Randy 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 42.89, 17, 43, Owen 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 56.05, 20, 3, Morgan 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 69.21, 22, 19, Kasey 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 82.37, 29, 22, Iris 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 95.53, 34, 34, George 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 108.68, 31, 45, Ellis 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 121.84, 34, 25, Chris 
+A1S877ZW1XM95, F, english, 4, 45, 2, sweater, 135, 33, 50, Alex 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 46.83, 5, 23, Beverly 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 130.52, 21, 59, Devin 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 214.2, 30, 57, Felix 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 297.89, 28, 10, Heather 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 381.57, 27, 18, Jessie 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 465.26, 31, 20, Leslie 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 548.94, 33, 15, Nell 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 632.63, 36, 47, Percy 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 716.31, 36, 32, Steph 
+A1S877ZW1XM95, F, english, 4, 45, 2, watch, 800, 40, 44, Uri 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 314.44, 10, 1, Terrance 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 468.39, 17, 7, Randy 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 622.34, 23, 12, Owen 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 776.29, 25, 11, Morgan 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 930.24, 29, 60, Kasey 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 1084.19, 34, 37, Iris 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 1238.14, 32, 24, George 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 1392.09, 36, 9, Ellis 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 1546.04, 40, 49, Chris 
+A1S877ZW1XM95, F, english, 4, 45, 2, laptop, 1699.99, 40, 33, Alex 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 9.99, 0, 28, Alex 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 17.99, 0, 17, Chris 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 25.99, 10, 30, Ellis 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 33.99, 10, 8, George 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 41.99, 23, 54, Iris 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 49.99, 27, 24, Kasey 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 57.99, 26, 29, Morgan 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 65.99, 30, 42, Owen 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 73.99, 34, 26, Randy 
+AGJZBHT9BYABD, M, English, 4, 25, 1, electric kettle, 81.99, 36, 35, Terrance 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 8.5, 0, 22, Uri 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 23.39, 10, 19, Steph 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 38.29, 10, 56, Percy 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 53.18, 17, 57, Nell 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 68.07, 15, 7, Leslie 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 82.97, 29, 23, Jessie 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 97.86, 26, 5, Heather 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 112.76, 30, 53, Felix 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 127.65, 30, 59, Devin 
+AGJZBHT9BYABD, M, English, 4, 25, 1, coffee maker, 142.54, 30, 55, Beverly 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 3.99, 0, 45, Alex 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 35.15, 0, 36, Chris 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 66.31, 9, 9, Ellis 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 97.47, 18, 4, George 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 128.63, 23, 6, Iris 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 159.78, 30, 1, Kasey 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 190.94, 30, 46, Morgan 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 222.1, 29, 14, Owen 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 253.26, 34, 3, Randy 
+AGJZBHT9BYABD, M, English, 4, 25, 1, headphones, 284.42, 33, 49, Terrance 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 10, 0, 39, Uri 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 23.16, 10, 47, Steph 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 36.32, 10, 31, Percy 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 49.47, 21, 37, Nell 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 62.63, 25, 34, Leslie 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 75.79, 28, 32, Jessie 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 88.95, 29, 25, Heather 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 102.11, 36, 50, Felix 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 115.26, 38, 20, Devin 
+AGJZBHT9BYABD, M, English, 4, 25, 1, sweater, 128.42, 31, 27, Beverly 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 4.99, 1, 40, Alex 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 88.68, 10, 12, Chris 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 172.36, 21, 16, Ellis 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 256.05, 20, 2, George 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 339.73, 22, 11, Iris 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 423.42, 30, 21, Kasey 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 507.1, 30, 58, Morgan 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 590.79, 30, 41, Owen 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 674.47, 30, 48, Randy 
+AGJZBHT9BYABD, M, English, 4, 25, 1, watch, 758.16, 31, 51, Terrance 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 237.47, 5, 33, Uri 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 391.42, 10, 18, Steph 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 545.37, 10, 13, Percy 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 699.32, 18, 38, Nell 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 853.27, 20, 15, Leslie 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 1007.22, 23, 60, Jessie 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 1161.17, 26, 52, Heather 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 1315.12, 23, 10, Felix 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 1469.07, 29, 43, Devin 
+AGJZBHT9BYABD, M, English, 4, 25, 1, laptop, 1623.02, 31, 44, Beverly 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 13.99, 0, 43, Beverly 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 21.99, 10, 10, Devin 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 29.99, 10, 40, Felix 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 37.99, 10, 44, Heather 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 45.99, 10, 48, Jessie 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 53.99, 20, 11, Leslie 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 61.99, 20, 12, Nell 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 69.99, 30, 2, Percy 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 77.99, 20, 32, Steph 
+ATJE4JENU7IJF, M, english, 4, 45, 2, electric kettle, 85.99, 30, 17, Uri 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 15.95, 0, 56, Terrance 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 30.84, 10, 9, Randy 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 45.73, 10, 37, Owen 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 60.63, 10, 4, Morgan 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 75.52, 20, 57, Kasey 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 90.42, 30, 50, Iris 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 105.31, 30, 23, George 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 120.2, 30, 54, Ellis 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 135.1, 40, 52, Chris 
+ATJE4JENU7IJF, M, english, 4, 45, 2, coffee maker, 149.99, 40, 49, Alex 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 19.57, 10, 13, Beverly 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 50.73, 20, 3, Devin 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 81.89, 40, 15, Felix 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 113.05, 40, 16, Heather 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 144.21, 40, 36, Jessie 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 175.36, 30, 58, Leslie 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 206.52, 40, 46, Nell 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 237.68, 40, 47, Percy 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 268.84, 40, 34, Steph 
+ATJE4JENU7IJF, M, english, 4, 45, 2, headphones, 300, 40, 39, Uri 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 16.58, 0, 25, Terrance 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 29.74, 0, 28, Randy 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 42.89, 10, 22, Owen 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 56.05, 10, 18, Morgan 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 69.21, 20, 53, Kasey 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 82.37, 30, 24, Iris 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 95.53, 30, 31, George 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 108.68, 40, 14, Ellis 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 121.84, 30, 59, Chris 
+ATJE4JENU7IJF, M, english, 4, 45, 2, sweater, 135, 30, 20, Alex 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 46.83, 0, 45, Beverly 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 130.52, 20, 21, Devin 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 214.2, 30, 29, Felix 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 297.89, 30, 7, Heather 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 381.57, 40, 60, Jessie 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 465.26, 40, 33, Leslie 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 548.94, 40, 55, Nell 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 632.63, 40, 30, Percy 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 716.31, 40, 19, Steph 
+ATJE4JENU7IJF, M, english, 4, 45, 2, watch, 800, 40, 8, Uri 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 314.44, 10, 1, Terrance 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 468.39, 20, 42, Randy 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 622.34, 30, 5, Owen 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 776.29, 30, 38, Morgan 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 930.24, 40, 6, Kasey 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 1084.19, 40, 41, Iris 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 1238.14, 40, 26, George 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 1392.09, 40, 35, Ellis 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 1546.04, 40, 51, Chris 
+ATJE4JENU7IJF, M, english, 4, 45, 2, laptop, 1699.99, 40, 27, Alex 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 9.99, 5, 45, Alex 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 17.99, 10, 60, Chris 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 25.99, 16, 39, Ellis 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 33.99, 10, 23, George 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 41.99, 19, 55, Iris 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 49.99, 18, 54, Kasey 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 57.99, 18, 17, Morgan 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 65.99, 25, 22, Owen 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 73.99, 23, 19, Randy 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, electric kettle, 81.99, 22, 41, Terrance 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 8.5, 2, 36, Uri 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 23.39, 13, 40, Steph 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 38.29, 15, 28, Percy 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 53.18, 29, 1, Nell 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 68.07, 22, 35, Leslie 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 82.97, 25, 7, Jessie 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 97.86, 14, 57, Heather 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 112.76, 23, 44, Felix 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 127.65, 23, 21, Devin 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, coffee maker, 142.54, 19, 46, Beverly 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 3.99, 25, 12, Alex 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 35.15, 12, 18, Chris 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 66.31, 24, 11, Ellis 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 97.47, 14, 13, George 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 128.63, 29, 6, Iris 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 159.78, 22, 49, Kasey 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 190.94, 27, 32, Morgan 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 222.1, 28, 38, Owen 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 253.26, 28, 37, Randy 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, headphones, 284.42, 25, 47, Terrance 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 10, 2, 34, Uri 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 23.16, 8, 48, Steph 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 36.32, 17, 52, Percy 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 49.47, 10, 25, Nell 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 62.63, 15, 30, Leslie 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 75.79, 22, 2, Jessie 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 88.95, 17, 20, Heather 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 102.11, 17, 10, Felix 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 115.26, 20, 50, Devin 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, sweater, 128.42, 23, 29, Beverly 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 4.99, 2, 56, Alex 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 88.68, 9, 27, Chris 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 172.36, 12, 26, Ellis 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 256.05, 24, 33, George 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 339.73, 18, 59, Iris 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 423.42, 21, 58, Kasey 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 507.1, 15, 8, Morgan 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 590.79, 22, 53, Owen 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 674.47, 22, 3, Randy 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, watch, 758.16, 15, 14, Terrance 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 237.47, 10, 15, Uri 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 391.42, 15, 5, Steph 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 545.37, 16, 43, Percy 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 699.32, 23, 24, Nell 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 853.27, 27, 4, Leslie 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 1007.22, 19, 42, Jessie 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 1161.17, 18, 31, Heather 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 1315.12, 18, 16, Felix 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 1469.07, 18, 51, Devin 
+ABOEYY9Y0PFRI, F, English, 4, 45, 1, laptop, 1623.02, 26, 9, Beverly 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 13.99, 2, 50, Beverly 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 21.99, 6, 35, Devin 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 29.99, 16, 16, Felix 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 37.99, 10, 56, Heather 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 45.99, 14, 46, Jessie 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 53.99, 20, 14, Leslie 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 61.99, 17, 55, Nell 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 69.99, 17, 48, Percy 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 77.99, 24, 22, Steph 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, electric kettle, 85.99, 22, 33, Uri 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 15.95, 5, 6, Terrance 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 30.84, 17, 17, Randy 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 45.73, 20, 10, Owen 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 60.63, 17, 2, Morgan 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 75.52, 23, 8, Kasey 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 90.42, 22, 36, Iris 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 105.31, 24, 52, George 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 120.2, 30, 27, Ellis 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 135.1, 32, 25, Chris 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, coffee maker, 149.99, 25, 41, Alex 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 19.57, 4, 13, Beverly 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 50.73, 20, 42, Devin 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 81.89, 22, 32, Felix 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 113.05, 23, 40, Heather 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 144.21, 35, 4, Jessie 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 175.36, 30, 29, Leslie 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 206.52, 38, 34, Nell 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 237.68, 40, 12, Percy 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 268.84, 30, 58, Steph 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, headphones, 300, 40, 39, Uri 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 16.58, 2, 30, Terrance 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 29.74, 14, 24, Randy 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 42.89, 10, 3, Owen 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 56.05, 10, 59, Morgan 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 69.21, 18, 44, Kasey 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 82.37, 23, 51, Iris 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 95.53, 30, 11, George 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 108.68, 30, 15, Ellis 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 121.84, 25, 47, Chris 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, sweater, 135, 26, 43, Alex 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 46.83, 10, 18, Beverly 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 130.52, 20, 57, Devin 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 214.2, 20, 53, Felix 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 297.89, 24, 1, Heather 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 381.57, 23, 54, Jessie 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 465.26, 24, 20, Leslie 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 548.94, 22, 60, Nell 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 632.63, 30, 19, Percy 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 716.31, 26, 45, Steph 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, watch, 800, 28, 9, Uri 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 314.44, 5, 23, Terrance 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 468.39, 13, 21, Randy 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 622.34, 20, 37, Owen 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 776.29, 20, 26, Morgan 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 930.24, 22, 31, Kasey 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 1084.19, 20, 7, Iris 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 1238.14, 25, 49, George 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 1392.09, 26, 38, Ellis 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 1546.04, 30, 28, Chris 
+A2XM6C78S9L8UG, M, english, 6, 45, 2, laptop, 1699.99, 35, 5, Alex 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 9.99, 1, 42, Alex 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 17.99, 9, 46, Chris 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 25.99, 24, 7, Ellis 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 33.99, 10, 52, George 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 41.99, 30, 6, Iris 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 49.99, 20, 19, Kasey 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 57.99, 21, 24, Morgan 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 65.99, 26, 40, Owen 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 73.99, 30, 39, Randy 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, electric kettle, 81.99, 27, 16, Terrance 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 8.5, 0, 5, Uri 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 23.39, 9, 53, Steph 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 38.29, 19, 27, Percy 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 53.18, 20, 8, Nell 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 68.07, 22, 3, Leslie 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 82.97, 25, 2, Jessie 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 97.86, 30, 49, Heather 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 112.76, 30, 9, Felix 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 127.65, 33, 12, Devin 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, coffee maker, 142.54, 30, 22, Beverly 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 3.99, 0, 29, Alex 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 35.15, 10, 47, Chris 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 66.31, 22, 34, Ellis 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 97.47, 30, 17, George 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 128.63, 30, 15, Iris 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 159.78, 30, 23, Kasey 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 190.94, 34, 30, Morgan 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 222.1, 40, 13, Owen 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 253.26, 40, 14, Randy 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, headphones, 284.42, 40, 60, Terrance 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 10, 0, 51, Uri 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 23.16, 10, 45, Steph 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 36.32, 20, 55, Percy 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 49.47, 19, 20, Nell 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 62.63, 30, 1, Leslie 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 75.79, 25, 32, Jessie 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 88.95, 26, 43, Heather 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 102.11, 30, 18, Felix 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 115.26, 30, 41, Devin 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, sweater, 128.42, 30, 50, Beverly 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 4.99, 10, 11, Alex 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 88.68, 30, 37, Chris 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 172.36, 36, 54, Ellis 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 256.05, 40, 31, George 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 339.73, 40, 10, Iris 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 423.42, 40, 58, Kasey 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 507.1, 40, 56, Morgan 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 590.79, 40, 4, Owen 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 674.47, 40, 28, Randy 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, watch, 758.16, 40, 57, Terrance 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 237.47, 5, 36, Uri 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 391.42, 19, 26, Steph 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 545.37, 10, 59, Percy 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 699.32, 22, 38, Nell 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 853.27, 25, 44, Leslie 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 1007.22, 24, 35, Jessie 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 1161.17, 25, 33, Heather 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 1315.12, 26, 25, Felix 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 1469.07, 25, 21, Devin 
+A9S24RMJ0AN6Z, M, English, 4, 25, 1, laptop, 1623.02, 33, 48, Beverly 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 9.99, 17, 6, Alex 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 17.99, 15, 20, Chris 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 25.99, 16, 17, Ellis 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 33.99, 24, 38, George 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 41.99, 23, 21, Iris 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 49.99, 26, 22, Kasey 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 57.99, 27, 42, Morgan 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 65.99, 30, 43, Owen 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 73.99, 26, 41, Randy 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, electric kettle, 81.99, 30, 34, Terrance 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 8.5, 13, 18, Uri 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 23.39, 17, 36, Steph 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 38.29, 23, 50, Percy 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 53.18, 26, 47, Nell 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 68.07, 30, 1, Leslie 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 82.97, 31, 24, Jessie 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 97.86, 26, 14, Heather 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 112.76, 29, 10, Felix 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 127.65, 30, 8, Devin 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, coffee maker, 142.54, 30, 32, Beverly 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 3.99, 8, 4, Alex 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 35.15, 18, 59, Chris 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 66.31, 25, 53, Ellis 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 97.47, 27, 25, George 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 128.63, 31, 2, Iris 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 159.78, 26, 13, Kasey 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 190.94, 33, 7, Morgan 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 222.1, 35, 16, Owen 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 253.26, 34, 54, Randy 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, headphones, 284.42, 34, 44, Terrance 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 10, 17, 12, Uri 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 23.16, 23, 11, Steph 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 36.32, 17, 60, Percy 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 49.47, 22, 48, Nell 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 62.63, 22, 58, Leslie 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 75.79, 25, 55, Jessie 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 88.95, 22, 26, Heather 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 102.11, 25, 40, Felix 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 115.26, 32, 15, Devin 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, sweater, 128.42, 30, 46, Beverly 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 4.99, 12, 3, Alex 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 88.68, 25, 31, Chris 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 172.36, 31, 33, Ellis 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 256.05, 30, 37, George 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 339.73, 33, 49, Iris 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 423.42, 35, 9, Kasey 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 507.1, 37, 45, Morgan 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 590.79, 38, 23, Owen 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 674.47, 38, 29, Randy 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, watch, 758.16, 39, 27, Terrance 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 237.47, 16, 39, Uri 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 391.42, 16, 56, Steph 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 545.37, 17, 57, Percy 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 699.32, 20, 35, Nell 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 853.27, 25, 5, Leslie 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 1007.22, 30, 30, Jessie 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 1161.17, 33, 52, Heather 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 1315.12, 29, 19, Felix 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 1469.07, 34, 28, Devin 
+A22BGKATFNNB6X, M, spanish, 4, 35, 1, laptop, 1623.02, 36, 51, Beverly 

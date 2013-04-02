@@ -1,0 +1,121 @@
+condition,modifier,domain,price,buyer,dummy
+1,an,electric kettle,9.99,Alex,1
+1,an,electric kettle,17.99,Chris,1
+1,an,electric kettle,25.99,Ellis,1
+1,an,electric kettle,33.99,George,1
+1,an,electric kettle,41.99,Iris,1
+1,an,electric kettle,49.99,Kasey,1
+1,an,electric kettle,57.99,Morgan,1
+1,an,electric kettle,65.99,Owen,1
+1,an,electric kettle,73.99,Randy,1
+1,an,electric kettle,81.99,Terrance,1
+1,a,coffee maker,8.5,Uri,1
+1,a,coffee maker,23.39,Steph,1
+1,a,coffee maker,38.29,Percy,1
+1,a,coffee maker,53.18,Nell,1
+1,a,coffee maker,68.07,Leslie,1
+1,a,coffee maker,82.97,Jessie,1
+1,a,coffee maker,97.86,Heather,1
+1,a,coffee maker,112.76,Felix,1
+1,a,coffee maker,127.65,Devin,1
+1,a,coffee maker,142.54,Beverly,1
+1,some,headphones,3.99,Alex,1
+1,some,headphones,35.15,Chris,1
+1,some,headphones,66.31,Ellis,1
+1,some,headphones,97.47,George,1
+1,some,headphones,128.63,Iris,1
+1,some,headphones,159.78,Kasey,1
+1,some,headphones,190.94,Morgan,1
+1,some,headphones,222.1,Owen,1
+1,some,headphones,253.26,Randy,1
+1,some,headphones,284.42,Terrance,1
+1,a,sweater,10,Uri,1
+1,a,sweater,23.16,Steph,1
+1,a,sweater,36.32,Percy,1
+1,a,sweater,49.47,Nell,1
+1,a,sweater,62.63,Leslie,1
+1,a,sweater,75.79,Jessie,1
+1,a,sweater,88.95,Heather,1
+1,a,sweater,102.11,Felix,1
+1,a,sweater,115.26,Devin,1
+1,a,sweater,128.42,Beverly,1
+1,a,watch,4.99,Alex,1
+1,a,watch,88.68,Chris,1
+1,a,watch,172.36,Ellis,1
+1,a,watch,256.05,George,1
+1,a,watch,339.73,Iris,1
+1,a,watch,423.42,Kasey,1
+1,a,watch,507.1,Morgan,1
+1,a,watch,590.79,Owen,1
+1,a,watch,674.47,Randy,1
+1,a,watch,758.16,Terrance,1
+1,a,laptop,237.47,Uri,1
+1,a,laptop,391.42,Steph,1
+1,a,laptop,545.37,Percy,1
+1,a,laptop,699.32,Nell,1
+1,a,laptop,853.27,Leslie,1
+1,a,laptop,1007.22,Jessie,1
+1,a,laptop,1161.17,Heather,1
+1,a,laptop,1315.12,Felix,1
+1,a,laptop,1469.07,Devin,1
+1,a,laptop,1623.02,Beverly,1
+2,an,electric kettle,13.99,Beverly,1
+2,an,electric kettle,21.99,Devin,1
+2,an,electric kettle,29.99,Felix,1
+2,an,electric kettle,37.99,Heather,1
+2,an,electric kettle,45.99,Jessie,1
+2,an,electric kettle,53.99,Leslie,1
+2,an,electric kettle,61.99,Nell,1
+2,an,electric kettle,69.99,Percy,1
+2,an,electric kettle,77.99,Steph,1
+2,an,electric kettle,85.99,Uri,1
+2,a,coffee maker,15.95,Terrance,1
+2,a,coffee maker,30.84,Randy,1
+2,a,coffee maker,45.73,Owen,1
+2,a,coffee maker,60.63,Morgan,1
+2,a,coffee maker,75.52,Kasey,1
+2,a,coffee maker,90.42,Iris,1
+2,a,coffee maker,105.31,George,1
+2,a,coffee maker,120.2,Ellis,1
+2,a,coffee maker,135.1,Chris,1
+2,a,coffee maker,149.99,Alex,1
+2,some,headphones,19.57,Beverly,1
+2,some,headphones,50.73,Devin,1
+2,some,headphones,81.89,Felix,1
+2,some,headphones,113.05,Heather,1
+2,some,headphones,144.21,Jessie,1
+2,some,headphones,175.36,Leslie,1
+2,some,headphones,206.52,Nell,1
+2,some,headphones,237.68,Percy,1
+2,some,headphones,268.84,Steph,1
+2,some,headphones,300,Uri,1
+2,a,sweater,16.58,Terrance,1
+2,a,sweater,29.74,Randy,1
+2,a,sweater,42.89,Owen,1
+2,a,sweater,56.05,Morgan,1
+2,a,sweater,69.21,Kasey,1
+2,a,sweater,82.37,Iris,1
+2,a,sweater,95.53,George,1
+2,a,sweater,108.68,Ellis,1
+2,a,sweater,121.84,Chris,1
+2,a,sweater,135,Alex,1
+2,a,watch,46.83,Beverly,1
+2,a,watch,130.52,Devin,1
+2,a,watch,214.2,Felix,1
+2,a,watch,297.89,Heather,1
+2,a,watch,381.57,Jessie,1
+2,a,watch,465.26,Leslie,1
+2,a,watch,548.94,Nell,1
+2,a,watch,632.63,Percy,1
+2,a,watch,716.31,Steph,1
+2,a,watch,800,Uri,1
+2,a,laptop,314.44,Terrance,1
+2,a,laptop,468.39,Randy,1
+2,a,laptop,622.34,Owen,1
+2,a,laptop,776.29,Morgan,1
+2,a,laptop,930.24,Kasey,1
+2,a,laptop,1084.19,Iris,1
+2,a,laptop,1238.14,George,1
+2,a,laptop,1392.09,Ellis,1
+2,a,laptop,1546.04,Chris,1
+2,a,laptop,1699.99,Alex,1

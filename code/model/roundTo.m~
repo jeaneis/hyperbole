@@ -1,0 +1,6 @@
+% takes in a number and rounds it to the nearest number that's divisable by
+% "unit"
+function roundedNumber = roundTo(number, unit)
+    roundedNumber = roundedNumber - mod(number, unit)
+
+end

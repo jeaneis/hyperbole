@@ -1,0 +1,89 @@
+;;This is a version of the exaggeration model with semantic free variables for the variance of the gaussian meanings, and a goal that determines whether the speaker wants to communicate just the valence, just the world state, or both
+
+
+
+(define states (list '1 '2 '3 '4))
+(define (state-prior) (multinomial states '(0.5 0.25 0.15 0.1)))
+
+(define utterances states)
+(define (utterance-prior) (multinomial utterances '(0.3 0.3 0.3 0.1)))
+
+(define valences (list '0 '1))
+;;valence-prior gives the conditional probability, for each utterance, that it has valence 0 (i.e. no valence)
+(define valence-prior (list (list '1 '0.8) (list '2 '0.7) (list '3 '0.6)  (list '4 '0.5)))
+(define (sample-valence state prior)
+  (let ((current-state-valence-pair (first prior)))
+    (if (equal? state (first current-state-valence-pair))
+        (if (flip (second current-state-valence-pair))
+            '0
+            '1)
+        (sample-valence state (rest prior)))))
+
+(define goals (list 'state-and-valence 'just-state 'just-valence))
+(define (goal-prior) (multinomial goals '(0.3333333 0.3333333 0.3333333)))
+
+(define variance-list '(0.1 1))
+(define (variance-prior) (multinomial variance-list '(0.5 0.5)))
+
+
+(define (goal-satisfied? goal listener-state-valence-pair speaker-state speaker-valence)
+  (case goal
+    (('state-and-valence) (and (equal? (first listener-state-valence-pair) speaker-state)
+                               (equal? (second listener-state-valence-pair) speaker-valence)))
+    (('just-state) (equal? (first listener-state-valence-pair) speaker-state))
+    (('just-valence) (equal? (second listener-state-valence-pair) speaker-valence))))
+
+
+(define free-variables utterances)
+
+(define (bind-semantic-variables)
+  (map sample-variance free-variables))
+
+(define (sample-variance utterance)
+  (list utterance (variance-prior)))
+
+(define (get-utterance-variance utterance bound-variables)
+  (let ((current-variable (first bound-variables)))
+    (if (equal? utterance (first current-variable))
+        (second current-variable)
+        (get-utterance-variance utterance (rest bound-variables)))))
+
+
+(define (literal-interpretation utterance bound-variables state)
+  (let* ((variance (get-utterance-variance utterance bound-variables))
+         (distance (/ (- utterance state) variance)))
+    (flip (exp (* -1 (* distance distance))))))
+;;this computes the (unnormalized) gaussian density at the state
+
+(define (speaker state valence goal semantic-variables depth)
+  (rejection-query
+   (define utterance (utterance-prior))
+   
+   utterance
+
+   (all (repeat hardness
+                (lambda ()
+                  (goal-satisfied? goal
+                                   (listener utterance semantic-variables depth)
+                                   state
+                                   valence))))
+   ))
+
+(define (listener utterance semantic-variables depth)
+  (rejection-query
+   (define state (state-prior))
+   (define valence (sample-valence state valence-prior))
+   (define speaker-goal (goal-prior))
+   
+   (list state valence)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance semantic-variables state)
+       (equal? utterance
+               (speaker state valence speaker-goal (bind-semantic-variables) (- depth 1))))
+   ))
+
+(define depth 5)
+(define hardness 2)
+(define (sample1) (listener '1 (bind-semantic-variables) depth))
+(sample1)
