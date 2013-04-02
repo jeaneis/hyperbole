@@ -20,11 +20,11 @@ D = csvread('../mTurk_priors/data/laptop.csv');
 %Reads affect priors from csv
 A = csvread('../mTurk_priors/data/laptop_affect.csv', 2, 1);
 
+%% Need to find a fitted line (continous) for lowess regression
+%% So that we can find prob affect given any price value
 %Smoothes affect priors
 smoothed_affect_prior = [A(:,1), smooth(A(:,1), A(:,2), 'lowess')];
 
-%Looks up affect prior for each price
-affect_given_prices = getProbAffect(prices, smoothed_affect_prior);
 
 %These are the possible meanings, i.e. the numerical states
 meanings_round = [roundTo(prices, 10), 10000];
