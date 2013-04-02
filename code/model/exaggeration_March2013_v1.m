@@ -14,11 +14,11 @@ hardness = 2;
 depth = 1;
 
 %Reads price priors from csv
-D = csvread('../mTurk_priors/data/laptop.csv');
+D = csvread('../../data/mTurkExp/pricePriors/laptop.csv');
 [counts, prices] = hist(D, 6);
 
 %Reads affect priors from csv
-A = csvread('../mTurk_priors/data/laptop_affect.csv', 2, 1);
+A = csvread('../../data/mTurkExp/affectPriors/laptop_affect.csv', 2, 1);
 
 %% Need to find a fitted line (continous) for lowess regression
 %% So that we can find prob affect given any price value

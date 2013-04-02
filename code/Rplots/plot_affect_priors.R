@@ -1,3 +1,4 @@
+library(ggplot2)
 summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
                       conf.interval=.95, .drop=TRUE) {
   require(plyr)
@@ -34,7 +35,7 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
   return(datac)
 }
 
-a <- read.csv("data/results_long.csv", sep=",", strip.white=TRUE)
+a <- read.csv("../../data/mTurkExp/affectPriors/raw/results_long.csv", sep=",", strip.white=TRUE)
 a$probability <- a$result / 40
 a.summary <- summarySE(a, measurevar="probability", groupvars=c("domain","price"))
 
@@ -50,7 +51,7 @@ ggplot(laptop.summary, aes(x=price, y=probability)) +
   ggtitle("Laptop affect priors")
 
 laptop.affect.priors <- data.frame(price=laptop.summary$price, prob=laptop.summary$probability)
-write.csv(laptop.affect.priors, "../../mTurk_priors/data/laptop_affect.csv")
+write.csv(laptop.affect.priors, "../../data/mTurkExp/affectPriors/laptop_affect.csv")
 
 kettle.summary <- subset(a.summary, domain=="electric kettle")
 ggplot(kettle.summary, aes(x=price, y=probability)) +
@@ -64,7 +65,7 @@ ggplot(kettle.summary, aes(x=price, y=probability)) +
   ggtitle("Electric kettle affect priors")
 
 kettle.affect.priors <- data.frame(price=kettle.summary$price, prob=kettle.summary$probability)
-write.csv(kettle.affect.priors, "../../mTurk_priors/data/kettle_affect.csv")
+write.csv(kettle.affect.priors, "../../data/mTurkExp/affectPriors/kettle_affect.csv")
 
 coffee.summary <- subset(a.summary, domain=="coffee maker")
 ggplot(coffee.summary, aes(x=price, y=probability)) +
@@ -78,7 +79,7 @@ ggplot(coffee.summary, aes(x=price, y=probability)) +
   ggtitle("Coffee maker affect priors")
 
 coffee.affect.priors <- data.frame(price=coffee.summary$price, prob=coffee.summary$probability)
-write.csv(coffee.affect.priors, "../../mTurk_priors/data/coffee_affect.csv")
+write.csv(coffee.affect.priors, "../../data/mTurkExp/affectPriors/coffee_affect.csv")
 
 sweater.summary <- subset(a.summary, domain=="sweater")
 ggplot(sweater.summary, aes(x=price, y=probability)) +
@@ -92,7 +93,7 @@ ggplot(sweater.summary, aes(x=price, y=probability)) +
   ggtitle("Sweater affect priors")
 
 sweater.affect.priors <- data.frame(price=sweater.summary$price, prob=sweater.summary$probability)
-write.csv(sweater.affect.priors, "../../mTurk_priors/data/sweater_affect.csv")
+write.csv(sweater.affect.priors, "../../data/mTurkExp/affectPriors/sweater_affect.csv")
 
 watch.summary <- subset(a.summary, domain=="watch")
 ggplot(watch.summary, aes(x=price, y=probability)) +
@@ -106,7 +107,7 @@ ggplot(watch.summary, aes(x=price, y=probability)) +
   ggtitle("Watch affect priors")
 
 watch.affect.priors <- data.frame(price=watch.summary$price, prob=watch.summary$probability)
-write.csv(watch.affect.priors, "../../mTurk_priors/data/watch_affect.csv")
+write.csv(watch.affect.priors, "../../data/mTurkExp/affectPriors/watch_affect.csv")
 
 headphones.summary <- subset(a.summary, domain=="headphones")
 ggplot(headphones.summary, aes(x=price, y=probability)) +
@@ -120,5 +121,5 @@ ggplot(headphones.summary, aes(x=price, y=probability)) +
   ggtitle("Headphones affect priors")
 
 headphones.affect.priors <- data.frame(price=headphones.summary$price, prob=headphones.summary$probability)
-write.csv(headphones.affect.priors, "../../mTurk_priors/data/headphones_affect.csv")
+write.csv(headphones.affect.priors, "../../data/mTurkExp/affectPriors/headphones_affect.csv")
 

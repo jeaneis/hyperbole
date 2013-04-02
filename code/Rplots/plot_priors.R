@@ -1,6 +1,6 @@
 library(ggplot2)
 ## electric kettles
-prices_kettle <- read.csv("scrape/electric_kettle.txt")
+prices_kettle <- read.csv("../../data/scrape/electric_kettle.txt")
 
 prices_kettle$price = prices_kettle[,1]
 
@@ -15,7 +15,7 @@ ggplot(kettle_trimmed, aes(x=price)) +
   ggtitle("Electric Kettle")
 
 ## coffee maker
-prices_coffee <- read.csv("scrape/coffee_maker.txt")
+prices_coffee <- read.csv("../../data/scrape/coffee_maker.txt")
 
 prices_coffee$price = prices_coffee[,1]
 ggplot(prices_coffee, aes(x=price)) +
@@ -29,7 +29,7 @@ median(prices_coffee$price)
 sd(prices_coffee$price)
 
 ## head phones
-prices_headphones <- read.csv("scrape/headphones.txt")
+prices_headphones <- read.csv("../../data/scrape/headphones.txt")
 prices_headphones$price = prices_headphones[,1]
 ggplot(prices_headphones, aes(x=price)) +
   geom_histogram(binwidth=10, colour="black", fill="white") +
@@ -42,7 +42,7 @@ median(prices_headphones$price)
 sd(prices_headphones$price)
 
 ## sweaters
-prices_sweaters <- read.csv("scrape/sweater.txt")
+prices_sweaters <- read.csv("../../data/scrape/sweater.txt")
 prices_sweaters$price = prices_sweaters[,1]
 ggplot(prices_sweaters, aes(x=price)) +
   geom_histogram(binwidth=10, colour="black", fill="white") +
@@ -55,7 +55,7 @@ median(prices_sweaters$price)
 sd(prices_sweaters$price)
 
 ## watches
-prices_watches <- read.csv("scrape/watch.txt")
+prices_watches <- read.csv("../../data/scrape/watch.txt")
 prices_watches$price = prices_watches[,1]
 ggplot(prices_watches, aes(x=price)) +
   geom_histogram(binwidth=50, colour="black", fill="white") +
@@ -68,7 +68,7 @@ median(prices_watches$price)
 sd(prices_watches$price)
 
 ## laptops
-prices_laptops <- read.csv("scrape/laptop.txt")
+prices_laptops <- read.csv("../../data/scrape/laptop.txt")
 prices_laptops$price = prices_laptops[,1]
 ggplot(prices_laptops, aes(x=price)) +
   geom_histogram(binwidth=50, colour="black", fill="white") +
@@ -81,7 +81,7 @@ median(prices_laptops$price)
 sd(prices_laptops$price)
 
 ## laptops-newegg
-prices_laptops <- read.csv("scrape/newegg_laptop.txt")
+prices_laptops <- read.csv("../../data/scrape/newegg_laptop.txt")
 prices_laptops$price = prices_laptops[,1]
 ggplot(prices_laptops, aes(x=price)) +
   geom_histogram(binwidth=50, colour="black", fill="white") +
@@ -96,7 +96,7 @@ sd(prices_laptops$price)
 
 ### human priors
 
-mturk <- read.csv("mTurk_priors/data/prices1+2.csv")
+mturk <- read.csv("../../data/mTurkExp/pricePriors/prices1+2.csv")
 
 
 

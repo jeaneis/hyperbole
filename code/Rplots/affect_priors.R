@@ -1,4 +1,4 @@
-mturk <- read.csv("mTurk_priors/data/prices1+2.csv")
+mturk <- read.csv("../../data/mTurkExp/pricePriors/prices1+2.csv")
 
 # make vector of prices by fixed intervals
 rounded.kettle <- round(seq(from=min(mturk$electric.kettle), to=max(mturk$electric.kettle), length.out=20), 2)
@@ -12,4 +12,4 @@ prices.rounded <- data.frame(kettle=rounded.kettle, coffee=rounded.coffee,
                              headphones=rounded.headphones, sweater=rounded.sweater,watch=rounded.watch,
                              laptop=rounded.laptop)
 
-write.csv(prices.rounded, "mTurk_priors/data/prices_rounded.csv")
+write.csv(prices.rounded, "../../data/mTurkExp/pricePriors/prices_rounded.csv")
