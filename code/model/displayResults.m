@@ -1,4 +1,4 @@
-function [displayMat] = displayResults(listener, meanings_labels, utterances_labels, outFileName)
+function [displayMat] = displayResults(listener, meanings_labels, utterances_labels, affect_prior, outFileName)
 
 assert(length(size(listener)) == 3);
  
@@ -22,7 +22,7 @@ displayMat(:,1:3) = IndexToAssignment(1:numel(listener), size(listener));
 displayMat(:,4)   = reshape(listener, 1, numel(listener))';
 
 % writeToFileNoLabels(displayMat, outFileName);
-writeToFile(displayMat, meanings_labels, utterances_labels, outFileName);
+writeToFile(displayMat, meanings_labels, utterances_labels, affect_prior, outFileName);
  
 end
 
@@ -34,17 +34,18 @@ A = mod(floor(repmat(I(:) - 1, 1, length(D)) ./ repmat(cumprod([1, D(1:end - 1)]
   
 end
 
-function writeToFile( displayMat, meanings_labels, utterances_labels, outFileName )
+function writeToFile( displayMat, meanings_labels, utterances_labels, affect_prior, outFileName )
 
 fid = fopen(['../../data/model/predict_',outFileName], 'w');
-fprintf(fid, 'utterance,meaning,valence,probability\n');
+fprintf(fid, 'utterance,meaning,valence,probability,affect_prior\n');
 
 for i = 1:size(displayMat,1),
     fprintf(fid, '%s,%s,%s,%s\n', ...
         num2str(utterances_labels(displayMat(i,1))), ... 
         num2str(meanings_labels(displayMat(i,2))), ...
         num2str(displayMat(i,3)), ...
-        num2str(displayMat(i,4)));
+        num2str(displayMat(i,4)), ...
+        num2str(affect_prior(displayMat(i,2))));
 end
  
 fclose(fid);
