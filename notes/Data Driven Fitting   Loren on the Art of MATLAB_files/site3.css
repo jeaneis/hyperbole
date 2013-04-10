@@ -1,0 +1,383 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face { 
+	font-family:Futura; 
+	src:url('http://www.mathworks.com/includes_content/nextgen/fonts/FuturaStd-Book.otf');
+	font-weight: normal;
+	}
+@font-face { 
+	font-family:Futura; 
+	src:url('http://www.mathworks.com/includes_content/nextgen/fonts/FuturaStd-Heavy.otf');
+	font-weight: bold;
+	}
+@font-face { 
+	font-family:Futura-Medium; 
+	src:url('http://www.mathworks.com/includes_content/nextgen/fonts/FuturaStd-Medium.otf');
+	font-weight: normal;
+	}
+@font-face { 
+	font-family:Futura-Medium; 
+	src:url('http://www.mathworks.com/includes_content/nextgen/fonts/FuturaStd-Heavy.otf');
+	font-weight: bold;
+	}
+@font-face { 
+	font-family:Futura-Light; 
+	src:url('http://www.mathworks.com/includes_content/nextgen/fonts/FuturaStd-Light.otf');
+	font-weight: normal;
+	}
+@font-face { 
+	font-family:Futura-Light; 
+	src:url('http://www.mathworks.com/includes_content/nextgen/fonts/FuturaStd-Medium.otf');
+	font-weight: bold;
+	}
+
+html { min-height:100%; margin-bottom:1px; }/*Force scrollbar to stop jumping*/
+
+body, p, ul, ol, li, table, tr, td, th, a, h2, h3, h4, .head1, .head2, .head3, .head4, .label, form { font-family:Arial, Helvetica, sans-serif; }
+h2, h3, h4, .head1, .head2, .head3, .head4 { font-family:Arial, Helvetica, sans-serif; }
+
+body, p, table, tr, td, th, ul, ol, li, blockquote, a, .menu, .selectedmenu, .tab, .tabbody, .button, .acttab, form  { font-size: 10pt; }
+
+body    { 
+	color: #000000; 
+	background: #d6d6d6 url(http://www.mathworks.com/images/nextgen/global/bg_page.gif) repeat-x top; 
+	text-align:center; 
+	margin:0;
+	padding:0;
+	}
+	
+table#mainbody {
+ position:relative; 
+ width:960px; 
+ clear:both;
+}
+
+table#mainbody table {
+	width:881px!important;
+	margin-top:10px;
+	}
+table#mainbody table td {padding-left:20px; }
+a 	{
+	color:#005FCE;
+	text-decoration:none;
+}
+a:focus,
+a:hover 	{text-decoration:underline;}
+a:visited	{color:#4C8FDD;}
+
+
+/* KLUDGE FOR FE REPORTS */
+font {font-family:Arial, Helvetica, sans-serif; }
+
+th   {background-color:#2B5680; color:#FFFFFF; font-weight: bold; text-align:left ; padding: 4px 5px 4px 5px; }
+td.rightpad   { padding-right:10px; }
+
+.monospace {font-family: monospace;}
+
+h1 { 
+	color:#BF8C02;
+	font-family:Futura,Arial,Helvetica,sans-serif;
+	font-weight:bold;
+	font-size:18px;
+	line-height: 20pt;
+	margin-left:-.05em; 
+	padding:0; 
+	color:#bf8c02; 
+	margin:1.3em 0  4px;
+	}
+h2 { font-size: 13pt; font-weight:bold; color:#484848;margin-bottom:10px; }
+h2.pagetitle {margin-top:10px;}
+h2.brule {margin-bottom:0px;}
+h3 { font-size: 12pt; font-weight:bold; color:#c08d03; }
+h4 { font-size: 11pt; font-weight:bold; color:#868d96; }
+h5 { font-size: 9pt; font-weight: bold; color:#c08d03;  }
+h6 { font-size:  9pt; font-weight: bold; color:#ffffff; }
+
+p { margin: 0 0 1.15em; max-width: 600px; }
+
+em {font-style:italic;}
+/* specific classes */
+/* Same as H1 except Inline.  These remove the spaces caused by H Elements*/
+
+.head1     { font-weight: bold; display: inline; }
+.head2       { font-weight: bold; display: inline; }
+.head3       { color: black; font-weight: bold; display: inline; }
+.head3 a { font-weight: bold; display: inline; }
+.head4       { color: black; font-weight: bold;  display: inline; }
+.head4 a { font-weight: bold;  display: inline; }
+
+/*These styles are for cm only*/
+h2.nbmrgn {  margin-bottom: -15px; }
+h3.nbmrgn {  margin-bottom: -13px; }
+h4.nbmrgn {  margin-bottom: -14px; }
+
+/*Bulleted List Styles */
+
+ul, ol      { margin:0; padding:0; margin-bottom:.5em;}
+ul          { list-style-type:none; }
+ol          { list-style-type: decimal; }
+
+ul li { background:url(http://www.mathworks.com/matlabcentral/images/bullet.gif) no-repeat left 8px; padding-left:1em;}
+
+div.ulnleftm {margin-left: -23px;}
+div.olnleftm {margin-left: -15px;}
+ul.ntopm, ol.ntopm {margin-top: 2px;}
+/*The new modern browser only ul style*/
+ul.nleftm {margin-left:16px; margin-top:2px; margin-bottom:2px; }
+
+/*legacy ul style*/		
+li.ntopm      { margin-top: -16px; }
+
+em.caption     {  }
+
+img.rightmrgn      { margin-right: 10px; margin-bottom: 10px; }
+
+code  { font-family: monospace; display:block;}
+samp  { font-family: monospace; margin-left:25px; display:block;}
+code.fnctn {display:inline;}
+
+sup  { font-size: x-small; }
+a:link.undrln {text-decoration:underline}
+
+
+/*Newsgroup Header Box */
+.tabheader {color: white; font-weight:bold;  padding-left:10px; padding-right:10px}
+
+.ornghd {color: #c86a02; font-weight:bold;}
+
+
+
+
+/*Global Internal Navbar*/
+
+.appMenuLayerClass { position: absolute; top: 40px; left: 400px; visibility: hidden }
+#appMenuDiv { position: absolute; top: 40px; left: 400px; visibility: hidden }
+.menuItemClass {cursor: hand; border-bottom: 1px solid gray; background-color: white;  padding-left: 10px; padding-right: 10px }
+
+
+
+#bcrumbs {}
+#bcrumbs a { font-weight:normal}
+#bcrumbs a:hover {text-decoration:underline}
+.alertbox {border: 1px solid black; background-color:#E6EBF8;  }
+.alertbox td {padding:7px;}
+
+
+
+
+table#header {width:779px!important;}
+table#mainframe {width:779px!important;}
+table#topnav {width:779px!important;}
+
+pre {font-family:"Courier New", Courier, mono;}
+
+table#mainbody table#localnav {
+	margin-left:32px; padding:0; position:absolute; background:none; background-color:#fff!important; width:177px!important;
+
+}
+table#mainbody table#localnav td {padding-right:10px;}
+
+#localnav .sidebar_title {
+    color: #6c6c6c;
+    padding-top: 0.5ex;
+    padding-bottom: 0.5ex;
+	font-size:10pt;
+}
+
+
+
+#localnav td.npad {padding:0px; }
+
+
+td.npad img {display:none;}
+
+/* HEADER */
+div#header { 
+width:960px;
+height: 88px;
+margin:0 auto;
+position:relative;
+display:block;
+}
+#header {
+color:#555555;
+}
+div#header-top {
+	display:block;
+	overflow:hidden; 
+	background:none;
+}
+
+br.clearboth {clear:both;}
+	
+/* HEADER */ 
+
+div#header, div#header a, div#header a:hover,div#header a:focus,div#header a:visited  { 
+	text-decoration:none;
+	}
+div#header ul, div#header ol {
+	margin-bottom:.9em; 
+	margin:0 auto; 
+	padding:0; 
+	list-style-type:none; 
+	width:auto;	
+	}
+
+#logo {
+background:url(http://www.mathworks.com/matlabcentral/images/mlclogo.gif) no-repeat scroll 0 10px transparent;
+height:88px;
+float:left;
+width:320px;
+}
+#logo a {width:100%; height:100%; display:block;}
+#logo a:hover {text-decoration:none;}
+#headertools {
+display:block;
+float:right;
+width:500px;
+}
+ol#access2 { position:relative; right:0; top:18px; }
+ol#access2 li {display:inline; padding-left:0!important;}
+ol#access2 #accountname {font-size:8pt;}
+ol#access2 a {	font-weight:bold; padding-left:14px; padding-right:10px; background:transparent url(/images/nextgen/line-dark.gif) left no-repeat; font-size:8pt;}
+#headertools .first a {background:none;}
+
+/* GLOBAL NAV */
+/* Global Navigation */
+#globalnav { position:absolute; left:0; top:59px;width:700px;  text-align: left; display:block; height:32px; overflow:hidden; }
+		#globalnav ol {height:25px; display:block; padding-top:0;  padding:0px; _position:relative; _left:-34px;}
+		#globalnav ol li{ font-size:11px; background:transparent url(globalnav_divider.gif) no-repeat right;  margin-left:0px;display:block; float:left;clear:none;  padding:0; width:auto;  }
+		#globalnav ol li.mathworks {background:none;}
+		#globalnav ol li a {font-weight:bold; line-height:25px; text-align:center; padding:3px 10px; display:inline; font-size:11px;  }
+		#globalnav ol li.community a{ display:inline; text-align:center;}
+		#globalnav ol li.mathworks a{ display:inline; text-align:center; }
+		#globalnav ol li a, #globalnav ol li a:hover, #globalnav ol li a:visited {color:#2354A1; }
+		#globalnav ol li a:hover{text-decoration:none;  background-color:#e1e1e1;  }
+#globalnav div {margin-left:0px!important; width:800px!important;}
+/* end of Global Navigation */
+label {
+float:left;
+padding-right:6px;
+}
+input {
+font:11px Arial,Helvetica,sans-serif;
+margin:0 2px 0 0;
+padding:2px;
+}
+#header input {
+font-size:10px;
+margin:0;
+width:100px !important;
+}
+
+
+
+#headertools form {
+float:right;
+margin:5px 0 0;
+}
+#header form label {
+font-size:10px;
+padding-top:1px;
+}
+
+#header form select {
+	background: #FFFFFF;
+border:1px solid #CCCCCC;
+float:left;
+font-size:11px;
+margin:0 0.5em 0 0;
+font:10px Arial,Helvetica,sans-serif !important;
+padding:0;
+width:140px;
+}
+#header #searchbutton {
+background:url(http://blogs.mathworks.com/images/nextgen/gobutton.gif) no-repeat scroll left top transparent !important;
+color:#DEDDDD !important;
+cursor:pointer;
+font-size:0;
+margin:0;
+padding:0;
+height:24px;
+width:24px !important;
+margin-left:2px;
+}
+#search_field {
+	margin:0px;
+	float:left;
+}
+/* END OF HEADER */
+
+
+ /* FOOTER */
+ 
+#globalfooter {display:none;}
+div#footer {
+ 	width:960px; background:transparent; margin:0 auto; text-align:left; color:#717171; margin-top:0;
+	margin-bottom:30px;
+}
+div#footer div.container p, div#footer div.container p a {font-size:10px!important;}
+div#footer div.container ul li, div#footer div.container ul li a {font-size:10px!important;}
+div#footer ul li {display:inline; }
+div#footer .container { width:954px; overflow:hidden; border:none!important; padding-left:4px; padding-right:4px; padding-top:6px;}
+div#footer p {border:none; margin:0; padding:0; }
+div#footer ul {padding:0; text-align:right;}
+div#footer ul li {
+	display: inline;
+	list-style-type: none;
+	padding: 0 9px 0 6px;
+	border-right: 1px solid #bfbfbf;
+	}
+div#footer ul li.first {
+	border-left: none;
+	}
+	#footer ul li.first {
+	border-left: none;
+	padding-left:0;
+	}
+	#footer ul li.copyright, #footer ul li.title {
+float:left;
+padding-right:30px;
+border:none;
+}
+	#footer ul li.last {
+	margin-right:0px;
+	padding-right:2px;
+	border:none;
+	}
+	#footer ul#matlabcentral li.last {
+	margin-right:20px;
+	}
+	
+	 #footer ul li.icon {
+	border: none;
+	padding-left:1px;
+	padding-right:1px;
+	}
+	#footer li.icon span.text {
+		display:block;
+		position:relative;
+		left:-10000px;
+		
+		margin-left:-1000px;
+	}
+	#footer ul li.icon a {
+		background-image:url(http://www.mathworks.com/images/nextgen/global/social-icons.gif);
+		background-repeat:no-repeat;
+		display:inline-block;
+		width:16px;
+		height:16px;
+		overflow:hidden;
+		position:relative;
+		top:3px;
+	}
+ #footer a.twitter {background-position: -21px 0px;}
+#footer a.twitter:hover {background-position: -21px -20px;}
+ #footer a.facebook {background-position: 0px 0px;}
+#footer a.facebook:hover {background-position: 0px -20px;}
+ #footer a.rssfeed {background-position: -42px 0px;}
+#footer a.rssfeed:hover {background-position: -42px -20px;}
+	/* end of footer */
+	
+a h1 {text-decoration:none;}

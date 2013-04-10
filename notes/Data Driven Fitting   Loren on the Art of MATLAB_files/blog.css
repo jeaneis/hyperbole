@@ -1,0 +1,359 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1 { font-size:18pt; }
+
+h2.titlebg { font-size:13pt; color:#4a4f55; padding:4px!important; width:650px; overflow:hidden;}
+h2.brule {color:gray; font-weight:bold; padding:4px!important; font-size:9pt; margin-top:10pt; width:650px; overflow:hidden;}
+
+h3 { 
+    color:#4A4F55; 
+    padding:0px; 
+    margin:5px 0px 5px; 
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:11pt; 
+    font-weight:bold; 
+    line-height:140%; 
+    border-bottom:1px solid #d6d4d4; 
+    display:block; 
+}
+h4 { 
+    color:#4A4F55; 
+    padding:0px; 
+    margin:0px 0px 5px; 
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:10pt; 
+    font-weight:bold; 
+    line-height:140%; 
+    border-bottom:1px solid #d6d4d4; 
+    display:block; 
+}
+body, p, table, tr, td, th, ul, ol, li, blockquote, a, .menu, .selectedmenu, .tab, .tabbody, .button, .acttab, form, small {
+    font-size:12px;
+    line-height:150%;
+}
+
+.brule {border-bottom: 1px solid gray; }
+
+.latest {padding: 5px; }
+
+.archive {padding: 5px; }
+
+.titlebg {background-color:#f2f2f2; padding:4px 9px 3px 9px; margin-bottom:9px; }
+
+#newfeat a:link{ color:#003399; }
+#newfeat a:visited{ color:#708090; }
+#banner h1 a:link{text-decoration:none; color:#990000}
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; background:none; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+ul,pre {
+    margin-top: 5px;
+}
+
+#footer ul li {background:none;}
+
+.formelem { border:1px solid black; }
+
+.bloghome h1 {margin-top:50px; font-size:18px;}
+
+table#mainbody {
+    background:url(http://www.mathworks.com/matlabcentral/images/mlc-blogs-banner.jpg) no-repeat left top #FFFFFF;
+    clear:both;
+    margin:0 auto;
+    padding:0;
+    position:relative;
+    top:0;
+    text-align:left;
+    width:960px;
+    border:1px solid #C9C9C9;
+}
+
+table#mainbody td {
+    padding:0;
+    padding-top:40px;
+}
+table#mainbody table td {
+	padding-top:4px;
+}
+table#mainbody table {
+    margin:0!important;
+    padding:0;
+    margin-top:0;
+    width:940px !important;
+    overflow:hidden;
+}
+table#mainbody table.bloghome {
+    width:934px !important;
+    overflow:hidden;
+    margin-bottom:40px;
+}
+table#mainbody table p {
+	padding-right:6px;
+}
+table#mainbody table table {
+    width:650px !important;
+    overflow:hidden;
+}
+table#mainbody table table td {
+  width:50%;
+}
+table#mainbody table table p {
+  width:300px !important;
+  overflow:hidden;
+}
+table#mainbody table div {
+    margin:0;
+    padding:0;
+    width:650px;
+    overflow:hidden;
+}
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+form {
+    margin-top:0px;
+}
+body.cmnty li a:link {
+    text-decoration: none;
+}
+body.cmnty li a:visited {
+    text-decoration: none;
+}
+body.cmnty li a:active {
+    text-decoration: underline;
+}
+body.cmnty li a:hover {
+    text-decoration: underline;
+}
+
+body.cmnty a:link,a:visited {
+    text-decoration: none;
+}
+body.cmnty a:visited {
+    text-decoration: none;
+}
+body.cmnty a:active {
+    text-decoration: none;
+}
+body.cmnty a:hover {
+    text-decoration: underline;
+}
+td .Xside {
+  
+}
+
+#topicslinks a {}
+#topicslinks {border-top:1px solid gray; padding-top:8px;  }
+#relatedtopics strong {background-color:#003366; color:#FFFFFF; padding:4px}
+
+blockquote {
+    font-style: italic;
+}
+.alignright {
+    float: right;
+}
+.alignleft {
+    float: left;
+}
+.headshot {border:1px solid black; margin-right:10px}
+
+table td p { }
+table td blockquote {
+    display:block;
+    width: 500px;
+    overflow:hidden;
+}
+
+table#localnav {
+	width:180px!important; overflow:hidden;
+	background-color:#ffffff;
+}
+table#localnav.bloghome {
+	height:595px;
+}
+table#mainbody table#localnav div {
+width:150px;
+overflow:hidden;
+}
+table#mainbody table#localnav td {
+	margin:0;
+	padding:0;
+	padding-left:14px;
+}
+td.localnav {vertical-align:top;}
+
+table#localnav div.widget {
+	width:155px; overflow:hidden;
+}
+table#localnav div.widget ul {
+	margin-left:3px;
+}
+table#localnav td {
+	padding-right:12px!important;
+}
+#localnav .sidebar_title {
+	color:#BF8C02;
+	font-size:10pt;
+	margin:0; padding:0;
+	margin-left:0;
+	padding-top:10px;
+}
+table#mainbody table#localnav {
+    margin:0;
+    padding:0;
+    margin-left:32px;
+    padding:0;
+    position:relative;
+    left:0;
+    margin-top:-6px;
+    width:180px !important;
+    overflow:hidden;
+}
+table#mainbody .bloghome table#localnav {
+    top:0px;
+    _top:0px;
+}
+table#mainbody table#localnav p {
+    max-width:none;
+    display:block;
+    width: 150px!important;
+    overflow:hidden;
+    padding-left:0;
+    padding-right:0;
+    margin-left:0;
+    margin-right:0;
+}
+table#mainbody table#localnav  blockquote {
+    display:block;
+    width: 150px;
+    overflow:hidden;
+}
+pre {
+    display:block;
+    width: 600px;
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    overflow:hidden;
+    line-height: 140%; /* added by SLE, 01-Oct-2009 */
+}
+ol {
+    list-style-type:decimal;
+    margin-left:22px;
+}
+table#mainbody table td {
+    padding-left:40px;
+}
+div#globalnav {
+	*margin-top:-4px;
+}
+table#mainbody form#commentform table {
+    width:500px !important;
+    margin-bottom:10px;
+}
+table#mainbody form#commentform table td { padding:0!important; }
+
+table#mainbody form#commentform table input { width:200px; margin:3px; }
+
+table#mainbody form#commentform table label { width:100px;}
+
+table#mainbody .bloghome #mathworks-logobox {
+	display:block; overflow:hidden; margin-top:50px;
+}
+table#mainbody .bloghome h2, table#mainbody .bloghome h2 a { font-size:14px;}
+table#mainbody .bloghome h2 {margin-bottom:10px; margin-top:15px; font-size:14px;margin-left:160px;}
+table#mainbody .bloghome div.blog {border-bottom:1px solid #dedede; }
+table#mainbody .bloghome div#steve {border-bottom:none; }
+table#mainbody .bloghome .blog-image {
+	 display:block; width:120px; height:90px; overflow:hidden; 
+	 float:left; 
+	 margin-bottom:20px;
+	 margin-top:20px;
+}
+table#mainbody .bloghome div.blog p {
+	margin-left:160px;
+}
+table#mainbody .bloghome #doug .blog-image {
+	background:url(http://blogs.mathworks.com/images/videos/doug_140x226.jpg) no-repeat 0px -50px; 
+}
+table#mainbody .bloghome #pick .blog-image {
+	background:url(http://blogs.mathworks.com/images/pick/threeamigos-140w-whiteframed.jpg) no-repeat 0px -30px; 
+}
+table#mainbody .bloghome #community .blog-image {
+	background:#f0f6f9 url(http://blogs.mathworks.com/images/desktop/authors/cmty_small.png) no-repeat 0px -10px; 
+}
+
+table#mainbody .bloghome #cleve .blog-image {
+        background:url(http://blogs.mathworks.com/images/cleve/cleve_5.jpg) no-repeat -15px -50px;
+}
+
+table#mainbody .bloghome #loren .blog-image {
+	background:url(http://blogs.mathworks.com/images/loren_140x145.jpg) no-repeat -20px -36px;
+}
+table#mainbody .bloghome #seth .blog-image {
+	background:url(http://blogs.mathworks.com/images/seth/guy_and_seth_small140.jpg) no-repeat -6px -6px;  
+}
+table#mainbody .bloghome #steve .blog-image {
+	background:#f0f6f9 url(http://blogs.mathworks.com/images/eddins_green_shirt_140x172.jpg) no-repeat 0px -30px; 
+}
+#footer * {
+    color:#717171;
+    font-size:10px;
+    line-height:15px;
+    margin-left:0;
+}
+
+/*Code Handling Specific (copied from site4.css, but font-size changed to 80%)*/
+/* 80% font-size change backed out by SLE, 01-Oct-2009 */
+code, pre.code {font-family:"Courier New", Courier, mono; display: block; background-color:#F9F7F3; color:#000000; border:1px solid #D3D3D3; margin-bottom: 10px; padding-left: 10px; padding-right: 0px; line-height:140%}
+code.fnctn, kbd {display:inline; padding-left: 0px; background-color:transparent; border: 0px; }
+pre.code span.keyword, code span.keyword {color:#0000FF; }
+pre.code span.comment, code span.comment {color:#228B22; }
+pre.code span.string, code span.string {color:#A020F0; }
+pre.code span.untermstring, code span.untermstring {color:#B20000; }
+pre.code span.syscmd, code span.syscmd {color:#B28C00; }
+samp.error, pre.error {color:#ff0000; margin-top:10px; margin-bottom:10px; }
+pre.ans, samp.anseq {color:#2F4F4F; font-style: italic; margin-top:10px; margin-bottom:10px; }
+samp.ans {color:darkslategray; font-style: italic; margin-left:45px; margin-top:10px; margin-bottom:10px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { 
+    width:auto; 
+    padding:10px 0px; 
+    margin:25px 0px 0px; 
+    border-top:1px dotted #878787; 
+    font-size:0.8em; 
+    line-height:140%; 
+    font-style:italic; 
+    color:#878787; 
+    text-align:left; 
+    float:none; 
+}
+.footer p { margin:0px; }

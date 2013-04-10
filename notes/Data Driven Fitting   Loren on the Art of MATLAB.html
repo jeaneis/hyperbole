@@ -1,0 +1,1019 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0066)http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#6 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="./Data Driven Fitting   Loren on the Art of MATLAB_files/reset.css">
+<link type="text/css" rel="stylesheet" href="./Data Driven Fitting   Loren on the Art of MATLAB_files/mod_brows.css">
+<link type="text/css" rel="stylesheet" href="./Data Driven Fitting   Loren on the Art of MATLAB_files/site3.css">
+<link type="text/css" rel="stylesheet" href="./Data Driven Fitting   Loren on the Art of MATLAB_files/cmnty1.css">
+<link type="text/css" rel="stylesheet" href="./Data Driven Fitting   Loren on the Art of MATLAB_files/blog.css">
+<link rel="stylesheet" type="text/css" media="print" href="./Data Driven Fitting   Loren on the Art of MATLAB_files/print.css">
+<title>Data Driven Fitting   | Loren on the Art of MATLAB</title>
+<meta name="generator" content="WordPress 3.2.1"> <!-- leave this for stats -->
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://blogs.mathworks.com/loren/feed/">
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://blogs.mathworks.com/loren/feed/rss/">
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://blogs.mathworks.com/loren/feed/atom/">
+<link rel="pingback" href="http://blogs.mathworks.com/loren/xmlrpc.php">
+<script type="text/x-mathjax-config;executed=true">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    }
+  });
+</script>
+<script type="text/javascript" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/MathJax.js"></script>
+<link rel="alternate" type="application/rss+xml" title="Loren on the Art of MATLAB » Data Driven Fitting Comments Feed" href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogs.mathworks.com/loren/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogs.mathworks.com/loren/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Loren on the Art of MATLAB" href="http://blogs.mathworks.com/loren/">
+<link rel="start" title="Introduction" href="http://blogs.mathworks.com/loren/2005/12/13/introduction/">
+<link rel="prev" title="MATLAB Data Types as Arguments to Standalone Applications" href="http://blogs.mathworks.com/loren/2011/01/06/matlab-data-types-as-arguments-to-standalone-applications/">
+<link rel="next" title="Tracking a Hurricane using Web Map Service (WMS)" href="http://blogs.mathworks.com/loren/2011/01/20/tracking-a-hurricane-using-web-map-service-wms/">
+<meta name="generator" content="WordPress 3.2.1">
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuTitle {background-color: #CCCCCC; margin: -5px 0 0 0; text-align: center; font-style: italic; font-size: 80%; color: #444444; padding: 2px 0; overflow: hidden}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><link rel="canonical" href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/">
+<link rel="shortlink" href="http://blogs.mathworks.com/loren/?p=261">
+
+<!-- All in One SEO Pack 1.6.13.4 by Michael Torbert of Semper Fi Web Designob_start_detected [-1,-1] -->
+<meta name="description" content="This week Richard Willey from technical marketing will be guest blogging about nonparametric fitting. Contents">
+<!-- /all in one seo pack -->
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body>
+<div id="header">
+  <div id="header-top">
+    <div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="Home">&nbsp;</a></div>
+    <div id="headertools">
+      <script language="JavaScript1.3" type="text/javascript">
+			
+			function submitForm(query){
+			
+			choice = document.forms['searchForm'].elements['search_submit'].value;
+			
+			if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+			   var newElem = document.createElement("input");
+			   newElem.type = "hidden";
+			   newElem.name = "q";
+			   newElem.value = query.value;
+			   document.forms['searchForm'].appendChild(newElem);
+
+			   submit_action = 'http://www.mathworks.com/searchresults/';
+			}
+			
+			switch(choice){
+			   case "matlabcentral":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "c[]";
+			      newElem.value = "matlabcentral";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      selected_index = 0;
+			      break
+			   case "fileexchange":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "term";
+			      newElem.value = query.value;
+			      newElem.classname = "formelem";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      submit_action ="http://www.mathworks.com/matlabcentral/fileexchange/";
+			      selected_index = 1;
+			      break
+			   case "answers":
+                              var newElem = document.createElement("input");
+                              newElem.type = "hidden";
+                              newElem.name = "term";
+                              newElem.value = query.value;
+                              newElem.classname = "formelem";
+                              document.forms['searchForm'].appendChild(newElem);
+
+                              submit_action = "http://www.mathworks.com/matlabcentral/answers/";
+                              selected_index = 2;
+                              break
+			   case "cssm":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "search_string";
+			      newElem.value = query.value;
+			      newElem.classname = "formelem";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      submit_action ="http://www.mathworks.com/matlabcentral/newsreader/search_results";
+			      selected_index = 3;
+			      break
+			   case "linkexchange":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "term";
+			      newElem.value = query.value;
+			      newElem.classname = "formelem";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      submit_action ="http://www.mathworks.com/matlabcentral/linkexchange/";
+			      selected_index = 4;
+			      break
+			   case "blogs":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "c[]";
+			      newElem.value = "blogs";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      selected_index = 5;
+			      break
+			   case "contest":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "c[]";
+			      newElem.value = "contest";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      selected_index = 6;
+			      break
+			   case "entire1":
+			      var newElem = document.createElement("input");
+			      newElem.type = "hidden";
+			      newElem.name = "c[]";
+			      newElem.value = "entiresite";
+			      document.forms['searchForm'].appendChild(newElem);
+			
+			      selected_index = 7;
+			      break
+			   default:
+                              var newElem = document.createElement("input");
+                              newElem.type = "hidden";
+                              newElem.name = "c[]";
+                              newElem.value = "entiresite";
+                              document.forms['searchForm'].appendChild(newElem);
+
+                              selected_index = 7;
+                              break
+			}
+			
+			document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+			document.forms['searchForm'].elements['query'].value = query.value;
+			document.forms['searchForm'].action = submit_action;
+			
+			}
+			
+			</script>
+      <form name="searchForm" method="GET" action="" id="site_search" onsubmit="submitForm(query)">
+        <label id="search_label" for="search_field">Search:&nbsp;</label>
+        <select name="search_submit">
+          <option value="matlabcentral">MATLAB Central</option>
+          <option value="fileexchange">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          <option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+          <option value="cssm">&nbsp;&nbsp;&nbsp;MATLAB Newsgroup</option> 
+          <option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          <option value="blogs" selected="">&nbsp;&nbsp;&nbsp;Blogs</option>
+          <option value="contest">&nbsp;&nbsp;&nbsp;Programming Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+        <input id="search_field" name="query" type="text" size="10" class="text">
+        <input alt="go" name="submitButtonName" class="submitbutton" type="image" id="searchbutton" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/gobutton_trans.gif">
+      </form>
+      
+      
+
+      
+      
+      
+      
+      </div>
+  </div>
+  <div id="globalnav">
+    <div style="width:70%; margin:0 auto; height:22px; ">
+      <ol>
+        <li><a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a></li>
+        <li><a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a></li>
+        <li><a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a></li>
+        <li><a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a></li>
+        <li class="active"><a href="http://blogs.mathworks.com/">Blogs</a></li>
+        <li><a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a></li>
+        <li><a href="http://www.mathworks.com/matlabcentral/cody">Cody</a></li>
+        <li><a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a></li>
+        <li class="icon mathworks"><a href="http://www.mathworks.com/">MathWorks.com</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+<table border="0" cellspacing="0" cellpadding="0" id="mainbody">
+<tbody><tr>
+  <td valign="top">
+
+<table width="732" border="0" cellspacing="0" cellpadding="0" style="margin-left:20px">
+<tbody><tr valign="top">
+<td style="padding-right:10px;">
+
+<a href="http://blogs.mathworks.com/loren"><h1>Loren on the Art of MATLAB</h1></a>
+
+				
+  	
+
+<h2 class="brule">January 13th, 2011 </h2>
+
+<a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/" rel="bookmark" title="Permanent Link to Data Driven Fitting">
+<h2 class="titlebg" style="padding-left: 0">Data Driven Fitting</h2></a>
+
+<div xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd" class="content">
+   <introduction>
+      <p><i>This week Richard Willey from technical marketing will be guest blogging about nonparametric fitting.</i></p>
+   </introduction>
+   <h3>Contents</h3>
+   <div>
+      <ul>
+         <li><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#4">Generate some data to work with</a></li>
+         <li><a href="./Data Driven Fitting   Loren on the Art of MATLAB_files/Data Driven Fitting   Loren on the Art of MATLAB.html">Nonlinear Regression example</a></li>
+         <li><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#7">Nonparameteric Fitting Example</a></li>
+         <li><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#9">Evaluate the accuracy of our LOWESS fit</a></li>
+         <li><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#11">Special Guest Appearance by bootstrp</a></li>
+      </ul>
+   </div>
+   <p>This week's blog is motivated by a common question on <a href="http://www.mathworks.com/matlabcentral/newsreader/">MATLAB Central</a>. Consider the following problem:
+   </p>
+   <div>
+      <ul>
+         <li>You have a data set consisting of two variables:  X and Y</li>
+         <li>You need to generate a model that the describes the relationship between the two variables</li>
+         <li>The only thing that you have to work with is the data.  You don't have any first principles information about the "true" relationship
+            between your variables
+         </li>
+      </ul>
+   </div>
+   <p>How can you generate a curve fit that best describes the relationship between X and Y?  This question traditionally shows
+      up in in two different guises:
+   </p>
+   <div>
+      <ul>
+         <li>Many people ask about solutions for "automatic fitting".  (How can I produce a curve fit without a parametric equation?)</li>
+         <li>The second variant involves questions about a curve fitting using high order polynomials.  The user doesn't have enough "First
+            Principles" knowledge about the system to specify a model, but does know that a 9th order polynomial can describe a very complicated
+            system.
+         </li>
+      </ul>
+   </div>
+   <p>In this week's blog, I'm going to show you a better way to solve this same problem how to use a combination of localized regression
+      and cross validation.
+   </p>
+   <div>
+      <ul>
+         <li>You can access localized regression using the <a href="http://www.mathworks.com/help/releases/R2010b/toolbox/curvefit/smooth.html">smooth</a> function in <a href="http://www.mathworks.com/products/curvefitting/">Curve Fitting Toolbox</a></li>
+         <li>Cross validation is available using the <a href="http://www.mathworks.com/help/releases/R2010b/toolbox/stats/cvpartition.html">cvpartition</a> function in <a href="http://www.mathworks.com/products/statistics/">Statistics Toolbox</a></li>
+      </ul>
+   </div>
+   <h3>Generate some data to work with<a name="4"></a></h3>
+   <p>To use a more visual approach, suppose you had the following set of data points:</p><pre style="background: #F9F7F3; padding: 10px; border: 1px solid rgb(200,200,200)">s = RandStream(<span style="color: #A020F0">'mt19937ar'</span>,<span style="color: #A020F0">'seed'</span>,1971);
+RandStream.setDefaultStream(s);
+
+X = linspace(1,10,100);
+X = X';
+
+<span style="color: #228B22">% Specify the parameters for a second order Fourier series</span>
+
+w = .6067;
+a0 = 1.6345;
+a1 = -.6235;
+b1 = -1.3501;
+a2 = -1.1622;
+b2 = -.9443;
+
+<span style="color: #228B22">% Fourier2 is the true (unknown) relationship between X and Y</span>
+Y = a0 + a1*cos(X*w) + b1*sin(X*w) + a2*cos(2*X*w) + b2*sin(2*X*w);
+
+<span style="color: #228B22">% Add in a noise vector</span>
+
+K = max(Y) - min(Y);
+noisy = Y +  .2*K*randn(100,1);
+
+<span style="color: #228B22">% Generate a scatterplot</span>
+scatter(X,noisy,<span style="color: #A020F0">'k'</span>);
+L2 = legend(<span style="color: #A020F0">'Noisy Data Sample'</span>, 2);
+snapnow</pre><img vspace="5" hspace="5" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/RWLOWESS_01.png"> <h3>Nonlinear Regression example<a name="6"></a></h3>
+   <p>If you knew that this data was generated with a second order Fourier series, you use nonlinear regression to model Y = f(X).</p><pre style="background: #F9F7F3; padding: 10px; border: 1px solid rgb(200,200,200)">foo = fit(X, noisy, <span style="color: #A020F0">'fourier2'</span>)
+
+<span style="color: #228B22">% Plot the results</span>
+
+hold <span style="color: #A020F0">on</span>
+plot(foo)
+L3 = legend(<span style="color: #A020F0">'Noisy Data Sample'</span>,<span style="color: #A020F0">'Nonlinear Regression'</span>, 2);
+hold <span style="color: #A020F0">off</span>
+snapnow</pre><pre style="font-style:oblique">foo = 
+     General model Fourier2:
+     foo(x) =  a0 + a1*cos(x*w) + b1*sin(x*w) + 
+               a2*cos(2*x*w) + b2*sin(2*x*w)
+     Coefficients (with 95% confidence bounds):
+       a0 =       1.734  (1.446, 2.021)
+       a1 =     -0.1998  (-1.065, 0.6655)
+       b1 =      -1.413  (-1.68, -1.146)
+       a2 =     -0.7688  (-1.752, 0.2142)
+       b2 =      -1.317  (-1.867, -0.7668)
+       w =      0.6334  (0.5802, 0.6866)
+</pre><img vspace="5" hspace="5" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/RWLOWESS_02.png"> <h3>Nonparameteric Fitting Example<a name="7"></a></h3>
+   <p>All very nice and easy...  We were able to specify a regression model and plot our curve using a couple lines of code.  The
+      coefficients that were estimated by our regression model are a close match to the ones that we originally specified.
+   </p>
+   <p>Here's the rub:  we cheated.  When we created our regression model, we specified that the true relationship between X and
+      Y should be modeled using a second order Fourier series.  What if this information wasn't available to us?
+   </p>
+   <p>This next piece of code is a bit more complicated, however, it will solve the same problem using nothing but the raw data
+      and some CPU cycles.
+   </p>
+   <p>We're going to use a smoothing algorithm called LOWESS (Localized Scatter Plot Smoothing) to generate our curve fit.  The
+      accuracy of a LOWESS fit depends on specifying the "right" value for the smoothing parameter.  We're going generate 99 different
+      LOWESS models, using smoothing parameters between zero and one, and see which value generates the most accurate model.
+   </p>
+   <p>This type of brute force technique often runs into problems with "overfitting".  The LOWESS curve that minimizes the "sum
+      of the squared errors" fits both the signal and the noise component of the data set.
+   </p>
+   <p>To protect against overfitting, we're going to use a technique called cross validation.  We're going to divide the data set
+      into different training sets and test sets.  We'll generate our predictive model using the data in the training set, and then
+      measure the accuracy of the model using the data in the test set.
+   </p><pre style="background: #F9F7F3; padding: 10px; border: 1px solid rgb(200,200,200)">num = 99;
+spans = linspace(.01,.99,num);
+sse = zeros(size(spans));
+cp = cvpartition(100,<span style="color: #A020F0">'k'</span>,10);
+
+<span style="color: #0000FF">for</span> j=1:length(spans),
+    f = @(train,test) norm(test(:,2) - mylowess(train,test(:,1),spans(j)))^2;
+    sse(j) = sum(crossval(f,[X,noisy],<span style="color: #A020F0">'partition'</span>,cp));
+<span style="color: #0000FF">end</span>
+
+[minsse,minj] = min(sse);
+span = spans(minj);</pre><p><tt>mylowess</tt> is a function that I wrote that estimates values for a lowess smooth.  I've included a copy of <tt>mylowess.m</tt> for you to use.
+   </p><pre style="background: #F9F7F3; padding: 10px; border: 1px solid rgb(200,200,200)">type <span style="color: #A020F0">mylowess.m</span></pre><pre style="font-style:oblique">function ys=mylowess(xy,xs,span)
+%MYLOWESS Lowess smoothing, preserving x values
+%   YS=MYLOWESS(XY,XS) returns the smoothed version of the x/y data in the
+%   two-column matrix XY, but evaluates the smooth at XS and returns the
+%   smoothed values in YS.  Any values outside the range of XY are taken to
+%   be equal to the closest values.
+
+if nargin&lt;3 || isempty(span)
+    span = .3;
+end
+
+% Sort and get smoothed version of xy data
+xy = sortrows(xy);
+x1 = xy(:,1);
+y1 = xy(:,2);
+ys1 = smooth(x1,y1,span,'loess');
+
+% Remove repeats so we can interpolate
+t = diff(x1)==0;
+x1(t)=[]; ys1(t) = [];
+
+% Interpolate to evaluate this at the xs values
+ys = interp1(x1,ys1,xs,'linear',NaN);
+
+% Some of the original points may have x values outside the range of the
+% resampled data.  Those are now NaN because we could not interpolate them.
+% Replace NaN by the closest smoothed value.  This amounts to extending the
+% smooth curve using a horizontal line.
+if any(isnan(ys))
+    ys(xs&lt;x1(1)) = ys1(1);
+    ys(xs&gt;x1(end)) = ys1(end);
+end
+
+</pre><h3>Evaluate the accuracy of our LOWESS fit<a name="9"></a></h3>
+   <p>Next, let's create a plot that shows</p>
+   <li>Our original second order Fourier Series</li>
+   <li>The noisy sample from this curve</li>
+   <li>The nonlinear regression model</li>
+   <li>The LOWESS model</li><pre style="background: #F9F7F3; padding: 10px; border: 1px solid rgb(200,200,200)">plot(X,Y, <span style="color: #A020F0">'k'</span>);
+hold <span style="color: #A020F0">on</span>
+scatter(X,noisy, <span style="color: #A020F0">'k'</span>);
+plot(foo, <span style="color: #A020F0">'r'</span>)
+
+x = linspace(min(X),max(X));
+line(x,mylowess([X,noisy],x,span),<span style="color: #A020F0">'color'</span>,<span style="color: #A020F0">'b'</span>,<span style="color: #A020F0">'linestyle'</span>,<span style="color: #A020F0">'-'</span>, <span style="color: #A020F0">'linewidth'</span>,2)
+legend(<span style="color: #A020F0">'Clean Data'</span>, <span style="color: #A020F0">'Noisy Sample'</span>, <span style="color: #A020F0">'Nonlinear Regression'</span>, <span style="color: #A020F0">'LOWESS'</span>, 2)
+hold <span style="color: #A020F0">off</span>
+snapnow</pre><img vspace="5" hspace="5" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/RWLOWESS_03.png"> <p>As you can see, the LOWESS curve is doing a great job capturing the dynamics of the system.  We were able to generate a LOWESS
+      fit that is almost as accurate as the nonlinear regression without the need to specify that this system should be modeled
+      as a second order Fourier series.
+   </p>
+   <h3>Special Guest Appearance by bootstrp<a name="11"></a></h3>
+   <p>Here's a bonus for those you you who stuck around to the end.  This next bit of code generates confidence intervals for the
+      LOWESS fit using a "paired bootstrap".
+   </p><pre style="background: #F9F7F3; padding: 10px; border: 1px solid rgb(200,200,200)">scatter(X, noisy)
+
+f = @(xy) mylowess(xy,X,span);
+yboot2 = bootstrp(1000,f,[X,noisy])';
+meanloess = mean(yboot2,2);
+h1 = line(X, meanloess,<span style="color: #A020F0">'color'</span>,<span style="color: #A020F0">'k'</span>,<span style="color: #A020F0">'linestyle'</span>,<span style="color: #A020F0">'-'</span>,<span style="color: #A020F0">'linewidth'</span>,2);
+
+stdloess = std(yboot2,0,2);
+h2 = line(X, meanloess+2*stdloess,<span style="color: #A020F0">'color'</span>,<span style="color: #A020F0">'r'</span>,<span style="color: #A020F0">'linestyle'</span>,<span style="color: #A020F0">'--'</span>,<span style="color: #A020F0">'linewidth'</span>,2);
+h3 = line(X, meanloess-2*stdloess,<span style="color: #A020F0">'color'</span>,<span style="color: #A020F0">'r'</span>,<span style="color: #A020F0">'linestyle'</span>,<span style="color: #A020F0">'--'</span>,<span style="color: #A020F0">'linewidth'</span>,2);
+
+L5 = legend(<span style="color: #A020F0">'Localized Regression'</span>,<span style="color: #A020F0">'Confidence Intervals'</span>,2);
+snapnow</pre><img vspace="5" hspace="5" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/RWLOWESS_04.png"> <p>Can anyone provide a good intuitive explanation how the bootstrap works? For extra credit:</p>
+   <div>
+      <ul>
+         <li>Can you convert this example from a "paired bootstrap" to a "residual bootstrap"?</li>
+         <li>Do you see any advantages or limitations to the different types of bootstraps?</li>
+      </ul>
+   </div>
+   <p>Post your answers <a href="http://blogs.mathworks.com/loren/?p=261#respond">here</a>.
+   </p><script language="JavaScript">
+<!--
+
+    function grabCode_8cfc5c33409142f6bab064dbe1d0774a() {
+        // Remember the title so we can use it in the new page
+        title = document.title;
+
+        // Break up these strings so that their presence
+        // in the Javascript doesn't mess up the search for
+        // the MATLAB code.
+        t1='8cfc5c33409142f6bab064dbe1d0774a ' + '##### ' + 'SOURCE BEGIN' + ' #####';
+        t2='##### ' + 'SOURCE END' + ' #####' + ' 8cfc5c33409142f6bab064dbe1d0774a';
+    
+        b=document.getElementsByTagName('body')[0];
+        i1=b.innerHTML.indexOf(t1)+t1.length;
+        i2=b.innerHTML.indexOf(t2);
+ 
+        code_string = b.innerHTML.substring(i1, i2);
+        code_string = code_string.replace(/REPLACE_WITH_DASH_DASH/g,'--');
+
+        // Use /x3C/g instead of the less-than character to avoid errors 
+        // in the XML parser.
+        // Use '\x26#60;' instead of '<' so that the XML parser
+        // doesn't go ahead and substitute the less-than character. 
+        code_string = code_string.replace(/\x3C/g, '\x26#60;');
+
+        author = 'Richard Willey';
+        copyright = 'Copyright 2010 The MathWorks, Inc.';
+
+        w = window.open();
+        d = w.document;
+        d.write('<pre>\n');
+        d.write(code_string);
+
+        // Add author and copyright lines at the bottom if specified.
+        if ((author.length > 0) || (copyright.length > 0)) {
+            d.writeln('');
+            d.writeln('%%');
+            if (author.length > 0) {
+                d.writeln('% _' + author + '_');
+            }
+            if (copyright.length > 0) {
+                d.writeln('% _' + copyright + '_');
+            }
+        }
+
+        d.write('</pre>\n');
+      
+      d.title = title + ' (MATLAB code)';
+      d.close();
+      }   
+      
+-->
+</script><p style="text-align: right; font-size: xx-small; font-weight:lighter;   font-style: italic; color: gray"><br><a href="javascript:grabCode_8cfc5c33409142f6bab064dbe1d0774a()"><span style="font-size: x-small;        font-style: italic;">Get 
+            the MATLAB code 
+            <noscript>(requires JavaScript)</noscript></span></a><br><br>
+      Published with MATLAB® 7.11<br></p>
+</div>
+<!--
+8cfc5c33409142f6bab064dbe1d0774a ##### SOURCE BEGIN #####
+%% Data Driven Fitting  
+% _This week Richard Willey from technical marketing will be guest blogging
+% about nonparametric fitting._
+
+%%
+% This week's blog is motivated by a common question on
+% <http://www.mathworks.com/matlabcentral/newsreader/ MATLAB Central>.
+% Consider the following problem:
+%
+% * You have a data set consisting of two variables:  X and Y
+% * You need to generate a model that the describes the relationship
+% between the two variables
+% * The only thing that you have to work with is the data.  You don't have
+% any first principles information about the "true" relationship between
+% your variables
+
+%%
+% How can you generate a curve fit that best describes the relationship 
+% between X and Y?  This question traditionally shows up in in two 
+% different guises:
+% 
+% * Many people ask about solutions for "automatic fitting".  (How can I
+% produce a curve fit without a parametric equation?)
+% * The second variant involves questions about a curve fitting using 
+% high order polynomials.  The user doesn't have enough "First Principles" 
+% knowledge about the system to specify a model, but does know that a 
+% 9th order polynomial can describe a very complicated system.
+% 
+
+%%
+% In this week's blog, I'm going to show you a better way to solve this 
+% same problem how to use a combination of localized regression and 
+% cross validation.
+% 
+% * You can access localized regression using the <http://www.mathworks.com/help/releases/R2010b/toolbox/curvefit/smooth.html smooth> function in
+% <http://www.mathworks.com/products/curvefitting/ Curve Fitting Toolbox>
+% * Cross validation is available using the <http://www.mathworks.com/help/releases/R2010b/toolbox/stats/cvpartition.html cvpartition> function in
+% <http://www.mathworks.com/products/statistics/ Statistics Toolbox>
+%
+
+%% Generate some data to work with
+
+%%
+% 
+% To use a more visual approach, suppose you had the following set of data points:
+% 
+
+s = RandStream('mt19937ar','seed',1971);
+RandStream.setDefaultStream(s);
+
+X = linspace(1,10,100); 
+X = X';
+
+% Specify the parameters for a second order Fourier series
+
+w = .6067;
+a0 = 1.6345;
+a1 = -.6235;
+b1 = -1.3501;
+a2 = -1.1622;
+b2 = -.9443;
+
+% Fourier2 is the true (unknown) relationship between X and Y
+Y = a0 + a1*cos(X*w) + b1*sin(X*w) + a2*cos(2*X*w) + b2*sin(2*X*w);
+
+% Add in a noise vector
+
+K = max(Y) - min(Y);
+noisy = Y +  .2*K*randn(100,1);
+
+% Generate a scatterplot
+scatter(X,noisy,'k');
+L2 = legend('Noisy Data Sample', 2);
+snapnow
+%% Nonlinear Regression example
+% 
+% If you knew that this data was generated with a second order Fourier
+% series, you use nonlinear regression to model Y = f(X).
+%
+
+foo = fit(X, noisy, 'fourier2')
+
+% Plot the results
+
+hold on
+plot(foo)
+L3 = legend('Noisy Data Sample','Nonlinear Regression', 2);
+hold off
+snapnow
+%% Nonparameteric Fitting Example
+% All very nice and easy...  We were able to specify a regression model
+% and plot our curve using a couple lines of code.  The coefficients that
+% were estimated by our regression model are a close match to the ones
+% that we originally specified.
+%
+% Here's the rub:  we cheated.  When we created our regression model, we
+% specified that the true relationship between X and Y should be modeled
+% using a second order Fourier series.  What if this information wasn't
+% available to us?
+%  
+% This next piece of code is a bit more complicated, however, it will
+% solve the same problem using nothing but the raw data and some CPU
+% cycles.
+%
+% We're going to use a smoothing algorithm called LOWESS (Localized
+% Scatter Plot Smoothing) to generate our curve fit.  The accuracy of a
+% LOWESS fit depends on specifying the "right" value for the smoothing 
+% parameter.  We're going generate 99 different LOWESS models, using 
+% smoothing parameters between zero and one, and see which value generates 
+% the most accurate model.
+%
+% This type of brute force technique often runs into problems with 
+% "overfitting".  The LOWESS curve that minimizes the "sum of the 
+% squared errors" fits both the signal and the noise component of 
+% the data set.  
+%
+% To protect against overfitting, we're going to use a technique called 
+% cross validation.  We're going to divide the data set into different
+% training sets and test sets.  We'll generate our predictive model using
+% the data in the training set, and then measure the accuracy of the model
+% using the data in the test set.
+num = 99;
+spans = linspace(.01,.99,num);
+sse = zeros(size(spans));
+cp = cvpartition(100,'k',10);
+
+for j=1:length(spans),
+    f = @(train,test) norm(test(:,2) - mylowess(train,test(:,1),spans(j)))^2;
+    sse(j) = sum(crossval(f,[X,noisy],'partition',cp));
+end
+
+[minsse,minj] = min(sse);
+span = spans(minj);
+
+%%
+% |mylowess| is a function that I wrote that estimates values for a lowess
+% smooth.  I've included a copy of |mylowess.m| for you to use.
+%
+
+type mylowess.m
+
+%%  Evaluate the accuracy of our LOWESS fit
+% Next, let's create a plot that shows
+%
+% # Our original second order Fourier Series
+% # The noisy sample from this curve
+% # The nonlinear regression model
+% # The LOWESS model
+plot(X,Y, 'k');
+hold on
+scatter(X,noisy, 'k');
+plot(foo, 'r')
+
+x = linspace(min(X),max(X));
+line(x,mylowess([X,noisy],x,span),'color','b','linestyle','-', 'linewidth',2)
+legend('Clean Data', 'Noisy Sample', 'Nonlinear Regression', 'LOWESS', 2)
+hold off
+snapnow
+%%
+% As you can see, the LOWESS curve is doing a great job capturing the
+% dynamics of the system.  We were able to generate a LOWESS fit that is
+% almost as accurate as the nonlinear regression without the need to
+% specify that this system should be modeled as a second order Fourier
+% series.
+
+%% Special Guest Appearance by bootstrp
+% Here's a bonus for those you you who stuck around to the end.  This next
+% bit of code generates confidence intervals for the LOWESS fit using a 
+% "paired bootstrap".  
+scatter(X, noisy)
+ 
+f = @(xy) mylowess(xy,X,span);
+yboot2 = bootstrp(1000,f,[X,noisy])';
+meanloess = mean(yboot2,2);
+h1 = line(X, meanloess,'color','k','linestyle','-','linewidth',2);
+ 
+stdloess = std(yboot2,0,2);
+h2 = line(X, meanloess+2*stdloess,'color','r','linestyle','REPLACE_WITH_DASH_DASH','linewidth',2);
+h3 = line(X, meanloess-2*stdloess,'color','r','linestyle','REPLACE_WITH_DASH_DASH','linewidth',2);
+ 
+L5 = legend('Localized Regression','Confidence Intervals',2);
+snapnow
+%%
+% Can anyone provide a good intuitive explanation how the bootstrap works?
+% For extra credit:
+%
+% * Can you convert this example from a "paired bootstrap" to a "residual bootstrap"?
+% * Do you see any advantages or limitations to the different types of
+% bootstraps?
+%
+% Post your answers <http://blogs.mathworks.com/loren/?p=261#respond here>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### SOURCE END ##### 8cfc5c33409142f6bab064dbe1d0774a
+-->
+<div class="post_author_block">
+<img class="post_author_image" style="float: left; margin-right: 1em" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/Loren2.jpg" alt="Author picture">
+<p class="post_byline">
+By 
+Loren Shure<br>
+</p>
+
+<p class="post_author_description">
+</p>
+
+</div>
+
+<p class="postmetadata" style="clear: left;">
+11:11 UTC | 
+Posted in <a href="http://blogs.mathworks.com/loren/category/how-to/" title="View all posts in How To" rel="category tag">How To</a>, <a href="http://blogs.mathworks.com/loren/category/interpolation-fitting/" title="View all posts in Interpolation &amp; Fitting" rel="category tag">Interpolation &amp; Fitting</a>, <a href="http://blogs.mathworks.com/loren/category/machine-learning/" title="View all posts in Machine learning" rel="category tag">Machine learning</a> |
+<a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/" rel="bookmark" title="Permanent Link to Data Driven Fitting">Permalink</a> |
+<a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#comments" title="Comment on Data Driven Fitting">4 Comments »</a></p>
+
+
+	
+				<p class="postmetadata alt">
+					<small>
+						You can follow any responses to this entry through the <a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/feed/">RSS 2.0</a> feed. 
+						
+													Both comments and pings are currently closed.			
+						
+												
+					</small>
+				</p>
+	
+
+		
+	
+
+<!-- You can start editing here. -->
+
+	<h3 id="comments">4 Responses to “Data Driven Fitting”</h3> 
+
+	<ol class="commentlist">
+
+	
+		<li class="alt" id="comment-31985">
+			
+			<cite><a href="http://www.squobble.com/" rel="external nofollow" class="url">Steven</a></cite> replied on
+<small class="commentmetadata"><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#comment-31985" title="">January 21st, 2011 at 09:59 UTC</a> </small>:
+			<br>
+
+			<p>Nice example.</p>
+<p>There are some other great toolboxes around that work fine for this kind of regression, in particular using Gaussian process regression <a href="http://www.gaussianprocess.org/gpml" rel="nofollow">http://www.gaussianprocess.org/gpml</a>, which handles this problem with a lot of vigor.</p>
+<p>I also included a very simple function for kernel-based ridge regression in my own toolbox <a href="http://sourceforge.net/p/kmbox" rel="nofollow">http://sourceforge.net/p/kmbox</a> (km_krr_demo.m, if you’re interested).</p>
+
+
+
+
+		</li>
+
+	
+	
+		<li class="" id="comment-32507">
+			
+			<cite>Bryan</cite> replied on
+<small class="commentmetadata"><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#comment-32507" title="">September 22nd, 2011 at 13:58 UTC</a> </small>:
+			<br>
+
+			<p>Very nice!</p>
+<p>What kind of confidence intervals are generated? 95.4? 68.2?</p>
+
+
+
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-32508">
+			
+			<cite>Bryan</cite> replied on
+<small class="commentmetadata"><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#comment-32508" title="">September 22nd, 2011 at 13:59 UTC</a> </small>:
+			<br>
+
+			<p>Nevermind, I see it now, it’s 2 sigma.</p>
+<p>Thanks.</p>
+
+
+
+
+		</li>
+
+	
+	
+		<li class="" id="comment-32792">
+			
+			<cite>ZikO</cite> replied on
+<small class="commentmetadata"><a href="http://blogs.mathworks.com/loren/2011/01/13/data-driven-fitting/#comment-32792" title="">December 4th, 2011 at 22:28 UTC</a> </small>:
+			<br>
+
+			<p>I’m having problem. I cannot run the bit with estimation proper span option (the code with cvpartion and crossval commands). MATLAB says:</p>
+<p>??? Error using ==&gt; crossval&gt;evalFun at 505<br>
+The function ‘@(train,test)norm(test(:,2)-mylowess(train,test,spans(j)))^2′ generated the following error:<br>
+Matrix dimensions must agree.</p>
+<p>Error in ==&gt; crossval&gt;getFuncVal at 524<br>
+funResult = evalFun(funorStr,arg(:));</p>
+<p>Error in ==&gt; crossval at 363<br>
+    funResult = getFuncVal(1, nData, cvp, data, funorStr, []);</p>
+
+
+
+
+		</li>
+
+	
+	
+	</ol>
+
+ 
+
+	
+		
+
+</td>
+
+<td width="180" valign="top">
+
+<br>
+
+
+
+<table width="180" cellpadding="0" cellspacing="0" style="background-color:#356A9F" id="localnav">
+<tbody><tr>
+<td class="npad"><img src="./Data Driven Fitting   Loren on the Art of MATLAB_files/dots_rnav_top.gif" width="180" height="9" vspace="0" hspace="0" alt=""></td>
+</tr>
+
+<tr>
+<td class="localnav">
+<div style="display:block; overflow:hidden; margin-top:12px;">
+<img src="./Data Driven Fitting   Loren on the Art of MATLAB_files/mathworks-logo-box.jpg" width="150" height="45" vspace="0" hspace="0" alt="MathWorks">
+
+</div>
+<div id="text-1" class="widget widget_text"><h3 class="sidebar_title">About</h3>			<div class="textwidget">Loren Shure  works on design of the MATLAB language at <a href="http://www.mathworks.com/">MathWorks</a>. She writes here about once a week on MATLAB programming and related topics. <br clear="all"><br><img src="./Data Driven Fitting   Loren on the Art of MATLAB_files/loren_140x145.jpg" border="0"></div>
+		</div><div id="text-2" class="widget widget_text"><h3 class="sidebar_title">Subscribe</h3>			<div class="textwidget"><ul>
+<li><a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=1419818&loc=en_US">Posts (e-mail)</a></li>
+<li><a href="http://blogs.mathworks.com/loren/feed/">Posts (feed)</a></li>
+<li><a href="http://blogs.mathworks.com/loren/comments/feed/">Comments (feed)</a></li>
+</ul>
+<a href="http://www.mathworks.com/programs/trials/trial_request.html?s_cid=SA_BlogLS_trial&eventid=570963705"><img border="0" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/blogs_spotlight_trials_gray.jpg"></a>
+<p><a href="http://www.mathworks.com.au/company/events/conferences/matlab-simulink-academic-tour/?s_cid=AU_MSAT_2012_BlogLS"><img border="0" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/AU_MSAT_2012_spotlight.jpg"></a></p></div>
+		</div><div id="linkcat-20" class="widget widget_links"><h3 class="sidebar_title">Links</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://blogs.mathworks.com/loren/archives/">Blog archives</a></li>
+<li><a href="http://www.mathworks.com/support/contact_us/index.html">Technical Support</a></li>
+
+	</ul>
+</div>
+<div id="categories-1" class="widget widget_categories"><h3 class="sidebar_title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-16"><a href="http://blogs.mathworks.com/loren/category/best-practice/" title="View all posts filed under Best Practice">Best Practice</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://blogs.mathworks.com/loren/category/blog-policies/" title="View all posts filed under Blog Policies">Blog Policies</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://blogs.mathworks.com/loren/category/cell-arrays/" title="View all posts filed under Cell Arrays">Cell Arrays</a>
+</li>
+	<li class="cat-item cat-item-46"><a href="http://blogs.mathworks.com/loren/category/code-generation/" title="View all posts filed under Code Generation">Code Generation</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://blogs.mathworks.com/loren/category/common-errors/" title="View all posts filed under Common Errors">Common Errors</a>
+</li>
+	<li class="cat-item cat-item-53"><a href="http://blogs.mathworks.com/loren/category/community/" title="View all posts filed under Community">Community</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://blogs.mathworks.com/loren/category/computational-geometry/" title="View all posts filed under Computational Geometry">Computational Geometry</a>
+</li>
+	<li class="cat-item cat-item-47"><a href="http://blogs.mathworks.com/loren/category/curve-fitting/" title="View all posts filed under Curve fitting">Curve fitting</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://blogs.mathworks.com/loren/category/defaults/" title="View all posts filed under Defaults">Defaults</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://blogs.mathworks.com/loren/category/deployment/" title="View all posts filed under Deployment">Deployment</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://blogs.mathworks.com/loren/category/education/" title="View all posts filed under Education">Education</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://blogs.mathworks.com/loren/category/efficiency/" title="View all posts filed under Efficiency">Efficiency</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="http://blogs.mathworks.com/loren/category/external-interface/" title="View all posts filed under External interface">External interface</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="http://blogs.mathworks.com/loren/category/fun/" title="View all posts filed under Fun">Fun</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blogs.mathworks.com/loren/category/function-handles/" title="View all posts filed under Function Handles">Function Handles</a>
+</li>
+	<li class="cat-item cat-item-54"><a href="http://blogs.mathworks.com/loren/category/functional-programming/" title="View all posts filed under functional programming">functional programming</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://blogs.mathworks.com/loren/category/graphics/" title="View all posts filed under Graphics">Graphics</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://blogs.mathworks.com/loren/category/hardware/" title="View all posts filed under Hardware">Hardware</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://blogs.mathworks.com/loren/category/how-to/" title="View all posts filed under How To">How To</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://blogs.mathworks.com/loren/category/image-processing/" title="View all posts filed under Image Processing">Image Processing</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://blogs.mathworks.com/loren/category/indexing/" title="View all posts filed under Indexing">Indexing</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://blogs.mathworks.com/loren/category/interpolation-fitting/" title="View all posts filed under Interpolation &amp; Fitting">Interpolation &amp; Fitting</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://blogs.mathworks.com/loren/category/less-used-functionality/" title="View all posts filed under Less Used Functionality">Less Used Functionality</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://blogs.mathworks.com/loren/category/mapping/" title="View all posts filed under Mapping">Mapping</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://blogs.mathworks.com/loren/category/memory/" title="View all posts filed under Memory">Memory</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://blogs.mathworks.com/loren/category/new-feature/" title="View all posts filed under New Feature">New Feature</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://blogs.mathworks.com/loren/category/news/" title="View all posts filed under News">News</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://blogs.mathworks.com/loren/category/numerical-accuracy/" title="View all posts filed under Numerical Accuracy">Numerical Accuracy</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="http://blogs.mathworks.com/loren/category/object-oriented/" title="View all posts filed under Object-oriented">Object-oriented</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://blogs.mathworks.com/loren/category/parallel/" title="View all posts filed under Parallel">Parallel</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://blogs.mathworks.com/loren/category/puzzles/" title="View all posts filed under Puzzles">Puzzles</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://blogs.mathworks.com/loren/category/random/" title="View all posts filed under Random">Random</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://blogs.mathworks.com/loren/category/readability/" title="View all posts filed under Readability">Readability</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://blogs.mathworks.com/loren/category/robustness/" title="View all posts filed under Robustness">Robustness</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="http://blogs.mathworks.com/loren/category/signal-processing/" title="View all posts filed under Signal Processing">Signal Processing</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://blogs.mathworks.com/loren/category/solving-equations/" title="View all posts filed under Solving Equations">Solving Equations</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://blogs.mathworks.com/loren/category/sparse/" title="View all posts filed under Sparse">Sparse</a>
+</li>
+	<li class="cat-item cat-item-48"><a href="http://blogs.mathworks.com/loren/category/statistics/" title="View all posts filed under Statistics">Statistics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="http://blogs.mathworks.com/loren/category/strings/" title="View all posts filed under Strings">Strings</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blogs.mathworks.com/loren/category/structures/" title="View all posts filed under Structures">Structures</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://blogs.mathworks.com/loren/category/symbolic/" title="View all posts filed under Symbolic">Symbolic</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://blogs.mathworks.com/loren/category/tool/" title="View all posts filed under Tool">Tool</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://blogs.mathworks.com/loren/category/travel/" title="View all posts filed under Travel">Travel</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blogs.mathworks.com/loren/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://blogs.mathworks.com/loren/category/vectorization/" title="View all posts filed under Vectorization">Vectorization</a>
+</li>
+		</ul>
+</div><div id="recent-comments-2" class="widget widget_recent_comments"><h3 class="sidebar_title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments">April First on <a href="http://blogs.mathworks.com/loren/2013/04/01/new-datatype-under-development-for-possible-matlab-release/#comment-36112">New Datatype under Development for Possible MATLAB Release</a></li><li class="recentcomments"><a href="./Data Driven Fitting   Loren on the Art of MATLAB_files/Loren2.jpg" rel="external nofollow" class="url">Loren Shure</a> on <a href="http://blogs.mathworks.com/loren/2013/04/01/new-datatype-under-development-for-possible-matlab-release/#comment-36104">New Datatype under Development for Possible MATLAB Release</a></li><li class="recentcomments">Andrew Newell on <a href="http://blogs.mathworks.com/loren/2013/04/01/new-datatype-under-development-for-possible-matlab-release/#comment-36103">New Datatype under Development for Possible MATLAB Release</a></li><li class="recentcomments">David Hruska on <a href="http://blogs.mathworks.com/loren/2013/03/14/using-the-matlab-unit-testing-infrastructure-for-grading-assignments/#comment-36087">Using the MATLAB Unit Testing Infrastructure for Grading Assignments</a></li><li class="recentcomments">Vassili on <a href="http://blogs.mathworks.com/loren/2013/04/01/new-datatype-under-development-for-possible-matlab-release/#comment-36084">New Datatype under Development for Possible MATLAB Release</a></li></ul></div><div id="text-3" class="widget widget_text"><h3 class="sidebar_title">Blog Admin</h3>			<div class="textwidget"><ul>
+<li><a href="http://blogs.mathworks.com/loren/wp-login.php">Login</a></li>
+<li><a href="http://blogs.mathworks.com/loren/wp-admin/">Dashboard</a></li>
+</ul></div>
+		</div></td>
+</tr>
+
+<tr><td class="npad"><img src="./Data Driven Fitting   Loren on the Art of MATLAB_files/dots_rnav.gif" width="180" height="5" vspace="0"></td>
+</tr>
+</tbody></table>
+
+
+
+</td>
+</tr>
+ <tr><td>
+ <p><i>These postings are the author's and don't necessarily represent the opinions of MathWorks.</i></p>
+
+		
+ </td></tr>
+
+</tbody></table>
+
+</td>
+</tr>
+</tbody></table>
+<div id="footer">
+<div id="submissionpolicy">
+
+  <div class="container">
+    <p>Problems? Suggestions? Contact us at <a href="mailto:files@mathworks.com">files@mathworks.com</a></p>
+
+    <ul id="matlabcentral">
+                       <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+                        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+                        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+                        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+                        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+                        <li class="last"><a href="http://www.mathworks.com/matlabcentral/disclaimer.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+                        <li class="icon"><a class="twitter" href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&url=http://www.twitter.com/MATLAB" title="Twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+                        <li class="icon"><a class="facebook" href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&url=http://www.facebook.com/MATLAB" title="Facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+                        <li class="icon"><a class="rssfeed" href="http://www.mathworks.com/company/rss/" title="RSS" rel="nofollow"><span class="text">RSS</span></a></li>
+                        
+                  </ul>
+  </div>
+</div>
+
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="./Data Driven Fitting   Loren on the Art of MATLAB_files/s_code.js"></script>
+&nbsp;
+<script language="JavaScript" type="text/javascript">
+ 
+<!--/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+<script type="text/javascript">
+_uacct = "UA-162255-2";
+urchinTracker();
+</script>
+
+
+
+</div></body></html>

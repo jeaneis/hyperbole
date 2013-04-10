@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://docs.ggplot2.org/current/geom_smooth.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<title>geom_smooth. ggplot2 0.9.3.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="http://docs.ggplot2.org/current/css/bootstrap.css" rel="stylesheet">
+<link href="http://docs.ggplot2.org/current/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="http://docs.ggplot2.org/current/css/highlight.css" rel="stylesheet">
+<link href="http://docs.ggplot2.org/current/css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript" async="" src="./R_geom_smooth_files/ga.js"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="http://docs.ggplot2.org/current/geom_smooth.html#">ggplot2 0.9.3.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="http://docs.ggplot2.org/current/index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Add a smoothed conditional mean.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre>geom_smooth(mapping = NULL, data = NULL, stat = "smooth", position = "identity", 
+  ...)</pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>mapping</dt>
+      <dd>The aesthetic mapping, usually constructed
+  with <code><a href="http://docs.ggplot2.org/current/aes.html">aes</a></code> or <code><a href="http://docs.ggplot2.org/current/aes_string.html">aes_string</a></code>. Only
+  needs to be set at the layer level if you are overriding
+  the plot defaults.</dd>
+      <dt>data</dt>
+      <dd>A layer specific dataset - only needed if you
+  want to override the plot defaults.</dd>
+      <dt>stat</dt>
+      <dd>The statistical transformation to use on the
+  data for this layer.</dd>
+      <dt>position</dt>
+      <dd>The position adjustment to use for
+  overlappling points on this layer</dd>
+      <dt>...</dt>
+      <dd>other arguments passed on to
+  <code><a href="http://docs.ggplot2.org/current/layer.html">layer</a></code>. This can include aesthetics whose
+  values you want to set, not map. See <code><a href="http://docs.ggplot2.org/current/layer.html">layer</a></code>
+  for more details.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>Add a smoothed conditional mean.</p>
+  
+    </div>
+
+    <div class="Aesthetics">
+      <h2>Aesthetics</h2>
+      
+      <p><code>geom_smooth</code> understands the following aesthetics (required aesthetics are in bold):</p>
+  
+      <p></p><ul>
+<li> <code><strong>x</strong></code>
+  </li>
+<li> <code><strong>y</strong></code>
+  </li>
+<li> <code>alpha</code>
+  </li>
+<li> <code>colour</code>
+  </li>
+<li> <code>fill</code>
+  </li>
+<li> <code>linetype</code>
+  </li>
+<li> <code>size</code>
+  </li>
+<li> <code>weight</code>
+</li>
+</ul><p></p>
+  
+      <p></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input"># See stat_smooth for examples of using built in model fitting
+# if you need some more flexible, this example shows you how to
+# plot the fits from any model of your choosing
+qplot(wt, mpg, data=mtcars, colour=factor(cyl))
+</div>
+<p><img src="./R_geom_smooth_files/geom_smooth-2.png" alt="" width="400" height="400"></p>
+<div class="input">
+model &lt;- lm(mpg ~ wt + factor(cyl), data=mtcars)
+grid &lt;- with(mtcars, expand.grid(
+  wt = seq(min(wt), max(wt), length = 20),
+  cyl = levels(factor(cyl))
+))
+
+grid$mpg &lt;- stats::predict(model, newdata=grid)
+
+qplot(wt, mpg, data=mtcars, colour=factor(cyl)) + geom_line(data=grid)
+</div>
+<p><img src="./R_geom_smooth_files/geom_smooth-4.png" alt="" width="400" height="400"></p>
+<div class="input">
+# or with standard errors
+
+err &lt;- stats::predict(model, newdata=grid, se = TRUE)
+grid$ucl &lt;- err$fit + 1.96 * err$se.fit
+grid$lcl &lt;- err$fit - 1.96 * err$se.fit
+
+qplot(wt, mpg, data=mtcars, colour=factor(cyl)) +
+  geom_smooth(aes(ymin = lcl, ymax = ucl), data=grid, stat="identity")
+</div>
+<p><img src="./R_geom_smooth_files/geom_smooth-6.png" alt="" width="400" height="400"></p></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>geom_smooth</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+  The default stat for this geom is
+  <code><a href="http://docs.ggplot2.org/current/stat_smooth.html">stat_smooth</a></code> see that documentation for more
+  options to control the underlying statistical
+  transformation.
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="http://docs.ggplot2.org/current/geom_smooth.html#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=geom_smooth">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>
