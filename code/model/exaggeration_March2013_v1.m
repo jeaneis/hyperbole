@@ -1,4 +1,5 @@
-function [listener_highest_depth, meanings, utterances, affect_prior] = exaggeration_March2013_v1()
+function [listener_highest_depth, meanings, utterances, affect_prior] = ...
+    exaggeration_March2013_v1(pricePriorFileName, affectPriorFileName)
 % 
 % Now computes in log-space.
 % No lexical uncertainty for valence -- only lexical uncertainty for state.
@@ -19,17 +20,17 @@ hardness = 2;
 depth = 1;
 
 % Reads price priors from csv
-D = csvread('../../data/mTurkExp/pricePriors/laptop.csv');
+D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
 [counts, prices] = hist(D, 6);
 
 % Reads affect priors from csv
-A = csvread('../../data/mTurkExp/affectPriors/laptop_affect.csv', 2, 1);
+A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 
 % Need to find a fitted line (continous) for lowess regression
 % So that we can find prob affect given any price value
 
 % Smoothes affect priors
-smoothed_affect_prior = [A(:,1), smooth(A(:,1), A(:,2), 'lowess')];
+% smoothed_affect_prior = [A(:,1), smooth(A(:,1), A(:,2), 'lowess')];
 % plot(smoothed_affect_prior(:,1), smoothed_affect_prior(:,2));
 
 f = fit([A(:,1), ones(19,1)], A(:,2), 'lowess');
