@@ -53,6 +53,7 @@ d1$meaning = factor(d1$meaning)
 d1$utterance = factor(d1$utterance)
 d1$valence = factor(d1$valence)
 
+
 ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="identity", color="black") + 
   facet_grid(. ~ utterance) +
   scale_x_discrete() +
@@ -72,27 +73,37 @@ ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="ident
 ####
 # plotting interpreted meaning and interpreted valence seperately
 
-# Moderate valence prior
-dv = read.csv("valenceAnalysis_depth1_thinTail_moderateValence.csv")
-dv$utterance = factor(dv$utterance)
-dv$meaning = factor(dv$meaning)
+# compute post prior affect ratio
 
-dv.meaning.p <- ggplot(dv, aes(meaning, probability)) + geom_bar(stat="identity", color="black", fill="#66CC99") +
+d1.noValence = subset(d1, valence=="1")
+d1.withValence = subset(d1, valence=="2")
+d1$totalMeaningProb = d1.noValence$probability + d1.withValence$probability
+d1.withValence = subset(d1, valence=="2")
+d1.withValence$valencePosterior = d1.withValence$probability / d1.withValence$totalMeaningProb
+d1.withValence$postPriorRatio = d1.withValence$valencePosterior / d1.withValence$affect_prior
+
+# plot meaning posterior
+d1.meaning.p <- ggplot(d1, aes(meaning, probability, fill=valence)) + geom_bar(stat="identity", color="black") +
   facet_grid(. ~ utterance) +
   scale_x_discrete() +
   xlab("Meaning") +
   ylab("Probability") +                  
-  opts(title="Interpreted meaning for each utterance ") +
+  ggtitle("Interpreted meaning for each utterance ") +
+  scale_fill_discrete(guide=FALSE) +
   scale_y_continuous() +                    
-  theme_bw()
+  theme_bw() +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
 
-dv.valence.p <- ggplot(dv, aes(meaning, postPriorRatio)) + geom_bar(stat="identity", color="black", fill="#FF9999") +
+# plot valence posterior
+d1.valence.p <- ggplot(d1.withValence, aes(meaning, postPriorRatio)) + geom_bar(stat="identity", color="black", fill="#FF9999") +
   facet_grid(. ~ utterance) +
   scale_x_discrete() +
   xlab("Meaning") +
   ylab("Valence post-prior ratio") +                  
-  opts(title="Interpretated valence for each utterance ") +
+  ggtitle("Interpretated valence for each utterance ") +
   scale_y_continuous() +                       # Set tick every 
-  theme_bw()
+  theme_bw() +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9)) +
+  geom_hline(yintercept=c(1,0), linetype="dotted")
 
-multiplot(dv.meaning.p, dv.valence.p)
+multiplot(d1.meaning.p, d1.valence.p)
