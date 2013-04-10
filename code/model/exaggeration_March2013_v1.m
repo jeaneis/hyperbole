@@ -55,8 +55,8 @@ meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)),
 % Prior that the speaker DOES NOT have affect
 
 %valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
-valence_prior = log(1-f(meanings, ones(length(meanings), 1)));
-valence_prior = cutOffAt(valence_prior, 1);
+valence_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1);
+valence_prior = log(1- valence_prior);
 
 % Inverse utterance costs
 

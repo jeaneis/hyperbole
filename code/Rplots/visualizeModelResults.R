@@ -53,9 +53,10 @@ d1$meaning = factor(d1$meaning)
 d1$utterance = factor(d1$utterance)
 d1$valence = factor(d1$valence)
 
-ggplot(d1, aes(meaning, probability, fill = valence)) + geom_bar(stat="identity", color="black") + 
+ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="identity", color="black") + 
   facet_grid(. ~ utterance) +
   scale_x_discrete() +
+  scale_y_continuous() +
   xlab("") +
   #ylab("") +
   scale_fill_manual(values=c("#33CCCC", "#FF6666"),
@@ -63,7 +64,35 @@ ggplot(d1, aes(meaning, probability, fill = valence)) + geom_bar(stat="identity"
                       name="Valence",
                     breaks=c("1", "2"),
                     labels=c("No valence", "With valence")) + 
-                      ggtitle("Coffee Maker") +
-                      scale_y_continuous() +              
+                      ggtitle("Laptop") +          
                       theme_bw() +
                       theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
+
+
+####
+# plotting interpreted meaning and interpreted valence seperately
+
+# Moderate valence prior
+dv = read.csv("valenceAnalysis_depth1_thinTail_moderateValence.csv")
+dv$utterance = factor(dv$utterance)
+dv$meaning = factor(dv$meaning)
+
+dv.meaning.p <- ggplot(dv, aes(meaning, probability)) + geom_bar(stat="identity", color="black", fill="#66CC99") +
+  facet_grid(. ~ utterance) +
+  scale_x_discrete() +
+  xlab("Meaning") +
+  ylab("Probability") +                  
+  opts(title="Interpreted meaning for each utterance ") +
+  scale_y_continuous() +                    
+  theme_bw()
+
+dv.valence.p <- ggplot(dv, aes(meaning, postPriorRatio)) + geom_bar(stat="identity", color="black", fill="#FF9999") +
+  facet_grid(. ~ utterance) +
+  scale_x_discrete() +
+  xlab("Meaning") +
+  ylab("Valence post-prior ratio") +                  
+  opts(title="Interpretated valence for each utterance ") +
+  scale_y_continuous() +                       # Set tick every 
+  theme_bw()
+
+multiplot(dv.meaning.p, dv.valence.p)
