@@ -54,7 +54,7 @@ end
 
 function writeToFileNoLabels( displayMat, outFileName )
  
-fid = fopen(['output/',outFileName], 'w');
+fid = fopen(['../../data/model/predict_',outFileName], 'w');
 fprintf(fid, 'utterance,meaning,valence,probability\n');
 
 for i = 1:size(displayMat,1),

@@ -33,7 +33,9 @@ smoothed_affect_prior = [A(:,1), smooth(A(:,1), A(:,2), 'lowess')];
 % plot(smoothed_affect_prior(:,1), smoothed_affect_prior(:,2));
 
 f = fit([A(:,1), ones(19,1)], A(:,2), 'lowess');
-plot(A(:,1), f(A(:,1), ones(19,1)))
+
+%%%%%%%%%%
+% plot(A(:,1), f(A(:,1), ones(19,1)))
 % To predict: f(A(:,1), ones(19,1)) = y
 
 % These are the possible meanings, i.e. the numerical states
@@ -52,7 +54,8 @@ meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)),
 
 % Prior that the speaker DOES NOT have affect
 
-valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
+%valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
+valence_prior = log(f(meanings, ones(length(meanings), 1)));
 
 % Inverse utterance costs
 
