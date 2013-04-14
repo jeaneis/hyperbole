@@ -22,6 +22,8 @@ depth = 1;
 % Reads price priors from csv
 D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
 [counts, prices] = hist(D, 6);
+% laplace smoothing
+counts = counts + 1;
 
 % Reads affect priors from csv
 A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
@@ -33,7 +35,7 @@ A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 % smoothed_affect_prior = [A(:,1), smooth(A(:,1), A(:,2), 'lowess')];
 % plot(smoothed_affect_prior(:,1), smoothed_affect_prior(:,2));
 
-f = fit([A(:,1), ones(19,1)], A(:,2), 'lowess');
+f = fit([A(:,1), ones(length(A),1)], A(:,2), 'lowess');
 
 %%%%%%%%%%
 % plot(A(:,1), f(A(:,1), ones(19,1)))
@@ -55,7 +57,8 @@ num_utterances = size(utterances,2);
 counts = counts + eps;
 
 % Prior on meanings (in log space)
-meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)), log(0.000001)];
+%meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)), log(0.000001)];
+meaning_prior = log(normalizeVector([counts/sum(counts) 0.000001 counts/sum(counts) 0.000001]));
 
 % Prior that the speaker DOES NOT have affect
 
