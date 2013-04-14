@@ -50,6 +50,10 @@ utterances = meanings;
 num_states = size(meanings,2);
 num_utterances = size(utterances,2);
 
+
+% Add Epsilon (2.2204e-16) to avoid log(0)
+counts = counts + eps;
+
 % Prior on meanings (in log space)
 meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)), log(0.000001)];
 
@@ -57,6 +61,9 @@ meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)),
 
 %valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
 affect_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1);
+%
+affect_prior(find(affect_prior <= 0)) = 0.000001;
+%
 valence_prior = log(1 - affect_prior);
 
 % Inverse utterance costs
