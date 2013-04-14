@@ -91,9 +91,14 @@ utterances_in_dict = utterances(1+mod(indices,num_utterances));
 % the utterances
 % The last dimension determines codes whether we are specifying the probability of valence
 % 0 or valence 1
-naive_listener = zeros(num_dictionaries, num_utterances,num_states,2);
+naive_listener = zeros(num_dictionaries, num_utterances, num_states, 2);
 
-sd_dict=lexical_entries(1+mod(floor((ceil(indices/num_utterances)-1).*(num_lexical_entries.^(1+mod(indices,num_utterances)))/num_dictionaries), num_lexical_entries));
+sd_dict = lexical_entries( 1 + mod( ...
+    floor ( ...
+        ( ceil(indices/num_utterances) - 1 ) .* ...
+        ( num_lexical_entries.^ (1 + mod(indices,num_utterances)) ) / ...
+        num_dictionaries ), ...
+    num_lexical_entries));
 
 % Compute unnormalized distribution for naive listener
 for i=1:num_states
@@ -106,7 +111,9 @@ end
 max_for_each_utterance = max(naive_listener(:,:,:,:),[],3);
 max_for_each_utterance = max(max_for_each_utterance(:,:,:,:),[],4);
 matrix_of_maxes = repmat(max_for_each_utterance,[1,1,num_states,2]);
-normalizing_constants = log(sum(sum(exp(naive_listener(:,:,:,:) - matrix_of_maxes),3),4)) + max_for_each_utterance;
+normalizing_constants = ...
+    log(sum(sum(exp(naive_listener(:,:,:,:) - matrix_of_maxes),3),4)) + ...
+    max_for_each_utterance;
 matrix_of_normalizing_constants = repmat(normalizing_constants,[1,1,num_states,2]);
 naive_listener(:,:,:,:) = naive_listener(:,:,:,:) - matrix_of_normalizing_constants;
 
