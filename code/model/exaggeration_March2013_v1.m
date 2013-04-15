@@ -54,7 +54,7 @@ num_utterances = size(utterances,2);
 
 
 % Add Epsilon (2.2204e-16) to avoid log(0)
-counts = counts + eps;
+%counts = counts + eps;
 
 % Prior on meanings (in log space)
 %meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)), log(0.000001)];

@@ -46,7 +46,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 ## plot interpretation probababilities given each utterance
 
-d1 = read.csv("../../data/model/predict_laptop_realAffect_states14.csv")
+d1 = read.csv("../../data/model/predict_kettle_realAffect_states14.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
@@ -65,7 +65,7 @@ ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="ident
                       name="Valence",
                     breaks=c("1", "2"),
                     labels=c("No valence", "With valence")) + 
-                      ggtitle("Laptop") +          
+                      ggtitle("Kettle") +          
                       theme_bw() +
                       theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
 
