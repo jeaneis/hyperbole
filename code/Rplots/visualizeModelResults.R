@@ -46,7 +46,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 ## plot interpretation probababilities given each utterance
 
-d1 = read.csv("../../data/model/predict_laptop_realAffect_states14.csv")
+d1 = read.csv("../../data/model/predict_laptop_realAffect_states14_demo.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
@@ -114,8 +114,8 @@ d1.expressedValence.p <- ggplot(d1.expressedValence, aes(x=1.5, y=expressedValen
   geom_bar(stat="identity", color="black", fill="#CCCCCC") +
   scale_x_discrete() +
   xlab("") +
-  ylab("Valence") +                  
-  ggtitle("Valence expressed in each utterance ") +
+  ylab("Opinion (relative to opinion prior)") +                  
+  ggtitle("Opinion expressed in each utterance ") +
   scale_fill_discrete(guide=FALSE) +
   scale_y_continuous() +                    
   theme_bw() +
