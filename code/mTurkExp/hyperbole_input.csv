@@ -1,0 +1,97 @@
+sentenceID,domain,modifier,number,utterance,buyer,dummy
+1,electric kettle,an,round,20,Alex,1
+2,electric kettle,an,round,50,Bob,1
+3,electric kettle,an,round,100,Calvin,1
+4,electric kettle,an,round,200,Dave,1
+5,electric kettle,an,round,500,Ed,1
+6,electric kettle,an,round,1000,Frank,1
+7,electric kettle,an,round,2000,George,1
+8,electric kettle,an,round,10000,Harry,1
+9,electric kettle,an,sharp,21,Ivan,1
+10,electric kettle,an,sharp,51,Jake,1
+11,electric kettle,an,sharp,101,Kevin,1
+12,electric kettle,an,sharp,201,Luke,1
+13,electric kettle,an,sharp,501,Mark,1
+14,electric kettle,an,sharp,1001,Ned,1
+15,electric kettle,an,sharp,2001,Owen,1
+16,electric kettle,an,sharp,10001,Paul,1
+17,coffee maker,a,round,20,Ryan,1
+18,coffee maker,a,round,50,Steve,1
+19,coffee maker,a,round,100,Terry,1
+20,coffee maker,a,round,200,Victor,1
+21,coffee maker,a,round,500,Albert,1
+22,coffee maker,a,round,1000,Barry,1
+23,coffee maker,a,round,2000,Cameron,1
+24,coffee maker,a,round,10000,Darren,1
+25,coffee maker,a,sharp,21,Eli,1
+26,coffee maker,a,sharp,51,Felix,1
+27,coffee maker,a,sharp,101,Gabe,1
+28,coffee maker,a,sharp,201,Hal,1
+29,coffee maker,a,sharp,501,Irvin,1
+30,coffee maker,a,sharp,1001,Jerry,1
+31,coffee maker,a,sharp,2001,Kenneth,1
+32,coffee maker,a,sharp,10001,Larry,1
+33,sweater,a,round,20,Martin,1
+34,sweater,a,round,50,Nelson,1
+35,sweater,a,round,100,Oscar,1
+36,sweater,a,round,200,Perry,1
+37,sweater,a,round,500,Ron,1
+38,sweater,a,round,1000,Sam,1
+39,sweater,a,round,2000,Ted,1
+40,sweater,a,round,10000,Andrew,1
+41,sweater,a,sharp,21,Bart,1
+42,sweater,a,sharp,51,Corey,1
+43,sweater,a,sharp,101,Don,1
+44,sweater,a,sharp,201,Edward,1
+45,sweater,a,sharp,501,Fred,1
+46,sweater,a,sharp,1001,Garrett,1
+47,sweater,a,sharp,2001,Henry,1
+48,sweater,a,sharp,10001,Isaac,1
+49,headphones,some,round,20,Jordan,1
+50,headphones,some,round,50,Keith,1
+51,headphones,some,round,100,Laurence ,1
+52,headphones,some,round,200,Matt,1
+53,headphones,some,round,500,Norman,1
+54,headphones,some,round,1000,Oliver,1
+55,headphones,some,round,2000,Phillip,1
+56,headphones,some,round,10000,Russell,1
+57,headphones,some,sharp,21,Seth,1
+58,headphones,some,sharp,51,Tim,1
+59,headphones,some,sharp,101,Aaron,1
+60,headphones,some,sharp,201,Ben,1
+61,headphones,some,sharp,501,Cyrus,1
+62,headphones,some,sharp,1001,Daniel,1
+63,headphones,some,sharp,2001,Eric,1
+64,headphones,some,sharp,10001,Chris,1
+65,watch,a,round,20,Charles,1
+66,watch,a,round,50,Brian,1
+67,watch,a,round,100,Adam,1
+68,watch,a,round,200,Michael,1
+69,watch,a,round,500,James,1
+70,watch,a,round,1000,John,1
+71,watch,a,round,2000,Douglas,1
+72,watch,a,round,10000,Justin,1
+73,watch,a,sharp,21,Billy,1
+74,watch,a,sharp,51,Howard,1
+75,watch,a,sharp,101,Todd,1
+76,watch,a,sharp,201,Alan,1
+77,watch,a,sharp,501,Jeff,1
+78,watch,a,sharp,1001,Ray,1
+79,watch,a,sharp,2001,Tom,1
+80,watch,a,sharp,10001,Rick,1
+81,laptop,a,round,20,Ian,1
+82,laptop,a,round,50,Kirk,1
+83,laptop,a,round,100,Sean,1
+84,laptop,a,round,200,Zach,1
+85,laptop,a,round,500,Dean,1
+86,laptop,a,round,1000,Theodore,1
+87,laptop,a,round,2000,Rodney,1
+88,laptop,a,round,10000,Will,1
+89,laptop,a,sharp,21,Jack,1
+90,laptop,a,sharp,51,Roger,1
+91,laptop,a,sharp,101,Greg,1
+92,laptop,a,sharp,201,Scott,1
+93,laptop,a,sharp,501,Joseph,1
+94,laptop,a,sharp,1001,Richard,1
+95,laptop,a,sharp,2001,Carl,1
+96,laptop,a,sharp,10001,Leon,1
