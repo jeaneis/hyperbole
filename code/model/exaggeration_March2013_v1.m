@@ -23,15 +23,31 @@ depth = 1;
 % D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
 D = csvread(['../../data/scrape/', pricePriorFileName]);
 [counts, prices] = hist(D, 20);
+
+% Force a count of 0 at price $0.00
+prices = [0, prices]';
+counts = [0, counts]';
+
 % laplace smoothing
 counts = counts + 1;
 
-f2= fit([prices', ones(length(counts),1)], counts', 'lowess');
-plot(f2(1:5000,ones(5000,1)));
+% f2= fit([prices, ones(length(counts),1)], counts, 'lowess');
+% plot(f2(1:5000,ones(5000,1)));
+f2 = fit(prices, counts, 'smoothingspline');
+plot(f2(1:5000));
 
-prices = [10, 50, 100, 500, 1000, 2000];
-counts = f2(prices, ones(size(prices)));
+prices = [10, 50, 100, 500, 1000, 2000]';
+% counts = f2(prices, ones(size(prices)));
+counts = f2(prices);
+counts = cutOffAt(counts, 0, 'below');
+counts = counts + 1;
+subplot(1,2,1)
+hist(D,20)
+subplot(1,2,2)
+plot(prices,counts);
 
+prices = prices';
+counts = counts';
 % Reads affect priors from csv
 A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 
@@ -84,13 +100,14 @@ meaning_prior = log(normalizeVector([counts/sum(counts) 0.000001 counts/sum(coun
 % valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
 
 % Affect prior if using 2nd attempt method.
-% affect_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1);
+% affect_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1, 'above');
 
 % Affect prior if using 3rd attempt method.
-affect_prior = cutOffAt(interp_affect_priors(meanings), 1);
+affect_prior = cutOffAt(interp_affect_priors(meanings), 1, 'above');
 
 % Attempt to solve negative values--which turns out not to be the cause of
 % the issue.
+% affect_prior = cutOffAt(affect_prior, 0, 'below'); % this line is not tested
 % affect_prior(find(affect_prior <= 0)) = eps;
 
 valence_prior = log(1 - affect_prior);

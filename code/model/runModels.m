@@ -39,7 +39,7 @@ displayResults(l,m,u,a,'kettle_realAffect_states14.csv');
 displayResults(l,m,u,a,'headphones_realAffect_states14.csv');
 
 % Laptop
-[l,m,u,a] = exaggeration_March2013_v1('laptop.txt', 'laptop_affect.csv');
+[l,m,u,a] = exaggeration_March2013_v1('newegg_laptop.txt', 'laptop_affect.csv');
 displayResults(l,m,u,a,'laptop_realAffect_states14.csv');
 
 % Sweater
