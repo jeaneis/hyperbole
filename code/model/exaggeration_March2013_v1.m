@@ -20,10 +20,17 @@ hardness = 2;
 depth = 1;
 
 % Reads price priors from csv
-D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
-[counts, prices] = hist(D, 6);
+% D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
+D = csvread(['../../data/scrape/', pricePriorFileName]);
+[counts, prices] = hist(D, 20);
 % laplace smoothing
 counts = counts + 1;
+
+f2= fit([prices', ones(length(counts),1)], counts', 'lowess');
+plot(f2(1:5000,ones(5000,1)));
+
+prices = [10, 50, 100, 500, 1000, 2000];
+counts = f2(prices, ones(size(prices)));
 
 % Reads affect priors from csv
 A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
@@ -38,7 +45,11 @@ A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 
 % 2nd attempt: This fits input data into a lowess curve, but the problem is
 % that the curve may not be monotonically increasing.
-% f = fit([A(:,1), ones(length(A),1)], A(:,2), 'lowess');
+% f = fit([x, y], z, ft)
+% z = f(x, y)
+f = fit([A(:,1), ones(length(A),1)], A(:,2), 'lowess');
+% ys = f(1:10005, ones(10005, 1));
+% plot(ys);
 %%%%%%%%%%
 % plot(A(:,1), f(A(:,1), ones(19,1)))
 % To predict: f(A(:,1), ones(19,1)) = y
@@ -46,8 +57,8 @@ A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 
 % 3rd attempt: Fit input into a lowess curve, then interpolate the smoothed
 % data from the curve to predict unseen values.
-interp_affect_priors = mylowess(A, 1:10005, 6);
-
+interp_affect_priors = mylowess(A, 1:10005, 1-eps);
+% plot(interp_affect_priors);
 
 % These are the possible meanings, i.e. the numerical states
 meanings_round = [roundTo(prices, 10), 10000];
