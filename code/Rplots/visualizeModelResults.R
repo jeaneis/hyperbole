@@ -108,14 +108,15 @@ d1.valence.p <- ggplot(d1.withValence, aes(meaning, postPriorRatio)) + geom_bar(
 
 multiplot(d1.meaning.p, d1.valence.p)
 
-## plot degree of affect expressed in utterance
+
+## plot degree of EXPRESSING affect given utterance
 d1.withValence$expressedValence <- d1.withValence$postPriorRatio * d1.withValence$totalMeaningProb
 d1.expressedValence <- aggregate(data=d1.withValence, expressedValence ~ utterance, sum)
-ggplot(d1.expressedValence, aes(x=1, y=expressedValence)) +
+ggplot(d1.expressedValence, aes(x=1.5, y=expressedValence)) +
   facet_grid(.~utterance) +
   geom_bar(stat="identity", color="black", fill="#FF9999") +
   scale_x_discrete() +
-  xlab("Utterance") +
+  xlab("") +
   ylab("Valence") +                  
   ggtitle("Valence expressed in each utterance ") +
   scale_fill_discrete(guide=FALSE) +
@@ -123,3 +124,16 @@ ggplot(d1.expressedValence, aes(x=1, y=expressedValence)) +
   theme_bw() +
   theme(axis.text.x=element_text(size=9))
 
+## plot probability of HAVING affect given utterance
+d1.havingValence <- aggregate(data=d1.withValence, probability ~ utterance, sum)
+ggplot(d1.havingValence, aes(x=1.5, y=probability)) +
+  facet_grid(.~utterance) +
+  geom_bar(stat="identity", color="black", fill="#FF9999") +
+  scale_x_discrete() +
+  xlab("") +
+  ylab("Valence") +                  
+  ggtitle("Having valence given utterance") +
+  scale_fill_discrete(guide=FALSE) +
+  scale_y_continuous() +                    
+  theme_bw() +
+  theme(axis.text.x=element_text(size=9))
