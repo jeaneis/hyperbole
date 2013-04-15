@@ -46,7 +46,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 ## plot interpretation probababilities given each utterance
 
-d1 = read.csv("../../data/model/predict_kettle_realAffect_states14.csv")
+d1 = read.csv("../../data/model/predict_laptop_realAffect_states14.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
@@ -65,7 +65,7 @@ ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="ident
                       name="Valence",
                     breaks=c("1", "2"),
                     labels=c("No valence", "With valence")) + 
-                      ggtitle("Kettle") +          
+                      ggtitle("Watch") +          
                       theme_bw() +
                       theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
 
@@ -107,3 +107,19 @@ d1.valence.p <- ggplot(d1.withValence, aes(meaning, postPriorRatio)) + geom_bar(
   geom_hline(yintercept=c(1,0), linetype="dotted")
 
 multiplot(d1.meaning.p, d1.valence.p)
+
+## plot degree of affect expressed in utterance
+d1.withValence$expressedValence <- d1.withValence$postPriorRatio * d1.withValence$totalMeaningProb
+d1.expressedValence <- aggregate(data=d1.withValence, expressedValence ~ utterance, sum)
+ggplot(d1.expressedValence, aes(x=1, y=expressedValence)) +
+  facet_grid(.~utterance) +
+  geom_bar(stat="identity", color="black", fill="#FF9999") +
+  scale_x_discrete() +
+  xlab("Utterance") +
+  ylab("Valence") +                  
+  ggtitle("Valence expressed in each utterance ") +
+  scale_fill_discrete(guide=FALSE) +
+  scale_y_continuous() +                    
+  theme_bw() +
+  theme(axis.text.x=element_text(size=9))
+

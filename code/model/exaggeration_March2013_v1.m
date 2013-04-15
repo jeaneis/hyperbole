@@ -65,10 +65,10 @@ meaning_prior = log(normalizeVector([counts/sum(counts) 0.000001 counts/sum(coun
 %valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
 affect_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1);
 %
-affect_prior(find(affect_prior <= 0)) = 0.000001;
+affect_prior(find(affect_prior <= 0)) = 1 - eps;
+
 %
 valence_prior = log(1 - affect_prior);
-
 % Inverse utterance costs
 
 utterance_costs = [2 2 2 2 2 2 2 1 1 1 1 1 1 1];
