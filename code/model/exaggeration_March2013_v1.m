@@ -38,7 +38,7 @@ A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 
 % 2nd attempt: This fits input data into a lowess curve, but the problem is
 % that the curve may not be monotonically increasing.
-f = fit([A(:,1), ones(length(A),1)], A(:,2), 'lowess');
+% f = fit([A(:,1), ones(length(A),1)], A(:,2), 'lowess');
 %%%%%%%%%%
 % plot(A(:,1), f(A(:,1), ones(19,1)))
 % To predict: f(A(:,1), ones(19,1)) = y

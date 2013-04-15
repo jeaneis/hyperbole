@@ -29,18 +29,3 @@ code/model/draft.m
 
 *.m~
 
-data/model/predict_sweater_realAffect_states14.csv
-
-data/model/predict_laptop_realAffect_states14_laplace.csv
-
-data/model/predict_watch_realAffect_states14.csv
-
-data/model/predict_watch_realAffect_states14.csv
-
-data/model/predict_laptop_realAffect_states14.csv
-
-data/model/predict_kettle_realAffect_states14.csv
-
-data/model/predict_headphones_realAffect_states14.csv
-
-data/model/predict_coffee_realAffect_states14.csv
