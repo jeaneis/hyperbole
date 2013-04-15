@@ -98,7 +98,7 @@ function getRadioCheckedValue(formNum, radio_name)
    return '';
 }
 
-function clearForm(oForm) {
+function clearSliderForm(oForm) {
     
   var elements = oForm.elements; 
     
@@ -172,11 +172,10 @@ $("#total-num").html(numTrials);
 var experiment = {
 	condition: chooseCondition + 1,
 	sentenceIDs: new Array(numTrials),
-    results: new Array(numTrials),
+    prices: new Array(numTrials),
+    affects: new Array(numTrials),
     orders: new Array(numTrials),
-    modifiers: new Array(numTrials),
     domains: new Array(numTrials),
-    speakers: new Array(numTrials),
     buyers: new Array(numTrials),
     gender: "",
     age:"",
@@ -190,7 +189,7 @@ var experiment = {
     	
     },
     end: function() {
-        var gen = getRadioCheckedValue(1, "genderButton");
+        var gen = getRadioCheckedValue(2, "genderButton");
         var ag = document.age.ageRange.value;
         var lan = document.language.nativeLanguage.value;
         var comm = document.comments.input.value;
@@ -200,11 +199,11 @@ var experiment = {
         experiment.nativeLanguage = lan;
         experiment.comments = comm;
         experiment.income = incomeVal;
-        clearForm(document.forms[1]);
         clearForm(document.forms[2]);
         clearForm(document.forms[3]);
         clearForm(document.forms[4]);
         clearForm(document.forms[5]);
+        clearForm(document.forms[6]);
         
         showSlide("finished");
         setTimeout(function() {turk.submit(experiment) }, 1500);
@@ -213,17 +212,18 @@ var experiment = {
     	if (numComplete > 0) {
     		
     		var price = parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
-        	experiment.results[currentTrialNum] = price;
+    		var likely = document.getElementById("hiddenSliderValue0").value;
+        	experiment.prices[currentTrialNum] = price;
+        	experiment.affects[currentTrialNum] = likely;
         	experiment.orders[currentTrialNum] = numComplete;
         	
         	experiment.sentenceIDs[currentTrialNum] = trial.sentenceID;
         	experiment.domains[currentTrialNum] = trial.domain;
-        	experiment.modifiers[currentTrialNum] = trial.modifier;
         	
-        	experiment.speakers[currentTrialNum] = speaker;
         	experiment.buyers[currentTrialNum] = buyer;
         	
         	clearForm(document.forms[0]);
+        	clearForm(document.forms[1]);
         
         }
     	if (numComplete >= numTrials) {

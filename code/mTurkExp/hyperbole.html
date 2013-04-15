@@ -3,7 +3,7 @@
   <title>Prices</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="http://stanford.edu/~louyang/mmturkey.0.5.js?nowarn"></script>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style_hyperbole.css" />
 <link type="text/css" rel="stylesheet" href="sliders/jquery-ui.css" /></p>
 <script src="sliders/jquery.min.js"></script> <script src="sliders/jquery-ui.min.js"></script>
 </head>
@@ -193,7 +193,7 @@ function pressEnter(e) {
     </tr></tbody></table>
     </form>
     </br>
-    <button type="button" id="next" onclick="this.blur(); if (ValidateNumberLength(document.price.score, 10) && ValidateNumberLength(document.price.score1, 2)) {experiment.next();}">Next</button>
+    <button type="button" id="next" onclick="this.blur(); if (ValidateNumberLength(document.price.score, 10) && ValidateNumberLength(document.price.score1, 2) && ValidateSliderForm(document.affectForm)) {experiment.next();}">Next</button>
     </form>
     
     </div>
