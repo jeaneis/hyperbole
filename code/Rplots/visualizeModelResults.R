@@ -46,7 +46,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 ## plot interpretation probababilities given each utterance
 
-d1 = read.csv("../../data/model/predict_laptop_realAffect_states14.csv")
+d1 = read.csv("../../data/model/predict_kettle_realAffect_states14.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
@@ -65,7 +65,7 @@ ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="ident
                       name="Valence",
                     breaks=c("1", "2"),
                     labels=c("No valence", "With valence")) + 
-                      ggtitle("Watch") +          
+                      ggtitle("Kettle") +          
                       theme_bw() +
                       theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
 
@@ -89,7 +89,7 @@ d1.meaning.p <- ggplot(d1, aes(meaning, probability, fill=valence)) + geom_bar(s
   xlab("Meaning") +
   ylab("Probability") +                  
   ggtitle("Interpreted meaning for each utterance ") +
-  scale_fill_discrete(guide=FALSE) +
+  scale_fill_manual(scale_fill_manual(values=c("#33CCCC", "#FF6666"), guide=FALSE) +
   scale_y_continuous() +                    
   theme_bw() +
   theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
@@ -122,7 +122,7 @@ ggplot(d1.expressedValence, aes(x=1.5, y=expressedValence)) +
   scale_fill_discrete(guide=FALSE) +
   scale_y_continuous() +                    
   theme_bw() +
-  theme(axis.text.x=element_text(size=9))
+  theme(axis.text.x=element_text(size=0), axis.ticks= element_blank())
 
 ## plot probability of HAVING affect given utterance
 d1.havingValence <- aggregate(data=d1.withValence, probability ~ utterance, sum)
