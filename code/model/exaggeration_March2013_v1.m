@@ -32,14 +32,22 @@ A = csvread(['../../data/mTurkExp/affectPriors/', affectPriorFileName], 2, 1);
 % So that we can find prob affect given any price value
 
 % Smoothes affect priors
+% 1st attempt: Get a plot, but cannot predict unseen values
 % smoothed_affect_prior = [A(:,1), smooth(A(:,1), A(:,2), 'lowess')];
 % plot(smoothed_affect_prior(:,1), smoothed_affect_prior(:,2));
 
+% 2nd attempt: This fits input data into a lowess curve, but the problem is
+% that the curve may not be monotonically increasing.
 f = fit([A(:,1), ones(length(A),1)], A(:,2), 'lowess');
-
 %%%%%%%%%%
 % plot(A(:,1), f(A(:,1), ones(19,1)))
 % To predict: f(A(:,1), ones(19,1)) = y
+%%%%%%%%%%
+
+% 3rd attempt: Fit input into a lowess curve, then interpolate the smoothed
+% data from the curve to predict unseen values.
+interp_affect_priors = mylowess(A, 1:10005, 6);
+
 
 % These are the possible meanings, i.e. the numerical states
 meanings_round = [roundTo(prices, 10), 10000];
@@ -62,12 +70,18 @@ meaning_prior = log(normalizeVector([counts/sum(counts) 0.000001 counts/sum(coun
 
 % Prior that the speaker DOES NOT have affect
 
-%valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
-affect_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1);
-%
-affect_prior(find(affect_prior <= 0)) = 1 - eps;
+% valence_prior = log([0.8 0.6 0.5 0.2 0.1 0.05 0.000001 0.8 0.6 0.5 0.2 0.1 0.05 0.000001]);
 
-%
+% Affect prior if using 2nd attempt method.
+% affect_prior = cutOffAt(f(meanings, ones(length(meanings), 1)), 1);
+
+% Affect prior if using 3rd attempt method.
+affect_prior = cutOffAt(interp_affect_priors(meanings), 1);
+
+% Attempt to solve negative values--which turns out not to be the cause of
+% the issue.
+% affect_prior(find(affect_prior <= 0)) = eps;
+
 valence_prior = log(1 - affect_prior);
 % Inverse utterance costs
 
