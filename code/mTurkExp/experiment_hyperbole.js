@@ -141,12 +141,12 @@ function clearSliderForm(oForm) {
 var allConditions = 
 [
 [
-{"sentenceID":1, "domain":"sweater", "unit":"dollars", "verb":"bought", "adj":"much", "verb2":"cost", "modifier":"a"},
-{"sentenceID":2, "domain":"headphones", "unit":"dollars", "verb":"bought", "adj":"much", "verb2":"cost", "modifier":"some"},
-{"sentenceID":3, "domain":"laptop", "unit":"dollars", "verb":"bought", "adj":"much", "verb2":"cost", "modifier":"a"},
-{"sentenceID":4, "domain":"coffee maker", "unit":"dollars", "verb":"bought", "adj":"much", "verb2":"cost", "modifier":"a"},
-{"sentenceID":5, "domain":"watch", "unit":"dollars", "verb":"bought", "adj":"much", "verb2":"cost", "modifier":"a"},
-{"sentenceID":6, "domain":"electric kettle", "unit":"dollars", "verb":"bought", "adj":"much", "verb2":"cost", "modifier":"an"},
+{"sentenceID":1, "domain":"sweater", "modifier":"a", "cost":10},
+{"sentenceID":2, "domain":"headphones", "modifier":"some", "cost":50},
+{"sentenceID":3, "domain":"laptop", "modifier":"a", "cost":1001},
+{"sentenceID":4, "domain":"coffee maker", "modifier":"a", "cost":1000},
+{"sentenceID":5, "domain":"watch", "modifier":"a", "cost":1000},
+{"sentenceID":6, "domain":"electric kettle", "modifier":"an", "cost":500},
 ]
 ];
 
@@ -172,7 +172,8 @@ $("#total-num").html(numTrials);
 var experiment = {
 	condition: chooseCondition + 1,
 	sentenceIDs: new Array(numTrials),
-    prices: new Array(numTrials),
+	utteredPrices: new Array(numTrials),
+    inferredPrices: new Array(numTrials),
     affects: new Array(numTrials),
     orders: new Array(numTrials),
     domains: new Array(numTrials),
@@ -212,15 +213,15 @@ var experiment = {
     	if (numComplete > 0) {
     		
     		var price = parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
-    		var likely = document.getElementById("hiddenSliderValue0").value;
-        	experiment.prices[currentTrialNum] = price;
+    		var likely = parseInt(document.getElementById("hiddenSliderValue0").value) / 40.00;
+        	experiment.inferredPrices[currentTrialNum] = price;
         	experiment.affects[currentTrialNum] = likely;
         	experiment.orders[currentTrialNum] = numComplete;
         	
         	experiment.sentenceIDs[currentTrialNum] = trial.sentenceID;
         	experiment.domains[currentTrialNum] = trial.domain;
-        	
         	experiment.buyers[currentTrialNum] = buyer;
+        	experiment.utteredPrices[currentTrialNum] = trial.cost;
         	
         	clearForm(document.forms[0]);
         	clearForm(document.forms[1]);
@@ -247,10 +248,7 @@ var experiment = {
         	$("#domain2").html(trial.domain);
         	$("#domain3").html(trial.domain);
         	$("#modifier").html(trial.modifier);
-        	$("#unit").html(trial.unit);
-        	$("#adj").html(trial.adj);
-        	$("#verb").html(trial.verb);
-        	$("#verb2").html(trial.verb2);
+        	$("#cost").html(trial.cost);
         	numComplete++;
         }
     }

@@ -46,7 +46,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 ## plot interpretation probababilities given each utterance
 
-d1 = read.csv("../../data/model/predict_coffee_realAffect_states14.csv")
+d1 = read.csv("../../data/model/predict_watch_realAffect_states14.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
@@ -65,7 +65,7 @@ ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="ident
                       name="Valence",
                     breaks=c("1", "2"),
                     labels=c("No valence", "With valence")) + 
-                      ggtitle("Kettle") +          
+                      #ggtitle("Kettle") +          
                       theme_bw() +
                       theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
 
@@ -89,7 +89,7 @@ d1.meaning.p <- ggplot(d1, aes(meaning, probability, fill=valence)) + geom_bar(s
   xlab("Meaning") +
   ylab("Probability") +                  
   ggtitle("Interpreted meaning for each utterance ") +
-  scale_fill_manual(scale_fill_manual(values=c("#33CCCC", "#FF6666"), guide=FALSE) +
+  scale_fill_manual(values=c("#33CCCC", "#FF6666"), guide=FALSE) +
   scale_y_continuous() +                    
   theme_bw() +
   theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
@@ -106,15 +106,12 @@ d1.valence.p <- ggplot(d1.withValence, aes(meaning, postPriorRatio)) + geom_bar(
   theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9)) +
   geom_hline(yintercept=c(1,0), linetype="dotted")
 
-multiplot(d1.meaning.p, d1.valence.p)
-
-
 ## plot degree of EXPRESSING affect given utterance
 d1.withValence$expressedValence <- d1.withValence$postPriorRatio * d1.withValence$totalMeaningProb
 d1.expressedValence <- aggregate(data=d1.withValence, expressedValence ~ utterance, sum)
-ggplot(d1.expressedValence, aes(x=1.5, y=expressedValence)) +
+d1.expressedValence.p <- ggplot(d1.expressedValence, aes(x=1.5, y=expressedValence)) +
   facet_grid(.~utterance) +
-  geom_bar(stat="identity", color="black", fill="#FF9999") +
+  geom_bar(stat="identity", color="black", fill="#CCCCCC") +
   scale_x_discrete() +
   xlab("") +
   ylab("Valence") +                  
@@ -123,6 +120,8 @@ ggplot(d1.expressedValence, aes(x=1.5, y=expressedValence)) +
   scale_y_continuous() +                    
   theme_bw() +
   theme(axis.text.x=element_text(size=0), axis.ticks= element_blank())
+
+multiplot(d1.meaning.p, d1.valence.p, d1.expressedValence.p)
 
 ## plot probability of HAVING affect given utterance
 d1.havingValence <- aggregate(data=d1.withValence, probability ~ utterance, sum)

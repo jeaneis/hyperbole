@@ -146,7 +146,6 @@ function pressEnter(e) {
 <p id='logo-text'>Instructions</p>
 <p class="block-text"> You will see <span id="tot-num">{{}}</span> statements displayed on the screen. </p>
 <p class="block-text"> For each statement, please give your best estimate of the price of the item described. </p>
-<p class="block-text"> Please use your common sense to estimate. Please DO NOT look up the items on the Internet. </p>
 </br>
 </br>
 <div id="form">
@@ -160,12 +159,12 @@ function pressEnter(e) {
 
 <div class="slide" id="stage">
 	<p id="statement"><span id="buyer1">{{}}</span> bought <span id="modifier">{{}}</span> <span id="domain1">{{}}</span>.
-	<span id="buyer2">{{}}</span> said, "The <span id="domain2">{{}}</span> cost <span id="cost">{{}}</span> dollars."</p>
+	<span id="buyer2">{{}}</span> said to his friend, "That <span id="domain2">{{}}</span> cost <span id="cost">{{}}</span> dollars."</p>
     </br>
     <p id="question">How much do you think the <span id="domain3">{{}}</span> cost?</p>
     <div id="form">
     <form name="price">
-    <input type="text" name="score" size="18" runat=server onkeypress="return pressEnter(event)"/> &nbsp;<span id="scale"> <span id="unit">{{}}</span> and </span>
+    <input type="text" name="score" size="18" runat=server onkeypress="return pressEnter(event)"/> &nbsp;<span id="scale"> dollars and </span>
     <input type="text" name="score1" size="8" runat=server onkeypress="return pressEnter(event)"/> &nbsp;<span id="scale"> cents </span>
     </br>
     </form>
