@@ -1,0 +1,54 @@
+d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole_pilot_long.csv", strip.white=TRUE)
+d$utteredPrice <- factor(d$utteredPrice)
+
+d.kettle <- subset(d, domain=="electric kettle")
+
+kettle.price <- summarySE(d.kettle, measurevar="inferredPrice", groupvars=c("utteredPrice", "numberType"))
+ggplot(kettle.price, aes(x=utteredPrice, y=inferredPrice, fill=numberType)) +
+  geom_bar(color="black", size=0.3) +
+  geom_errorbar(aes(ymin=inferredPrice-se, ymax=inferredPrice+se), size=0.3, width=0.2) +
+  theme_bw()
+
+
+kettle.opinion <- summarySE(d.kettle, measurevar="probOpinion", groupvars=c("utteredPrice", "numberType"))
+ggplot(kettle.opinion, aes(x=utteredPrice, y=probOpinion, fill=numberType)) +
+  geom_bar(color="black", size=0.3) +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, width=0.2) +
+  theme_bw()
+
+
+d.domain <- subset(d, domain=="sweater")
+d.domain$inferredPriceRounded <- round(d.domain$inferredPrice, 0)
+
+utteredPrices <- c(20,21,50,51,100,101,200,201,
+                   500,501,1000,1001,2000,2001,10000,10001)
+
+d.histograms <- list()
+for(i in 1:length(utteredPrices)) {
+  currPrice = as.character(utteredPrices[i])
+  d.domain.price <- subset(d.domain, utteredPrice==currPrice)
+  hist.price <- hist(d.domain.price$inferredPriceRounded, 
+                     breaks=c(0,utteredPrices,4444433), plot=FALSE, include.lowest=TRUE,right=FALSE)
+  hist.price.data <- data.frame(inferredPrice = hist.price$breaks, 
+                                counts=c(hist.price$counts,0), utteredPrice=currPrice)
+  d.histograms[[i]] <- hist.price.data
+}
+
+d.domain.hist <- d.histograms[[1]]
+for(j in 2:length(utteredPrices)) {
+  d.domain.hist <- rbind(d.domain.hist, d.histograms[[j]])
+}
+
+d.domain.hist$inferredPrice <- hist.price.data$inferredPrice
+d.domain.hist.trimmed <- subset(d.domain.hist, inferredPrice <= 10001)
+d.domain.hist.trimmed$inferredPrice <- factor(d.domain.hist.trimmed$inferredPrice)
+ggplot(d.domain.hist.trimmed, aes(x=inferredPrice, y=counts)) +
+  geom_bar(color="black", fill="#FF9999",stat="identity") +
+  facet_grid(. ~ utteredPrice) +
+  theme_bw() +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
+
+d.histograms[[16]]$inferredPrice = factor(d.histograms[[16]]$inferredPrice)
+ggplot(d.histograms[[16]], aes(x=inferredPrice, y=counts)) +
+  geom_bar(color="black", fill="#FF9999",stat="identity") +
+  theme_bw()
