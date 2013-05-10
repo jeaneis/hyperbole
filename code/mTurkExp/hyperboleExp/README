@@ -39,7 +39,7 @@ rewriteProperties::yes
 &&&     Selecting 'no' here means that you have to manually choose whether to go live or use the Sandbox, by going to the mturk.properties file and uncommenting the appropriate service URL and commenting out the wrong one. If you choose the manual route, the next ('liveHIT') option is not relevant. Also check that you're using https as Amazon has stopped supporting non-secure connections.
 &&&     This option was added on 8/21/12, in response to changes at AWS which rendered the useful -sandbox CLT option obsolete. (Grr.) 
 
-liveHIT::yes
+liveHIT::no
 &&&     Is this live or sandbox? set to yes to go live. default is no (sandbox). This is only relevant if you've decided to let Submiterator manipulate your mturk-properties file, by selecting 'yes' for the rewriteProperties option. Otherwise, choose sandbox vs. live HIT it manually by modifying the mturk.properties file.
 
 title::Guess the price!
@@ -48,7 +48,7 @@ title::Guess the price!
 description::Read scenarios and estimate the prices of various items described.
 &&& 	A brief description of your experiment, in a phrase or short sentence
 
-nameofexperimentfiles::hyperbole1	
+nameofexperimentfiles::hyperbole2	
 &&& 	The files that the script generates for you will have names based on this option. 
 
 experimentURL::http://www.stanford.edu/~justinek/prices_exp/hyperbole.html
@@ -74,13 +74,13 @@ minPercentPreviousHITsApproved::95
 frameheight::600
 &&&	The height of the embedded frame that your subjects will see, in pixels. When setting this, think about the smallest screen size you can expect your workers to have. Play with this parameter by posting several times to the sandbox with different settings and seeing which works for your specific experiment for a given screen size. 
 
-reward::1.00	
+reward::0.45	
 &&&	How much you're paying per HIT, in dollars. E.g., if you want to pay 30 cents per HIT, enter ".30".
 
 numberofassignments::10	  
 &&&	How many subjects you want. You can always add more later, through the web interface.
 
-assignmentduration::3600 	  
+assignmentduration::1200 	  
 &&& 	In seconds. 
 
 hitlifetime::60000	       
