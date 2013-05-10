@@ -36,7 +36,7 @@ counts = counts + 1;
 f2 = fit(prices, counts, 'smoothingspline');
 plot(f2(1:5000));
 
-prices = [10, 50, 100, 500, 1000, 2000]';
+prices = [20, 50, 100, 200, 500, 1000, 2000]';
 % counts = f2(prices, ones(size(prices)));
 counts = f2(prices);
 counts = cutOffAt(counts, 0, 'below');

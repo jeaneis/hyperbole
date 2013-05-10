@@ -17,9 +17,10 @@ ggplot(kettle.opinion, aes(x=utteredPrice, y=probOpinion, fill=numberType)) +
   theme_bw()
 
 
-d.domain <- subset(d, domain=="sweater")
+#####
+## plot prices 
+d.domain <- subset(d, domain=="laptop")
 d.domain$inferredPriceRounded <- round(d.domain$inferredPrice, 0)
-
 utteredPrices <- c(20,21,50,51,100,101,200,201,
                    500,501,1000,1001,2000,2001,10000,10001)
 
@@ -43,10 +44,21 @@ d.domain.hist$inferredPrice <- hist.price.data$inferredPrice
 d.domain.hist.trimmed <- subset(d.domain.hist, inferredPrice <= 10001)
 d.domain.hist.trimmed$inferredPrice <- factor(d.domain.hist.trimmed$inferredPrice)
 ggplot(d.domain.hist.trimmed, aes(x=inferredPrice, y=counts)) +
-  geom_bar(color="black", fill="#FF9999",stat="identity") +
+  geom_bar(color="black", fill="#CCCCCC",stat="identity") +
   facet_grid(. ~ utteredPrice) +
   theme_bw() +
   theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
+
+# plot opinion
+d.domain.opinion <- summarySE(d.domain, measurevar="probOpinion", groupvars=c("utteredPrice"))
+ggplot(d.domain.opinion, aes(utteredPrice, probOpinion)) +
+  geom_bar(color="black", fill="#FF9999",stat="identity") +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, width=0.2) +
+  theme_bw()
+  
+  
+
+
 
 d.histograms[[16]]$inferredPrice = factor(d.histograms[[16]]$inferredPrice)
 ggplot(d.histograms[[16]], aes(x=inferredPrice, y=counts)) +
