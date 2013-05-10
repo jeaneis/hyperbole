@@ -85,6 +85,14 @@ function shuffledArray(arrLength)
   return arr;
 }
 
+function shuffledSampleArray(arrLength, sampleLength)
+{
+  var arr = shuffledArray(arrLength);
+  var beginIndex = Math.floor(Math.random() * (arrLength-sampleLength+1));
+  return arr.slice(beginIndex, beginIndex+sampleLength);
+}
+
+
 function getRadioCheckedValue(formNum, radio_name)
 {
    var oRadio = document.forms[formNum].elements[radio_name];
@@ -136,7 +144,12 @@ function clearSliderForm(oForm) {
     }
 }
 
-
+function randomizeSharpOffset()
+{
+  var r = Math.floor((Math.random()*6)+1);
+  if (r < 4) { return r; }
+  else { return 3-r; }
+}
 
 var allConditions = 
 [
@@ -149,14 +162,14 @@ var allConditions =
 {"sentenceID":6,"domain":"electric kettle","modifier":"an","number":"round","utterance":1000,"buyer":"Frank"},
 {"sentenceID":7,"domain":"electric kettle","modifier":"an","number":"round","utterance":2000,"buyer":"George"},
 {"sentenceID":8,"domain":"electric kettle","modifier":"an","number":"round","utterance":10000,"buyer":"Harry"},
-{"sentenceID":9,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":21,"buyer":"Ivan"},
-{"sentenceID":10,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":51,"buyer":"Jake"},
-{"sentenceID":11,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":101,"buyer":"Kevin"},
-{"sentenceID":12,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":201,"buyer":"Luke"},
-{"sentenceID":13,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":501,"buyer":"Mark"},
-{"sentenceID":14,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":1001,"buyer":"Ned"},
-{"sentenceID":15,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":2001,"buyer":"Owen"},
-{"sentenceID":16,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":10001,"buyer":"Paul"},
+{"sentenceID":9,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":20,"buyer":"Ivan"},
+{"sentenceID":10,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":50,"buyer":"Jake"},
+{"sentenceID":11,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":100,"buyer":"Kevin"},
+{"sentenceID":12,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":200,"buyer":"Luke"},
+{"sentenceID":13,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":500,"buyer":"Mark"},
+{"sentenceID":14,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":1000,"buyer":"Ned"},
+{"sentenceID":15,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":2000,"buyer":"Owen"},
+{"sentenceID":16,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":10000,"buyer":"Paul"},
 {"sentenceID":17,"domain":"coffee maker","modifier":"a","number":"round","utterance":20,"buyer":"Ryan"},
 {"sentenceID":18,"domain":"coffee maker","modifier":"a","number":"round","utterance":50,"buyer":"Steve"},
 {"sentenceID":19,"domain":"coffee maker","modifier":"a","number":"round","utterance":100,"buyer":"Terry"},
@@ -165,14 +178,14 @@ var allConditions =
 {"sentenceID":22,"domain":"coffee maker","modifier":"a","number":"round","utterance":1000,"buyer":"Barry"},
 {"sentenceID":23,"domain":"coffee maker","modifier":"a","number":"round","utterance":2000,"buyer":"Cameron"},
 {"sentenceID":24,"domain":"coffee maker","modifier":"a","number":"round","utterance":10000,"buyer":"Darren"},
-{"sentenceID":25,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":21,"buyer":"Eli"},
-{"sentenceID":26,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":51,"buyer":"Felix"},
-{"sentenceID":27,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":101,"buyer":"Gabe"},
-{"sentenceID":28,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":201,"buyer":"Hal"},
-{"sentenceID":29,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":501,"buyer":"Irvin"},
-{"sentenceID":30,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":1001,"buyer":"Jerry"},
-{"sentenceID":31,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":2001,"buyer":"Kenneth"},
-{"sentenceID":32,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":10001,"buyer":"Larry"},
+{"sentenceID":25,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":20,"buyer":"Eli"},
+{"sentenceID":26,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":50,"buyer":"Felix"},
+{"sentenceID":27,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":100,"buyer":"Gabe"},
+{"sentenceID":28,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":200,"buyer":"Hal"},
+{"sentenceID":29,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":500,"buyer":"Irvin"},
+{"sentenceID":30,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":1000,"buyer":"Jerry"},
+{"sentenceID":31,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":2000,"buyer":"Kenneth"},
+{"sentenceID":32,"domain":"coffee maker","modifier":"a","number":"sharp","utterance":10000,"buyer":"Larry"},
 {"sentenceID":33,"domain":"sweater","modifier":"a","number":"round","utterance":20,"buyer":"Martin"},
 {"sentenceID":34,"domain":"sweater","modifier":"a","number":"round","utterance":50,"buyer":"Nelson"},
 {"sentenceID":35,"domain":"sweater","modifier":"a","number":"round","utterance":100,"buyer":"Oscar"},
@@ -181,14 +194,14 @@ var allConditions =
 {"sentenceID":38,"domain":"sweater","modifier":"a","number":"round","utterance":1000,"buyer":"Sam"},
 {"sentenceID":39,"domain":"sweater","modifier":"a","number":"round","utterance":2000,"buyer":"Ted"},
 {"sentenceID":40,"domain":"sweater","modifier":"a","number":"round","utterance":10000,"buyer":"Andrew"},
-{"sentenceID":41,"domain":"sweater","modifier":"a","number":"sharp","utterance":21,"buyer":"Bart"},
-{"sentenceID":42,"domain":"sweater","modifier":"a","number":"sharp","utterance":51,"buyer":"Corey"},
-{"sentenceID":43,"domain":"sweater","modifier":"a","number":"sharp","utterance":101,"buyer":"Don"},
-{"sentenceID":44,"domain":"sweater","modifier":"a","number":"sharp","utterance":201,"buyer":"Edward"},
-{"sentenceID":45,"domain":"sweater","modifier":"a","number":"sharp","utterance":501,"buyer":"Fred"},
-{"sentenceID":46,"domain":"sweater","modifier":"a","number":"sharp","utterance":1001,"buyer":"Garrett"},
-{"sentenceID":47,"domain":"sweater","modifier":"a","number":"sharp","utterance":2001,"buyer":"Henry"},
-{"sentenceID":48,"domain":"sweater","modifier":"a","number":"sharp","utterance":10001,"buyer":"Isaac"},
+{"sentenceID":41,"domain":"sweater","modifier":"a","number":"sharp","utterance":20,"buyer":"Bart"},
+{"sentenceID":42,"domain":"sweater","modifier":"a","number":"sharp","utterance":50,"buyer":"Corey"},
+{"sentenceID":43,"domain":"sweater","modifier":"a","number":"sharp","utterance":100,"buyer":"Don"},
+{"sentenceID":44,"domain":"sweater","modifier":"a","number":"sharp","utterance":200,"buyer":"Edward"},
+{"sentenceID":45,"domain":"sweater","modifier":"a","number":"sharp","utterance":500,"buyer":"Fred"},
+{"sentenceID":46,"domain":"sweater","modifier":"a","number":"sharp","utterance":1000,"buyer":"Garrett"},
+{"sentenceID":47,"domain":"sweater","modifier":"a","number":"sharp","utterance":2000,"buyer":"Henry"},
+{"sentenceID":48,"domain":"sweater","modifier":"a","number":"sharp","utterance":10000,"buyer":"Isaac"},
 {"sentenceID":49,"domain":"headphones","modifier":"some","number":"round","utterance":20,"buyer":"Jordan"},
 {"sentenceID":50,"domain":"headphones","modifier":"some","number":"round","utterance":50,"buyer":"Keith"},
 {"sentenceID":51,"domain":"headphones","modifier":"some","number":"round","utterance":100,"buyer":"Laurence "},
@@ -197,14 +210,14 @@ var allConditions =
 {"sentenceID":54,"domain":"headphones","modifier":"some","number":"round","utterance":1000,"buyer":"Oliver"},
 {"sentenceID":55,"domain":"headphones","modifier":"some","number":"round","utterance":2000,"buyer":"Phillip"},
 {"sentenceID":56,"domain":"headphones","modifier":"some","number":"round","utterance":10000,"buyer":"Russell"},
-{"sentenceID":57,"domain":"headphones","modifier":"some","number":"sharp","utterance":21,"buyer":"Seth"},
-{"sentenceID":58,"domain":"headphones","modifier":"some","number":"sharp","utterance":51,"buyer":"Tim"},
-{"sentenceID":59,"domain":"headphones","modifier":"some","number":"sharp","utterance":101,"buyer":"Aaron"},
-{"sentenceID":60,"domain":"headphones","modifier":"some","number":"sharp","utterance":201,"buyer":"Ben"},
-{"sentenceID":61,"domain":"headphones","modifier":"some","number":"sharp","utterance":501,"buyer":"Cyrus"},
-{"sentenceID":62,"domain":"headphones","modifier":"some","number":"sharp","utterance":1001,"buyer":"Daniel"},
-{"sentenceID":63,"domain":"headphones","modifier":"some","number":"sharp","utterance":2001,"buyer":"Eric"},
-{"sentenceID":64,"domain":"headphones","modifier":"some","number":"sharp","utterance":10001,"buyer":"Chris"},
+{"sentenceID":57,"domain":"headphones","modifier":"some","number":"sharp","utterance":20,"buyer":"Seth"},
+{"sentenceID":58,"domain":"headphones","modifier":"some","number":"sharp","utterance":50,"buyer":"Tim"},
+{"sentenceID":59,"domain":"headphones","modifier":"some","number":"sharp","utterance":100,"buyer":"Aaron"},
+{"sentenceID":60,"domain":"headphones","modifier":"some","number":"sharp","utterance":200,"buyer":"Ben"},
+{"sentenceID":61,"domain":"headphones","modifier":"some","number":"sharp","utterance":500,"buyer":"Cyrus"},
+{"sentenceID":62,"domain":"headphones","modifier":"some","number":"sharp","utterance":1000,"buyer":"Daniel"},
+{"sentenceID":63,"domain":"headphones","modifier":"some","number":"sharp","utterance":2000,"buyer":"Eric"},
+{"sentenceID":64,"domain":"headphones","modifier":"some","number":"sharp","utterance":10000,"buyer":"Chris"},
 {"sentenceID":65,"domain":"watch","modifier":"a","number":"round","utterance":20,"buyer":"Charles"},
 {"sentenceID":66,"domain":"watch","modifier":"a","number":"round","utterance":50,"buyer":"Brian"},
 {"sentenceID":67,"domain":"watch","modifier":"a","number":"round","utterance":100,"buyer":"Adam"},
@@ -213,14 +226,14 @@ var allConditions =
 {"sentenceID":70,"domain":"watch","modifier":"a","number":"round","utterance":1000,"buyer":"John"},
 {"sentenceID":71,"domain":"watch","modifier":"a","number":"round","utterance":2000,"buyer":"Douglas"},
 {"sentenceID":72,"domain":"watch","modifier":"a","number":"round","utterance":10000,"buyer":"Justin"},
-{"sentenceID":73,"domain":"watch","modifier":"a","number":"sharp","utterance":21,"buyer":"Billy"},
-{"sentenceID":74,"domain":"watch","modifier":"a","number":"sharp","utterance":51,"buyer":"Howard"},
-{"sentenceID":75,"domain":"watch","modifier":"a","number":"sharp","utterance":101,"buyer":"Todd"},
-{"sentenceID":76,"domain":"watch","modifier":"a","number":"sharp","utterance":201,"buyer":"Alan"},
-{"sentenceID":77,"domain":"watch","modifier":"a","number":"sharp","utterance":501,"buyer":"Jeff"},
-{"sentenceID":78,"domain":"watch","modifier":"a","number":"sharp","utterance":1001,"buyer":"Ray"},
-{"sentenceID":79,"domain":"watch","modifier":"a","number":"sharp","utterance":2001,"buyer":"Tom"},
-{"sentenceID":80,"domain":"watch","modifier":"a","number":"sharp","utterance":10001,"buyer":"Rick"},
+{"sentenceID":73,"domain":"watch","modifier":"a","number":"sharp","utterance":20,"buyer":"Billy"},
+{"sentenceID":74,"domain":"watch","modifier":"a","number":"sharp","utterance":50,"buyer":"Howard"},
+{"sentenceID":75,"domain":"watch","modifier":"a","number":"sharp","utterance":100,"buyer":"Todd"},
+{"sentenceID":76,"domain":"watch","modifier":"a","number":"sharp","utterance":200,"buyer":"Alan"},
+{"sentenceID":77,"domain":"watch","modifier":"a","number":"sharp","utterance":500,"buyer":"Jeff"},
+{"sentenceID":78,"domain":"watch","modifier":"a","number":"sharp","utterance":1000,"buyer":"Ray"},
+{"sentenceID":79,"domain":"watch","modifier":"a","number":"sharp","utterance":2000,"buyer":"Tom"},
+{"sentenceID":80,"domain":"watch","modifier":"a","number":"sharp","utterance":10000,"buyer":"Rick"},
 {"sentenceID":81,"domain":"laptop","modifier":"a","number":"round","utterance":20,"buyer":"Ian"},
 {"sentenceID":82,"domain":"laptop","modifier":"a","number":"round","utterance":50,"buyer":"Kirk"},
 {"sentenceID":83,"domain":"laptop","modifier":"a","number":"round","utterance":100,"buyer":"Sean"},
@@ -229,14 +242,14 @@ var allConditions =
 {"sentenceID":86,"domain":"laptop","modifier":"a","number":"round","utterance":1000,"buyer":"Theodore"},
 {"sentenceID":87,"domain":"laptop","modifier":"a","number":"round","utterance":2000,"buyer":"Rodney"},
 {"sentenceID":88,"domain":"laptop","modifier":"a","number":"round","utterance":10000,"buyer":"Will"},
-{"sentenceID":89,"domain":"laptop","modifier":"a","number":"sharp","utterance":21,"buyer":"Jack"},
-{"sentenceID":90,"domain":"laptop","modifier":"a","number":"sharp","utterance":51,"buyer":"Roger"},
-{"sentenceID":91,"domain":"laptop","modifier":"a","number":"sharp","utterance":101,"buyer":"Greg"},
-{"sentenceID":92,"domain":"laptop","modifier":"a","number":"sharp","utterance":201,"buyer":"Scott"},
-{"sentenceID":93,"domain":"laptop","modifier":"a","number":"sharp","utterance":501,"buyer":"Joseph"},
-{"sentenceID":94,"domain":"laptop","modifier":"a","number":"sharp","utterance":1001,"buyer":"Richard"},
-{"sentenceID":95,"domain":"laptop","modifier":"a","number":"sharp","utterance":2001,"buyer":"Carl"},
-{"sentenceID":96,"domain":"laptop","modifier":"a","number":"sharp","utterance":10001,"buyer":"Leon"},
+{"sentenceID":89,"domain":"laptop","modifier":"a","number":"sharp","utterance":20,"buyer":"Jack"},
+{"sentenceID":90,"domain":"laptop","modifier":"a","number":"sharp","utterance":50,"buyer":"Roger"},
+{"sentenceID":91,"domain":"laptop","modifier":"a","number":"sharp","utterance":100,"buyer":"Greg"},
+{"sentenceID":92,"domain":"laptop","modifier":"a","number":"sharp","utterance":200,"buyer":"Scott"},
+{"sentenceID":93,"domain":"laptop","modifier":"a","number":"sharp","utterance":500,"buyer":"Joseph"},
+{"sentenceID":94,"domain":"laptop","modifier":"a","number":"sharp","utterance":1000,"buyer":"Richard"},
+{"sentenceID":95,"domain":"laptop","modifier":"a","number":"sharp","utterance":2000,"buyer":"Carl"},
+{"sentenceID":96,"domain":"laptop","modifier":"a","number":"sharp","utterance":10000,"buyer":"Leon"},
 ]
 ];
 
@@ -244,8 +257,8 @@ var allConditions =
 var numConditions = allConditions.length;
 var chooseCondition = random(0, numConditions-1);
 var allTrialOrders = allConditions[chooseCondition];
-var numTrials = allTrialOrders.length;
-var shuffledOrder = shuffledArray(numTrials);
+var numTrials = allTrialOrders.length / 3;
+var shuffledOrder = shuffledSampleArray(allTrialOrders.length, numTrials);
 var currentTrialNum = 0;
 var trial;
 var numComplete = 0;
@@ -304,7 +317,7 @@ var experiment = {
       experiment.sentenceIDs[currentTrialNum] = trial.sentenceID;
       experiment.domains[currentTrialNum] = trial.domain;
       experiment.buyers[currentTrialNum] = trial.buyer;
-      experiment.utteredPrices[currentTrialNum] = trial.utterance;
+      experiment.utteredPrices[currentTrialNum] = document.getElementById("cost").innerHTML;
       experiment.numberTypes[currentTrialNum] = trial.number;
         	
       clearForm(document.forms[0]);
@@ -330,7 +343,10 @@ var experiment = {
       $("#domain2").html(trial.domain);
       $("#domain3").html(trial.domain);
       $("#modifier").html(trial.modifier);
-      $("#cost").html(trial.utterance);
+      if ( trial.number == "round" )
+      { $("#cost").html(trial.utterance); }
+      else
+      { $("#cost").html(trial.utterance + randomizeSharpOffset()); }
       numComplete++;
     }
   }
