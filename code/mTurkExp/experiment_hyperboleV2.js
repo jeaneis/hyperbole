@@ -332,8 +332,10 @@ var experiment = {
     	$('.bar').css('width', (200.0 * numComplete/numTrials) + 'px');
     	$("#trial-num").html(numComplete);
     	$("#total-num").html(numTrials);
-    	currentTrialNum = shuffledOrder[numComplete];
-    	trial = allTrialOrders[currentTrialNum];
+    	currentTrialNum = numComplete;
+    	trial = allTrialOrders[shuffledOrder[numComplete]];
+//     	currentTrialNum = shuffledOrder[numComplete];
+//     	trial = allTrialOrders[currentTrialNum];
     	buyer = trial.buyer;
       showSlide("stage");
       $("#buyer1").html(buyer);
