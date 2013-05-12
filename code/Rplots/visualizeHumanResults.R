@@ -1,4 +1,4 @@
-d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole_pilot_long.csv", strip.white=TRUE)
+d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole3_long.csv", strip.white=TRUE)
 d$utteredPrice <- factor(d$utteredPrice)
 
 d.kettle <- subset(d, domain=="electric kettle")
