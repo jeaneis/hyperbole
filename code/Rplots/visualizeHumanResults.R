@@ -1,24 +1,37 @@
+source("~/Dropbox/toolbox/R/summarySE.R")
+library(ggplot2)
 d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole3_long.csv", strip.white=TRUE)
-d$utteredPrice <- factor(d$utteredPrice)
+d$roundedUtteredPrice <- round(d$utteredPrice / 10.0) * 10
+d$roundedUtteredPrice <- factor(d$roundedUtteredPrice)
+
+### check how many responses were given for each domain X round/sharp X roundedUtteredPrice
+numSubjectsCount <- summarySE(d, measurevar="inferredPrice", 
+                              groupvars=c("domain", "numberType", "roundedUtteredPrice"))
+
 
 d.kettle <- subset(d, domain=="electric kettle")
+
+plot(d$roundedUtteredPrice, d$numberType)
 
 ## Ignore this for now...this just plots the average inferred price given an uttered price;
 ## it doesn't return a distribution 
 
-kettle.price <- summarySE(d.kettle, measurevar="inferredPrice", groupvars=c("utteredPrice", "numberType"))
-ggplot(kettle.price, aes(x=utteredPrice, y=inferredPrice, fill=numberType)) +
-  geom_bar(color="black", size=0.3) +
-  geom_errorbar(aes(ymin=inferredPrice-se, ymax=inferredPrice+se), size=0.3, width=0.2) +
+kettle.price <- summarySE(d.kettle, measurevar="inferredPrice", groupvars=c("roundedUtteredPrice", "numberType"))
+ggplot(kettle.price, aes(x=roundedUtteredPrice, y=inferredPrice, fill=numberType)) +
+  geom_bar(color="black", size=0.3, position=position_dodge()) +
+  geom_errorbar(aes(ymin=inferredPrice-se, ymax=inferredPrice+se), size=0.3, width=0.2, position=position_dodge(0.9)) +
   theme_bw()
 
 ## This plots the average estimated probability of opinion given each uttered price.
 ## however, we haven't combined the uttered prices yet for the sharp numbers
 
-kettle.opinion <- summarySE(d.kettle, measurevar="probOpinion", groupvars=c("utteredPrice", "numberType"))
-ggplot(kettle.opinion, aes(x=utteredPrice, y=probOpinion, fill=numberType)) +
-  geom_bar(color="black", size=0.3) +
-  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, width=0.2) +
+kettle.opinion <- summarySE(d.kettle, measurevar="probOpinion", 
+                            groupvars=c("roundedUtteredPrice", "numberType"))
+
+ggplot(kettle.opinion, aes(x=roundedUtteredPrice, y=probOpinion, fill=numberType)) +
+  geom_bar(color="black", size=0.3, position=position_dodge()) +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, 
+                width=0.2, position=position_dodge(0.9)) +
   theme_bw()
 
 
