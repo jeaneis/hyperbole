@@ -111,8 +111,8 @@ for (j in 1:6) {
 }
 
 # this plots the average probability of opinion given each uttered price
-d.domain.opinion <- summarySE(d.domain, measurevar="probOpinion", groupvars=c("utteredPrice"))
-ggplot(d.domain.opinion, aes(utteredPrice, probOpinion)) +
+d.domain.opinion <- summarySE(d.domain, measurevar="probOpinion", groupvars=c("utteredPriceLabel"))
+ggplot(d.domain.opinion, aes(utteredPriceLabel, probOpinion)) +
   geom_bar(color="black", fill="#FF9999",stat="identity") +
   geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, width=0.2) +
   theme_bw() + ggtitle(selectedDomain)
