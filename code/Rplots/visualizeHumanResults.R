@@ -1,7 +1,9 @@
 source("~/Dropbox/toolbox/R/summarySE.R")
 library(ggplot2)
 
-d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole3_long.csv", strip.white=TRUE)
+d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole3.2_long.csv", strip.white=TRUE)
+
+### Group sharp numbers of the same price point and label them
 d$roundedUtteredPrice <- round(d$utteredPrice / 10.0) * 10
 
 vec <- vector()
@@ -32,6 +34,19 @@ for (i in d$inferredPrice)
   vec <- c(vec, interpretedPrices[which.min(delta)])
 }
 d$bucketedInferredPrice <- vec
+
+### Label inferred price into sharp/round
+vec <- vector()
+for (i in 1:length(d$roundedUtteredPrice))
+{
+  val = d$bucketedInferredPrice[i]
+  if (d$inferredPrice[i] != val)
+  {
+    val = val + 1
+  }
+  vec <- c(vec, val)
+}
+d$inferredPriceLabel <- vec
 
 ### Possible domains: levels(d$domain)
 selectedDomain = levels(d$domain)[1] # 6 domains: 1-6
@@ -68,8 +83,8 @@ d.histograms <- list()
 for(i in 1:length(utteredPrices)) {
   currPrice = utteredPrices[i]
   d.domain.price <- subset(d.domain, utteredPriceLabel==currPrice)
-  hist.price <- hist(d.domain.price$inferredPriceRounded, 
-                     breaks=c(0,utteredPrices, max(d$inferredPrice)), plot=FALSE, include.lowest=TRUE,right=FALSE)
+  hist.price <- hist(d.domain.price$inferredPriceLabel, 
+                     breaks=c(0, as.numeric(utteredPrices), max(d$inferredPrice)), plot=FALSE, include.lowest=TRUE,right=FALSE)
   hist.price.data <- data.frame(inferredPrice = hist.price$breaks, 
                                 counts=c(hist.price$counts,0), utteredPrice=currPrice)
   d.histograms[[i]] <- hist.price.data
