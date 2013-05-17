@@ -1,55 +1,75 @@
 source("~/Dropbox/toolbox/R/summarySE.R")
 library(ggplot2)
+
 d <- read.csv("../../data/mTurkExp/hyperbole/rawData/hyperbole3_long.csv", strip.white=TRUE)
 d$roundedUtteredPrice <- round(d$utteredPrice / 10.0) * 10
+
+vec <- vector()
+for (i in 1:length(d$roundedUtteredPrice))
+{
+  val = d$roundedUtteredPrice[i]
+  if (d$numberType[i] == 'sharp') {
+    val = val + 1
+  }
+  vec <- c(vec, val)
+}
+
+d$utteredPriceLabel <- factor(vec)
 d$roundedUtteredPrice <- factor(d$roundedUtteredPrice)
 
 ### check how many responses were given for each domain X round/sharp X roundedUtteredPrice
 numSubjectsCount <- summarySE(d, measurevar="inferredPrice", 
                               groupvars=c("domain", "numberType", "roundedUtteredPrice"))
 
-
-d.kettle <- subset(d, domain=="electric kettle")
-
 plot(d$roundedUtteredPrice, d$numberType)
 
-## Ignore this for now...this just plots the average inferred price given an uttered price;
-## it doesn't return a distribution 
+### Bucket inferred price into one of the 8 price points
+vec <- vector()
+interpretedPrices = as.numeric(levels(unique(d$roundedUtteredPrice)))
+for (i in d$inferredPrice)
+{
+  delta <- abs(i - interpretedPrices)
+  vec <- c(vec, interpretedPrices[which.min(delta)])
+}
+d$bucketedInferredPrice <- vec
 
-kettle.price <- summarySE(d.kettle, measurevar="inferredPrice", groupvars=c("roundedUtteredPrice", "numberType"))
-ggplot(kettle.price, aes(x=roundedUtteredPrice, y=inferredPrice, fill=numberType)) +
-  geom_bar(color="black", size=0.3, position=position_dodge()) +
-  geom_errorbar(aes(ymin=inferredPrice-se, ymax=inferredPrice+se), size=0.3, width=0.2, position=position_dodge(0.9)) +
-  theme_bw()
+### Possible domains: levels(d$domain)
+selectedDomain = levels(d$domain)[1] # 6 domains: 1-6
+d.domain <- subset(d, domain==selectedDomain)
+
+### Ignore this for now...this just plots the average inferred price given an uttered price;
+### it doesn't return a distribution 
+# domain.price <- summarySE(d.domain, measurevar="inferredPrice", groupvars=c("roundedUtteredPrice", "numberType"))
+# ggplot(domain.price, aes(x=roundedUtteredPrice, y=inferredPrice, fill=numberType)) +
+#   geom_bar(color="black", size=0.3, position=position_dodge()) +
+#   geom_errorbar(aes(ymin=inferredPrice-se, ymax=inferredPrice+se), size=0.3, width=0.2, position=position_dodge(0.9)) +
+#   theme_bw()
 
 ## This plots the average estimated probability of opinion given each uttered price.
-## however, we haven't combined the uttered prices yet for the sharp numbers
 
-kettle.opinion <- summarySE(d.kettle, measurevar="probOpinion", 
+domain.opinion <- summarySE(d.domain, measurevar="probOpinion", 
                             groupvars=c("roundedUtteredPrice", "numberType"))
 
-ggplot(kettle.opinion, aes(x=roundedUtteredPrice, y=probOpinion, fill=numberType)) +
+ggplot(domain.opinion, aes(x=roundedUtteredPrice, y=probOpinion, fill=numberType)) +
   geom_bar(color="black", size=0.3, position=position_dodge()) +
   geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, 
                 width=0.2, position=position_dodge(0.9)) +
-  theme_bw()
+  theme_bw() + labs(title = selectedDomain)
 
 
 ##### Creates histograms to plot distributions, so we can directly compare to model output
 ## plot prices 
 ###### IMPORTANT you can change the domain to plot data from different domains
-d.domain <- subset(d, domain=="laptop")
-d.domain$inferredPriceRounded <- round(d.domain$inferredPrice, 0)
-utteredPrices <- c(20,21,50,51,100,101,200,201,
-                   500,501,1000,1001,2000,2001,10000,10001)
 
-# this part is just creating a list of histograms, don't worry about it for now
+utteredPrices <- levels(d$utteredPriceLabel)
+
+# this part is just creating a list of histograms
 d.histograms <- list()
 for(i in 1:length(utteredPrices)) {
-  currPrice = as.character(utteredPrices[i])
-  d.domain.price <- subset(d.domain, utteredPrice==currPrice)
+  currPrice = utteredPrices[i]
+  d.domain.price <- subset(d.domain, utteredPriceLabel==currPrice)
   hist.price <- hist(d.domain.price$inferredPriceRounded, 
-                     breaks=c(0,utteredPrices,4444433), plot=FALSE, include.lowest=TRUE,right=FALSE)
+                     breaks=c(0,utteredPrices, max(d$inferredPrice)), plot=FALSE, include.lowest=TRUE,right=FALSE)
   hist.price.data <- data.frame(inferredPrice = hist.price$breaks, 
                                 counts=c(hist.price$counts,0), utteredPrice=currPrice)
   d.histograms[[i]] <- hist.price.data
