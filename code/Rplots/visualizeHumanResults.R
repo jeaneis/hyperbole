@@ -84,9 +84,11 @@ for(i in 1:length(utteredPrices)) {
   currPrice = utteredPrices[i]
   d.domain.price <- subset(d.domain, utteredPriceLabel==currPrice)
   hist.price <- hist(d.domain.price$inferredPriceLabel, 
-                     breaks=c(0, as.numeric(utteredPrices), max(d$inferredPrice)), plot=FALSE, include.lowest=TRUE,right=FALSE)
+                     breaks=c(as.numeric(utteredPrices), max(d$inferredPrice)), plot=FALSE, include.lowest=TRUE,right=FALSE)
   hist.price.data <- data.frame(inferredPrice = hist.price$breaks, 
-                                counts=c(hist.price$counts,0), utteredPrice=currPrice)
+                                counts=c(hist.price$counts, 0), utteredPrice=currPrice)
+  numSubjects <- dim(d.domain.price)[1] # number of subjects for this uttered price label
+  hist.price.data$normalizedCounts = hist.price.data$counts / numSubjects
   d.histograms[[i]] <- hist.price.data
 }
 
@@ -100,7 +102,7 @@ d.domain.hist.trimmed <- subset(d.domain.hist, inferredPrice <= 10001)
 d.domain.hist.trimmed$inferredPrice <- factor(d.domain.hist.trimmed$inferredPrice)
 
 # this plots the distribution of inferred prices given each uttered price
-ggplot(d.domain.hist.trimmed, aes(x=inferredPrice, y=counts)) +
+ggplot(d.domain.hist.trimmed, aes(x=inferredPrice, y=normalizedCounts)) +
   geom_bar(color="black", fill="#CCCCCC",stat="identity") +
   facet_grid(. ~ utteredPrice) +
   theme_bw() +
@@ -118,6 +120,6 @@ ggplot(d.domain.opinion, aes(utteredPrice, probOpinion)) +
 
 ### ignore this; this was for debugging purposes
 d.histograms[[16]]$inferredPrice = factor(d.histograms[[16]]$inferredPrice)
-ggplot(d.histograms[[16]], aes(x=inferredPrice, y=counts)) +
+ggplot(d.histograms[[16]], aes(x=inferredPrice, y=normalizedCounts)) +
   geom_bar(color="black", fill="#FF9999",stat="identity") +
   theme_bw()
