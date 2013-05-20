@@ -1,26 +1,26 @@
 % Coffee Maker
 [l,m,u,a] = exaggeration_March2013_v1('coffee_maker.csv', 'coffee_affect.csv');
-displayResults(l,m,u,a,'coffee_realAffect_states14.csv');
+displayResults(l,m,u,a,'coffee_matchHumans.csv');
 
 % Electric Kettle
 [l,m,u,a] = exaggeration_March2013_v1('electric_kettle.csv', 'kettle_affect.csv');
-displayResults(l,m,u,a,'kettle_realAffect_states14.csv');
+displayResults(l,m,u,a,'kettle_matchHumans.csv');
 
 % Headphones
 [l,m,u,a] = exaggeration_March2013_v1('headphones.csv', 'headphones_affect.csv');
-displayResults(l,m,u,a,'headphones_realAffect_states14.csv');
+displayResults(l,m,u,a,'headphones_matchHumans.csv');
 
 % Laptop
 [l,m,u,a] = exaggeration_March2013_v1('laptop.csv', 'laptop_affect.csv');
-displayResults(l,m,u,a,'laptop_realAffect_states14.csv');
+displayResults(l,m,u,a,'laptop_matchHumans.csv');
 
 % Sweater
 [l,m,u,a] = exaggeration_March2013_v1('sweater.csv', 'sweater_affect.csv');
-displayResults(l,m,u,a,'sweater_realAffect_states14.csv');
+displayResults(l,m,u,a,'sweater_matchHumans.csv');
 
 % Watch
 [l,m,u,a] = exaggeration_March2013_v1('watch.csv', 'watch_affect.csv');
-displayResults(l,m,u,a,'watch_realAffect_states14.csv');
+displayResults(l,m,u,a,'watch_matchHumans.csv');
 
 
 

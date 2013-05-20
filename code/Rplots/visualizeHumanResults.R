@@ -51,6 +51,7 @@ d$inferredPriceLabel <- vec
 ### Possible domains: levels(d$domain)
 for (j in 1:6) {
   selectedDomain = levels(d$domain)[j] # 6 domains: 1-6
+  selectedDomain = "electric kettle"
   d.domain <- subset(d, domain==selectedDomain)
   
   ### Ignore this for now...this just plots the average inferred price given an uttered price;
@@ -62,14 +63,14 @@ for (j in 1:6) {
   #   theme_bw()
   
   ### This plots the average estimated probability of opinion given each uttered price.
-  domain.opinion <- summarySE(d.domain, measurevar="probOpinion", 
-                              groupvars=c("roundedUtteredPrice", "numberType"))
+  #domain.opinion <- summarySE(d.domain, measurevar="probOpinion", 
+  #                            groupvars=c("roundedUtteredPrice", "numberType"))
   
-  ggplot(domain.opinion, aes(x=roundedUtteredPrice, y=probOpinion, fill=numberType)) +
-    geom_bar(color="black", size=0.3, position=position_dodge(), stat="identity") +
-    geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, 
-                  width=0.2, position=position_dodge(0.9)) +
-    theme_bw() + labs(title = selectedDomain)
+  #ggplot(domain.opinion, aes(x=roundedUtteredPrice, y=probOpinion, fill=numberType)) +
+  #  geom_bar(color="black", size=0.3, position=position_dodge(), stat="identity") +
+  #  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, 
+  #                width=0.2, position=position_dodge(0.9)) +
+  #  theme_bw() + labs(title = selectedDomain)
   
   ##### Creates histograms to plot distributions, so we can directly compare to model output
   ## plot prices 
@@ -104,19 +105,32 @@ for (j in 1:6) {
   q<-ggplot(d.domain.hist.trimmed, aes(x=inferredPrice, y=normalizedCounts)) +
     geom_bar(color="black", fill="#CCCCCC",stat="identity") +
     facet_grid(. ~ utteredPrice) +
-    theme_bw() + ggtitle(selectedDomain) +
+    theme_bw() + 
+    ggtitle("Interpreted meaning given utterance ") +
+    ylab("Probability of meaning") +
+    xlab("Inferred meaning") +
+    #ggtitle(selectedDomain) +
     theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
+  
+  # this plots the average probability of opinion given each uttered price
+  d.domain.opinion <- summarySE(d.domain, measurevar="probOpinion", groupvars=c("utteredPriceLabel"))
+  o<-ggplot(d.domain.opinion, aes(x=1.5, probOpinion)) +
+    facet_grid(.~utteredPriceLabel) +
+    geom_bar(color="black", fill="#FF9999",stat="identity") +
+    geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
+    theme_bw() + 
+    ggtitle("Interpreted opinion given utterance") +
+    theme(axis.text.x=element_text(size=0), axis.ticks= element_blank()) +
+    xlab("") +
+    scale_x_discrete() +
+    ylab("Probability of opinion")
+  multiplot(q, o)
+  
   f <- paste("../../data/Rplots/mTurkHyperbole/", "interp_", selectedDomain,".png", sep="")
   ggsave(q, width=30,height=7,filename = f,dpi=72) 
 }
 
-# this plots the average probability of opinion given each uttered price
-d.domain.opinion <- summarySE(d.domain, measurevar="probOpinion", groupvars=c("utteredPriceLabel"))
-ggplot(d.domain.opinion, aes(utteredPriceLabel, probOpinion)) +
-  geom_bar(color="black", fill="#FF9999",stat="identity") +
-  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), size=0.3, width=0.2) +
-  theme_bw() + ggtitle(selectedDomain)
-  
+
   
 
 

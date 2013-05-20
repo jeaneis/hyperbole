@@ -41,14 +41,20 @@ a.summary <- summarySE(a, measurevar="probability", groupvars=c("domain","price"
 
 laptop.summary <- subset(a.summary, domain=="laptop")
 ggplot(laptop.summary, aes(x=price, y=probability)) +
-  geom_errorbar(aes(ymin=probability-se, ymax=probability+se), width=.1) +
-  geom_point() +
+  #geom_errorbar(aes(ymin=probability-se, ymax=probability+se), width=.1) +
+  #geom_point() +
   geom_smooth() +
   xlab("Price") +
-  ylab("Probability of affect") +
-  theme_bw()+
-  scale_x_continuous(breaks=seq(0,max(laptop.summary$price),100)) +
-  ggtitle("Laptop affect priors")
+  ylab("Probability of opinion") +
+  theme_bw() +
+  #ggtitle("Laptop affect priors") +
+  scale_x_continuous(breaks=seq(0,2000,100), limits=c(0, 2000)) +
+  scale_y_continuous(limits=c(0, 1)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+      axis.text.y=element_text(size=14),
+      axis.title.x = element_text(size=16),
+      axis.title.y = element_text(size=16))
+  
 
 laptop.affect.priors <- data.frame(price=laptop.summary$price, prob=laptop.summary$probability)
 write.csv(laptop.affect.priors, "../../data/mTurkExp/affectPriors/laptop_affect.csv")

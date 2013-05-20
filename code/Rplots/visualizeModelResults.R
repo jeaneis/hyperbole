@@ -46,7 +46,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 ## plot interpretation probababilities given each utterance
 
-d1 = read.csv("../../data/model/predict_laptop_realAffect_states14_demo.csv")
+d1 = read.csv("../../data/model/predict_watch_matchHumans.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
@@ -83,7 +83,8 @@ d1.withValence$valencePosterior = d1.withValence$probability / d1.withValence$to
 d1.withValence$postPriorRatio = d1.withValence$valencePosterior / d1.withValence$affect_prior
 
 # plot meaning posterior
-d1.meaning.p <- ggplot(d1, aes(meaning, probability, fill=valence)) + geom_bar(stat="identity", color="black") +
+d1.meaning.p <- ggplot(d1, aes(meaning, probability, fill=valence)) + 
+  geom_bar(stat="identity", color="black") +
   facet_grid(. ~ utterance) +
   scale_x_discrete() +
   xlab("Meaning") +
@@ -121,18 +122,34 @@ d1.expressedValence.p <- ggplot(d1.expressedValence, aes(x=1.5, y=expressedValen
   theme_bw() +
   theme(axis.text.x=element_text(size=0), axis.ticks= element_blank())
 
+
 multiplot(d1.meaning.p, d1.valence.p, d1.expressedValence.p)
+
+# plot meaning posterior
+d1.meaning.p <- ggplot(d1, aes(meaning, probability, fill=valence)) + 
+  geom_bar(stat="identity", color="black") +
+  facet_grid(. ~ utterance) +
+  scale_x_discrete() +
+  xlab("Inferred meaning") +
+  ylab("Probability of meaning") +                  
+  ggtitle("Interpreted meaning given utterance ") +
+  scale_fill_manual(values=c("#33CCCC", "#FF6666"), guide=FALSE) +
+  scale_y_continuous() +                    
+  theme_bw() +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=9))
 
 ## plot probability of HAVING affect given utterance
 d1.havingValence <- aggregate(data=d1.withValence, probability ~ utterance, sum)
-ggplot(d1.havingValence, aes(x=1.5, y=probability)) +
+d1.opinion.p <- ggplot(d1.havingValence, aes(x=1.5, y=probability)) +
   facet_grid(.~utterance) +
   geom_bar(stat="identity", color="black", fill="#FF9999") +
   scale_x_discrete() +
   xlab("") +
-  ylab("Valence") +                  
-  ggtitle("Having valence given utterance") +
+  ylab("Probability of opinion") +                  
+  ggtitle("Interpreted opinion given utterance") +
   scale_fill_discrete(guide=FALSE) +
   scale_y_continuous() +                    
   theme_bw() +
-  theme(axis.text.x=element_text(size=9))
+  theme(axis.text.x=element_text(size=0), axis.ticks= element_blank())
+  
+multiplot(d1.meaning.p, d1.opinion.p)

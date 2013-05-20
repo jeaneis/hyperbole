@@ -98,8 +98,46 @@ sd(prices_laptops$price)
 
 mturk <- read.csv("../../data/mTurkExp/pricePriors/prices1+2.csv")
 
+## laptop
+ggplot(mturk, aes(x=laptop)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Laptop price priors") +
+  scale_x_continuous(breaks=seq(0, 2000, 100), limits=c(0, 2000)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16))
 
+## electric kettles
+ggplot(mturk, aes(x=electric.kettle)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Kettle price priors") +
+  scale_x_continuous(breaks=seq(0, 2000, 100), limits=c(0, 2000)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16))
 
+## watch
+ggplot(mturk, aes(x=watch)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Watch price priors") +
+  scale_x_continuous(breaks=seq(0, 2000, 100), limits=c(0, 2000)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16))
+
+######################
 ## kettles
 ggplot(mturk, aes(x=electric.kettle)) +
   geom_histogram(binwidth=5, colour="black", fill="white") +
