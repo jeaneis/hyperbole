@@ -137,6 +137,71 @@ ggplot(mturk, aes(x=watch)) +
         axis.title.x = element_text(size=16),
         axis.title.y = element_text(size=16))
 
+
+## coffee makers
+ggplot(mturk, aes(x=coffee.maker)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Coffee makers price priors") +
+  scale_x_continuous(breaks=seq(0, 2000, 100), limits=c(0, 2000)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16))
+
+## headphones
+ggplot(mturk, aes(x=headphones)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Headphones price priors") +
+  scale_x_continuous(breaks=seq(0, 2000, 100), limits=c(0, 2000)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16))
+
+## sweaters
+ggplot(mturk, aes(x=sweater)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Sweater price priors") +
+  scale_x_continuous(breaks=seq(0, 2000, 100), limits=c(0, 2000)) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16))
+### plot all priors in one plot
+prior.coffee <- data.frame(price=mturk$coffee.maker, domain="coffee makers")
+prior.kettle <- data.frame(price=mturk$electric.kettle, domain="electric kettles")
+prior.sweater <- data.frame(price=mturk$sweater, domain="sweaters")
+prior.headphones <- data.frame(price=mturk$headphones, domain="headphones")
+prior.watch <- data.frame(price=mturk$watch, domain="watches")
+prior.laptop <- data.frame(price=mturk$laptop, domain="laptops")
+
+priors <- rbind(prior.coffee, prior.kettle, prior.sweater, prior.headphones, prior.watch, prior.laptop)
+
+ggplot(priors, aes(x=price, color=domain)) +
+  geom_density() +
+  xlab("Price") +
+  ylab("Probability") +
+  theme_bw() +
+  #ggtitle("Sweater price priors") +
+  scale_x_continuous(breaks=seq(0, max(priors$price), 100), limits=c(0, max(priors$price))) +
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, size=14),
+        axis.text.y=element_text(size=14),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16),
+        legend.title = element_text(size=0),
+        legend.text = element_text(size=14), 
+        legend.position=c(0.8,0.8)) 
+          
+
 ######################
 ## kettles
 ggplot(mturk, aes(x=electric.kettle)) +

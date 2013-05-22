@@ -51,7 +51,7 @@ d$inferredPriceLabel <- vec
 ### Possible domains: levels(d$domain)
 for (j in 1:6) {
   selectedDomain = levels(d$domain)[j] # 6 domains: 1-6
-  selectedDomain = "electric kettle"
+  selectedDomain = "sweater"
   d.domain <- subset(d, domain==selectedDomain)
   
   ### Ignore this for now...this just plots the average inferred price given an uttered price;
