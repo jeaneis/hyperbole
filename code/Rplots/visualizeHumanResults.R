@@ -48,11 +48,114 @@ for (i in 1:length(d$roundedUtteredPrice))
 }
 d$inferredPriceLabel <- vec
 
+
+#### aggregate analysis of literal/figurative interpretation
+# code interpretation as literal/non-literal based on
+# whether utteredPrice and inferredPrice are
+# exactly the same or not
+
+d$isLiteral <- ifelse(d$utteredPrice == round(d$inferredPrice, 0), 1,  0)
+d.litAgg <- aggregate(isLiteral ~ utteredPriceLabel + numberType + domain, data=d, FUN=mean)
+d.litAgg$isFigurative <- 1-d.litAgg$isLiteral
+d.litAgg <- d.litAgg[with(d.litAgg, order(domain, as.numeric(utteredPriceLabel))), ]
+# get prior probability of literal meaning
+d.litAgg$logPriorProb <- priors$logProb
+
+ggplot(d.litAgg, aes(x=logPriorProb, y=isFigurative, color=numberType)) +
+  geom_point(position=position_jitter(width=0.5,height=0)) +
+  theme_bw() +
+  xlab("Prior probability of literal meaning (log)") +
+  ylab("Proportion of non-literal interpretation") +
+  scale_color_discrete(name="Utterance type",
+                       breaks=c("round", "sharp"),
+                       labels=c("Round", "Sharp")) +
+                         ggtitle("Humans' non-literal interpretation")
+
+summary(lm(data=d.litAgg, isFigurative ~ logPriorProb * numberType))
+
+# analyze distance between interpretaiton and uttered price
+d$interpDistance <- abs(d$utteredPrice - d$inferredPrice)
+d.distAgg <- aggregate(interpDistance ~ utteredPriceLabel + numberType + domain, data=d, FUN=mean)
+d.distAgg <- d.distAgg[with(d.distAgg, order(domain, as.numeric(utteredPriceLabel))), ]
+# get prior probability of literal meaning
+d.distAgg$logPriorProb <- priors$logProb
+
+ggplot(d.distAgg, aes(x=logPriorProb, y=interpDistance, color=numberType)) +
+  geom_point(position=position_jitter(width=0.5,height=0)) +
+  theme_bw() +
+  xlab("Prior probability of literal meaning (log)") +
+  ylab("Proportion of non-literal interpretation") +
+  scale_color_discrete(name="Utterance type",
+                       breaks=c("round", "sharp"),
+                       labels=c("Round", "Sharp")) +
+                         ggtitle("Human interpretation distance")
+
+summary(lm(data=d.distAgg, interpDistance ~ logPriorProb * numberType))
+
+
+### compare with model
+comp.figurativeness <- data.frame(utterance=d.litAgg$utteredPriceLabel, 
+                                  model=d.litAgg.fig$probability, 
+                                  human=d.litAgg$isFigurative,
+                                  numberType=d.litAgg$numberType)
+ggplot(comp.figurativeness, aes(x=model, y=human, color=numberType)) +
+  geom_point() +
+  theme_bw() +
+  geom_abline(yintercept=0,slope=1, linetype="dashed") +
+  xlim(c(0, 1)) +
+  ylim(c(0, 1)) +
+  ggtitle("Human and model comparision of non-literalness")
+
+with(comp.figurativeness, cor.test(model, human))
+summary(lm(data=comp.figurativeness, human ~ model))
+
 ### Possible domains: levels(d$domain)
 for (j in 1:6) {
+  j = 1
   selectedDomain = levels(d$domain)[j] # 6 domains: 1-6
-  selectedDomain = "sweater"
   d.domain <- subset(d, domain==selectedDomain)
+  
+  ## affect analysis
+  # get mean probOpinion given an utteredPriceLabel and inferredPriceLabel
+  d.affectAgg <- summarySE(data=d.domain, measurevar="probOpinion", groupvars=c("inferredPriceLabel", "utteredPriceLabel"))
+  # reorder
+  d.affectAgg <- d.affectAgg[with(d.affectAgg, order(as.numeric(utteredPriceLabel), inferredPriceLabel)), ]
+  
+  # get total number of responses for each utteredPriceLabel
+  d.utteredAgg <- aggregate(data=d.affectAgg, N ~ utteredPriceLabel, FUN=sum)
+  # make utteredAgg into a dictionary
+  d.utteredTotal <- d.utteredAgg$N
+  names(d.utteredTotal) <- d.utteredAgg$utteredPriceLabel
+  
+  # read affect prior
+  affect.prior <- read.csv("../../data/mTurkExp/affectPriors/fitted_affectPriors_coffee.csv")
+  # turn affect prior into a dictionary
+  affect.prior.dict <- affect.prior$prob
+  names(affect.prior.dict) <- affect.prior$meaning
+  
+  for (i in 1:nrow(d.affectAgg)) {
+    u = as.character(d.affectAgg$utteredPriceLabel[i])
+    n = d.utteredTotal[[u]]
+    d.affectAgg$totalUttered[i] = n
+    
+    m = as.character(d.affectAgg$inferredPriceLabel[i])
+    a = affect.prior.dict[[m]]
+    d.affectAgg$affectPrior[i] = a
+  }
+  d.affectAgg$probInferredPrice <- d.affectAgg$N / d.affectAgg$totalUttered
+  d.affectAgg$postPriorRatio <- d.affectAgg$probOpinion / d.affectAgg$affectPrior
+  d.affectAgg$weightedExpressedAffect <- d.affectAgg$probInferredPrice * d.affectAgg$postPriorRatio
+  
+  d.affect.byUtterance <- aggregate(data=d.affectAgg, weightedExpressedAffect ~ utteredPriceLabel,
+                                    FUN = sum)
+  
+  ggplot(d.affect.byUtterance, aes(x=1.5, y=weightedExpressedAffect)) +
+    facet_grid(.~utteredPriceLabel) +
+    geom_bar(color="black", fill="#FF9999",stat="identity") +
+    theme_bw() +
+    scale_x_discrete() +
+    xlab("") +
+    theme(axis.text.x=element_text(size=0), axis.ticks= element_blank())
   
   ### Ignore this for now...this just plots the average inferred price given an uttered price;
   ### it doesn't return a distribution 

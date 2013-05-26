@@ -44,16 +44,65 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 
-## plot interpretation probababilities given each utterance
+## read in prior of meanings
+priors <- read.csv("../../data/mTurkExp/pricePriors/fitted_normalized_pricePriors.csv")
+priors <- priors[with(priors, order(domain, meaning)),]
 
-d1 = read.csv("../../data/model/predict_sweater_matchHumans.csv")
+## aggregate analysis (across domains)
+
+## plot literal/non-literalness
+
+d <- data.frame(utterance=NA, meaning=NA, valence=NA, 
+                    probability=NA, affect_prior=NA, domain=NA, isRound=NA)
+for (domain in list('kettle', 'coffee', 'headphones', 'sweater', 'laptop', 'watch')) {
+  d.domain = read.csv(paste("../../data/model/predict_", domain, "_matchHumans.csv", sep=""))
+  d.domain <- d.domain[with(d.domain, order(valence, meaning, utterance)), ]
+  d.domain$domain = domain
+  # annotate whether it's round or sharp
+  d.domain$isRound <- ifelse(d.domain$utterance %% 10 == 0, 'round', 'sharp')
+  d.domain$valence = factor(d.domain$valence)
+  d <- rbind(d, d.domain)
+}
+
+d$isLiteral <- ifelse(d$utterance == d$meaning, 'literal',  'non-literal')
+d.litAgg <- aggregate(probability ~ utterance + isLiteral + isRound + domain, data=d, FUN=sum)
+d.litAgg.fig <- subset(d.litAgg, isLiteral == "non-literal")
+d.litAgg.fig <- d.litAgg.fig[with(d.litAgg.fig, order(domain, utterance)), ]
+# get prior probability of literal meaning
+d.litAgg.fig$logPriorProb <- priors$logProb
+
+# probability of figurative interpretation as function of roundness and prior prob of literal meaning
+d.litAgg.fig$isRound = factor(d.litAgg.fig$isRound)
+summary(lm(data=d.litAgg.fig, probability ~ isRound * logPriorProb))
+
+# visualize prob figurative interpretation given prior probability
+
+ggplot(d.litAgg.fig, aes(x=logPriorProb, y=probability, color=isRound)) +
+  geom_point(position=position_jitter(width=0.5,height=0)) +
+  theme_bw() +
+  xlab("Prior probability of literal meaning (log)") +
+  ylab("Proportion of non-literal interpretation") +
+  scale_color_discrete(name="Utterance type",
+                      breaks=c("round", "sharp"),
+                      labels=c("Round", "Sharp")) +
+                        ggtitle("Model's non-literal interpretation")
+  
+
+
+
+
+
+## read in model output
+d1 = read.csv("../../data/model/predict_coffee_matchHumans.csv")
 d1 <- d1[with(d1, order(valence, meaning, utterance)), ]
 
 d1$meaning = factor(d1$meaning)
+# annotate whether it's round or sharp
+d1$isRound <- ifelse(d1$utterance %% 10 == 0, 'round', 'sharp')
 d1$utterance = factor(d1$utterance)
 d1$valence = factor(d1$valence)
 
-
+## plot interpretation probababilities given each utterance
 ggplot(d1, aes(x=meaning, y=probability, fill = valence)) + geom_bar(stat="identity", color="black") + 
   facet_grid(. ~ utterance) +
   scale_x_discrete() +
