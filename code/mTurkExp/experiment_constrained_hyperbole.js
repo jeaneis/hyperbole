@@ -1,3 +1,4 @@
+var NUM_SLIDERS = 17;
 function showSlide(id) {
   $(".slide").hide();
   $("#"+id).show();
@@ -13,37 +14,47 @@ function random(a,b) {
 }
 
 function clearForm(oForm) {
-
-  $("#slider0").slider("value", 20);
-  $("#slider0").css({"background":"#FFFFFF"});
-  $("#slider0 .ui-slider-handle").css({
-      "background":"#FAFAFA",
-      "border-color": "#CCCCCC" });
-  document.getElementById("slider0").style.background = "";
+  var sliderVar = "";
+  for(var i=0; i<NUM_SLIDERS; i++)
+  {
+    sliderVar = "#slider" + i;
+    $(sliderVar).slider("value", 20);
+    $(sliderVar).css({"background":"#FFFFFF"});
+    $(sliderVar + " .ui-slider-handle").css({
+        "background":"#FAFAFA",
+        "border-color": "#CCCCCC" });
+    sliderVar = "slider" + i;
+    document.getElementById(sliderVar).style.background = "";
+  }
 
   var elements = oForm.elements; 
   
   oForm.reset();
 
-  for(i=0; i<elements.length; i++) {
-	  field_type = elements[i].type.toLowerCase();
+  for(var i=0; i<elements.length; i++) {
+    field_type = elements[i].type.toLowerCase();
     switch(field_type) {
+    
       case "text": 
       case "password": 
       case "textarea":
-      case "hidden":		
-        elements[i].value = "";
+            case "hidden":	
+        
+        elements[i].value = ""; 
         break;
+          
       case "radio":
       case "checkbox":
           if (elements[i].checked) {
             elements[i].checked = false; 
         }
         break;
+  
       case "select-one":
       case "select-multi":
                   elements[i].selectedIndex = -1;
         break;
+  
       default: 
         break;
     }
@@ -85,7 +96,6 @@ function shuffledSampleArray(arrLength, sampleLength)
   return arr.slice(beginIndex, beginIndex+sampleLength);
 }
 
-
 function getRadioCheckedValue(formNum, radio_name)
 {
    var oRadio = document.forms[formNum].elements[radio_name];
@@ -99,50 +109,15 @@ function getRadioCheckedValue(formNum, radio_name)
    return '';
 }
 
-function clearSliderForm(oForm) {
-    
-  var elements = oForm.elements; 
-    
-  oForm.reset();
-
-  for(i=0; i<elements.length; i++) {
-      
-	field_type = elements[i].type.toLowerCase();
-	
-	switch(field_type) {
-	
-		case "text": 
-		case "password": 
-		case "textarea":
-	        case "hidden":	
-			
-			elements[i].value = ""; 
-			break;
-        
-		case "radio":
-		case "checkbox":
-  			if (elements[i].checked) {
-   				elements[i].checked = false; 
-			}
-			break;
-
-		case "select-one":
-		case "select-multi":
-            		elements[i].selectedIndex = -1;
-			break;
-
-		default: 
-			break;
-	}
-    }
-}
-
 function randomizeSharpOffset()
 {
   var r = Math.floor((Math.random()*6)+1);
   if (r < 4) { return r; }
   else { return 3-r; }
 }
+
+var allPricePoints = [20,50,100,200,500,1000,2000,10000];
+var currentUtteredPriceSliderIndex;
 
 var allConditions = 
 [
@@ -302,7 +277,7 @@ var experiment = {
   },
   next: function() {
     if (numComplete > 0) {
-      var price = parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
+      var price = 0;//parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
     	var likely = parseInt(document.getElementById("hiddenSliderValue0").value) / 40.00;
       experiment.inferredPrices[currentTrialNum] = price;
       experiment.affects[currentTrialNum] = likely;
@@ -338,10 +313,36 @@ var experiment = {
       $("#domain2").html(trial.domain);
       $("#domain3").html(trial.domain);
       $("#modifier").html(trial.modifier);
+      
+      for (var i = 0; i <= 7; i++)
+      {
+        var j = i*2;
+        $("#cost" + j).html(allPricePoints[i]);
+        j = j+1;
+        $("#cost" + j).html(allPricePoints[i] + randomizeSharpOffset());
+      }
+
+      for (var i = 0; i <= 7; i++)
+      {
+        if ( allPricePoints[i] == trial.utterance )
+        {
+          currentUtteredPriceSliderIndex = 2*i;
+        } 
+      }
+      
+      var currentUtteredPrice;
       if ( trial.number == "round" )
-      { $("#cost").html(trial.utterance); }
+      { currentUtteredPrice = trial.utterance; }
       else
-      { $("#cost").html(trial.utterance + randomizeSharpOffset()); }
+      { 
+        currentUtteredPrice = trial.utterance + randomizeSharpOffset();
+        currentUtteredPriceSliderIndex = currentUtteredPriceSliderIndex + 1;
+      }
+      
+      
+      $("#cost").html(currentUtteredPrice);
+      var utteredSliderIndexName = "#cost" + currentUtteredPriceSliderIndex;
+      $(utteredSliderIndexName).html(currentUtteredPrice);
       numComplete++;
     }
   }
@@ -350,6 +351,7 @@ var experiment = {
 // scripts for sliders
 $("#slider0").slider({
                animate: true,
+//                orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider0 .ui-slider-handle").css({
@@ -363,6 +365,275 @@ $("#slider0").slider({
                    $("#slider0 .ui-slider-handle").css({
                      "background":"#667D94",
                      "border-color": "#001F29" });
-//                    displaySubmitButton();
                }});
+$("#slider1").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider1 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue1').attr('value', ui.value);
+                   $("#slider1").css({"background":"#99D6EB"});
+                   $("#slider1 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider2").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider2 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue2').attr('value', ui.value);
+                   $("#slider2").css({"background":"#99D6EB"});
+                   $("#slider2 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider3").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider3 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue3').attr('value', ui.value);
+                   $("#slider3").css({"background":"#99D6EB"});
+                   $("#slider3 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider4").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider4 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue4').attr('value', ui.value);
+                   $("#slider4").css({"background":"#99D6EB"});
+                   $("#slider4 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider5").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider5 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue5').attr('value', ui.value);
+                   $("#slider5").css({"background":"#99D6EB"});
+                   $("#slider5 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider6").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider6 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue6').attr('value', ui.value);
+                   $("#slider6").css({"background":"#99D6EB"});
+                   $("#slider6 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider7").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider7 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue7').attr('value', ui.value);
+                   $("#slider7").css({"background":"#99D6EB"});
+                   $("#slider7 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider8").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider8 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue8').attr('value', ui.value);
+                   $("#slider8").css({"background":"#99D6EB"});
+                   $("#slider8 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider9").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider9 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue9').attr('value', ui.value);
+                   $("#slider9").css({"background":"#99D6EB"});
+                   $("#slider9 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider10").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider10 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue10').attr('value', ui.value);
+                   $("#slider10").css({"background":"#99D6EB"});
+                   $("#slider10 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider11").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider11 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue11').attr('value', ui.value);
+                   $("#slider11").css({"background":"#99D6EB"});
+                   $("#slider11 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider12").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider12 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue12').attr('value', ui.value);
+                   $("#slider12").css({"background":"#99D6EB"});
+                   $("#slider12 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider13").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider13 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue13').attr('value', ui.value);
+                   $("#slider13").css({"background":"#99D6EB"});
+                   $("#slider13 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider14").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider14 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue14').attr('value', ui.value);
+                   $("#slider14").css({"background":"#99D6EB"});
+                   $("#slider14 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider15").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider15 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue15').attr('value', ui.value);
+                   $("#slider15").css({"background":"#99D6EB"});
+                   $("#slider15 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+$("#slider16").slider({
+               animate: true,
+               max: 40 , min: 0, step: 1, value: 20,
+               slide: function( event, ui ) {
+                   $("#slider16 .ui-slider-handle").css({
+                      "background":"#E0F5FF",
+                      "border-color": "#001F29"
+                   });
+               },
+               change: function( event, ui ) {
+                   $('#hiddenSliderValue16').attr('value', ui.value);
+                   $("#slider16").css({"background":"#99D6EB"});
+                   $("#slider16 .ui-slider-handle").css({
+                     "background":"#667D94",
+                     "border-color": "#001F29" });
+               }});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
