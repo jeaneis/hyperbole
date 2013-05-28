@@ -61,8 +61,8 @@ d.litAgg <- d.litAgg[with(d.litAgg, order(domain, as.numeric(utteredPriceLabel))
 # get prior probability of literal meaning
 d.litAgg$logPriorProb <- priors$logProb
 
-ggplot(d.litAgg, aes(x=logPriorProb, y=isFigurative, color=numberType)) +
-  geom_point(position=position_jitter(width=0.5,height=0)) +
+ggplot(d.litAgg, aes(x=logPriorProb, y=isFigurative, color=domain, shape=numberType)) +
+  geom_point(position=position_jitter(width=0.5,height=0), size=4) +
   theme_bw() +
   xlab("Prior probability of literal meaning (log)") +
   ylab("Proportion of non-literal interpretation") +
@@ -91,6 +91,7 @@ ggplot(d.distAgg, aes(x=logPriorProb, y=interpDistance, color=numberType)) +
                          ggtitle("Human interpretation distance")
 
 summary(lm(data=d.distAgg, interpDistance ~ logPriorProb * numberType))
+summary(lm(data=d.distAgg, interpDistance ~ numberType))
 
 
 ### compare with model
