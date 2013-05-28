@@ -19,7 +19,7 @@
     <p id='logo-text'>Stanford Computation and Cognition Lab</p>
   <p class="block-text">
   Thank you very much for participating in our experiment. In this experiment, we are interested in how
-  people estimate the prices of various everday items.
+  people interpret other people's descriptions of the prices of everyday items.
   </p>
   <button type="button" onclick="this.blur(); experiment.description()">Start</button>
 <p class="block-text" id="legal">Legal information: By answering the
@@ -167,8 +167,8 @@ function pressEnter(e) {
 <!-- No speaker -->
 
 <div class="slide" id="stage">
-	<p id="statement"><span id="buyer1">{{}}</span> bought <span id="modifier">{{}}</span> <span id="domain1">{{}}</span>.
-	<span id="buyer2">{{}}</span> said to his friend, "The <span id="domain2">{{}}</span> cost <span id="cost">{{}}</span> dollars."</p>
+	<p id="statement"><span id="buyer1">{{}}</span> saw his friend's new <span id="domain1">{{}}</span> and asked how much it cost.</p>
+	<p id="statement">His friend said, "The <span id="domain2">{{}}</span> cost <span id="cost">{{}}</span> dollars."</p>
     </br>
  <!-- 
    <p id="question">How much do you think the <span id="domain3">{{}}</span> cost?</p>
@@ -180,7 +180,8 @@ function pressEnter(e) {
     </form>
     </div>
  -->
-    <p id="question">How likely is it that <span id="buyer3">{{}}</span> thinks it was too expensive?</p>
+    <p id="question">How much do you think the <span id="domain3">{{}}</span> actually cost?</p>
+    <p id="question">Please rate how likely it is that the <span id="domain4">{{}}</span> cost the following amounts of money.</p>
     <div id="form">
     <form name= "affectForm">
     <input type="hidden" name="hSlider0" id="hiddenSliderValue0" />
@@ -206,7 +207,7 @@ function pressEnter(e) {
 
     <tr>
       <td align="right" height="60">
-        Absolutely certain &#8210;<br>
+        Extremely likely &#8210;<br>
       </td>
       <td rowspan="5" width="65" align="center"><div id="slider0">&nbsp;</div></td>
       <td rowspan="5" width="65" align="center"><div id="slider1">&nbsp;</div></td>
@@ -272,9 +273,8 @@ function pressEnter(e) {
     <table width="850" cellspacing="0" cellpadding="0" border="0" align="center"><tbody>
 
     <tr><td colspan="8">&nbsp;</td></tr><tr><td colspan="8">&nbsp;</td></tr>
-    <tr><td colspan="8">&nbsp;</td></tr><tr><td colspan="8">&nbsp;</td></tr>
     <tr><td colspan="8">
-      <p id="question">How likely is it that <span id="buyer3">{{}}</span> thinks it was too expensive?</p>
+      <p id="question">How likely is it that <span id="buyer3">{{}}</span>'s friend thinks the <span id="domain5">{{}}</span> was too expensive?</p>
     </td></tr><tr><td colspan="8">&nbsp;</td></tr>
     <tr>
       <td align="center" width="150"></td>

@@ -312,6 +312,8 @@ var experiment = {
       $("#domain1").html(trial.domain);
       $("#domain2").html(trial.domain);
       $("#domain3").html(trial.domain);
+      $("#domain4").html(trial.domain);
+      $("#domain5").html(trial.domain);
       $("#modifier").html(trial.modifier);
       
       for (var i = 0; i <= 7; i++)
