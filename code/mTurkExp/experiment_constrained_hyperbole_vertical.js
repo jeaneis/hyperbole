@@ -351,7 +351,7 @@ var experiment = {
 // scripts for sliders
 $("#slider0").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider0 .ui-slider-handle").css({
@@ -368,7 +368,7 @@ $("#slider0").slider({
                }});
 $("#slider1").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider1 .ui-slider-handle").css({
@@ -385,7 +385,7 @@ $("#slider1").slider({
                }});
 $("#slider2").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider2 .ui-slider-handle").css({
@@ -402,7 +402,7 @@ $("#slider2").slider({
                }});
 $("#slider3").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider3 .ui-slider-handle").css({
@@ -419,7 +419,7 @@ $("#slider3").slider({
                }});
 $("#slider4").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider4 .ui-slider-handle").css({
@@ -436,7 +436,7 @@ $("#slider4").slider({
                }});
 $("#slider5").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider5 .ui-slider-handle").css({
@@ -453,7 +453,7 @@ $("#slider5").slider({
                }});
 $("#slider6").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider6 .ui-slider-handle").css({
@@ -470,7 +470,7 @@ $("#slider6").slider({
                }});
 $("#slider7").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider7 .ui-slider-handle").css({
@@ -487,7 +487,7 @@ $("#slider7").slider({
                }});
 $("#slider8").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider8 .ui-slider-handle").css({
@@ -504,7 +504,7 @@ $("#slider8").slider({
                }});
 $("#slider9").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider9 .ui-slider-handle").css({
@@ -521,7 +521,7 @@ $("#slider9").slider({
                }});
 $("#slider10").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider10 .ui-slider-handle").css({
@@ -538,7 +538,7 @@ $("#slider10").slider({
                }});
 $("#slider11").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider11 .ui-slider-handle").css({
@@ -555,7 +555,7 @@ $("#slider11").slider({
                }});
 $("#slider12").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider12 .ui-slider-handle").css({
@@ -572,7 +572,7 @@ $("#slider12").slider({
                }});
 $("#slider13").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider13 .ui-slider-handle").css({
@@ -589,7 +589,7 @@ $("#slider13").slider({
                }});
 $("#slider14").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider14 .ui-slider-handle").css({
@@ -606,7 +606,7 @@ $("#slider14").slider({
                }});
 $("#slider15").slider({
                animate: true,
-               
+               orientation: "vertical",
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider15 .ui-slider-handle").css({
@@ -623,7 +623,6 @@ $("#slider15").slider({
                }});
 $("#slider16").slider({
                animate: true,
-               
                max: 40 , min: 0, step: 1, value: 20,
                slide: function( event, ui ) {
                    $("#slider16 .ui-slider-handle").css({
@@ -638,18 +637,4 @@ $("#slider16").slider({
                      "background":"#667D94",
                      "border-color": "#001F29" });
                }});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
