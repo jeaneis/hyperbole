@@ -241,7 +241,22 @@ var experiment = {
 	condition: chooseCondition + 1,
 	sentenceIDs: new Array(numTrials),
 	utteredPrices: new Array(numTrials),
-  inferredPrices: new Array(numTrials),
+    inferredPrices0: new Array(numTrials),
+  inferredPrices1: new Array(numTrials),
+  inferredPrices2: new Array(numTrials),
+  inferredPrices3: new Array(numTrials),
+  inferredPrices4: new Array(numTrials),
+  inferredPrices5: new Array(numTrials),
+  inferredPrices6: new Array(numTrials),
+  inferredPrices7: new Array(numTrials),
+  inferredPrices8: new Array(numTrials),
+  inferredPrices9: new Array(numTrials),
+  inferredPrices10: new Array(numTrials),
+  inferredPrices11: new Array(numTrials),
+  inferredPrices12: new Array(numTrials),
+  inferredPrices13: new Array(numTrials),
+  inferredPrices14: new Array(numTrials),
+  inferredPrices15: new Array(numTrials),
   affects: new Array(numTrials),
   orders: new Array(numTrials),
   domains: new Array(numTrials),
@@ -257,7 +272,7 @@ var experiment = {
     $("#tot-num").html(numTrials);	
   },
   end: function() {
-    var gen = getRadioCheckedValue(2, "genderButton");
+    var gen = getRadioCheckedValue(1, "genderButton");
     var ag = document.age.ageRange.value;
     var lan = document.language.nativeLanguage.value;
     var comm = document.comments.input.value;
@@ -267,20 +282,56 @@ var experiment = {
     experiment.nativeLanguage = lan;
     experiment.comments = comm;
     experiment.income = incomeVal;
+    clearForm(document.forms[1]);
     clearForm(document.forms[2]);
     clearForm(document.forms[3]);
     clearForm(document.forms[4]);
-    clearForm(document.forms[5]);
-    clearForm(document.forms[6]);    
+    clearForm(document.forms[5]);    
     showSlide("finished");
     setTimeout(function() {turk.submit(experiment) }, 1500);
   },
   next: function() {
     if (numComplete > 0) {
-      var price = 0;//parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
-    	var likely = parseInt(document.getElementById("hiddenSliderValue0").value) / 40.00;
-      experiment.inferredPrices[currentTrialNum] = price;
-      experiment.affects[currentTrialNum] = likely;
+      //var price = 0;//parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
+      
+      var probPrice0 = parseInt(document.getElementById("hiddenSliderValue0").value);
+      var probPrice1 = parseInt(document.getElementById("hiddenSliderValue1").value);
+      var probPrice2 = parseInt(document.getElementById("hiddenSliderValue2").value);
+      var probPrice3 = parseInt(document.getElementById("hiddenSliderValue3").value);
+      var probPrice4 = parseInt(document.getElementById("hiddenSliderValue4").value);
+      var probPrice5 = parseInt(document.getElementById("hiddenSliderValue5").value);
+      var probPrice6 = parseInt(document.getElementById("hiddenSliderValue6").value);
+      var probPrice7 = parseInt(document.getElementById("hiddenSliderValue7").value);
+      var probPrice8 = parseInt(document.getElementById("hiddenSliderValue8").value);
+      var probPrice9 = parseInt(document.getElementById("hiddenSliderValue9").value);
+      var probPrice10 = parseInt(document.getElementById("hiddenSliderValue10").value);
+      var probPrice11 = parseInt(document.getElementById("hiddenSliderValue11").value);
+      var probPrice12 = parseInt(document.getElementById("hiddenSliderValue12").value);
+      var probPrice13 = parseInt(document.getElementById("hiddenSliderValue13").value);
+      var probPrice14 = parseInt(document.getElementById("hiddenSliderValue14").value);
+      var probPrice15 = parseInt(document.getElementById("hiddenSliderValue15").value);
+      
+      var probAffect = parseInt(document.getElementById("hiddenSliderValue0").value) / 40.00;
+      
+      experiment.inferredPrices0[currentTrialNum] = probPrice0;
+      experiment.inferredPrices1[currentTrialNum] = probPrice1;
+      experiment.inferredPrices2[currentTrialNum] = probPrice2;
+      experiment.inferredPrices3[currentTrialNum] = probPrice3;
+      experiment.inferredPrices4[currentTrialNum] = probPrice4;
+      experiment.inferredPrices5[currentTrialNum] = probPrice5;
+      experiment.inferredPrices6[currentTrialNum] = probPrice6;
+      experiment.inferredPrices7[currentTrialNum] = probPrice7;
+      experiment.inferredPrices8[currentTrialNum] = probPrice8;
+      experiment.inferredPrices9[currentTrialNum] = probPrice9;
+      experiment.inferredPrices10[currentTrialNum] = probPrice10;
+      experiment.inferredPrices11[currentTrialNum] = probPrice11;
+      experiment.inferredPrices12[currentTrialNum] = probPrice12;
+      experiment.inferredPrices13[currentTrialNum] = probPrice13;
+      experiment.inferredPrices14[currentTrialNum] = probPrice14;
+      experiment.inferredPrices15[currentTrialNum] = probPrice15;
+      
+      
+      experiment.affects[currentTrialNum] = probAffect;
       experiment.orders[currentTrialNum] = numComplete;
       experiment.sentenceIDs[currentTrialNum] = trial.sentenceID;
       experiment.domains[currentTrialNum] = trial.domain;
