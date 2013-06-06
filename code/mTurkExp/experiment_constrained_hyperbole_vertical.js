@@ -217,9 +217,27 @@ var allConditions =
 {"sentenceID":93,"domain":"laptop","modifier":"a","number":"sharp","utterance":500,"buyer":"Joseph"},
 {"sentenceID":94,"domain":"laptop","modifier":"a","number":"sharp","utterance":1000,"buyer":"Richard"},
 {"sentenceID":95,"domain":"laptop","modifier":"a","number":"sharp","utterance":2000,"buyer":"Carl"},
-{"sentenceID":96,"domain":"laptop","modifier":"a","number":"sharp","utterance":10000,"buyer":"Leon"},
+{"sentenceID":96,"domain":"laptop","modifier":"a","number":"sharp","utterance":10000,"buyer":"Leon"}
 ]
 ];
+
+var debugConditions =
+[
+[
+{"sentenceID":1,"domain":"electric kettle","modifier":"an","number":"round","utterance":20,"buyer":"Alex"},
+{"sentenceID":2,"domain":"electric kettle","modifier":"an","number":"round","utterance":50,"buyer":"Bob"},
+{"sentenceID":3,"domain":"electric kettle","modifier":"an","number":"round","utterance":100,"buyer":"Calvin"},
+{"sentenceID":4,"domain":"electric kettle","modifier":"an","number":"round","utterance":200,"buyer":"Dave"},
+{"sentenceID":5,"domain":"electric kettle","modifier":"an","number":"round","utterance":500,"buyer":"Ed"},
+{"sentenceID":6,"domain":"electric kettle","modifier":"an","number":"round","utterance":1000,"buyer":"Frank"},
+{"sentenceID":7,"domain":"electric kettle","modifier":"an","number":"round","utterance":2000,"buyer":"George"},
+{"sentenceID":8,"domain":"electric kettle","modifier":"an","number":"round","utterance":10000,"buyer":"Harry"},
+{"sentenceID":9,"domain":"electric kettle","modifier":"an","number":"sharp","utterance":20,"buyer":"Ivan"}
+]
+];
+
+var debug = false;
+if(debug) { allConditions = debugConditions; }
 
 
 var numConditions = allConditions.length;
@@ -241,7 +259,7 @@ var experiment = {
 	condition: chooseCondition + 1,
 	sentenceIDs: new Array(numTrials),
 	utteredPrices: new Array(numTrials),
-    inferredPrices0: new Array(numTrials),
+  inferredPrices0: new Array(numTrials),
   inferredPrices1: new Array(numTrials),
   inferredPrices2: new Array(numTrials),
   inferredPrices3: new Array(numTrials),
@@ -311,7 +329,7 @@ var experiment = {
       var probPrice14 = parseInt(document.getElementById("hiddenSliderValue14").value);
       var probPrice15 = parseInt(document.getElementById("hiddenSliderValue15").value);
       
-      var probAffect = parseInt(document.getElementById("hiddenSliderValue0").value) / 40.00;
+      var probAffect = parseInt(document.getElementById("hiddenSliderValue16").value) / 40.00;
       
       experiment.inferredPrices0[currentTrialNum] = probPrice0;
       experiment.inferredPrices1[currentTrialNum] = probPrice1;
@@ -360,11 +378,13 @@ var experiment = {
       $("#buyer1").html(buyer);
       $("#buyer2").html(buyer);
       $("#buyer3").html(buyer);
+      $("#buyer4").html(buyer);
       $("#domain1").html(trial.domain);
       $("#domain2").html(trial.domain);
       $("#domain3").html(trial.domain);
       $("#domain4").html(trial.domain);
       $("#domain5").html(trial.domain);
+      $("#domain6").html(trial.domain);
       $("#modifier").html(trial.modifier);
       
       for (var i = 0; i <= 7; i++)
