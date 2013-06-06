@@ -31,23 +31,23 @@ for (current_domain in levels(d.h$domain)) {
   d.h.d.all <- data.frame(averageScore=NA, inferred=NA, probInferred=NA,uttered=NA)[numeric(0), ]
   
   ## average first, then normalize to sum to one
-  for (uttered in unique(d.h.domain$utteredPriceLabel)) {
-    # select subset with particular uttered price label
-    d.h.d.u <- subset(d.h.domain, utteredPriceLabel==uttered)
-    # calculate the mean ratings for each uttered price
-    d.h.d.u.means <- as.data.frame(colMeans(d.h.d.u[,(10:25)]))
-    # set the labels of the inferred meanings
-    d.h.d.u.means$inferred <- factor(c(20, 21, 50, 51, 100, 101, 200, 201, 500, 
-                                       501, 1000, 1001, 2000, 2001, 10000, 10001))
-    # set the labls of the uttered prices
-    d.h.d.u.means$uttered <- uttered
-    # change the column name
-    colnames(d.h.d.u.means)[1] <- "averageScore"
-    # normalize across ratings for each inferred meaning to sum to 1
-    normalizingFactor = sum(d.h.d.u.means$averageScore)
-    d.h.d.u.means$probInferred <- d.h.d.u.means$averageScore / normalizingFactor
-    d.h.d.all <- rbind(d.h.d.all, d.h.d.u.means)
-  }
+#   for (uttered in unique(d.h.domain$utteredPriceLabel)) {
+#     # select subset with particular uttered price label
+#     d.h.d.u <- subset(d.h.domain, utteredPriceLabel==uttered)
+#     # calculate the mean ratings for each uttered price
+#     d.h.d.u.means <- as.data.frame(colMeans(d.h.d.u[,(10:25)]))
+#     # set the labels of the inferred meanings
+#     d.h.d.u.means$inferred <- factor(c(20, 21, 50, 51, 100, 101, 200, 201, 500, 
+#                                        501, 1000, 1001, 2000, 2001, 10000, 10001))
+#     # set the labls of the uttered prices
+#     d.h.d.u.means$uttered <- uttered
+#     # change the column name
+#     colnames(d.h.d.u.means)[1] <- "averageScore"
+#     # normalize across ratings for each inferred meaning to sum to 1
+#     normalizingFactor = sum(d.h.d.u.means$averageScore)
+#     d.h.d.u.means$probInferred <- d.h.d.u.means$averageScore / normalizingFactor
+#     d.h.d.all <- rbind(d.h.d.all, d.h.d.u.means)
+#   }
   
   ## normalize to sum to one first, then average
   for (uttered in unique(d.h.domain$utteredPriceLabel)) {
