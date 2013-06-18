@@ -1,3 +1,5 @@
+# setwd("~/Dropbox/projects/hyperbole/code/Rplots")
+library(ggplot2)
 # read in constrained hyperbole data (in long form)
 d.h <- read.csv("../../data/mTurkExp/hyperbole_constrained_page/data1_long.csv", 
                 strip.white=TRUE)

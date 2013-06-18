@@ -1,5 +1,6 @@
 function [listener_highest_depth, meanings, utterances, affect_prior] = ...
-    exaggeration_March2013_v1(pricePriorFileName, affectPriorFileName)
+    exaggeration_March2013_v1(pricePriorFileName, affectPriorFileName, ...
+    utterance_costs, useScrapedPriors)
 % 
 % Now computes in log-space.
 % No lexical uncertainty for valence -- only lexical uncertainty for state.
@@ -20,8 +21,12 @@ hardness = 2;
 depth = 1;
 
 % Reads price priors from csv
-% D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
-D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
+if (useScrapedPriors)
+    D = csvread(['../../data/scrape/', pricePriorFileName]);
+else
+    D = csvread(['../../data/mTurkExp/pricePriors/', pricePriorFileName]);
+end
+
 [counts, prices] = hist(D, 20);
 
 % Force a count of 0 at price $0.00
@@ -94,7 +99,7 @@ num_utterances = size(utterances,2);
 % Prior on meanings (in log space)
 %meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)), log(0.000001)];
 meaning_prior = log(normalizeVector([counts/sum(counts) 0.000001 counts/sum(counts) 0.000001]));
-%meaning_prior
+
 
 % Prior that the speaker DOES NOT have affect
 
@@ -114,8 +119,9 @@ affect_prior = cutOffAt(interp_affect_priors(meanings), 1, 'above');
 valence_prior = log(1 - affect_prior);
 % Inverse utterance costs
 
-utterance_costs = [2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1];
-
+if (isempty(utterance_costs))
+    utterance_costs = [2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1];
+end
 
 num_goal_combinations = 3; % value 1 is when the speaker wants to communicate both valence and state; 2 is wants to communicate just state; 3 is wants to communicate just valence
 
