@@ -55,7 +55,7 @@ priors <- priors[with(priors, order(domain, meaning)),]
 d <- data.frame(utterance=NA, meaning=NA, valence=NA, 
                     probability=NA, affect_prior=NA, domain=NA, isRound=NA)
 for (domain in list('kettle', 'coffee', 'headphones', 'sweater', 'laptop', 'watch')) {
-  d.domain = read.csv(paste("../../data/model/predict_", domain, "_matchHumans_uniformcost.csv", sep=""))
+  d.domain = read.csv(paste("../../data/model/predict_", domain, "_matchHumans.csv", sep=""))
   d.domain <- d.domain[with(d.domain, order(valence, meaning, utterance)), ]
   d.domain$domain = domain
   # annotate whether it's round or sharp

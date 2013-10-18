@@ -1,0 +1,721 @@
+workerID,gender,language,income,age,utteranceID,domain,utteranceType,utteranceRounded,exactUtterance,utterance,utteranceLength,opinionProb,order,interpretation,interpretationType,interpretationRounded,interpretationProb
+AYEA5AKLJFSKT,M,English,10,65,87,laptop,round,2000,two thousand,2000,2,0.75,1,500,round,500,0.282608695652
+AYEA5AKLJFSKT,M,English,10,65,87,laptop,round,2000,two thousand,2000,2,0.75,1,501,sharp,500,0.275362318841
+AYEA5AKLJFSKT,M,English,10,65,87,laptop,round,2000,two thousand,2000,2,0.75,1,2000,round,2000,0.217391304348
+AYEA5AKLJFSKT,M,English,10,65,87,laptop,round,2000,two thousand,2000,2,0.75,1,2001,sharp,2000,0.224637681159
+AYEA5AKLJFSKT,M,English,10,65,87,laptop,round,2000,two thousand,2000,2,0.75,1,10000,round,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,87,laptop,round,2000,two thousand,2000,2,0.75,1,10001,sharp,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,500,round,500,0.285714285714
+AYEA5AKLJFSKT,M,English,10,65,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,501,sharp,500,0.278571428571
+AYEA5AKLJFSKT,M,English,10,65,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,2000,round,2000,0.221428571429
+AYEA5AKLJFSKT,M,English,10,65,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,2001,sharp,2000,0.214285714286
+AYEA5AKLJFSKT,M,English,10,65,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,10000,round,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,10001,sharp,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,93,laptop,sharp,500,five hundred two,501,3,0.25,3,500,round,500,0.30534351145
+AYEA5AKLJFSKT,M,English,10,65,93,laptop,sharp,500,five hundred two,501,3,0.25,3,501,sharp,500,0.30534351145
+AYEA5AKLJFSKT,M,English,10,65,93,laptop,sharp,500,five hundred two,501,3,0.25,3,2000,round,2000,0.236641221374
+AYEA5AKLJFSKT,M,English,10,65,93,laptop,sharp,500,five hundred two,501,3,0.25,3,2001,sharp,2000,0.152671755725
+AYEA5AKLJFSKT,M,English,10,65,93,laptop,sharp,500,five hundred two,501,3,0.25,3,10000,round,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,93,laptop,sharp,500,five hundred two,501,3,0.25,3,10001,sharp,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,96,laptop,sharp,10000,ten thousand two,10001,3,1,4,500,round,500,0.287769784173
+AYEA5AKLJFSKT,M,English,10,65,96,laptop,sharp,10000,ten thousand two,10001,3,1,4,501,sharp,500,0.287769784173
+AYEA5AKLJFSKT,M,English,10,65,96,laptop,sharp,10000,ten thousand two,10001,3,1,4,2000,round,2000,0.215827338129
+AYEA5AKLJFSKT,M,English,10,65,96,laptop,sharp,10000,ten thousand two,10001,3,1,4,2001,sharp,2000,0.208633093525
+AYEA5AKLJFSKT,M,English,10,65,96,laptop,sharp,10000,ten thousand two,10001,3,1,4,10000,round,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,96,laptop,sharp,10000,ten thousand two,10001,3,1,4,10001,sharp,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,88,laptop,round,10000,ten thousand,10000,2,1,5,500,round,500,0.289855072464
+AYEA5AKLJFSKT,M,English,10,65,88,laptop,round,10000,ten thousand,10000,2,1,5,501,sharp,500,0.289855072464
+AYEA5AKLJFSKT,M,English,10,65,88,laptop,round,10000,ten thousand,10000,2,1,5,2000,round,2000,0.210144927536
+AYEA5AKLJFSKT,M,English,10,65,88,laptop,round,10000,ten thousand,10000,2,1,5,2001,sharp,2000,0.210144927536
+AYEA5AKLJFSKT,M,English,10,65,88,laptop,round,10000,ten thousand,10000,2,1,5,10000,round,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,88,laptop,round,10000,ten thousand,10000,2,1,5,10001,sharp,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,85,laptop,round,500,five hundred,500,2,0.25,6,500,round,500,0.289855072464
+AYEA5AKLJFSKT,M,English,10,65,85,laptop,round,500,five hundred,500,2,0.25,6,501,sharp,500,0.289855072464
+AYEA5AKLJFSKT,M,English,10,65,85,laptop,round,500,five hundred,500,2,0.25,6,2000,round,2000,0.210144927536
+AYEA5AKLJFSKT,M,English,10,65,85,laptop,round,500,five hundred,500,2,0.25,6,2001,sharp,2000,0.210144927536
+AYEA5AKLJFSKT,M,English,10,65,85,laptop,round,500,five hundred,500,2,0.25,6,10000,round,10000,0.0
+AYEA5AKLJFSKT,M,English,10,65,85,laptop,round,500,five hundred,500,2,0.25,6,10001,sharp,10000,0.0
+A1BFW88CZ8UUTI,M,English,4,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,1,500,round,500,0.204545454545
+A1BFW88CZ8UUTI,M,English,4,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,1,501,sharp,500,0.25
+A1BFW88CZ8UUTI,M,English,4,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,1,2000,round,2000,0.25
+A1BFW88CZ8UUTI,M,English,4,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,1,2001,sharp,2000,0.272727272727
+A1BFW88CZ8UUTI,M,English,4,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,1,10000,round,10000,0.0227272727273
+A1BFW88CZ8UUTI,M,English,4,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,1,10001,sharp,10000,0.0
+A1BFW88CZ8UUTI,M,English,4,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,0.975,2,500,round,500,0.327586206897
+A1BFW88CZ8UUTI,M,English,4,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,0.975,2,501,sharp,500,0.344827586207
+A1BFW88CZ8UUTI,M,English,4,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,0.975,2,2000,round,2000,0.155172413793
+A1BFW88CZ8UUTI,M,English,4,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,0.975,2,2001,sharp,2000,0.137931034483
+A1BFW88CZ8UUTI,M,English,4,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,0.975,2,10000,round,10000,0.0172413793103
+A1BFW88CZ8UUTI,M,English,4,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,0.975,2,10001,sharp,10000,0.0172413793103
+A1BFW88CZ8UUTI,M,English,4,45,85,laptop,round,500,five hundred,500,2,0.225,3,500,round,500,0.368421052632
+A1BFW88CZ8UUTI,M,English,4,45,85,laptop,round,500,five hundred,500,2,0.225,3,501,sharp,500,0.381578947368
+A1BFW88CZ8UUTI,M,English,4,45,85,laptop,round,500,five hundred,500,2,0.225,3,2000,round,2000,0.118421052632
+A1BFW88CZ8UUTI,M,English,4,45,85,laptop,round,500,five hundred,500,2,0.225,3,2001,sharp,2000,0.118421052632
+A1BFW88CZ8UUTI,M,English,4,45,85,laptop,round,500,five hundred,500,2,0.225,3,10000,round,10000,0.0
+A1BFW88CZ8UUTI,M,English,4,45,85,laptop,round,500,five hundred,500,2,0.225,3,10001,sharp,10000,0.0131578947368
+A1BFW88CZ8UUTI,M,English,4,45,87,laptop,round,2000,two thousand,2000,2,0.775,4,500,round,500,0.322580645161
+A1BFW88CZ8UUTI,M,English,4,45,87,laptop,round,2000,two thousand,2000,2,0.775,4,501,sharp,500,0.322580645161
+A1BFW88CZ8UUTI,M,English,4,45,87,laptop,round,2000,two thousand,2000,2,0.775,4,2000,round,2000,0.177419354839
+A1BFW88CZ8UUTI,M,English,4,45,87,laptop,round,2000,two thousand,2000,2,0.775,4,2001,sharp,2000,0.161290322581
+A1BFW88CZ8UUTI,M,English,4,45,87,laptop,round,2000,two thousand,2000,2,0.775,4,10000,round,10000,0.0161290322581
+A1BFW88CZ8UUTI,M,English,4,45,87,laptop,round,2000,two thousand,2000,2,0.775,4,10001,sharp,10000,0.0
+A1BFW88CZ8UUTI,M,English,4,45,93,laptop,sharp,500,five hundred three,501,3,0.25,5,500,round,500,0.3125
+A1BFW88CZ8UUTI,M,English,4,45,93,laptop,sharp,500,five hundred three,501,3,0.25,5,501,sharp,500,0.3125
+A1BFW88CZ8UUTI,M,English,4,45,93,laptop,sharp,500,five hundred three,501,3,0.25,5,2000,round,2000,0.171875
+A1BFW88CZ8UUTI,M,English,4,45,93,laptop,sharp,500,five hundred three,501,3,0.25,5,2001,sharp,2000,0.171875
+A1BFW88CZ8UUTI,M,English,4,45,93,laptop,sharp,500,five hundred three,501,3,0.25,5,10000,round,10000,0.015625
+A1BFW88CZ8UUTI,M,English,4,45,93,laptop,sharp,500,five hundred three,501,3,0.25,5,10001,sharp,10000,0.015625
+A1BFW88CZ8UUTI,M,English,4,45,88,laptop,round,10000,ten thousand,10000,2,0.975,6,500,round,500,0.338235294118
+A1BFW88CZ8UUTI,M,English,4,45,88,laptop,round,10000,ten thousand,10000,2,0.975,6,501,sharp,500,0.338235294118
+A1BFW88CZ8UUTI,M,English,4,45,88,laptop,round,10000,ten thousand,10000,2,0.975,6,2000,round,2000,0.161764705882
+A1BFW88CZ8UUTI,M,English,4,45,88,laptop,round,10000,ten thousand,10000,2,0.975,6,2001,sharp,2000,0.161764705882
+A1BFW88CZ8UUTI,M,English,4,45,88,laptop,round,10000,ten thousand,10000,2,0.975,6,10000,round,10000,0.0
+A1BFW88CZ8UUTI,M,English,4,45,88,laptop,round,10000,ten thousand,10000,2,0.975,6,10001,sharp,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,95,laptop,sharp,2000,two thousand three,2001,3,0.975,1,500,round,500,0.2
+A2P6VK1US8OTC5,F,english,6,45,95,laptop,sharp,2000,two thousand three,2001,3,0.975,1,501,sharp,500,0.2
+A2P6VK1US8OTC5,F,english,6,45,95,laptop,sharp,2000,two thousand three,2001,3,0.975,1,2000,round,2000,0.3
+A2P6VK1US8OTC5,F,english,6,45,95,laptop,sharp,2000,two thousand three,2001,3,0.975,1,2001,sharp,2000,0.29
+A2P6VK1US8OTC5,F,english,6,45,95,laptop,sharp,2000,two thousand three,2001,3,0.975,1,10000,round,10000,0.01
+A2P6VK1US8OTC5,F,english,6,45,95,laptop,sharp,2000,two thousand three,2001,3,0.975,1,10001,sharp,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.975,2,500,round,500,0.2
+A2P6VK1US8OTC5,F,english,6,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.975,2,501,sharp,500,0.2
+A2P6VK1US8OTC5,F,english,6,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.975,2,2000,round,2000,0.28
+A2P6VK1US8OTC5,F,english,6,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.975,2,2001,sharp,2000,0.31
+A2P6VK1US8OTC5,F,english,6,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.975,2,10000,round,10000,0.01
+A2P6VK1US8OTC5,F,english,6,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.975,2,10001,sharp,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,1,3,500,round,500,0.341176470588
+A2P6VK1US8OTC5,F,english,6,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,1,3,501,sharp,500,0.364705882353
+A2P6VK1US8OTC5,F,english,6,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,1,3,2000,round,2000,0.152941176471
+A2P6VK1US8OTC5,F,english,6,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,1,3,2001,sharp,2000,0.129411764706
+A2P6VK1US8OTC5,F,english,6,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,1,3,10000,round,10000,0.0117647058824
+A2P6VK1US8OTC5,F,english,6,45,96,laptop,sharp,10000,nine thousand nine hundred ninety nine,10001,6,1,3,10001,sharp,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.5,4,500,round,500,0.534246575342
+A2P6VK1US8OTC5,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.5,4,501,sharp,500,0.424657534247
+A2P6VK1US8OTC5,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.5,4,2000,round,2000,0.027397260274
+A2P6VK1US8OTC5,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.5,4,2001,sharp,2000,0.0
+A2P6VK1US8OTC5,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.5,4,10000,round,10000,0.013698630137
+A2P6VK1US8OTC5,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.5,4,10001,sharp,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.25,5,500,round,500,0.309523809524
+A2P6VK1US8OTC5,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.25,5,501,sharp,500,0.309523809524
+A2P6VK1US8OTC5,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.25,5,2000,round,2000,0.222222222222
+A2P6VK1US8OTC5,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.25,5,2001,sharp,2000,0.15873015873
+A2P6VK1US8OTC5,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.25,5,10000,round,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.25,5,10001,sharp,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.975,6,500,round,500,0.242990654206
+A2P6VK1US8OTC5,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.975,6,501,sharp,500,0.261682242991
+A2P6VK1US8OTC5,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.975,6,2000,round,2000,0.261682242991
+A2P6VK1US8OTC5,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.975,6,2001,sharp,2000,0.224299065421
+A2P6VK1US8OTC5,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.975,6,10000,round,10000,0.0
+A2P6VK1US8OTC5,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.975,6,10001,sharp,10000,0.00934579439252
+A72H1PN9MHIW6,M,English,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.925,1,500,round,500,0.371428571429
+A72H1PN9MHIW6,M,English,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.925,1,501,sharp,500,0.342857142857
+A72H1PN9MHIW6,M,English,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.925,1,2000,round,2000,0.171428571429
+A72H1PN9MHIW6,M,English,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.925,1,2001,sharp,2000,0.114285714286
+A72H1PN9MHIW6,M,English,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.925,1,10000,round,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.925,1,10001,sharp,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,85,laptop,round,500,five hundred,500,2,0.25,2,500,round,500,0.435897435897
+A72H1PN9MHIW6,M,English,6,35,85,laptop,round,500,five hundred,500,2,0.25,2,501,sharp,500,0.397435897436
+A72H1PN9MHIW6,M,English,6,35,85,laptop,round,500,five hundred,500,2,0.25,2,2000,round,2000,0.0897435897436
+A72H1PN9MHIW6,M,English,6,35,85,laptop,round,500,five hundred,500,2,0.25,2,2001,sharp,2000,0.0769230769231
+A72H1PN9MHIW6,M,English,6,35,85,laptop,round,500,five hundred,500,2,0.25,2,10000,round,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,85,laptop,round,500,five hundred,500,2,0.25,2,10001,sharp,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,87,laptop,round,2000,two thousand,2000,2,0.6,3,500,round,500,0.186666666667
+A72H1PN9MHIW6,M,English,6,35,87,laptop,round,2000,two thousand,2000,2,0.6,3,501,sharp,500,0.16
+A72H1PN9MHIW6,M,English,6,35,87,laptop,round,2000,two thousand,2000,2,0.6,3,2000,round,2000,0.32
+A72H1PN9MHIW6,M,English,6,35,87,laptop,round,2000,two thousand,2000,2,0.6,3,2001,sharp,2000,0.32
+A72H1PN9MHIW6,M,English,6,35,87,laptop,round,2000,two thousand,2000,2,0.6,3,10000,round,10000,0.0133333333333
+A72H1PN9MHIW6,M,English,6,35,87,laptop,round,2000,two thousand,2000,2,0.6,3,10001,sharp,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,93,laptop,sharp,500,four hundred ninety nine,501,4,0.125,4,500,round,500,0.236111111111
+A72H1PN9MHIW6,M,English,6,35,93,laptop,sharp,500,four hundred ninety nine,501,4,0.125,4,501,sharp,500,0.472222222222
+A72H1PN9MHIW6,M,English,6,35,93,laptop,sharp,500,four hundred ninety nine,501,4,0.125,4,2000,round,2000,0.166666666667
+A72H1PN9MHIW6,M,English,6,35,93,laptop,sharp,500,four hundred ninety nine,501,4,0.125,4,2001,sharp,2000,0.125
+A72H1PN9MHIW6,M,English,6,35,93,laptop,sharp,500,four hundred ninety nine,501,4,0.125,4,10000,round,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,93,laptop,sharp,500,four hundred ninety nine,501,4,0.125,4,10001,sharp,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,88,laptop,round,10000,ten thousand,10000,2,0.725,5,500,round,500,0.12676056338
+A72H1PN9MHIW6,M,English,6,35,88,laptop,round,10000,ten thousand,10000,2,0.725,5,501,sharp,500,0.12676056338
+A72H1PN9MHIW6,M,English,6,35,88,laptop,round,10000,ten thousand,10000,2,0.725,5,2000,round,2000,0.281690140845
+A72H1PN9MHIW6,M,English,6,35,88,laptop,round,10000,ten thousand,10000,2,0.725,5,2001,sharp,2000,0.267605633803
+A72H1PN9MHIW6,M,English,6,35,88,laptop,round,10000,ten thousand,10000,2,0.725,5,10000,round,10000,0.0985915492958
+A72H1PN9MHIW6,M,English,6,35,88,laptop,round,10000,ten thousand,10000,2,0.725,5,10001,sharp,10000,0.0985915492958
+A72H1PN9MHIW6,M,English,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,6,500,round,500,0.138888888889
+A72H1PN9MHIW6,M,English,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,6,501,sharp,500,0.125
+A72H1PN9MHIW6,M,English,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,6,2000,round,2000,0.319444444444
+A72H1PN9MHIW6,M,English,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,6,2001,sharp,2000,0.416666666667
+A72H1PN9MHIW6,M,English,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,6,10000,round,10000,0.0
+A72H1PN9MHIW6,M,English,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,6,10001,sharp,10000,0.0
+A23RPU5ZLLFQH0,M,English,4,55,87,laptop,round,2000,two thousand,2000,2,0.75,1,500,round,500,0.243697478992
+A23RPU5ZLLFQH0,M,English,4,55,87,laptop,round,2000,two thousand,2000,2,0.75,1,501,sharp,500,0.252100840336
+A23RPU5ZLLFQH0,M,English,4,55,87,laptop,round,2000,two thousand,2000,2,0.75,1,2000,round,2000,0.168067226891
+A23RPU5ZLLFQH0,M,English,4,55,87,laptop,round,2000,two thousand,2000,2,0.75,1,2001,sharp,2000,0.168067226891
+A23RPU5ZLLFQH0,M,English,4,55,87,laptop,round,2000,two thousand,2000,2,0.75,1,10000,round,10000,0.0840336134454
+A23RPU5ZLLFQH0,M,English,4,55,87,laptop,round,2000,two thousand,2000,2,0.75,1,10001,sharp,10000,0.0840336134454
+A23RPU5ZLLFQH0,M,English,4,55,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,500,round,500,0.291262135922
+A23RPU5ZLLFQH0,M,English,4,55,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,501,sharp,500,0.300970873786
+A23RPU5ZLLFQH0,M,English,4,55,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,2000,round,2000,0.194174757282
+A23RPU5ZLLFQH0,M,English,4,55,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,2001,sharp,2000,0.194174757282
+A23RPU5ZLLFQH0,M,English,4,55,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,10000,round,10000,0.00970873786408
+A23RPU5ZLLFQH0,M,English,4,55,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,10001,sharp,10000,0.00970873786408
+A23RPU5ZLLFQH0,M,English,4,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,3,500,round,500,0.263636363636
+A23RPU5ZLLFQH0,M,English,4,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,3,501,sharp,500,0.272727272727
+A23RPU5ZLLFQH0,M,English,4,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,3,2000,round,2000,0.181818181818
+A23RPU5ZLLFQH0,M,English,4,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,3,2001,sharp,2000,0.181818181818
+A23RPU5ZLLFQH0,M,English,4,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,3,10000,round,10000,0.00909090909091
+A23RPU5ZLLFQH0,M,English,4,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,3,10001,sharp,10000,0.0909090909091
+A23RPU5ZLLFQH0,M,English,4,55,88,laptop,round,10000,ten thousand,10000,2,1,4,500,round,500,0.274336283186
+A23RPU5ZLLFQH0,M,English,4,55,88,laptop,round,10000,ten thousand,10000,2,1,4,501,sharp,500,0.265486725664
+A23RPU5ZLLFQH0,M,English,4,55,88,laptop,round,10000,ten thousand,10000,2,1,4,2000,round,2000,0.176991150442
+A23RPU5ZLLFQH0,M,English,4,55,88,laptop,round,10000,ten thousand,10000,2,1,4,2001,sharp,2000,0.176991150442
+A23RPU5ZLLFQH0,M,English,4,55,88,laptop,round,10000,ten thousand,10000,2,1,4,10000,round,10000,0.0176991150442
+A23RPU5ZLLFQH0,M,English,4,55,88,laptop,round,10000,ten thousand,10000,2,1,4,10001,sharp,10000,0.0884955752212
+A23RPU5ZLLFQH0,M,English,4,55,93,laptop,sharp,500,five hundred two,501,3,0.25,5,500,round,500,0.298076923077
+A23RPU5ZLLFQH0,M,English,4,55,93,laptop,sharp,500,five hundred two,501,3,0.25,5,501,sharp,500,0.298076923077
+A23RPU5ZLLFQH0,M,English,4,55,93,laptop,sharp,500,five hundred two,501,3,0.25,5,2000,round,2000,0.192307692308
+A23RPU5ZLLFQH0,M,English,4,55,93,laptop,sharp,500,five hundred two,501,3,0.25,5,2001,sharp,2000,0.192307692308
+A23RPU5ZLLFQH0,M,English,4,55,93,laptop,sharp,500,five hundred two,501,3,0.25,5,10000,round,10000,0.00961538461538
+A23RPU5ZLLFQH0,M,English,4,55,93,laptop,sharp,500,five hundred two,501,3,0.25,5,10001,sharp,10000,0.00961538461538
+A23RPU5ZLLFQH0,M,English,4,55,85,laptop,round,500,five hundred,500,2,0.25,6,500,round,500,0.287128712871
+A23RPU5ZLLFQH0,M,English,4,55,85,laptop,round,500,five hundred,500,2,0.25,6,501,sharp,500,0.29702970297
+A23RPU5ZLLFQH0,M,English,4,55,85,laptop,round,500,five hundred,500,2,0.25,6,2000,round,2000,0.19801980198
+A23RPU5ZLLFQH0,M,English,4,55,85,laptop,round,500,five hundred,500,2,0.25,6,2001,sharp,2000,0.19801980198
+A23RPU5ZLLFQH0,M,English,4,55,85,laptop,round,500,five hundred,500,2,0.25,6,10000,round,10000,0.00990099009901
+A23RPU5ZLLFQH0,M,English,4,55,85,laptop,round,500,five hundred,500,2,0.25,6,10001,sharp,10000,0.00990099009901
+A1N5MDRGDXQY5U,F,English,10,35,96,laptop,sharp,10000,ten thousand two,10001,3,1,1,500,round,500,0.169491525424
+A1N5MDRGDXQY5U,F,English,10,35,96,laptop,sharp,10000,ten thousand two,10001,3,1,1,501,sharp,500,0.169491525424
+A1N5MDRGDXQY5U,F,English,10,35,96,laptop,sharp,10000,ten thousand two,10001,3,1,1,2000,round,2000,0.330508474576
+A1N5MDRGDXQY5U,F,English,10,35,96,laptop,sharp,10000,ten thousand two,10001,3,1,1,2001,sharp,2000,0.330508474576
+A1N5MDRGDXQY5U,F,English,10,35,96,laptop,sharp,10000,ten thousand two,10001,3,1,1,10000,round,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,96,laptop,sharp,10000,ten thousand two,10001,3,1,1,10001,sharp,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,95,laptop,sharp,2000,two thousand three,2001,3,0.75,2,500,round,500,0.20202020202
+A1N5MDRGDXQY5U,F,English,10,35,95,laptop,sharp,2000,two thousand three,2001,3,0.75,2,501,sharp,500,0.20202020202
+A1N5MDRGDXQY5U,F,English,10,35,95,laptop,sharp,2000,two thousand three,2001,3,0.75,2,2000,round,2000,0.20202020202
+A1N5MDRGDXQY5U,F,English,10,35,95,laptop,sharp,2000,two thousand three,2001,3,0.75,2,2001,sharp,2000,0.393939393939
+A1N5MDRGDXQY5U,F,English,10,35,95,laptop,sharp,2000,two thousand three,2001,3,0.75,2,10000,round,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,95,laptop,sharp,2000,two thousand three,2001,3,0.75,2,10001,sharp,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,85,laptop,round,500,five hundred,500,2,0.5,3,500,round,500,1.0
+A1N5MDRGDXQY5U,F,English,10,35,85,laptop,round,500,five hundred,500,2,0.5,3,501,sharp,500,0.0
+A1N5MDRGDXQY5U,F,English,10,35,85,laptop,round,500,five hundred,500,2,0.5,3,2000,round,2000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,85,laptop,round,500,five hundred,500,2,0.5,3,2001,sharp,2000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,85,laptop,round,500,five hundred,500,2,0.5,3,10000,round,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,85,laptop,round,500,five hundred,500,2,0.5,3,10001,sharp,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,88,laptop,round,10000,ten thousand,10000,2,1,4,500,round,500,0.166666666667
+A1N5MDRGDXQY5U,F,English,10,35,88,laptop,round,10000,ten thousand,10000,2,1,4,501,sharp,500,0.166666666667
+A1N5MDRGDXQY5U,F,English,10,35,88,laptop,round,10000,ten thousand,10000,2,1,4,2000,round,2000,0.333333333333
+A1N5MDRGDXQY5U,F,English,10,35,88,laptop,round,10000,ten thousand,10000,2,1,4,2001,sharp,2000,0.333333333333
+A1N5MDRGDXQY5U,F,English,10,35,88,laptop,round,10000,ten thousand,10000,2,1,4,10000,round,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,88,laptop,round,10000,ten thousand,10000,2,1,4,10001,sharp,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,93,laptop,sharp,500,five hundred two,501,3,0.5,5,500,round,500,0.333333333333
+A1N5MDRGDXQY5U,F,English,10,35,93,laptop,sharp,500,five hundred two,501,3,0.5,5,501,sharp,500,0.666666666667
+A1N5MDRGDXQY5U,F,English,10,35,93,laptop,sharp,500,five hundred two,501,3,0.5,5,2000,round,2000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,93,laptop,sharp,500,five hundred two,501,3,0.5,5,2001,sharp,2000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,93,laptop,sharp,500,five hundred two,501,3,0.5,5,10000,round,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,93,laptop,sharp,500,five hundred two,501,3,0.5,5,10001,sharp,10000,0.0
+A1N5MDRGDXQY5U,F,English,10,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,500,round,500,0.125
+A1N5MDRGDXQY5U,F,English,10,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,501,sharp,500,0.125
+A1N5MDRGDXQY5U,F,English,10,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,2000,round,2000,0.25
+A1N5MDRGDXQY5U,F,English,10,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,2001,sharp,2000,0.25
+A1N5MDRGDXQY5U,F,English,10,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,10000,round,10000,0.125
+A1N5MDRGDXQY5U,F,English,10,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,10001,sharp,10000,0.125
+A2BZWQGWCJS3BC,F,English,8,55,95,laptop,sharp,2000,two thousand three,2001,3,1,1,500,round,500,0.40625
+A2BZWQGWCJS3BC,F,English,8,55,95,laptop,sharp,2000,two thousand three,2001,3,1,1,501,sharp,500,0.40625
+A2BZWQGWCJS3BC,F,English,8,55,95,laptop,sharp,2000,two thousand three,2001,3,1,1,2000,round,2000,0.0833333333333
+A2BZWQGWCJS3BC,F,English,8,55,95,laptop,sharp,2000,two thousand three,2001,3,1,1,2001,sharp,2000,0.09375
+A2BZWQGWCJS3BC,F,English,8,55,95,laptop,sharp,2000,two thousand three,2001,3,1,1,10000,round,10000,0.0104166666667
+A2BZWQGWCJS3BC,F,English,8,55,95,laptop,sharp,2000,two thousand three,2001,3,1,1,10001,sharp,10000,0.0
+A2BZWQGWCJS3BC,F,English,8,55,88,laptop,round,10000,ten thousand,10000,2,1,2,500,round,500,0.386138613861
+A2BZWQGWCJS3BC,F,English,8,55,88,laptop,round,10000,ten thousand,10000,2,1,2,501,sharp,500,0.376237623762
+A2BZWQGWCJS3BC,F,English,8,55,88,laptop,round,10000,ten thousand,10000,2,1,2,2000,round,2000,0.108910891089
+A2BZWQGWCJS3BC,F,English,8,55,88,laptop,round,10000,ten thousand,10000,2,1,2,2001,sharp,2000,0.108910891089
+A2BZWQGWCJS3BC,F,English,8,55,88,laptop,round,10000,ten thousand,10000,2,1,2,10000,round,10000,0.00990099009901
+A2BZWQGWCJS3BC,F,English,8,55,88,laptop,round,10000,ten thousand,10000,2,1,2,10001,sharp,10000,0.00990099009901
+A2BZWQGWCJS3BC,F,English,8,55,93,laptop,sharp,500,four hundred ninety eight,501,4,0.25,3,500,round,500,0.380952380952
+A2BZWQGWCJS3BC,F,English,8,55,93,laptop,sharp,500,four hundred ninety eight,501,4,0.25,3,501,sharp,500,0.380952380952
+A2BZWQGWCJS3BC,F,English,8,55,93,laptop,sharp,500,four hundred ninety eight,501,4,0.25,3,2000,round,2000,0.104761904762
+A2BZWQGWCJS3BC,F,English,8,55,93,laptop,sharp,500,four hundred ninety eight,501,4,0.25,3,2001,sharp,2000,0.104761904762
+A2BZWQGWCJS3BC,F,English,8,55,93,laptop,sharp,500,four hundred ninety eight,501,4,0.25,3,10000,round,10000,0.00952380952381
+A2BZWQGWCJS3BC,F,English,8,55,93,laptop,sharp,500,four hundred ninety eight,501,4,0.25,3,10001,sharp,10000,0.0190476190476
+A2BZWQGWCJS3BC,F,English,8,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,4,500,round,500,0.381443298969
+A2BZWQGWCJS3BC,F,English,8,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,4,501,sharp,500,0.381443298969
+A2BZWQGWCJS3BC,F,English,8,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,4,2000,round,2000,0.113402061856
+A2BZWQGWCJS3BC,F,English,8,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,4,2001,sharp,2000,0.103092783505
+A2BZWQGWCJS3BC,F,English,8,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,4,10000,round,10000,0.0103092783505
+A2BZWQGWCJS3BC,F,English,8,55,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,4,10001,sharp,10000,0.0103092783505
+A2BZWQGWCJS3BC,F,English,8,55,87,laptop,round,2000,two thousand,2000,2,0.975,5,500,round,500,0.372549019608
+A2BZWQGWCJS3BC,F,English,8,55,87,laptop,round,2000,two thousand,2000,2,0.975,5,501,sharp,500,0.362745098039
+A2BZWQGWCJS3BC,F,English,8,55,87,laptop,round,2000,two thousand,2000,2,0.975,5,2000,round,2000,0.117647058824
+A2BZWQGWCJS3BC,F,English,8,55,87,laptop,round,2000,two thousand,2000,2,0.975,5,2001,sharp,2000,0.117647058824
+A2BZWQGWCJS3BC,F,English,8,55,87,laptop,round,2000,two thousand,2000,2,0.975,5,10000,round,10000,0.00980392156863
+A2BZWQGWCJS3BC,F,English,8,55,87,laptop,round,2000,two thousand,2000,2,0.975,5,10001,sharp,10000,0.0196078431373
+A2BZWQGWCJS3BC,F,English,8,55,85,laptop,round,500,five hundred,500,2,0.225,6,500,round,500,0.39175257732
+A2BZWQGWCJS3BC,F,English,8,55,85,laptop,round,500,five hundred,500,2,0.225,6,501,sharp,500,0.40206185567
+A2BZWQGWCJS3BC,F,English,8,55,85,laptop,round,500,five hundred,500,2,0.225,6,2000,round,2000,0.0927835051546
+A2BZWQGWCJS3BC,F,English,8,55,85,laptop,round,500,five hundred,500,2,0.225,6,2001,sharp,2000,0.103092783505
+A2BZWQGWCJS3BC,F,English,8,55,85,laptop,round,500,five hundred,500,2,0.225,6,10000,round,10000,0.0
+A2BZWQGWCJS3BC,F,English,8,55,85,laptop,round,500,five hundred,500,2,0.225,6,10001,sharp,10000,0.0103092783505
+AODPVTKUSNBUT,M,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,500,round,500,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,501,sharp,500,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,2000,round,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,2001,sharp,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,10000,round,10000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,10001,sharp,10000,0.285714285714
+AODPVTKUSNBUT,M,english,6,35,88,laptop,round,10000,ten thousand,10000,2,1,2,500,round,500,0.141843971631
+AODPVTKUSNBUT,M,english,6,35,88,laptop,round,10000,ten thousand,10000,2,1,2,501,sharp,500,0.141843971631
+AODPVTKUSNBUT,M,english,6,35,88,laptop,round,10000,ten thousand,10000,2,1,2,2000,round,2000,0.141843971631
+AODPVTKUSNBUT,M,english,6,35,88,laptop,round,10000,ten thousand,10000,2,1,2,2001,sharp,2000,0.148936170213
+AODPVTKUSNBUT,M,english,6,35,88,laptop,round,10000,ten thousand,10000,2,1,2,10000,round,10000,0.283687943262
+AODPVTKUSNBUT,M,english,6,35,88,laptop,round,10000,ten thousand,10000,2,1,2,10001,sharp,10000,0.141843971631
+AODPVTKUSNBUT,M,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,3,500,round,500,0.144927536232
+AODPVTKUSNBUT,M,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,3,501,sharp,500,0.144927536232
+AODPVTKUSNBUT,M,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,3,2000,round,2000,0.289855072464
+AODPVTKUSNBUT,M,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,3,2001,sharp,2000,0.13768115942
+AODPVTKUSNBUT,M,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,3,10000,round,10000,0.144927536232
+AODPVTKUSNBUT,M,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,1,3,10001,sharp,10000,0.13768115942
+AODPVTKUSNBUT,M,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.65,4,500,round,500,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.65,4,501,sharp,500,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.65,4,2000,round,2000,0.285714285714
+AODPVTKUSNBUT,M,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.65,4,2001,sharp,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.65,4,10000,round,10000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.65,4,10001,sharp,10000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,5,500,round,500,0.285714285714
+AODPVTKUSNBUT,M,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,5,501,sharp,500,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,5,2000,round,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,5,2001,sharp,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,5,10000,round,10000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,5,10001,sharp,10000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.1,6,500,round,500,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.1,6,501,sharp,500,0.285714285714
+AODPVTKUSNBUT,M,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.1,6,2000,round,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.1,6,2001,sharp,2000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.1,6,10000,round,10000,0.142857142857
+AODPVTKUSNBUT,M,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.1,6,10001,sharp,10000,0.142857142857
+A3H2NSZ2WLPA5D,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,1,500,round,500,0.338983050847
+A3H2NSZ2WLPA5D,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,1,501,sharp,500,0.338983050847
+A3H2NSZ2WLPA5D,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,1,2000,round,2000,0.161016949153
+A3H2NSZ2WLPA5D,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,1,2001,sharp,2000,0.161016949153
+A3H2NSZ2WLPA5D,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,1,10000,round,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,1,10001,sharp,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,93,laptop,sharp,500,four hundred ninety eight,501,4,0.225,2,500,round,500,0.350877192982
+A3H2NSZ2WLPA5D,F,English,4,35,93,laptop,sharp,500,four hundred ninety eight,501,4,0.225,2,501,sharp,500,0.350877192982
+A3H2NSZ2WLPA5D,F,English,4,35,93,laptop,sharp,500,four hundred ninety eight,501,4,0.225,2,2000,round,2000,0.149122807018
+A3H2NSZ2WLPA5D,F,English,4,35,93,laptop,sharp,500,four hundred ninety eight,501,4,0.225,2,2001,sharp,2000,0.149122807018
+A3H2NSZ2WLPA5D,F,English,4,35,93,laptop,sharp,500,four hundred ninety eight,501,4,0.225,2,10000,round,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,93,laptop,sharp,500,four hundred ninety eight,501,4,0.225,2,10001,sharp,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,1,3,500,round,500,0.342342342342
+A3H2NSZ2WLPA5D,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,1,3,501,sharp,500,0.342342342342
+A3H2NSZ2WLPA5D,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,1,3,2000,round,2000,0.153153153153
+A3H2NSZ2WLPA5D,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,1,3,2001,sharp,2000,0.153153153153
+A3H2NSZ2WLPA5D,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,1,3,10000,round,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,1,3,10001,sharp,10000,0.00900900900901
+A3H2NSZ2WLPA5D,F,English,4,35,95,laptop,sharp,2000,two thousand two,2001,3,0.75,4,500,round,500,0.347826086957
+A3H2NSZ2WLPA5D,F,English,4,35,95,laptop,sharp,2000,two thousand two,2001,3,0.75,4,501,sharp,500,0.339130434783
+A3H2NSZ2WLPA5D,F,English,4,35,95,laptop,sharp,2000,two thousand two,2001,3,0.75,4,2000,round,2000,0.147826086957
+A3H2NSZ2WLPA5D,F,English,4,35,95,laptop,sharp,2000,two thousand two,2001,3,0.75,4,2001,sharp,2000,0.147826086957
+A3H2NSZ2WLPA5D,F,English,4,35,95,laptop,sharp,2000,two thousand two,2001,3,0.75,4,10000,round,10000,0.00869565217391
+A3H2NSZ2WLPA5D,F,English,4,35,95,laptop,sharp,2000,two thousand two,2001,3,0.75,4,10001,sharp,10000,0.00869565217391
+A3H2NSZ2WLPA5D,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,500,round,500,0.344827586207
+A3H2NSZ2WLPA5D,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,501,sharp,500,0.344827586207
+A3H2NSZ2WLPA5D,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,2000,round,2000,0.155172413793
+A3H2NSZ2WLPA5D,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,2001,sharp,2000,0.155172413793
+A3H2NSZ2WLPA5D,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,10000,round,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,10001,sharp,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,6,500,round,500,0.344827586207
+A3H2NSZ2WLPA5D,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,6,501,sharp,500,0.344827586207
+A3H2NSZ2WLPA5D,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,6,2000,round,2000,0.155172413793
+A3H2NSZ2WLPA5D,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,6,2001,sharp,2000,0.155172413793
+A3H2NSZ2WLPA5D,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,6,10000,round,10000,0.0
+A3H2NSZ2WLPA5D,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,6,10001,sharp,10000,0.0
+A3C01W6EC4R0LC,F,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.975,1,500,round,500,0.376623376623
+A3C01W6EC4R0LC,F,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.975,1,501,sharp,500,0.376623376623
+A3C01W6EC4R0LC,F,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.975,1,2000,round,2000,0.0779220779221
+A3C01W6EC4R0LC,F,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.975,1,2001,sharp,2000,0.116883116883
+A3C01W6EC4R0LC,F,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.975,1,10000,round,10000,0.025974025974
+A3C01W6EC4R0LC,F,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.975,1,10001,sharp,10000,0.025974025974
+A3C01W6EC4R0LC,F,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.4,2,500,round,500,0.376623376623
+A3C01W6EC4R0LC,F,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.4,2,501,sharp,500,0.376623376623
+A3C01W6EC4R0LC,F,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.4,2,2000,round,2000,0.116883116883
+A3C01W6EC4R0LC,F,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.4,2,2001,sharp,2000,0.116883116883
+A3C01W6EC4R0LC,F,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.4,2,10000,round,10000,0.0
+A3C01W6EC4R0LC,F,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.4,2,10001,sharp,10000,0.012987012987
+A3C01W6EC4R0LC,F,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,3,500,round,500,0.358024691358
+A3C01W6EC4R0LC,F,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,3,501,sharp,500,0.358024691358
+A3C01W6EC4R0LC,F,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,3,2000,round,2000,0.123456790123
+A3C01W6EC4R0LC,F,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,3,2001,sharp,2000,0.123456790123
+A3C01W6EC4R0LC,F,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,3,10000,round,10000,0.0123456790123
+A3C01W6EC4R0LC,F,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,3,10001,sharp,10000,0.0246913580247
+A3C01W6EC4R0LC,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.975,4,500,round,500,0.353658536585
+A3C01W6EC4R0LC,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.975,4,501,sharp,500,0.353658536585
+A3C01W6EC4R0LC,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.975,4,2000,round,2000,0.146341463415
+A3C01W6EC4R0LC,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.975,4,2001,sharp,2000,0.121951219512
+A3C01W6EC4R0LC,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.975,4,10000,round,10000,0.0121951219512
+A3C01W6EC4R0LC,F,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.975,4,10001,sharp,10000,0.0121951219512
+A3C01W6EC4R0LC,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.75,5,500,round,500,0.28431372549
+A3C01W6EC4R0LC,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.75,5,501,sharp,500,0.28431372549
+A3C01W6EC4R0LC,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.75,5,2000,round,2000,0.196078431373
+A3C01W6EC4R0LC,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.75,5,2001,sharp,2000,0.196078431373
+A3C01W6EC4R0LC,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.75,5,10000,round,10000,0.0196078431373
+A3C01W6EC4R0LC,F,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.75,5,10001,sharp,10000,0.0196078431373
+A3C01W6EC4R0LC,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.25,6,500,round,500,0.367346938776
+A3C01W6EC4R0LC,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.25,6,501,sharp,500,0.367346938776
+A3C01W6EC4R0LC,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.25,6,2000,round,2000,0.132653061224
+A3C01W6EC4R0LC,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.25,6,2001,sharp,2000,0.122448979592
+A3C01W6EC4R0LC,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.25,6,10000,round,10000,0.0102040816327
+A3C01W6EC4R0LC,F,english,6,45,85,laptop,round,500,five hundred,500,2,0.25,6,10001,sharp,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,87,laptop,round,2000,two thousand,2000,2,0.275,1,500,round,500,0.0266666666667
+A1WFHWKK5KL7F6,O,English,0,25,87,laptop,round,2000,two thousand,2000,2,0.275,1,501,sharp,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,87,laptop,round,2000,two thousand,2000,2,0.275,1,2000,round,2000,0.506666666667
+A1WFHWKK5KL7F6,O,English,0,25,87,laptop,round,2000,two thousand,2000,2,0.275,1,2001,sharp,2000,0.466666666667
+A1WFHWKK5KL7F6,O,English,0,25,87,laptop,round,2000,two thousand,2000,2,0.275,1,10000,round,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,87,laptop,round,2000,two thousand,2000,2,0.275,1,10001,sharp,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,96,laptop,sharp,10000,ten thousand two,10001,3,0.8,2,500,round,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,96,laptop,sharp,10000,ten thousand two,10001,3,0.8,2,501,sharp,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,96,laptop,sharp,10000,ten thousand two,10001,3,0.8,2,2000,round,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,96,laptop,sharp,10000,ten thousand two,10001,3,0.8,2,2001,sharp,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,96,laptop,sharp,10000,ten thousand two,10001,3,0.8,2,10000,round,10000,0.467741935484
+A1WFHWKK5KL7F6,O,English,0,25,96,laptop,sharp,10000,ten thousand two,10001,3,0.8,2,10001,sharp,10000,0.532258064516
+A1WFHWKK5KL7F6,O,English,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.2,3,500,round,500,0.416666666667
+A1WFHWKK5KL7F6,O,English,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.2,3,501,sharp,500,0.583333333333
+A1WFHWKK5KL7F6,O,English,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.2,3,2000,round,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.2,3,2001,sharp,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.2,3,10000,round,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.2,3,10001,sharp,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.575,4,500,round,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.575,4,501,sharp,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.575,4,2000,round,2000,0.411764705882
+A1WFHWKK5KL7F6,O,English,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.575,4,2001,sharp,2000,0.588235294118
+A1WFHWKK5KL7F6,O,English,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.575,4,10000,round,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety nine,2001,6,0.575,4,10001,sharp,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,85,laptop,round,500,five hundred,500,2,0.225,5,500,round,500,0.5
+A1WFHWKK5KL7F6,O,English,0,25,85,laptop,round,500,five hundred,500,2,0.225,5,501,sharp,500,0.5
+A1WFHWKK5KL7F6,O,English,0,25,85,laptop,round,500,five hundred,500,2,0.225,5,2000,round,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,85,laptop,round,500,five hundred,500,2,0.225,5,2001,sharp,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,85,laptop,round,500,five hundred,500,2,0.225,5,10000,round,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,85,laptop,round,500,five hundred,500,2,0.225,5,10001,sharp,10000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,88,laptop,round,10000,ten thousand,10000,2,0.35,6,500,round,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,88,laptop,round,10000,ten thousand,10000,2,0.35,6,501,sharp,500,0.0
+A1WFHWKK5KL7F6,O,English,0,25,88,laptop,round,10000,ten thousand,10000,2,0.35,6,2000,round,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,88,laptop,round,10000,ten thousand,10000,2,0.35,6,2001,sharp,2000,0.0
+A1WFHWKK5KL7F6,O,English,0,25,88,laptop,round,10000,ten thousand,10000,2,0.35,6,10000,round,10000,0.5
+A1WFHWKK5KL7F6,O,English,0,25,88,laptop,round,10000,ten thousand,10000,2,0.35,6,10001,sharp,10000,0.5
+A1LYJFO46ZRHSB,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.75,1,500,round,500,0.46875
+A1LYJFO46ZRHSB,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.75,1,501,sharp,500,0.46875
+A1LYJFO46ZRHSB,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.75,1,2000,round,2000,0.03125
+A1LYJFO46ZRHSB,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.75,1,2001,sharp,2000,0.015625
+A1LYJFO46ZRHSB,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.75,1,10000,round,10000,0.015625
+A1LYJFO46ZRHSB,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.75,1,10001,sharp,10000,0.0
+A1LYJFO46ZRHSB,F,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,500,round,500,0.258928571429
+A1LYJFO46ZRHSB,F,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,501,sharp,500,0.258928571429
+A1LYJFO46ZRHSB,F,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,2000,round,2000,0.0178571428571
+A1LYJFO46ZRHSB,F,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,2001,sharp,2000,0.107142857143
+A1LYJFO46ZRHSB,F,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,10000,round,10000,0.178571428571
+A1LYJFO46ZRHSB,F,english,6,35,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.75,2,10001,sharp,10000,0.178571428571
+A1LYJFO46ZRHSB,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.75,3,500,round,500,0.453488372093
+A1LYJFO46ZRHSB,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.75,3,501,sharp,500,0.441860465116
+A1LYJFO46ZRHSB,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.75,3,2000,round,2000,0.0116279069767
+A1LYJFO46ZRHSB,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.75,3,2001,sharp,2000,0.0116279069767
+A1LYJFO46ZRHSB,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.75,3,10000,round,10000,0.0581395348837
+A1LYJFO46ZRHSB,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.75,3,10001,sharp,10000,0.0232558139535
+A1LYJFO46ZRHSB,F,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,0.75,4,500,round,500,0.457831325301
+A1LYJFO46ZRHSB,F,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,0.75,4,501,sharp,500,0.457831325301
+A1LYJFO46ZRHSB,F,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,0.75,4,2000,round,2000,0.0120481927711
+A1LYJFO46ZRHSB,F,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,0.75,4,2001,sharp,2000,0.0240963855422
+A1LYJFO46ZRHSB,F,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,0.75,4,10000,round,10000,0.0240963855422
+A1LYJFO46ZRHSB,F,english,6,35,96,laptop,sharp,10000,ten thousand one,10001,3,0.75,4,10001,sharp,10000,0.0240963855422
+A1LYJFO46ZRHSB,F,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.25,5,500,round,500,0.394366197183
+A1LYJFO46ZRHSB,F,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.25,5,501,sharp,500,0.535211267606
+A1LYJFO46ZRHSB,F,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.25,5,2000,round,2000,0.0140845070423
+A1LYJFO46ZRHSB,F,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.25,5,2001,sharp,2000,0.0281690140845
+A1LYJFO46ZRHSB,F,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.25,5,10000,round,10000,0.0140845070423
+A1LYJFO46ZRHSB,F,english,6,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.25,5,10001,sharp,10000,0.0140845070423
+A1LYJFO46ZRHSB,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,6,500,round,500,0.52
+A1LYJFO46ZRHSB,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,6,501,sharp,500,0.386666666667
+A1LYJFO46ZRHSB,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,6,2000,round,2000,0.0133333333333
+A1LYJFO46ZRHSB,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,6,2001,sharp,2000,0.0133333333333
+A1LYJFO46ZRHSB,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,6,10000,round,10000,0.0266666666667
+A1LYJFO46ZRHSB,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.25,6,10001,sharp,10000,0.04
+AUO7XEZDY9496,M,English,0,66,95,laptop,sharp,2000,two thousand three,2001,3,0.775,1,500,round,500,0.207792207792
+AUO7XEZDY9496,M,English,0,66,95,laptop,sharp,2000,two thousand three,2001,3,0.775,1,501,sharp,500,0.207792207792
+AUO7XEZDY9496,M,English,0,66,95,laptop,sharp,2000,two thousand three,2001,3,0.775,1,2000,round,2000,0.272727272727
+AUO7XEZDY9496,M,English,0,66,95,laptop,sharp,2000,two thousand three,2001,3,0.775,1,2001,sharp,2000,0.311688311688
+AUO7XEZDY9496,M,English,0,66,95,laptop,sharp,2000,two thousand three,2001,3,0.775,1,10000,round,10000,0.0
+AUO7XEZDY9496,M,English,0,66,95,laptop,sharp,2000,two thousand three,2001,3,0.775,1,10001,sharp,10000,0.0
+AUO7XEZDY9496,M,English,0,66,96,laptop,sharp,10000,ten thousand one,10001,3,0.575,2,500,round,500,0.269230769231
+AUO7XEZDY9496,M,English,0,66,96,laptop,sharp,10000,ten thousand one,10001,3,0.575,2,501,sharp,500,0.269230769231
+AUO7XEZDY9496,M,English,0,66,96,laptop,sharp,10000,ten thousand one,10001,3,0.575,2,2000,round,2000,0.217948717949
+AUO7XEZDY9496,M,English,0,66,96,laptop,sharp,10000,ten thousand one,10001,3,0.575,2,2001,sharp,2000,0.217948717949
+AUO7XEZDY9496,M,English,0,66,96,laptop,sharp,10000,ten thousand one,10001,3,0.575,2,10000,round,10000,0.025641025641
+AUO7XEZDY9496,M,English,0,66,96,laptop,sharp,10000,ten thousand one,10001,3,0.575,2,10001,sharp,10000,0.0
+AUO7XEZDY9496,M,English,0,66,93,laptop,sharp,500,five hundred three,501,3,0.4,3,500,round,500,0.263888888889
+AUO7XEZDY9496,M,English,0,66,93,laptop,sharp,500,five hundred three,501,3,0.4,3,501,sharp,500,0.416666666667
+AUO7XEZDY9496,M,English,0,66,93,laptop,sharp,500,five hundred three,501,3,0.4,3,2000,round,2000,0.166666666667
+AUO7XEZDY9496,M,English,0,66,93,laptop,sharp,500,five hundred three,501,3,0.4,3,2001,sharp,2000,0.152777777778
+AUO7XEZDY9496,M,English,0,66,93,laptop,sharp,500,five hundred three,501,3,0.4,3,10000,round,10000,0.0
+AUO7XEZDY9496,M,English,0,66,93,laptop,sharp,500,five hundred three,501,3,0.4,3,10001,sharp,10000,0.0
+AUO7XEZDY9496,M,English,0,66,85,laptop,round,500,five hundred,500,2,0.4,4,500,round,500,0.462686567164
+AUO7XEZDY9496,M,English,0,66,85,laptop,round,500,five hundred,500,2,0.4,4,501,sharp,500,0.313432835821
+AUO7XEZDY9496,M,English,0,66,85,laptop,round,500,five hundred,500,2,0.4,4,2000,round,2000,0.10447761194
+AUO7XEZDY9496,M,English,0,66,85,laptop,round,500,five hundred,500,2,0.4,4,2001,sharp,2000,0.119402985075
+AUO7XEZDY9496,M,English,0,66,85,laptop,round,500,five hundred,500,2,0.4,4,10000,round,10000,0.0
+AUO7XEZDY9496,M,English,0,66,85,laptop,round,500,five hundred,500,2,0.4,4,10001,sharp,10000,0.0
+AUO7XEZDY9496,M,English,0,66,87,laptop,round,2000,two thousand,2000,2,0.3,5,500,round,500,0.293333333333
+AUO7XEZDY9496,M,English,0,66,87,laptop,round,2000,two thousand,2000,2,0.3,5,501,sharp,500,0.293333333333
+AUO7XEZDY9496,M,English,0,66,87,laptop,round,2000,two thousand,2000,2,0.3,5,2000,round,2000,0.213333333333
+AUO7XEZDY9496,M,English,0,66,87,laptop,round,2000,two thousand,2000,2,0.3,5,2001,sharp,2000,0.2
+AUO7XEZDY9496,M,English,0,66,87,laptop,round,2000,two thousand,2000,2,0.3,5,10000,round,10000,0.0
+AUO7XEZDY9496,M,English,0,66,87,laptop,round,2000,two thousand,2000,2,0.3,5,10001,sharp,10000,0.0
+AUO7XEZDY9496,M,English,0,66,88,laptop,round,10000,ten thousand,10000,2,0.3,6,500,round,500,0.323529411765
+AUO7XEZDY9496,M,English,0,66,88,laptop,round,10000,ten thousand,10000,2,0.3,6,501,sharp,500,0.323529411765
+AUO7XEZDY9496,M,English,0,66,88,laptop,round,10000,ten thousand,10000,2,0.3,6,2000,round,2000,0.176470588235
+AUO7XEZDY9496,M,English,0,66,88,laptop,round,10000,ten thousand,10000,2,0.3,6,2001,sharp,2000,0.176470588235
+AUO7XEZDY9496,M,English,0,66,88,laptop,round,10000,ten thousand,10000,2,0.3,6,10000,round,10000,0.0
+AUO7XEZDY9496,M,English,0,66,88,laptop,round,10000,ten thousand,10000,2,0.3,6,10001,sharp,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.6,1,500,round,500,0.327586206897
+A7D1FSJZSM3MJ,F,English,4,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.6,1,501,sharp,500,0.672413793103
+A7D1FSJZSM3MJ,F,English,4,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.6,1,2000,round,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.6,1,2001,sharp,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.6,1,10000,round,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,93,laptop,sharp,500,four hundred ninety seven,501,4,0.6,1,10001,sharp,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,0.925,2,500,round,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,0.925,2,501,sharp,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,0.925,2,2000,round,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,0.925,2,2001,sharp,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,0.925,2,10000,round,10000,0.56338028169
+A7D1FSJZSM3MJ,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,0.925,2,10001,sharp,10000,0.43661971831
+A7D1FSJZSM3MJ,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.85,3,500,round,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.85,3,501,sharp,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.85,3,2000,round,2000,0.333333333333
+A7D1FSJZSM3MJ,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.85,3,2001,sharp,2000,0.666666666667
+A7D1FSJZSM3MJ,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.85,3,10000,round,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.85,3,10001,sharp,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,500,round,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,501,sharp,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,2000,round,2000,0.5
+A7D1FSJZSM3MJ,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,2001,sharp,2000,0.5
+A7D1FSJZSM3MJ,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,10000,round,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,10001,sharp,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.95,5,500,round,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.95,5,501,sharp,500,0.0
+A7D1FSJZSM3MJ,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.95,5,2000,round,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.95,5,2001,sharp,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.95,5,10000,round,10000,0.428571428571
+A7D1FSJZSM3MJ,F,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.95,5,10001,sharp,10000,0.571428571429
+A7D1FSJZSM3MJ,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.6,6,500,round,500,0.571428571429
+A7D1FSJZSM3MJ,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.6,6,501,sharp,500,0.428571428571
+A7D1FSJZSM3MJ,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.6,6,2000,round,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.6,6,2001,sharp,2000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.6,6,10000,round,10000,0.0
+A7D1FSJZSM3MJ,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.6,6,10001,sharp,10000,0.0
+A3P1W5CPPADUNX,M,english,8,45,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.625,1,500,round,500,0.107843137255
+A3P1W5CPPADUNX,M,english,8,45,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.625,1,501,sharp,500,0.127450980392
+A3P1W5CPPADUNX,M,english,8,45,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.625,1,2000,round,2000,0.382352941176
+A3P1W5CPPADUNX,M,english,8,45,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.625,1,2001,sharp,2000,0.352941176471
+A3P1W5CPPADUNX,M,english,8,45,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.625,1,10000,round,10000,0.0196078431373
+A3P1W5CPPADUNX,M,english,8,45,95,laptop,sharp,2000,one thousand nine hundred ninety eight,2001,6,0.625,1,10001,sharp,10000,0.00980392156863
+A3P1W5CPPADUNX,M,english,8,45,85,laptop,round,500,five hundred,500,2,0.65,2,500,round,500,0.475
+A3P1W5CPPADUNX,M,english,8,45,85,laptop,round,500,five hundred,500,2,0.65,2,501,sharp,500,0.475
+A3P1W5CPPADUNX,M,english,8,45,85,laptop,round,500,five hundred,500,2,0.65,2,2000,round,2000,0.0125
+A3P1W5CPPADUNX,M,english,8,45,85,laptop,round,500,five hundred,500,2,0.65,2,2001,sharp,2000,0.0
+A3P1W5CPPADUNX,M,english,8,45,85,laptop,round,500,five hundred,500,2,0.65,2,10000,round,10000,0.0125
+A3P1W5CPPADUNX,M,english,8,45,85,laptop,round,500,five hundred,500,2,0.65,2,10001,sharp,10000,0.025
+A3P1W5CPPADUNX,M,english,8,45,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,500,round,500,0.16
+A3P1W5CPPADUNX,M,english,8,45,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,501,sharp,500,0.16
+A3P1W5CPPADUNX,M,english,8,45,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,2000,round,2000,0.333333333333
+A3P1W5CPPADUNX,M,english,8,45,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,2001,sharp,2000,0.32
+A3P1W5CPPADUNX,M,english,8,45,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,10000,round,10000,0.0133333333333
+A3P1W5CPPADUNX,M,english,8,45,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,10001,sharp,10000,0.0133333333333
+A3P1W5CPPADUNX,M,english,8,45,87,laptop,round,2000,two thousand,2000,2,0.75,4,500,round,500,0.177777777778
+A3P1W5CPPADUNX,M,english,8,45,87,laptop,round,2000,two thousand,2000,2,0.75,4,501,sharp,500,0.166666666667
+A3P1W5CPPADUNX,M,english,8,45,87,laptop,round,2000,two thousand,2000,2,0.75,4,2000,round,2000,0.355555555556
+A3P1W5CPPADUNX,M,english,8,45,87,laptop,round,2000,two thousand,2000,2,0.75,4,2001,sharp,2000,0.277777777778
+A3P1W5CPPADUNX,M,english,8,45,87,laptop,round,2000,two thousand,2000,2,0.75,4,10000,round,10000,0.0
+A3P1W5CPPADUNX,M,english,8,45,87,laptop,round,2000,two thousand,2000,2,0.75,4,10001,sharp,10000,0.0222222222222
+A3P1W5CPPADUNX,M,english,8,45,88,laptop,round,10000,ten thousand,10000,2,0.975,5,500,round,500,0.239316239316
+A3P1W5CPPADUNX,M,english,8,45,88,laptop,round,10000,ten thousand,10000,2,0.975,5,501,sharp,500,0.247863247863
+A3P1W5CPPADUNX,M,english,8,45,88,laptop,round,10000,ten thousand,10000,2,0.975,5,2000,round,2000,0.239316239316
+A3P1W5CPPADUNX,M,english,8,45,88,laptop,round,10000,ten thousand,10000,2,0.975,5,2001,sharp,2000,0.239316239316
+A3P1W5CPPADUNX,M,english,8,45,88,laptop,round,10000,ten thousand,10000,2,0.975,5,10000,round,10000,0.017094017094
+A3P1W5CPPADUNX,M,english,8,45,88,laptop,round,10000,ten thousand,10000,2,0.975,5,10001,sharp,10000,0.017094017094
+A3P1W5CPPADUNX,M,english,8,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.25,6,500,round,500,0.4625
+A3P1W5CPPADUNX,M,english,8,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.25,6,501,sharp,500,0.4625
+A3P1W5CPPADUNX,M,english,8,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.25,6,2000,round,2000,0.025
+A3P1W5CPPADUNX,M,english,8,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.25,6,2001,sharp,2000,0.0125
+A3P1W5CPPADUNX,M,english,8,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.25,6,10000,round,10000,0.025
+A3P1W5CPPADUNX,M,english,8,45,93,laptop,sharp,500,four hundred ninety nine,501,4,0.25,6,10001,sharp,10000,0.0125
+AK5C6N14RA7Y9,F,english,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,1,500,round,500,0.223214285714
+AK5C6N14RA7Y9,F,english,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,1,501,sharp,500,0.258928571429
+AK5C6N14RA7Y9,F,english,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,1,2000,round,2000,0.258928571429
+AK5C6N14RA7Y9,F,english,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,1,2001,sharp,2000,0.214285714286
+AK5C6N14RA7Y9,F,english,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,1,10000,round,10000,0.0267857142857
+AK5C6N14RA7Y9,F,english,6,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,0.975,1,10001,sharp,10000,0.0178571428571
+AK5C6N14RA7Y9,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.175,2,500,round,500,0.337209302326
+AK5C6N14RA7Y9,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.175,2,501,sharp,500,0.325581395349
+AK5C6N14RA7Y9,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.175,2,2000,round,2000,0.139534883721
+AK5C6N14RA7Y9,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.175,2,2001,sharp,2000,0.174418604651
+AK5C6N14RA7Y9,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.175,2,10000,round,10000,0.0116279069767
+AK5C6N14RA7Y9,F,english,6,35,85,laptop,round,500,five hundred,500,2,0.175,2,10001,sharp,10000,0.0116279069767
+AK5C6N14RA7Y9,F,english,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.825,3,500,round,500,0.288288288288
+AK5C6N14RA7Y9,F,english,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.825,3,501,sharp,500,0.243243243243
+AK5C6N14RA7Y9,F,english,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.825,3,2000,round,2000,0.225225225225
+AK5C6N14RA7Y9,F,english,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.825,3,2001,sharp,2000,0.225225225225
+AK5C6N14RA7Y9,F,english,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.825,3,10000,round,10000,0.00900900900901
+AK5C6N14RA7Y9,F,english,6,35,95,laptop,sharp,2000,two thousand one,2001,3,0.825,3,10001,sharp,10000,0.00900900900901
+AK5C6N14RA7Y9,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,500,round,500,0.360465116279
+AK5C6N14RA7Y9,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,501,sharp,500,0.348837209302
+AK5C6N14RA7Y9,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,2000,round,2000,0.116279069767
+AK5C6N14RA7Y9,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,2001,sharp,2000,0.104651162791
+AK5C6N14RA7Y9,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,10000,round,10000,0.0116279069767
+AK5C6N14RA7Y9,F,english,6,35,87,laptop,round,2000,two thousand,2000,2,0.825,4,10001,sharp,10000,0.0581395348837
+AK5C6N14RA7Y9,F,english,6,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,500,round,500,0.290322580645
+AK5C6N14RA7Y9,F,english,6,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,501,sharp,500,0.290322580645
+AK5C6N14RA7Y9,F,english,6,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,2000,round,2000,0.150537634409
+AK5C6N14RA7Y9,F,english,6,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,2001,sharp,2000,0.182795698925
+AK5C6N14RA7Y9,F,english,6,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,10000,round,10000,0.0537634408602
+AK5C6N14RA7Y9,F,english,6,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,10001,sharp,10000,0.0322580645161
+AK5C6N14RA7Y9,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.675,6,500,round,500,0.317647058824
+AK5C6N14RA7Y9,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.675,6,501,sharp,500,0.305882352941
+AK5C6N14RA7Y9,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.675,6,2000,round,2000,0.141176470588
+AK5C6N14RA7Y9,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.675,6,2001,sharp,2000,0.152941176471
+AK5C6N14RA7Y9,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.675,6,10000,round,10000,0.0352941176471
+AK5C6N14RA7Y9,F,english,6,35,88,laptop,round,10000,ten thousand,10000,2,0.675,6,10001,sharp,10000,0.0470588235294
+AQ3LCZJTKPPTU,F,English,4,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,500,round,500,0.371794871795
+AQ3LCZJTKPPTU,F,English,4,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,501,sharp,500,0.371794871795
+AQ3LCZJTKPPTU,F,English,4,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,2000,round,2000,0.128205128205
+AQ3LCZJTKPPTU,F,English,4,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,2001,sharp,2000,0.128205128205
+AQ3LCZJTKPPTU,F,English,4,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,10000,round,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,96,laptop,sharp,10000,ten thousand one,10001,3,1,1,10001,sharp,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,93,laptop,sharp,500,five hundred one,501,3,0.5,2,500,round,500,0.3625
+AQ3LCZJTKPPTU,F,English,4,35,93,laptop,sharp,500,five hundred one,501,3,0.5,2,501,sharp,500,0.3625
+AQ3LCZJTKPPTU,F,English,4,35,93,laptop,sharp,500,five hundred one,501,3,0.5,2,2000,round,2000,0.1375
+AQ3LCZJTKPPTU,F,English,4,35,93,laptop,sharp,500,five hundred one,501,3,0.5,2,2001,sharp,2000,0.1375
+AQ3LCZJTKPPTU,F,English,4,35,93,laptop,sharp,500,five hundred one,501,3,0.5,2,10000,round,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,93,laptop,sharp,500,five hundred one,501,3,0.5,2,10001,sharp,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.5,3,500,round,500,0.353658536585
+AQ3LCZJTKPPTU,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.5,3,501,sharp,500,0.353658536585
+AQ3LCZJTKPPTU,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.5,3,2000,round,2000,0.146341463415
+AQ3LCZJTKPPTU,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.5,3,2001,sharp,2000,0.146341463415
+AQ3LCZJTKPPTU,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.5,3,10000,round,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,85,laptop,round,500,five hundred,500,2,0.5,3,10001,sharp,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.75,4,500,round,500,0.353658536585
+AQ3LCZJTKPPTU,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.75,4,501,sharp,500,0.353658536585
+AQ3LCZJTKPPTU,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.75,4,2000,round,2000,0.146341463415
+AQ3LCZJTKPPTU,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.75,4,2001,sharp,2000,0.146341463415
+AQ3LCZJTKPPTU,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.75,4,10000,round,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.75,4,10001,sharp,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,500,round,500,0.371794871795
+AQ3LCZJTKPPTU,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,501,sharp,500,0.371794871795
+AQ3LCZJTKPPTU,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,2000,round,2000,0.128205128205
+AQ3LCZJTKPPTU,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,2001,sharp,2000,0.128205128205
+AQ3LCZJTKPPTU,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,10000,round,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,5,10001,sharp,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.5,6,500,round,500,0.371794871795
+AQ3LCZJTKPPTU,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.5,6,501,sharp,500,0.371794871795
+AQ3LCZJTKPPTU,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.5,6,2000,round,2000,0.128205128205
+AQ3LCZJTKPPTU,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.5,6,2001,sharp,2000,0.128205128205
+AQ3LCZJTKPPTU,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.5,6,10000,round,10000,0.0
+AQ3LCZJTKPPTU,F,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.5,6,10001,sharp,10000,0.0
+A3NOYN845TEJIH,M,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,0.9,1,500,round,500,0.147368421053
+A3NOYN845TEJIH,M,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,0.9,1,501,sharp,500,0.147368421053
+A3NOYN845TEJIH,M,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,0.9,1,2000,round,2000,0.284210526316
+A3NOYN845TEJIH,M,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,0.9,1,2001,sharp,2000,0.389473684211
+A3NOYN845TEJIH,M,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,0.9,1,10000,round,10000,0.0105263157895
+A3NOYN845TEJIH,M,english,6,45,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,0.9,1,10001,sharp,10000,0.0210526315789
+A3NOYN845TEJIH,M,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,2,500,round,500,0.133333333333
+A3NOYN845TEJIH,M,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,2,501,sharp,500,0.133333333333
+A3NOYN845TEJIH,M,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,2,2000,round,2000,0.322222222222
+A3NOYN845TEJIH,M,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,2,2001,sharp,2000,0.322222222222
+A3NOYN845TEJIH,M,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,2,10000,round,10000,0.0555555555556
+A3NOYN845TEJIH,M,english,6,45,96,laptop,sharp,10000,ten thousand two,10001,3,1,2,10001,sharp,10000,0.0333333333333
+A3NOYN845TEJIH,M,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.275,3,500,round,500,0.358974358974
+A3NOYN845TEJIH,M,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.275,3,501,sharp,500,0.474358974359
+A3NOYN845TEJIH,M,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.275,3,2000,round,2000,0.0769230769231
+A3NOYN845TEJIH,M,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.275,3,2001,sharp,2000,0.0384615384615
+A3NOYN845TEJIH,M,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.275,3,10000,round,10000,0.025641025641
+A3NOYN845TEJIH,M,english,6,45,93,laptop,sharp,500,five hundred two,501,3,0.275,3,10001,sharp,10000,0.025641025641
+A3NOYN845TEJIH,M,english,6,45,85,laptop,round,500,five hundred,500,2,0.175,4,500,round,500,0.397849462366
+A3NOYN845TEJIH,M,english,6,45,85,laptop,round,500,five hundred,500,2,0.175,4,501,sharp,500,0.333333333333
+A3NOYN845TEJIH,M,english,6,45,85,laptop,round,500,five hundred,500,2,0.175,4,2000,round,2000,0.0967741935484
+A3NOYN845TEJIH,M,english,6,45,85,laptop,round,500,five hundred,500,2,0.175,4,2001,sharp,2000,0.0645161290323
+A3NOYN845TEJIH,M,english,6,45,85,laptop,round,500,five hundred,500,2,0.175,4,10000,round,10000,0.0645161290323
+A3NOYN845TEJIH,M,english,6,45,85,laptop,round,500,five hundred,500,2,0.175,4,10001,sharp,10000,0.0430107526882
+A3NOYN845TEJIH,M,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.675,5,500,round,500,0.139534883721
+A3NOYN845TEJIH,M,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.675,5,501,sharp,500,0.104651162791
+A3NOYN845TEJIH,M,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.675,5,2000,round,2000,0.383720930233
+A3NOYN845TEJIH,M,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.675,5,2001,sharp,2000,0.267441860465
+A3NOYN845TEJIH,M,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.675,5,10000,round,10000,0.0581395348837
+A3NOYN845TEJIH,M,english,6,45,87,laptop,round,2000,two thousand,2000,2,0.675,5,10001,sharp,10000,0.046511627907
+A3NOYN845TEJIH,M,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.95,6,500,round,500,0.0843373493976
+A3NOYN845TEJIH,M,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.95,6,501,sharp,500,0.0361445783133
+A3NOYN845TEJIH,M,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.95,6,2000,round,2000,0.313253012048
+A3NOYN845TEJIH,M,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.95,6,2001,sharp,2000,0.325301204819
+A3NOYN845TEJIH,M,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.95,6,10000,round,10000,0.168674698795
+A3NOYN845TEJIH,M,english,6,45,88,laptop,round,10000,ten thousand,10000,2,0.95,6,10001,sharp,10000,0.0722891566265
+ABBQZ94MQ3K2N,M,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,1,500,round,500,0.12987012987
+ABBQZ94MQ3K2N,M,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,1,501,sharp,500,0.12987012987
+ABBQZ94MQ3K2N,M,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,1,2000,round,2000,0.25974025974
+ABBQZ94MQ3K2N,M,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,1,2001,sharp,2000,0.480519480519
+ABBQZ94MQ3K2N,M,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,1,10000,round,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,95,laptop,sharp,2000,two thousand one,2001,3,0.25,1,10001,sharp,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,2,500,round,500,0.444444444444
+ABBQZ94MQ3K2N,M,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,2,501,sharp,500,0.333333333333
+ABBQZ94MQ3K2N,M,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,2,2000,round,2000,0.111111111111
+ABBQZ94MQ3K2N,M,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,2,2001,sharp,2000,0.111111111111
+ABBQZ94MQ3K2N,M,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,2,10000,round,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,85,laptop,round,500,five hundred,500,2,0.25,2,10001,sharp,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,500,round,500,0.1375
+ABBQZ94MQ3K2N,M,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,501,sharp,500,0.1375
+ABBQZ94MQ3K2N,M,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,2000,round,2000,0.3625
+ABBQZ94MQ3K2N,M,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,2001,sharp,2000,0.3625
+ABBQZ94MQ3K2N,M,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,10000,round,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,96,laptop,sharp,10000,nine thousand nine hundred ninety eight,10001,6,1,3,10001,sharp,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,4,500,round,500,0.128205128205
+ABBQZ94MQ3K2N,M,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,4,501,sharp,500,0.128205128205
+ABBQZ94MQ3K2N,M,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,4,2000,round,2000,0.371794871795
+ABBQZ94MQ3K2N,M,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,4,2001,sharp,2000,0.371794871795
+ABBQZ94MQ3K2N,M,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,4,10000,round,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,88,laptop,round,10000,ten thousand,10000,2,1,4,10001,sharp,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,500,round,500,0.322222222222
+ABBQZ94MQ3K2N,M,English,4,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,501,sharp,500,0.444444444444
+ABBQZ94MQ3K2N,M,English,4,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,2000,round,2000,0.111111111111
+ABBQZ94MQ3K2N,M,English,4,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,2001,sharp,2000,0.111111111111
+ABBQZ94MQ3K2N,M,English,4,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,10000,round,10000,0.0111111111111
+ABBQZ94MQ3K2N,M,English,4,35,93,laptop,sharp,500,five hundred two,501,3,0.25,5,10001,sharp,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,500,round,500,0.111111111111
+ABBQZ94MQ3K2N,M,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,501,sharp,500,0.111111111111
+ABBQZ94MQ3K2N,M,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,2000,round,2000,0.444444444444
+ABBQZ94MQ3K2N,M,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,2001,sharp,2000,0.333333333333
+ABBQZ94MQ3K2N,M,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,10000,round,10000,0.0
+ABBQZ94MQ3K2N,M,English,4,35,87,laptop,round,2000,two thousand,2000,2,0.75,6,10001,sharp,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.75,1,500,round,500,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.75,1,501,sharp,500,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.75,1,2000,round,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.75,1,2001,sharp,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.75,1,10000,round,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,93,laptop,sharp,500,four hundred ninety nine,501,4,0.75,1,10001,sharp,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,88,laptop,round,10000,ten thousand,10000,2,1,2,500,round,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,88,laptop,round,10000,ten thousand,10000,2,1,2,501,sharp,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,88,laptop,round,10000,ten thousand,10000,2,1,2,2000,round,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,88,laptop,round,10000,ten thousand,10000,2,1,2,2001,sharp,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,88,laptop,round,10000,ten thousand,10000,2,1,2,10000,round,10000,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,88,laptop,round,10000,ten thousand,10000,2,1,2,10001,sharp,10000,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.725,3,500,round,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.725,3,501,sharp,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.725,3,2000,round,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.725,3,2001,sharp,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.725,3,10000,round,10000,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,96,laptop,sharp,10000,nine thousand nine hundred ninety seven,10001,6,0.725,3,10001,sharp,10000,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,1,4,500,round,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,1,4,501,sharp,500,0.0121951219512
+A37RBM3OBGEPCH,F,Spanish,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,1,4,2000,round,2000,0.487804878049
+A37RBM3OBGEPCH,F,Spanish,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,1,4,2001,sharp,2000,0.487804878049
+A37RBM3OBGEPCH,F,Spanish,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,1,4,10000,round,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,95,laptop,sharp,2000,one thousand nine hundred ninety seven,2001,6,1,4,10001,sharp,10000,0.0121951219512
+A37RBM3OBGEPCH,F,Spanish,0,25,87,laptop,round,2000,two thousand,2000,2,1,5,500,round,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,87,laptop,round,2000,two thousand,2000,2,1,5,501,sharp,500,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,87,laptop,round,2000,two thousand,2000,2,1,5,2000,round,2000,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,87,laptop,round,2000,two thousand,2000,2,1,5,2001,sharp,2000,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,87,laptop,round,2000,two thousand,2000,2,1,5,10000,round,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,87,laptop,round,2000,two thousand,2000,2,1,5,10001,sharp,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,85,laptop,round,500,five hundred,500,2,0.55,6,500,round,500,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,85,laptop,round,500,five hundred,500,2,0.55,6,501,sharp,500,0.5
+A37RBM3OBGEPCH,F,Spanish,0,25,85,laptop,round,500,five hundred,500,2,0.55,6,2000,round,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,85,laptop,round,500,five hundred,500,2,0.55,6,2001,sharp,2000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,85,laptop,round,500,five hundred,500,2,0.55,6,10000,round,10000,0.0
+A37RBM3OBGEPCH,F,Spanish,0,25,85,laptop,round,500,five hundred,500,2,0.55,6,10001,sharp,10000,0.0

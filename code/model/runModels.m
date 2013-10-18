@@ -1,5 +1,6 @@
-utterance_costs = [2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1];
-utterance_costs = ones(size(utterance_costs));
+utterance_costs = [1.2 1.2 1.2 1.2 1.2 1 1 1 1 1];
+%utterance_costs = [2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1];
+%utterance_costs = ones(size(utterance_costs));
 
 useScrapedPriors = false;
 

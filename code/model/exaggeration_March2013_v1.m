@@ -34,14 +34,15 @@ prices = [0, prices]';
 counts = [0, counts]';
 
 % laplace smoothing
-counts = counts + 1;
+counts = counts + 10;
 
 % f2= fit([prices, ones(length(counts),1)], counts, 'lowess');
 % plot(f2(1:5000,ones(5000,1)));
 f2 = fit(prices, counts, 'smoothingspline');
 plot(f2(1:5000));
 
-prices = [20, 50, 100, 200, 500, 1000, 2000]';
+prices = [50, 500, 1000, 5000]';
+%prices = [20, 50, 100, 200, 500, 1000, 2000]';
 % counts = f2(prices, ones(size(prices)));
 counts = f2(prices);
 counts = cutOffAt(counts, 0, 'below');
@@ -98,7 +99,7 @@ num_utterances = size(utterances,2);
 
 % Prior on meanings (in log space)
 %meaning_prior = [log(counts/sum(counts)) log(0.000001), log(counts/sum(counts)), log(0.000001)];
-meaning_prior = log(normalizeVector([counts/sum(counts) 0.000001 counts/sum(counts) 0.000001]));
+meaning_prior = log(normalizeVector([counts/sum(counts) 0.001 counts/sum(counts) 0.001]));
 
 
 % Prior that the speaker DOES NOT have affect

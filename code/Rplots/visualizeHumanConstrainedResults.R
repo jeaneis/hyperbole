@@ -87,43 +87,43 @@ d.h.allDomains.literal <- subset(d.h.allDomains, inferred == uttered)
 d.h.allDomains.literal$probLiteral <- d.h.allDomains.literal$probInferred
 d.h.allDomains.literal$probNonliteral <- 1 - d.h.allDomains.literal$probInferred
 
-ggplot(d.h.allDomains.literal, aes(x=priorProb, y=probNonliteral, color=numberType)) +
-  geom_point(position=position_jitter(width=0,height=0), size=2) +
+ggplot(d.h.allDomains.literal, aes(x=priorProb, y=probLiteral, color=domain, label=uttered)) +
+  geom_text(size=3.5) +
   theme_bw() +
   xlab("Prior probability of literal meaning (log)") +
-  ylab("Probability of non-literal interpretation") +
-  scale_color_discrete(name="Utterance type",
-                       breaks=c("round", "sharp"),
-                       labels=c("Round", "Sharp")) +
-                         ggtitle("Humans' non-literal interpretation")
+  ylab("Probability of literal interpretation") +
+  scale_color_discrete(name="Domain") +
+                         ggtitle("Humans")
+                        
+
 
 d.h.allDomains.literal$numberType = factor(d.h.allDomains.literal$numberType)
 d.h.allDomains.literal <- d.h.allDomains.literal[with(d.h.allDomains.literal, 
                                                       order(domain, as.numeric(uttered))), ]
 
 summary(lm(data=d.h.allDomains.literal, probNonliteral ~ numberType))
-summary(lm(data=d.h.allDomains.literal, probNonliteral ~ numberType * priorProb))
+summary(lm(data=d.h.allDomains.literal, probLiteral ~ numberType * priorProb))
 
 
 ### compare with model
-comp.figurativeness <- data.frame(utterance=d.litAgg$utteredPriceLabel, 
-                                  model=d.litAgg.fig$probability, 
-                                  human=d.h.allDomains.literal$probNonliteral,
-                                  numberType=d.litAgg$numberType)
-ggplot(comp.figurativeness, aes(x=model, y=human, color=numberType)) +
-  geom_point() +
+comp.figurativeness <- data.frame(model=d.litAgg.fig$probability)
+comp.figurativeness$human <- d.h.allDomains.literal$probNonliteral
+comp.figurativeness$numberType <- d.litAgg.fig$numberType
+comp.figurativeness$uttered <- d.h.allDomains.literal$uttered
+comp.figurativeness$domain <- d.h.allDomains.literal$domain
+
+ggplot(comp.figurativeness, aes(x=model, y=human, color=domain, label=uttered)) +
+  geom_text(size=3) +
   theme_bw() +
-  geom_abline(yintercept=0,slope=1, linetype="dashed") +
-  xlim(c(0, 1)) +
-  ylim(c(0, 1)) +
-  ggtitle("Human and model comparision of non-literalness")
+  #geom_abline(yintercept=0,slope=1, linetype="dashed") +
+  ggtitle("Human and model comparision of non-literalness (sharp-expensive)")
 
 with(comp.figurativeness, cor.test(model, human))
 summary(lm(data=comp.figurativeness, human ~ model))
 
 #### By domain
 
-current_domain <- "watch"
+current_domain <- "coffee maker"
 d.h.domain <- subset(d.h, domain==current_domain)
 
 # set rounded uttered price 
@@ -202,3 +202,5 @@ ggplot(d.h.domain.opinionMeans, aes(x=1.5, y=probOpinion)) +
   xlab("") +
   theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
   ggtitle(paste(current_domain))
+
+
