@@ -428,18 +428,27 @@ m.all$valence <- factor(m.all$valence)
 # mark data fram with needed information for analysis
 m.all$utteranceRounded <- factor(floor(as.numeric(as.character(m.all$utterance))/ 10)*10)
 m.all$meaningRounded <- factor(floor(as.numeric(as.character(m.all$meaning))/ 10)*10)
-
 m.all$interpretationKind <- 
   ifelse(as.numeric(m.all$utteranceRounded) > as.numeric(m.all$meaningRounded), "hyperbolic", 
          ifelse(m.all$utterance==m.all$meaning, "exact",
                 ifelse(m.all$utteranceRounded==m.all$meaningRounded, "fuzzy", "other")))
 
-m.all.interpKinds <- aggregate(data=m.all, probability ~ domain + utterance + interpretationKind,
-                           FUN=sum)
+######## 
+# adjust probability by raising to the power of hardness and renormalizing to sum up to one within each domain/utterance pair
+########
+hardness = 0.6
+m.all$raisedProb <- m.all$probability^hardness
+normalizingFactors <- aggregate(data=m.all, raisedProb ~ domain + utterance, FUN=sum)
+colnames(normalizingFactors)[3] <- "normalizing"
+m.all <- join(m.all, normalizingFactors, by=c("domain", "utterance"))
+m.all$adjustedProb <- m.all$raisedProb / m.all$normalizing
 
+# aggregate model over valence and different ways to be hyperbolic
+m.all.interpKinds <- aggregate(data=m.all, adjustedProb ~ domain + utterance + interpretationKind,
+                           FUN=sum)
 # plot model output for three domains
 
-model.full.plot <- ggplot(m.all, aes(x=meaning, y=probability, fill=valence)) + 
+model.full.plot <- ggplot(m.all, aes(x=meaning, y=adjustedProb, fill=valence)) + 
   geom_bar(stat="identity", color="black") + 
   facet_grid(domain ~ utterance) +
   scale_x_discrete() +
@@ -463,7 +472,7 @@ model.full.plot <- ggplot(m.all, aes(x=meaning, y=probability, fill=valence)) +
 multiplot(human.full.plot, model.full.plot, cols=2)
 
 # add opinion probabilities
-m.all.opinion <- subset(aggregate(data=m.all, probability ~ domain + utterance + valence, FUN=sum), valence=="2")
+m.all.opinion <- subset(aggregate(data=m.all, adjustedProb ~ domain + utterance + valence, FUN=sum), valence=="2")
 colnames(m.all.opinion)[3] <- "interpretationKind"
 m.all.opinion$interpretationKind <- "expensive"
 
@@ -478,7 +487,7 @@ model.all <- rbind(m.all.interpKinds.opinion,
                data.frame(utterance=c(50,51,50,51,50,51), 
                           interpretationKind=c("hyperbolic","hyperbolic",
                                                "hyperbolic","hyperbolic","hyperbolic","hyperbolic"), 
-                          probability=c(0,0,0,0,0,0), 
+                          adjustedProb=c(0,0,0,0,0,0), 
                           domain=c("laptop","laptop","electric kettle","electric kettle",
                                    "watch","watch")))
 
@@ -488,7 +497,7 @@ model.all <- model.all[with(model.all, order(domain, utterance, interpretationKi
 model.all.comp <- 
   human.all[with(human.all, order(domain, utterance, interpretationKind)), ]
 
-model.all.comp$model <- model.all$probability
+model.all.comp$model <- model.all$adjustedProb
 
 # ignore opinion
 model.all.comp.no_opinion <- subset(model.all.comp, interpretationKind != "expensive")
@@ -513,6 +522,26 @@ with(model.all.comp.fuzzy, cor.test(interpretationProb, model))
 model.all.comp.hyperbole <- subset(model.all.comp, interpretationKind=="hyperbolic")
 with(model.all.comp.hyperbole, cor.test(interpretationProb, model))
 
+#################################
+# full human and model comparison (no breakdown into effects)
+human.full.summary <- summarySE(d, measurevar="interpretationProb",
+                          groupvars=c("utterance", "interpretation", "domain", "interpretationKind"))
+human.full.summary <- human.full.summary[with(human.full.summary, order(domain, utterance, interpretation)),]
+model.full.summary <- aggregate(data=m.all, adjustedProb ~ utterance + meaning + domain, FUN=sum)
+model.full.summary <- model.full.summary[with(model.full.summary, order(domain, utterance, meaning)),]
+
+compare.full.summary <- human.full.summary
+colnames(compare.full.summary)[6] <- "human"
+compare.full.summary$model <- model.full.summary$adjustedProb
+
+ggplot(compare.full.summary, aes(x=human, y=model, color=interpretationKind, shape=domain)) +
+  geom_point() +
+  theme_bw()
+
+with(compare.full.summary, cor.test(human, model))
+
+
+###################################
 # plot bar blots of effects for model and human, per domain
 # set domain
 dom <- "laptop"
