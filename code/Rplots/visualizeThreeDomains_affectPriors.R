@@ -10,3 +10,7 @@ ggplot(a.summary, aes(x=utteredPriceRounded, y=probOpinion)) +
   theme_bw() +
   xlab("Price") +
   ylab("Probability")
+
+# record the affect priors
+
+write.csv(a.summary, "../../data/mTurkExp/affectPriors/affect-10182013.csv")

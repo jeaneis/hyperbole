@@ -62,3 +62,15 @@ ggplot(all.summary, aes(x=interpretation, y=interpretationProb, fill=color)) +
         axis.text.x  = element_text(size=10, angle=-90),
         axis.title.y = element_text(size=12),
         axis.text.y = element_text(size=10))
+
+
+#### plot ebay scraped priors
+
+sp <- read.csv("../../data/scrape/laptop_ebay.txt", header=FALSE)
+colnames(sp) <- "price"
+
+ggplot(sp, aes(x=price)) +
+  geom_histogram(aes(y=..density..),      # Histogram with density instead of count on y-axis
+                 binwidth=50,
+                 colour="black", fill="white") +
+                   theme_bw() +geom_density(alpha=.2, fill="#FF6666")

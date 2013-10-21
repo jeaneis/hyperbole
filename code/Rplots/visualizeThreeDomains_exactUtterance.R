@@ -497,7 +497,7 @@ model.all.comp.no_opinion <- subset(model.all.comp, interpretationKind != "expen
 ggplot(model.all.comp.no_opinion, aes(x=interpretationProb, y=model, color=domain)) +
   geom_point(size=2) +
   #geom_smooth(method=lm) +
-  geom_text(aes(label=utterance), size=6) +
+  geom_text(aes(label=utterance), size=5) +
   facet_grid(.~interpretationKind) +
   theme_bw() +
   xlab("Human") +
@@ -512,4 +512,21 @@ with(model.all.comp.fuzzy, cor.test(interpretationProb, model))
 
 model.all.comp.hyperbole <- subset(model.all.comp, interpretationKind=="hyperbolic")
 with(model.all.comp.hyperbole, cor.test(interpretationProb, model))
+
+# plot bar blots of effects for model and human, per domain
+# set domain
+dom <- "laptop"
+# convert to long form
+model.dom <- subset(model.all.comp.no_opinion, domain==dom)
+model.dom$interpretationProb <- model.dom$model
+model.dom$kind <- "model"
+human.dom <- subset(model.all.comp.no_opinion, domain==dom)
+human.dom$kind <- "human"
+model.dom.comp <- rbind(model.dom, human.dom)
+
+ggplot(model.dom.comp, aes(x=utterance, y=interpretationProb, fill=interpretationKind)) +
+  geom_bar(stat="identity", color="black") +
+  #geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se),width=.2) +
+  facet_grid(interpretationKind ~ kind) +
+  theme_bw()
 

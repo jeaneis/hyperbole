@@ -1,4 +1,4 @@
-domain	interpretation	interpretationProb
+domain	price	priorProb
 electric kettle	50	0.42049575
 electric kettle	51	0.386461042
 electric kettle	500	0.053285795

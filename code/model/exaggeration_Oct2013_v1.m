@@ -1,6 +1,6 @@
 function [listener_highest_depth, meanings, utterances, affect_prior] = ...
     exaggeration_Oct2013_v1(pricePriorFileName, affectPriorFileName, ...
-    utterance_costs, useScrapedPriors)
+    utterance_costs, hardness, highVariance, lowVariance)
 % 
 % Now computes in log-space.
 % No lexical uncertainty for valence -- only lexical uncertainty for state.
@@ -17,7 +17,7 @@ function [listener_highest_depth, meanings, utterances, affect_prior] = ...
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-hardness = 1.5;
+%hardness = 1.5;
 depth = 1;
 prices = [50, 500, 1000, 5000, 10000];
 
@@ -86,7 +86,8 @@ num_goal_combinations = 3; % value 1 is when the speaker wants to communicate bo
 % second and third column is whether the utterance is consistent with
 % valence 0 and valence 1
 
-lexical_entries = [1; 0.1];
+% sd of lexicon
+lexical_entries = [highVariance; lowVariance];
 num_lexical_entries = size(lexical_entries,1);
 
 
