@@ -3,7 +3,7 @@ hardness = 1;
 num_utterances = 10;
 utterance_cost_ratio = 1.5;
 highVariance = 1;
-lowVariance = 0.5;
+lowVariance = 0.1;
 
 
 utterance_costs = [ones(num_utterances / 2, 1) * utterance_cost_ratio; ones(num_utterances/2,1)]';

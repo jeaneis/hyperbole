@@ -1,3 +1,6 @@
+source("summarySE.R")
+source("multiplot.R")
+
 ##########################
 # Visualize human output
 ##########################
@@ -404,16 +407,65 @@ with(model.comp.hyperbole, cor.test(interpretationProb, model))
 model.comp.opinion <- subset(model.comp, interpretationKind=="expensive")
 with(model.comp.opinion, cor.test(interpretationProb, model))
 
-######
+################################################################################
 # Human model comparison for all three domains
-######
+# To run, start here!
+################################################################################
+
+#######################
+# human data for all domains
+#######################
+d <- read.csv("../../data/mTurkExp/hyperboleThreeDomains/data1017_normalized.csv")
+d$utteranceRounded <- factor(d$utteranceRounded)
+d$utterance <- factor(d$utterance)
+d$interpretationRounded <- factor(d$interpretationRounded)
+d$interpretation <- factor(d$interpretation)
+
+d$interpretationKind <- 
+  ifelse(as.numeric(d$utteranceRounded) > as.numeric(d$interpretationRounded), "hyperbolic", 
+         ifelse(d$utterance==d$interpretation, "exact",
+                ifelse(d$utteranceRounded==d$interpretationRounded, "fuzzy", "other")))
+
+interpretation.agg <- aggregate(data=d, interpretationProb ~ 
+  workerID + domain + utterance + interpretationKind, FUN=sum)
+interpretation.summary <- summarySE(interpretation.agg, measurevar="interpretationProb",
+                                    groupvars=c("utterance", "domain", "interpretationKind"), .drop=FALSE)
+
+opinion.agg <- aggregate(data=d, opinionProb ~ workerID + domain + utterance, FUN=mean)
+opinion.agg.summary <- summarySE(opinion.agg, measurevar="opinionProb", groupvars=c("utterance", "domain"))
+opinion.agg.summary$interpretationKind <- "expensive"
+colnames(opinion.agg.summary)[4] <- "interpretationProb"
+
+interpretation.summary.clean <- rbind(
+  subset(interpretation.summary, interpretationKind != "other"), opinion.agg.summary)
+
+interpretation.summary.clean$interpretationKind <- 
+  factor(interpretation.summary.clean$interpretationKind, levels=c("exact", "fuzzy", "hyperbolic", "expensive"))
+
+full.summary <- summarySE(d, measurevar="interpretationProb",
+                          groupvars=c("utterance", "interpretation", "domain"))
+
+full.summary$interpretation <- factor(full.summary$interpretation)
+human.full.plot <- ggplot(full.summary, aes(x=interpretation, y=interpretationProb)) +
+  geom_bar(stat="identity", color="black", fill="#FF9999") +
+  geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se),width=0.2) +
+  facet_grid(domain ~ utterance) +
+  theme_bw() +
+  ylab("Probability") +
+  xlab("Interpretation") +
+  theme(axis.title.x = element_text(size=12),
+        axis.text.x  = element_text(size=10, angle=-90),
+        axis.title.y = element_text(size=12),
+        axis.text.y = element_text(size=10))
+
 # human summary data for all interpretation types and all domains
 human.all <- interpretation.summary.clean
 # make NaN into 0
 human.all[is.na(human.all)] <- 0
 
-# model data for all domains
-
+#######################
+# model output for all domains
+#######################
 m1 <- read.csv("../../data/model/predict_kettle_constrained.csv")
 m1$domain <- "electric kettle"
 m2 <- read.csv("../../data/model/predict_laptop_constrained.csv")
@@ -447,7 +499,6 @@ m.all$adjustedProb <- m.all$raisedProb / m.all$normalizing
 m.all.interpKinds <- aggregate(data=m.all, adjustedProb ~ domain + utterance + interpretationKind,
                            FUN=sum)
 # plot model output for three domains
-
 model.full.plot <- ggplot(m.all, aes(x=meaning, y=adjustedProb, fill=valence)) + 
   geom_bar(stat="identity", color="black") + 
   facet_grid(domain ~ utterance) +
@@ -468,6 +519,10 @@ model.full.plot <- ggplot(m.all, aes(x=meaning, y=adjustedProb, fill=valence)) +
         axis.text.x  = element_text(size=10, angle=-90),
         axis.title.y = element_text(size=12),
         axis.text.y = element_text(size=10))
+
+##############
+# plot human and model full distributions in three domains
+##############
 
 multiplot(human.full.plot, model.full.plot, cols=2)
 
@@ -498,19 +553,25 @@ model.all.comp <-
   human.all[with(human.all, order(domain, utterance, interpretationKind)), ]
 
 model.all.comp$model <- model.all$adjustedProb
+model.all.comp.noOpinion <- subset(model.all.comp, interpretationKind != "expensive")
 
-# ignore opinion
-model.all.comp.no_opinion <- subset(model.all.comp, interpretationKind != "expensive")
+###########
+# plot effects scatter plot
+###########
 
 # plot in panels
-ggplot(model.all.comp.no_opinion, aes(x=interpretationProb, y=model, color=domain)) +
+ggplot(model.all.comp.noOpinion, aes(x=interpretationProb, y=model, color=domain)) +
   geom_point(size=2) +
   #geom_smooth(method=lm) +
-  geom_text(aes(label=utterance), size=5) +
+  geom_text(aes(label=utterance), size=6) +
   facet_grid(.~interpretationKind) +
   theme_bw() +
   xlab("Human") +
-  ylab("Model") 
+  ylab("Model") +
+  theme(axis.title.x = element_text(size=12),
+        axis.text.x  = element_text(size=12),
+        axis.title.y = element_text(size=12),
+        axis.text.y = element_text(size=12))
   #scale_color_discrete(guide=FALSE)
 
 model.all.comp.exact <- subset(model.all.comp, interpretationKind=="exact")
@@ -524,6 +585,8 @@ with(model.all.comp.hyperbole, cor.test(interpretationProb, model))
 
 #################################
 # full human and model comparison (no breakdown into effects)
+#################################
+
 human.full.summary <- summarySE(d, measurevar="interpretationProb",
                           groupvars=c("utterance", "interpretation", "domain", "interpretationKind"))
 human.full.summary <- human.full.summary[with(human.full.summary, order(domain, utterance, interpretation)),]
@@ -536,13 +599,19 @@ compare.full.summary$model <- model.full.summary$adjustedProb
 
 ggplot(compare.full.summary, aes(x=human, y=model, color=interpretationKind, shape=domain)) +
   geom_point() +
-  theme_bw()
+  theme_bw() +
+  theme(axis.title.x = element_text(size=14),
+        axis.text.x  = element_text(size=12),
+        axis.title.y = element_text(size=14),
+        axis.text.y = element_text(size=12),
+        legend.title=element_text(size=14),
+        legend.text=element_text(size=14))
 
 with(compare.full.summary, cor.test(human, model))
 
-
 ###################################
 # plot bar blots of effects for model and human, per domain
+###################################
 # set domain
 dom <- "laptop"
 # convert to long form
