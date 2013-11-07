@@ -1,0 +1,84 @@
+;;This is a version of the exaggeration model that uses goals to determine how precise the speaker wants to be, and a goal that determines whether the speaker wants to communicate just the valence, just the world state, or both
+
+;; Domain-dependent parameters
+
+;; Define prior of prices
+(define (state-prior) (multinomial states '(0.47 0.47 0.06)))
+
+;; Conditional probability, for each price state, that it has valence (i.e. '0) 
+(define valence-prior (list (list '1 '0.2) (list '2 '0.2) (list '3 '0.5)))
+
+;; Domain-independent parameters
+(define depth 1)
+(define hardness 1)
+
+;; Define communicative goals and goal priors
+(define goals (list 'state-and-valence 'just-state 'just-valence))
+(define (goal-prior) (multinomial goals '(0.33 0.33 0.34)))
+
+;; Define list of prices under consideration (possible price states)
+(define states (list '1 '2 '3))
+
+;; Define list of possible utterances (same as price states)
+(define utterances states)
+
+;; Approximate cost of utterances as prior probability of utterance
+(define (utterance-prior) (multinomial utterances '(0.33 0.33 0.33)))
+
+;; Define valences. 0 is no valence; 1 is with valence
+(define valences (list '0 '1))
+
+(define (sample-valence state prior)
+  (let ((current-state-valence-pair (first prior)))
+    (if (equal? state (first current-state-valence-pair))
+        (if (flip (second current-state-valence-pair))
+            '1
+            '0)
+        (sample-valence state (rest prior)))))
+
+
+(define (literal-interpretation utterance state)
+  (equal? utterance state))
+
+(define (evaluate-state-goal listener-state speaker-state)
+  (if (equal? precision 'precise)
+      (equal? listener-state speaker-state)
+      (<= (abs (- listener-state speaker-state)) 1)))
+
+(define (goal-satisfied? goal listener-state-valence-pair speaker-state speaker-valence)
+  (case goal
+    (('state-and-valence) (if (equal? 
+                           (first listener-state-valence-pair) speaker-state) 
+     (equal? (second listener-state-valence-pair) speaker-valence)))
+    (('just-state) (equal? (first listener-state-valence-pair) speaker-state))
+    (('just-valence) (equal? (second listener-state-valence-pair) speaker-valence))))
+
+
+;; The model is currently restricted to hardness=1
+(define speaker
+  (mem (lambda (state valence goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) state valence)
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define state (state-prior))
+   (define valence (sample-valence state valence-prior))
+   (define speaker-goal (goal-prior))
+   
+   (list state valence)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance state)
+       (equal? utterance
+               (apply multinomial (speaker state valence speaker-goal (- depth 1)))))
+   ))))
+
+(define (sample-one utterance) 
+  (listener utterance depth))
+
+(sample-one '3)

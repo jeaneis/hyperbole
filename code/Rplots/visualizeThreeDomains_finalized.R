@@ -46,10 +46,11 @@ human.full.plot <- ggplot(full.summary, aes(x=interpretation, y=interpretationPr
   theme_bw() +
   ylab("Probability") +
   xlab("Interpretation") +
-  theme(axis.title.x = element_text(size=12),
-        axis.text.x  = element_text(size=10, angle=-90),
-        axis.title.y = element_text(size=12),
-        axis.text.y = element_text(size=10))
+  ggtitle("Human") +
+  theme(axis.title.x = element_text(size=14),
+        axis.text.x  = element_text(size=6, angle=-90),
+        axis.title.y = element_text(size=14),
+        axis.text.y = element_text(size=12))
 
 # human summary data for all interpretation types and all domains
 human.all <- interpretation.summary.clean
@@ -109,9 +110,192 @@ model.full.plot <- ggplot(m.all, aes(x=meaning, y=adjustedProb, fill=valence)) +
                       ylab("Probability") +
                       xlab("Interpretation") +
                       theme(axis.title.x = element_text(size=12),
-                            axis.text.x  = element_text(size=10, angle=-90),
+                            axis.text.x  = element_text(size=6, angle=-90),
                             axis.title.y = element_text(size=12),
                             axis.text.y = element_text(size=10))
+
+#################
+# Church model
+#################
+c1 <- read.csv("../../data/model/church_output_kettle_formatted.csv")
+c1$domain <- "electric kettle"
+c2 <- read.csv("../../data/model/church_output_laptop_formatted.csv")
+c2$domain <- "laptop"
+c3 <- read.csv("../../data/model/church_output_watch_formatted.csv")
+c3$domain <- "watch"
+
+c.all <- rbind(c1, c2, c3)
+c.all$utterance <- factor(c.all$utterance)
+c.all$meaning <- factor(c.all$meaning)
+c.all$valence <- factor(c.all$valence)
+# mark data fram with needed information for analysis
+c.all$utteranceRounded <- factor(floor(as.numeric(as.character(c.all$utterance))/ 10)*10)
+c.all$meaningRounded <- factor(floor(as.numeric(as.character(c.all$meaning))/ 10)*10)
+c.all$interpretationKind <- 
+  ifelse(as.numeric(c.all$utteranceRounded) > as.numeric(c.all$meaningRounded), "hyperbolic", 
+         ifelse(c.all$utterance==c.all$meaning, "exact",
+                ifelse(c.all$utteranceRounded==c.all$meaningRounded, "fuzzy", "other")))
+
+######## 
+# adjust probability by raising to the power of hardness and renormalizing to sum up to one within each domain/utterance pair
+########
+hardness = 0.6
+c.all$raisedProb <- c.all$probability^hardness
+normalizingFactors <- aggregate(data=c.all, raisedProb ~ domain + utterance, FUN=sum)
+colnames(normalizingFactors)[3] <- "normalizing"
+c.all <- join(c.all, normalizingFactors, by=c("domain", "utterance"))
+c.all$adjustedProb <- c.all$raisedProb / c.all$normalizing
+
+# aggregate model over valence and different ways to be hyperbolic
+c.all.interpKinds <- aggregate(data=c.all, adjustedProb ~ domain + utterance + interpretationKind,
+                               FUN=sum)
+# plot model output for three domains
+church.full.plot <- ggplot(c.all, aes(x=meaning, y=adjustedProb, fill=valence)) + 
+  geom_bar(stat="identity", color="black") + 
+  facet_grid(domain ~ utterance) +
+  scale_x_discrete() +
+  scale_y_continuous() +
+  xlab("") +
+  #ylab("") +
+  #scale_fill_manual(values=c("#FF6666", "#FF6666"),
+  scale_fill_manual(values=c("#33CCCC", "#FF6666"),
+                    guide=FALSE,
+                    name="Valence",
+                    breaks=c("0", "1"),
+                    labels=c("No valence", "With valence")) +
+                      theme_bw() +
+                      ylab("Probability") +
+                      xlab("Interpretation") +
+                      ggtitle("Model") +
+                      theme(axis.title.x = element_text(size=14),
+                            axis.text.x  = element_text(size=6, angle=-90),
+                            axis.title.y = element_text(size=14),
+                            axis.text.y = element_text(size=12))
+
+##############
+# plot human and model full distributions in three domains
+##############
+
+multiplot(human.full.plot, church.full.plot, cols=2)
+
+# add opinion probabilities
+c.all.opinion <- subset(aggregate(data=c.all, adjustedProb ~ domain + utterance + valence, FUN=sum), valence=="1")
+colnames(c.all.opinion)[3] <- "interpretationKind"
+c.all.opinion$interpretationKind <- "expensive"
+
+c.all.interpKinds.opinion <- rbind(subset(c.all.interpKinds,interpretationKind!="other"), 
+                                   c.all.opinion)
+
+c.all.interpKinds.opinion$interpretationKind <- 
+  factor(c.all.interpKinds.opinion$interpretationKind, levels=c("exact", "fuzzy", "hyperbolic", "expensive"))
+
+
+church.all <- rbind(c.all.interpKinds.opinion, 
+                   data.frame(utterance=c(50,51,50,51,50,51), 
+                              interpretationKind=c("hyperbolic","hyperbolic",
+                                                   "hyperbolic","hyperbolic","hyperbolic","hyperbolic"), 
+                              adjustedProb=c(0,0,0,0,0,0), 
+                              domain=c("laptop","laptop","electric kettle","electric kettle",
+                                       "watch","watch")))
+
+
+
+church.all <- church.all[with(church.all, order(domain, utterance, interpretationKind)),]
+church.all.comp <- 
+  human.all[with(human.all, order(domain, utterance, interpretationKind)), ]
+
+church.all.comp$model <- church.all$adjustedProb
+church.all.comp$oldModel <- model.all$adjustedProb
+church.all.comp.noOpinion <- subset(church.all.comp, interpretationKind != "expensive")
+
+###########
+# plot effects scatter plot
+###########
+
+# plot in panels
+ggplot(church.all.comp.noOpinion, aes(x=interpretationProb, y=model, color=domain)) +
+  geom_point(size=2) +
+  #geom_smooth(method=lm) +
+  geom_text(aes(label=utterance), size=4) +
+  facet_grid(.~interpretationKind) +
+  theme_bw() +
+  xlab("Human") +
+  ylab("Model") +
+  theme(axis.title.x = element_text(size=12),
+        axis.text.x  = element_text(size=12),
+        axis.title.y = element_text(size=12),
+        axis.text.y = element_text(size=12))
+#scale_color_discrete(guide=FALSE)
+
+church.all.comp.exact <- subset(church.all.comp, interpretationKind=="exact")
+with(church.all.comp.exact, cor.test(interpretationProb, model))
+
+church.all.comp.fuzzy <- subset(church.all.comp, interpretationKind=="fuzzy")
+with(church.all.comp.fuzzy, cor.test(interpretationProb, model))
+
+church.all.comp.hyperbole <- subset(church.all.comp, interpretationKind=="hyperbolic")
+with(church.all.comp.hyperbole, cor.test(interpretationProb, model))
+
+#################################
+# full human and model comparison (no breakdown into effects)
+#################################
+
+human.full.summary <- summarySE(d, measurevar="interpretationProb",
+                                groupvars=c("utterance", "interpretation", "domain", "interpretationKind"))
+human.full.summary <- human.full.summary[with(human.full.summary, order(domain, utterance, interpretation)),]
+church.full.summary <- aggregate(data=c.all, adjustedProb ~ utterance + meaning + domain, FUN=sum)
+church.full.summary <- church.full.summary[with(church.full.summary, order(domain, utterance, meaning)),]
+church.full.raw.summary <- aggregate(data=c.all, probability ~ utterance + meaning + domain, FUN=sum)
+church.full.raw.summary <- church.full.raw.summary[with(church.full.raw.summary, order(domain, utterance, meaning)),]
+model.full.raw.summary <- aggregate(data=m.all, probability ~ utterance + meaning + domain, FUN=sum)
+model.full.raw.summary <- model.full.raw.summary[with(model.full.raw.summary, order(domain, utterance, meaning)),]
+
+compare.full.summary <- human.full.summary
+colnames(compare.full.summary)[6] <- "human"
+compare.full.summary$model <- church.full.summary$adjustedProb
+compare.full.summary$model.raw <- church.full.raw.summary$probability
+compare.full.summary$oldModel <- model.full.summary$adjustedProb
+compare.full.summary$oldModel.raw <- model.full.raw.summary$probability
+
+ggplot(compare.full.summary, aes(x=human, y=model, color=interpretationKind, shape=domain)) +
+  geom_point() +
+  theme_bw() +
+  theme(axis.title.x = element_text(size=14),
+        axis.text.x  = element_text(size=12),
+        axis.title.y = element_text(size=14),
+        axis.text.y = element_text(size=12),
+        legend.title=element_text(size=14),
+        legend.text=element_text(size=14))
+
+with(compare.full.summary, cor.test(human, model.raw))
+
+# compare previous model with current
+# no consideration of valence
+with(compare.full.summary, cor.test(model, oldModel))
+with(compare.full.summary, cor.test(model.raw, oldModel.raw))
+
+# considering valence
+c.all <- c.all[with(c.all, order(domain, utterance, meaning, valence)),]
+m.all <- m.all[with(m.all, order(domain, utterance, meaning, valence)),]
+cor.test(c.all$probability, m.all$probability)
+cor.test(c.all$adjustedProb, m.all$adjustedProb)
+
+model.church.comp <- c.all
+model.church.comp$oldModel.raw <- m.all$probability
+
+ggplot(model.church.comp, aes(x=probability, y=oldModel.raw, color=interpretationKind, shape=domain)) +
+  geom_point() +
+  theme_bw() +
+  theme(axis.title.x = element_text(size=14),
+        axis.text.x  = element_text(size=12),
+        axis.title.y = element_text(size=14),
+        axis.text.y = element_text(size=12),
+        legend.title=element_text(size=14),
+        legend.text=element_text(size=14)) +
+          xlab("New Church model") +
+          ylab("Old model (with lexical uncertainty)")
+
+
 
 ##############
 # plot human and model full distributions in three domains
@@ -301,3 +485,72 @@ ggplot(a.summary, aes(x=utteredPriceRounded, y=probOpinion)) +
 # record the affect priors
 
 write.csv(a.summary, "../../data/mTurkExp/affectPriors/affect-10182013.csv")
+
+#######
+# affect pairs
+#######
+
+ap <- read.table("../../data/mTurkExp/hyperboleThreeDomains/affect_pairs_zscored_long.csv", 
+                strip.white=TRUE, header=TRUE, sep=",")
+
+ap$actualPriceSharpened <- ifelse(ap$actualType=="sharp", ap$actualPriceRounded+1, ap$actualPriceRounded)
+ap$utteredPriceSharpened <- ifelse(ap$utteredType=="sharp", ap$utteredPriceRounded+1, ap$utteredPriceRounded)
+ap$actualPriceRounded <- factor(ap$actualPriceRounded)
+ap$utteredPriceRounded <- factor(ap$utteredPriceRounded)
+ap$actualPriceSharpened <- factor(ap$actualPriceSharpened)
+ap$utteredPriceSharpened <- factor(ap$utteredPriceSharpened)
+
+# only look at cases where the actual price is 50 in the kettle domain
+ap.50 <- subset(ap, actualPriceRounded=="50" & domain=="laptop")
+ggplot(ap.50, aes(x=utteredPriceRounded, y=probOpinion)) +
+  geom_point() +
+  theme_bw()
+
+ap.domain <-subset(ap, domain=="watch")
+ap.domain$workerID.number <- as.numeric(ap.domain$workerID)
+
+ap.domain.small <- subset(ap.domain, workerID.number > 10 & workerID.number <=20)
+
+ggplot(ap.domain.small, aes(x=utteredPriceRounded, y=probOpinion)) +
+  geom_point() +
+  facet_grid(workerID.number ~actualPriceRounded) +
+  theme_bw()
+  
+
+
+ap.summary <- summarySE(ap, measurevar="probOpinion", 
+                        groupvars=c("actualPriceSharpened", "utteredPriceSharpened", "domain"))
+
+
+ggplot(ap.summary, aes(x=actualPriceSharpened, y=probOpinion, fill=domain)) +
+  geom_bar(stat="identity", color="black") +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
+  facet_grid(domain ~ utteredPriceSharpened) +
+  theme_bw() +
+  theme(axis.text.x  = element_text(size=10, angle=-90))
+
+uttered.summary <- summarySE(ap, measurevar="probOpinion",
+                             groupvars=c("domain", "utteredPriceRounded"))
+uttered.summary$actualPriceRounded <- "utteredPrice"
+uttered.summary$color<-"gray"
+
+actual.summary <- summarySE(ap, measurevar="probOpinion",
+                            groupvars=c("domain", "actualPriceRounded"))
+colnames(actual.summary)[2] <- "utteredPriceRounded"
+actual.summary$actualPriceRounded <- "actualPrice"
+actual.summary$color <-"dark gray"
+
+ap.summary <- summarySE(ap, measurevar="probOpinion", 
+                        groupvars=c("actualPriceRounded", "utteredPriceRounded", "domain"))
+ap.summary$color <- "red"
+
+combined <- rbind(ap.summary, actual.summary, uttered.summary)
+
+ggplot(combined, aes(x=utteredPriceRounded, y=probOpinion, fill=color)) +
+  geom_bar(stat="identity", color="black") +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
+  facet_grid(domain ~ actualPriceRounded) +
+  theme_bw() +
+  scale_fill_manual(values=c("gray", "white", "#FF9999"), guide=FALSE) +
+  xlab("Uttered Price") +
+  ylab("Probability of opinion")
