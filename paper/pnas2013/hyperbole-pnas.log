@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  6 NOV 2013 23:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  10 NOV 2013 23:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -616,145 +616,174 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 173.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 
-LaTeX Warning: Citation `lasersohn1999pragmatic' on page 1 undefined on input l
-ine 214.
+LaTeX Warning: Citation `grice1975' on page 1 undefined on input line 212.
 
 
-LaTeX Warning: Citation `krifka2007approximate' on page 1 undefined on input li
-ne 214.
-
-
-LaTeX Warning: Citation `bastiaanse2011rationality' on page 1 undefined on inpu
-t line 214.
-
-
-LaTeX Warning: Citation `jager2008game' on page 1 undefined on input line 214.
-
-
-LaTeX Warning: Citation `mccarthy2004there' on page 1 undefined on input line 2
-20.
-
-
-LaTeX Warning: Citation `gibbs2000irony' on page 1 undefined on input line 220.
-
-
-
-LaTeX Warning: Citation `cano2003risk' on page 1 undefined on input line 220.
-
-
-LaTeX Warning: Citation `kreuz1995two' on page 1 undefined on input line 220.
-
-
-LaTeX Warning: Citation `kreuz2007lexical' on page 1 undefined on input line 22
-0.
-
-
-LaTeX Warning: Citation `davidov2010semi' on page 1 undefined on input line 220
-.
-
-
-LaTeX Warning: Citation `reyes2011mining' on page 1 undefined on input line 220
-.
-
-
-LaTeX Warning: Citation `van2007algorithm' on page 1 undefined on input line 22
-0.
-
-
-LaTeX Warning: Citation `grice1975' on page 1 undefined on input line 226.
-
-
-LaTeX Warning: Citation `clark1996using' on page 1 undefined on input line 226.
+LaTeX Warning: Citation `clark1996using' on page 1 undefined on input line 212.
 
 
 
 LaTeX Warning: Citation `frankgoodmanscience' on page 1 undefined on input line
- 229.
+ 214.
 
 
 LaTeX Warning: Citation `goodmanstuhlmueller' on page 1 undefined on input line
- 229.
+ 214.
+
+
+LaTeX Warning: Citation `bergen2012' on page 1 undefined on input line 214.
 
 
 LaTeX Warning: Citation `jager2009pragmatic' on page 1 undefined on input line 
-229.
+214.
 
 
-LaTeX Warning: Citation `bergen2012' on page 1 undefined on input line 229.
+LaTeX Warning: Citation `lasersohn1999pragmatic' on page 1 undefined on input l
+ine 221.
 
 
-LaTeX Warning: Citation `franke2009interpretation' on page 1 undefined on input
- line 229.
+LaTeX Warning: Citation `bastiaanse2011rationality' on page 1 undefined on inpu
+t line 221.
 
 
-LaTeX Warning: Citation `cho1987signaling' on page 1 undefined on input line 22
-9.
+LaTeX Warning: Citation `krifka2007approximate' on page 1 undefined on input li
+ne 221.
 
 
-LaTeX Warning: Citation `chen2008selecting' on page 1 undefined on input line 2
-29.
+LaTeX Warning: Citation `mccarthy2004there' on page 1 undefined on input line 2
+23.
+
+
+LaTeX Warning: Citation `gibbs2000irony' on page 1 undefined on input line 223.
+
+
+
+LaTeX Warning: Citation `cano2003risk' on page 1 undefined on input line 223.
+
+
+LaTeX Warning: Citation `kreuz1995two' on page 1 undefined on input line 223.
+
+
+LaTeX Warning: Citation `kreuz2007lexical' on page 1 undefined on input line 22
+3.
+
+
+LaTeX Warning: Citation `davidov2010semi' on page 1 undefined on input line 223
+.
+
+
+LaTeX Warning: Citation `reyes2011mining' on page 1 undefined on input line 223
+.
+
+
+LaTeX Warning: Citation `van2007algorithm' on page 1 undefined on input line 22
+3.
+
+\dblfigandtabbox1=\box63
+<model_effects_bar_noAffect.pdf, id=4, 722.7pt x 433.62pt>
+File: model_effects_bar_noAffect.pdf Graphic file (type pdf)
+
+<use model_effects_bar_noAffect.pdf>
+Package pdftex.def Info: model_effects_bar_noAffect.pdf used on input line 236.
+
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
+
+<human_effects_bar_noAffect.pdf, id=5, 722.7pt x 433.62pt>
+File: human_effects_bar_noAffect.pdf Graphic file (type pdf)
+
+<use human_effects_bar_noAffect.pdf>
+Package pdftex.def Info: human_effects_bar_noAffect.pdf used on input line 240.
+
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
+\dblfigandtabbox2=\box64
+
+<human_model_scatter.pdf, id=6, 722.7pt x 433.62pt>
+File: human_model_scatter.pdf Graphic file (type pdf)
+
+<use human_model_scatter.pdf>
+Package pdftex.def Info: human_model_scatter.pdf used on input line 249.
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
+
+Overfull \hbox (1.49265pt too wide) in paragraph at lines 268--275
+\OMS/cmsy/m/n/9 f\OT1/cmr/m/n/9 50\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 50[]\OML/cmm
+/m/it/9 ; \OT1/cmr/m/n/9 500\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 500[]\OML/cmm/m/it
+/9 ; \OT1/cmr/m/n/9 1000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 1000[]\OML/cmm/m/it/9 
+; \OT1/cmr/m/n/9 5000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 5000[]\OML/cmm/m/it/9 ; \
+OT1/cmr/m/n/9 10000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 10000[]\OMS/cmsy/m/n/9 g$\O
+T1/cmr/m/n/9 . The
+ []
 
 [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Citation `sutton1998reinforcement' on page 2 undefined on input 
-line 278.
+LaTeX Warning: Reference `model_effects' on page 2 undefined on input line 279.
 
 
-LaTeX Warning: Citation `bergen2012' on page 2 undefined on input line 292.
+[2 <./model_effects_bar_noAffect.pdf> <./human_effects_bar_noAffect.pdf> <./hum
+an_model_scatter.pdf>]
+
+LaTeX Warning: Citation `sutton1998reinforcement' on page 3 undefined on input 
+line 320.
 
 
-LaTeX Warning: Reference `fig:model' on page 2 undefined on input line 312.
+ ======================================================================== 
+ C A R E F U L !!!!!
+ 
+ You have used \begin{figure}[h] !
+ If there are any figures that appear earlier on the page
+ they may be numbered incorrectly.
+ 
+ Please check this and every other page on which you have used 
+ \begin{figure}[h] !
+ 
+ ======================================================================== 
 
+<full_bar.pdf, id=46, 939.51pt x 361.35pt>
+File: full_bar.pdf Graphic file (type pdf)
+ <use full_bar.pdf>
+Package pdftex.def Info: full_bar.pdf used on input line 360.
+(pdftex.def)             Requested size: 529.22142pt x 203.5456pt.
 
-LaTeX Warning: Reference `fig:model' on page 2 undefined on input line 314.
+Overfull \hbox (19.22142pt too wide) in paragraph at lines 360--362
+ [][] 
+ []
 
-
-LaTeX Warning: Reference `fig:model' on page 2 undefined on input line 324.
-
-
-LaTeX Warning: Reference `fig:model' on page 2 undefined on input line 324.
-
-[2]
-
-LaTeX Warning: Reference `fig:model' on page 3 undefined on input line 342.
-
-
-LaTeX Warning: Reference `fig:model' on page 3 undefined on input line 342.
-
-[3] (./hyperbole-pnas.aux)
+[3] [4 <./full_bar.pdf>] (./hyperbole-pnas.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 11658 strings out of 493488
- 220429 string characters out of 3141326
- 282705 words of memory out of 3000000
- 14715 multiletter control sequences out of 15000+200000
- 13777 words of font info for 50 fonts, out of 3000000 for 9000
+ 11703 strings out of 493488
+ 221272 string characters out of 3141326
+ 278720 words of memory out of 3000000
+ 14752 multiletter control sequences out of 15000+200000
+ 15373 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,8n,57p,2339b,276s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,10n,57p,1961b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.p
 fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
-/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></u
-sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loc
-al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/t
-exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on hyperbole-pnas.pdf (3 pages, 181263 bytes).
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr
+/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
+/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
+012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/201
+2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on hyperbole-pnas.pdf (4 pages, 264993 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 118 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

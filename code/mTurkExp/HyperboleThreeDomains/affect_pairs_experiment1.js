@@ -136,6 +136,7 @@ var currentUtteredPriceSliderIndex;
 var allConditions = 
 [
 [
+/*
 {"sentenceID":1,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":50,"actualNumberType":"round","actual":50},
 {"sentenceID":2,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":500,"actualNumberType":"round","actual":500},
 {"sentenceID":3,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":1000,"actualNumberType":"round","actual":1000},
@@ -146,7 +147,7 @@ var allConditions =
 {"sentenceID":8,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":10000,"actualNumberType":"round","actual":1000},
 {"sentenceID":9,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":10000,"actualNumberType":"round","actual":5000},
 
-/*
+*/
 {"sentenceID":1,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":50,"actualNumberType":"round","actual":50},
 {"sentenceID":2,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":50,"actualNumberType":"sharp","actual":50},
 {"sentenceID":3,"domain":"electric kettle","modifier":"an","utteredNumberType":"round","uttered":500,"actualNumberType":"round","actual":50},
@@ -327,7 +328,6 @@ var allConditions =
 {"sentenceID":178,"domain":"laptop","modifier":"a","utteredNumberType":"sharp","uttered":10000,"actualNumberType":"sharp","actual":1000},
 {"sentenceID":179,"domain":"laptop","modifier":"a","utteredNumberType":"sharp","uttered":10000,"actualNumberType":"sharp","actual":5000},
 {"sentenceID":180,"domain":"laptop","modifier":"a","utteredNumberType":"sharp","uttered":10000,"actualNumberType":"sharp","actual":10000},
-*/
 ]
 ];
 
@@ -339,7 +339,7 @@ if(debug) { allConditions = debugConditions; }
 var numConditions = allConditions.length;
 var chooseCondition = random(0, numConditions-1);
 var allTrialOrders = allConditions[chooseCondition];
-var numTrials = allTrialOrders.length;
+var numTrials = allTrialOrders.length/6;
 var shuffledOrder = shuffledSampleArray(allTrialOrders.length, numTrials);
 var shuffledBuyerOrder = shuffledSampleArray(numTrials, numTrials);
 var currentTrialNum = 0;
