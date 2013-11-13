@@ -81,62 +81,166 @@ human.all <- interpretation.summary.clean
 # make NaN into 0
 human.all[is.na(human.all)] <- 0
 
-#######################
-# model output for all domains
-#######################
-m1 <- read.csv("../../data/model/predict_kettle_constrained.csv")
-m1$domain <- "electric kettle"
-m2 <- read.csv("../../data/model/predict_laptop_constrained.csv")
-m2$domain <- "laptop"
-m3 <- read.csv("../../data/model/predict_watch_constrained.csv")
-m3$domain <- "watch"
+###############
+# Human halo analysis
+###############
+# halo analysis on subject level
+d.halo.exact <- subset(d, interpretationKind=="exact")
+colnames(d.halo.exact)[18] <- "probExact"
+d.halo.fuzzy <- subset(d, interpretationKind=="fuzzy")
+colnames(d.halo.fuzzy)[18] <- "probFuzzy"
+d.halo <- join(d.halo.exact, d.halo.fuzzy, by=c("workerID", "utteranceID", "domain", "utteranceType",
+                                                "utteranceRounded", "utterance",
+                                                "interpretationRounded"))
+d.halo$diff <- d.halo$probExact - d.halo$probFuzzy
+d.halo$ratio <- ifelse((d.halo$probFuzzy + d.halo$probExact) > 0, 
+                       d.halo$probExact/(d.halo$probFuzzy + d.halo$probExact), 0)
 
-m.all <- rbind(m1, m2, m3)
-m.all$utterance <- factor(m.all$utterance)
-m.all$meaning <- factor(m.all$meaning)
-m.all$valence <- factor(m.all$valence)
-# mark data fram with needed information for analysis
-m.all$utteranceRounded <- factor(floor(as.numeric(as.character(m.all$utterance))/ 10)*10)
-m.all$meaningRounded <- factor(floor(as.numeric(as.character(m.all$meaning))/ 10)*10)
-m.all$interpretationKind <- 
-  ifelse(as.numeric(m.all$utteranceRounded) > as.numeric(m.all$meaningRounded), "hyperbolic", 
-         ifelse(m.all$utterance==m.all$meaning, "exact",
-                ifelse(m.all$utteranceRounded==m.all$meaningRounded, "fuzzy", "other")))
+d.halo.summary <- summarySE(d.halo, measurevar="diff", groupvars=c("utteranceType"))
+ggplot(d.halo.summary, aes(x=utteranceType, y=diff, fill=utteranceType)) +
+  geom_bar(color="black", stat="identity", position=position_dodge()) +
+  geom_errorbar(aes(ymin=diff-se, ymax=diff+se), position=position_dodge(0.9), width=0.2)+
+  theme_bw() +
+  #facet_grid(domain~.) +
+  ylab("Prob(exact) - Prob(fuzzy)")
 
-######## 
-# adjust probability by raising to the power of hardness and renormalizing to sum up to one within each domain/utterance pair
-########
-hardness = 0.6
-m.all$raisedProb <- m.all$probability^hardness
-normalizingFactors <- aggregate(data=m.all, raisedProb ~ domain + utterance, FUN=sum)
-colnames(normalizingFactors)[3] <- "normalizing"
-m.all <- join(m.all, normalizingFactors, by=c("domain", "utterance"))
-m.all$adjustedProb <- m.all$raisedProb / m.all$normalizing
+d.halo.summary <- summarySE(d.halo, measurevar="ratio", groupvars=c("utteranceType"))
+ggplot(d.halo.summary, aes(x=utteranceType, y=ratio, fill=utteranceType)) +
+  geom_bar(color="black", stat="identity", position=position_dodge()) +
+  geom_errorbar(aes(ymin=ratio-se, ymax=ratio+se), position=position_dodge(0.9), width=0.2)+
+  theme_bw() +
+  #facet_grid(domain~.) +
+  ylab("Prob(exact) / (Prob(fuzzy) + Prob(exact)")
 
-# aggregate model over valence and different ways to be hyperbolic
-m.all.interpKinds <- aggregate(data=m.all, adjustedProb ~ domain + utterance + interpretationKind,
-                               FUN=sum)
-# plot model output for three domains
-model.full.plot <- ggplot(m.all, aes(x=meaning, y=adjustedProb, fill=valence)) + 
-  geom_bar(stat="identity", color="black") + 
-  facet_grid(domain ~ utterance) +
-  scale_x_discrete() +
-  scale_y_continuous() +
-  xlab("") +
-  #ylab("") +
-  #scale_fill_manual(values=c("#FF6666", "#FF6666"),
-  scale_fill_manual(values=c("#33CCCC", "#FF6666"),
-                    guide=FALSE,
-                    name="Valence",
-                    breaks=c("1", "2"),
-                    labels=c("No valence", "With valence")) +
-                      theme_bw() +
-                      ylab("Probability") +
-                      xlab("Interpretation") +
-                      theme(axis.title.x = element_text(size=12),
-                            axis.text.x  = element_text(size=6, angle=-90),
-                            axis.title.y = element_text(size=12),
-                            axis.text.y = element_text(size=10))
+#########
+# Halo anlaysis aggregate subjects
+#########
+human.full.summary <- summarySE(d, measurevar="interpretationProb",
+                                groupvars=c("utterance", "interpretation", "domain", "interpretationKind", "utteranceType", "utteranceRounded"))
+human.full.summary <- human.full.summary[with(human.full.summary, order(domain, utterance, interpretation)),]
+
+human.halo.exact <- subset(human.full.summary, interpretationKind=="exact")
+colnames(human.halo.exact)[8] <- "probExact"
+human.halo.fuzzy <- subset(human.full.summary, interpretationKind=="fuzzy")
+colnames(human.halo.fuzzy)[8] <- "probFuzzy"
+human.halo <- join(human.halo.exact, human.halo.fuzzy, by=c("domain", "utterance"))
+
+human.halo$diff <- human.halo$probExact - human.halo$probFuzzy
+human.halo$ratio <- ifelse((human.halo$probFuzzy + human.halo$probExact) > 0, 
+                       human.halo$probExact/(human.halo$probFuzzy + human.halo$probExact), 0)
+human.halo$utteranceType <- ifelse(as.numeric(as.character(human.halo$utterance)) %% 10==0, "round", "sharp")
+
+#human.halo.summary <- summarySE(human.halo, measurevar="diff", groupvars=c("utteranceType"))
+human.halo.summary <- summarySE(human.halo, measurevar="ratio", groupvars=c("utteranceType", "domain"))
+#human.halo.summary <- summarySE(human.halo, measurevar="diff", groupvars=c("utteranceType", "utteranceRounded"))
+ggplot(human.halo.summary, aes(x=utteranceType, y=ratio, group=domain, color=domain)) +
+  geom_point(size=3) +
+  #geom_bar(color="black", stat="identity", position=position_dodge()) +
+  geom_line() +
+  geom_errorbar(aes(ymin=ratio-se, ymax=ratio+se), width=0.05)+
+  theme_bw() +
+  #facet_grid(domain~.) +
+  ylab("P(exact) - P(fuzzy)") +
+  xlab("Utterance Type") +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14), 
+        axis.title.y=element_text(size=16)) +
+          scale_color_brewer(palette="Accent")
+          #scale_fill_manual(values=c("grey", "grey"), guide=FALSE) +
+
+# human.halo.summary <- summarySE(human.halo, measurevar="ratio", groupvars=c("utteranceType"))
+# ggplot(human.halo.summary, aes(x=utteranceType, y=ratio, fill=utteranceType)) +
+#   geom_bar(color="black", stat="identity", position=position_dodge()) +
+#   geom_errorbar(aes(ymin=ratio-se, ymax=ratio+se), position=position_dodge(0.9), width=0.2)+
+#   theme_bw() +
+#   #facet_grid(domain~.) +
+#   ylab("Prob(exact) / (Prob(fuzzy) + Prob(exact)")
+
+############
+# Hyperbole analysis humans
+############
+
+human.hyperbole <- subset(d, interpretationKind=="hyperbolic")
+human.hyperbole.agg <- aggregate(data=human.hyperbole, interpretationProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+
+#human.hyperbole.summary <- summarySE(human.hyperbole.agg, measurevar="interpretationProb", 
+#                                     groupvars=c("utterance", "domain"))
+
+human.hyperbole.summary <- summarySE(human.hyperbole.agg, measurevar="interpretationProb", 
+                                     groupvars=c("utteranceRounded", "domain"))
+
+p <- read.csv("../../data/mTurkExp/hyperboleThreeDomains/prior_normalized.csv")
+p$interpretation <- factor(p$interpretation)
+p$interpretationRounded <- factor(p$interpretationRounded)
+price.prior <- summarySE(data=p, measurevar="interpretationProb", groupvars=c("domain", "interpretationRounded"))[,1:4]
+colnames(price.prior)[2] <- "utteranceRounded"
+colnames(price.prior)[4] <- "prior"
+
+human.hyperbole.summary <- join(human.hyperbole.summary, price.prior, by=c("utteranceRounded", "domain"))
+#human.hyperbole.summary$utterance <- as.numeric(as.character(human.hyperbole.summary$utterance))
+
+ggplot(human.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb)) +
+  geom_point() +
+  #geom_text(aes(label=utteranceRounded, color=domain)) +
+  geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se), width=0.005, color="grey") +
+  theme_bw()
+
+
+# #######################
+# # model output for all domains
+# #######################
+# m1 <- read.csv("../../data/model/predict_kettle_constrained.csv")
+# m1$domain <- "electric kettle"
+# m2 <- read.csv("../../data/model/predict_laptop_constrained.csv")
+# m2$domain <- "laptop"
+# m3 <- read.csv("../../data/model/predict_watch_constrained.csv")
+# m3$domain <- "watch"
+# 
+# m.all <- rbind(m1, m2, m3)
+# m.all$utterance <- factor(m.all$utterance)
+# m.all$meaning <- factor(m.all$meaning)
+# m.all$valence <- factor(m.all$valence)
+# # mark data fram with needed information for analysis
+# m.all$utteranceRounded <- factor(floor(as.numeric(as.character(m.all$utterance))/ 10)*10)
+# m.all$meaningRounded <- factor(floor(as.numeric(as.character(m.all$meaning))/ 10)*10)
+# m.all$interpretationKind <- 
+#   ifelse(as.numeric(m.all$utteranceRounded) > as.numeric(m.all$meaningRounded), "hyperbolic", 
+#          ifelse(m.all$utterance==m.all$meaning, "exact",
+#                 ifelse(m.all$utteranceRounded==m.all$meaningRounded, "fuzzy", "other")))
+# 
+# ######## 
+# # adjust probability by raising to the power of hardness and renormalizing to sum up to one within each domain/utterance pair
+# ########
+# hardness = 0.6
+# m.all$raisedProb <- m.all$probability^hardness
+# normalizingFactors <- aggregate(data=m.all, raisedProb ~ domain + utterance, FUN=sum)
+# colnames(normalizingFactors)[3] <- "normalizing"
+# m.all <- join(m.all, normalizingFactors, by=c("domain", "utterance"))
+# m.all$adjustedProb <- m.all$raisedProb / m.all$normalizing
+# 
+# # aggregate model over valence and different ways to be hyperbolic
+# m.all.interpKinds <- aggregate(data=m.all, adjustedProb ~ domain + utterance + interpretationKind,
+#                                FUN=sum)
+# # plot model output for three domains
+# model.full.plot <- ggplot(m.all, aes(x=meaning, y=adjustedProb, fill=valence)) + 
+#   geom_bar(stat="identity", color="black") + 
+#   facet_grid(domain ~ utterance) +
+#   scale_x_discrete() +
+#   scale_y_continuous() +
+#   xlab("") +
+#   #ylab("") +
+#   #scale_fill_manual(values=c("#FF6666", "#FF6666"),
+#   scale_fill_manual(values=c("#33CCCC", "#FF6666"),
+#                     guide=FALSE,
+#                     name="Valence",
+#                     breaks=c("1", "2"),
+#                     labels=c("No valence", "With valence")) +
+#                       theme_bw() +
+#                       ylab("Probability") +
+#                       xlab("Interpretation") +
+#                       theme(axis.title.x = element_text(size=12),
+#                             axis.text.x  = element_text(size=6, angle=-90),
+#                             axis.title.y = element_text(size=12),
+#                             axis.text.y = element_text(size=10))
 
 #################
 # Church model
@@ -160,10 +264,11 @@ c.all$interpretationKind <-
          ifelse(c.all$utterance==c.all$meaning, "exact",
                 ifelse(c.all$utteranceRounded==c.all$meaningRounded, "fuzzy", "other")))
 
+
 ######## 
 # adjust probability by raising to the power of hardness and renormalizing to sum up to one within each domain/utterance pair
 ########
-hardness = 0.6
+hardness = 0.5
 c.all$raisedProb <- c.all$probability^hardness
 normalizingFactors <- aggregate(data=c.all, raisedProb ~ domain + utterance, FUN=sum)
 colnames(normalizingFactors)[3] <- "normalizing"
@@ -196,11 +301,119 @@ church.full.plot <- ggplot(c.all, aes(x=meaning, y=adjustedProb, fill=valence)) 
                             axis.title.y = element_text(size=14),
                             axis.text.y = element_text(size=10))
 
+########
+# Model halo analysis
+########
+
+church.collapseOpinion <- aggregate(data=c.all, adjustedProb ~ utterance + meaning + domain + utteranceRounded +
+  meaningRounded + interpretationKind, FUN=sum)
+church.halo.exact <- subset(church.collapseOpinion, interpretationKind=="exact")
+colnames(church.halo.exact)[7] <- "probExact"
+church.halo.fuzzy <- subset(church.collapseOpinion, interpretationKind=="fuzzy")
+colnames(church.halo.fuzzy)[7] <- "probFuzzy"
+church.halo <- join(church.halo.exact, church.halo.fuzzy, by=c("domain", "utterance"))
+
+church.halo$diff <- church.halo$probExact - church.halo$probFuzzy
+church.halo$ratio <- ifelse((church.halo$probFuzzy + church.halo$probExact) > 0, 
+                           church.halo$probExact/(church.halo$probFuzzy + church.halo$probExact), 0)
+church.halo$utteranceType <- ifelse(as.numeric(as.character(church.halo$utterance)) %% 10==0, "round", "sharp")
+
+church.halo.summary <- summarySE(church.halo, measurevar="diff", groupvars=c("utteranceType"))
+ggplot(church.halo.summary, aes(x=utteranceType, y=diff, fill=utteranceType)) +
+  geom_bar(color="black", stat="identity", position=position_dodge()) +
+  geom_errorbar(aes(ymin=diff-se, ymax=diff+se), position=position_dodge(0.9), width=0.2)+
+  theme_bw() +
+  #facet_grid(domain~.) +
+  ylab("Prob(exact) - Prob(fuzzy)")
+
+######
+# plot halo human + model + bad model
+######
+
+human.halo.summary$type <- "Human"
+church.full.halo.summary <- church.halo.summary
+church.full.halo.summary$type <-"Full model"
+church.noCost.halo.summary <- church.halo.summary
+church.noCost.halo.summary$type <- "Uniform utterance cost"
+
+comp.halo.summary <- rbind(human.halo.summary, church.full.halo.summary, church.noCost.halo.summary)
+comp.halo.summary$type <- factor(comp.halo.summary$type, levels=c("Human", "Full model", "Uniform utterance cost"))
+
+ggplot(comp.halo.summary, aes(x=utteranceType, y=diff, fill=utteranceType)) +
+  #geom_point()+
+  geom_bar(color="black", stat="identity", position=position_dodge()) +
+  geom_errorbar(aes(ymin=diff-se, ymax=diff+se), position=position_dodge(0.9), width=0.2)+
+  theme_bw() +
+  facet_grid(.~type, scales="free_y") +
+  ylab("P(exact) - P(fuzzy)") +
+  xlab("Utterance Type") +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14), 
+        axis.title.y=element_text(size=16), strip.text.x=element_text(size=16)) +
+          scale_fill_manual(guide=FALSE, palette="BuPu")
+
+########
+# Plot hyperbole human, model, and bad model comparison
+########
+
+p <- read.csv("../../data/mTurkExp/hyperboleThreeDomains/prior_normalized.csv")
+p$interpretation <- factor(p$interpretation)
+p$interpretationRounded <- factor(p$interpretationRounded)
+price.prior <- summarySE(data=p, measurevar="interpretationProb", groupvars=c("domain", "interpretationRounded"))[,1:4]
+colnames(price.prior)[2] <- "utteranceRounded"
+colnames(price.prior)[4] <- "prior"
+
+church.hyperbole <- subset(church.collapseOpinion, interpretationKind=="hyperbolic")
+church.hyperbole.agg <- aggregate(data=church.hyperbole, adjustedProb ~ utterance + domain + utteranceRounded, FUN=sum)
+church.hyperbole.agg$domain <- factor(church.hyperbole.agg$domain)
+
+church.hyperbole.summary <- summarySE(church.hyperbole.agg, measurevar="adjustedProb",
+                                      groupvars=c("utteranceRounded", "domain"))
+  
+church.hyperbole.summary <-  join(church.hyperbole.summary, price.prior, by=c("utteranceRounded", "domain"))
+#church.hyperbole.summary$utterance <- as.numeric(as.character(church.hyperbole.summary$utterance))
+
+human.hyperbole.summary$type <- "Human"
+human.hyperbole.summary$utteranceRounded <- factor(human.hyperbole.summary$utteranceRounded)
+#human.hyperbole.summary$N <- NULL
+#human.hyperbole.summary$utterance <- NULL
+church.full.hyperbole.summary <- church.hyperbole.summary
+church.full.hyperbole.summary$type <- "Full model"
+#church.full.hyperbole.summary$sd <- 0
+#church.full.hyperbole.summary$se <- 0
+#church.full.hyperbole.summary$ci <- 0
+colnames(church.full.hyperbole.summary)[4] <- "interpretationProb"
+church.noPrior.hyperbole.summary <- church.hyperbole.summary
+church.noPrior.hyperbole.summary$type <- "Uniform price prior"
+#church.noPrior.hyperbole.summary$sd <- 0
+#church.noPrior.hyperbole.summary$se <- 0
+#church.noPrior.hyperbole.summary$ci <- 0
+colnames(church.noPrior.hyperbole.summary)[4] <- "interpretationProb"
+
+comp.hyperbole.summary <- rbind(human.hyperbole.summary, church.full.hyperbole.summary, church.noPrior.hyperbole.summary)
+comp.hyperbole.summary$type <- factor(comp.hyperbole.summary$type, levels=c("Human", "Full model", "Uniform price prior"))
+
+comp.hyperbole.summary$utteranceRounded <- factor(comp.hyperbole.summary$utteranceRounded)
+
+ggplot(comp.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb, group=domain)) +
+  geom_point() +
+  geom_line(aes(color=domain)) +
+  #geom_text(aes(label=utterance, color=domain)) +
+  facet_grid(.~type) +
+  geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se), width=0.2, color="grey") +
+  theme_bw() +
+  xlab("Utterance rounded") +
+  ylab("P(hyperbole)") +
+  theme(legend.title=element_text(size=0), legend.position=c(0.85, 0.85),
+        axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
+          scale_color_brewer(palette="Accent")
+
 ##############
 # plot human and model full distributions in three domains
 ##############
 
-multiplot(church.full.plot, human.full.plot, cols=2)
+#multiplot(church.full.plot, human.full.plot, cols=2)
 
 # add opinion probabilities
 c.all.opinion <- subset(aggregate(data=c.all, adjustedProb ~ domain + utterance + valence, FUN=sum), valence=="1")
@@ -228,8 +441,12 @@ church.all <- church.all[with(church.all, order(domain, utterance, interpretatio
 church.all.comp <- 
   human.all[with(human.all, order(domain, utterance, interpretationKind)), ]
 
-church.all.comp$model <- church.all$adjustedProb
-church.all.comp$oldModel <- model.all$adjustedProb
+#church.all.comp$model <- church.all$adjustedProb
+church.all.comp <- join(church.all.comp, church.all, by=c("domain", "utterance", "interpretationKind"))
+colnames(church.all.comp)[9] <- "model"
+church.all.comp[is.na(church.all.comp)] <- 0
+
+#church.all.comp$oldModel <- model.all$adjustedProb
 church.all.comp.noOpinion <- subset(church.all.comp, interpretationKind != "expensive")
 
 ###########
@@ -264,9 +481,6 @@ with(church.all.comp.hyperbole, cor.test(interpretationProb, model))
 # full human and model comparison (no breakdown into effects)
 #################################
 
-human.full.summary <- summarySE(d, measurevar="interpretationProb",
-                                groupvars=c("utterance", "interpretation", "domain", "interpretationKind"))
-human.full.summary <- human.full.summary[with(human.full.summary, order(domain, utterance, interpretation)),]
 church.full.summary <- aggregate(data=c.all, adjustedProb ~ utterance + meaning + domain, FUN=sum)
 church.full.summary <- church.full.summary[with(church.full.summary, order(domain, utterance, meaning)),]
 church.full.raw.summary <- aggregate(data=c.all, probability ~ utterance + meaning + domain, FUN=sum)
@@ -275,11 +489,16 @@ model.full.raw.summary <- aggregate(data=m.all, probability ~ utterance + meanin
 model.full.raw.summary <- model.full.raw.summary[with(model.full.raw.summary, order(domain, utterance, meaning)),]
 
 compare.full.summary <- human.full.summary
+colnames(church.full.summary)[2] <- "interpretation"
+colnames(church.full.summary)[4] <- "model"
 colnames(compare.full.summary)[6] <- "human"
-compare.full.summary$model <- church.full.summary$adjustedProb
-compare.full.summary$model.raw <- church.full.raw.summary$probability
-compare.full.summary$oldModel <- model.full.summary$adjustedProb
-compare.full.summary$oldModel.raw <- model.full.raw.summary$probability
+compare.full.summary <- join(compare.full.summary, church.full.summary, by=c("domain", "utterance", "interpretation"))
+compare.full.summary[is.na(compare.full.summary)] <- 0
+
+#compare.full.summary$model <- church.full.summary$adjustedProb
+#compare.full.summary$model.raw <- church.full.raw.summary$probability
+#compare.full.summary$oldModel <- model.full.summary$adjustedProb
+#compare.full.summary$oldModel.raw <- model.full.raw.summary$probability
 
 ggplot(compare.full.summary, aes(x=human, y=model, color=interpretationKind, shape=domain)) +
   geom_point() +
@@ -291,7 +510,7 @@ ggplot(compare.full.summary, aes(x=human, y=model, color=interpretationKind, sha
         legend.title=element_text(size=14),
         legend.text=element_text(size=14))
 
-with(compare.full.summary, cor.test(human, model.raw))
+with(compare.full.summary, cor.test(human, model))
 
 # compare previous model with current
 # no consideration of valence
@@ -325,36 +544,36 @@ ggplot(model.church.comp, aes(x=probability, y=oldModel.raw, color=interpretatio
 # plot human and model full distributions in three domains
 ##############
 
-multiplot(church.full.plot, human.full.plot, cols=2)
-
-# add opinion probabilities
-m.all.opinion <- subset(aggregate(data=m.all, adjustedProb ~ domain + utterance + valence, FUN=sum), valence=="2")
-colnames(m.all.opinion)[3] <- "interpretationKind"
-m.all.opinion$interpretationKind <- "expensive"
-
-m.all.interpKinds.opinion <- rbind(subset(m.all.interpKinds,interpretationKind!="other"), 
-                                   m.all.opinion)
-
-m.all.interpKinds.opinion$interpretationKind <- 
-  factor(m.all.interpKinds.opinion$interpretationKind, levels=c("exact", "fuzzy", "hyperbolic", "expensive"))
-
-
-model.all <- rbind(m.all.interpKinds.opinion, 
-                   data.frame(utterance=c(50,51,50,51,50,51), 
-                              interpretationKind=c("hyperbolic","hyperbolic",
-                                                   "hyperbolic","hyperbolic","hyperbolic","hyperbolic"), 
-                              adjustedProb=c(0,0,0,0,0,0), 
-                              domain=c("laptop","laptop","electric kettle","electric kettle",
-                                       "watch","watch")))
-
-
-
-model.all <- model.all[with(model.all, order(domain, utterance, interpretationKind)),]
-model.all.comp <- 
-  human.all[with(human.all, order(domain, utterance, interpretationKind)), ]
-
-model.all.comp$model <- model.all$adjustedProb
-model.all.comp.noOpinion <- subset(model.all.comp, interpretationKind != "expensive")
+# multiplot(church.full.plot, human.full.plot, cols=2)
+# 
+# # add opinion probabilities
+# m.all.opinion <- subset(aggregate(data=m.all, adjustedProb ~ domain + utterance + valence, FUN=sum), valence=="2")
+# colnames(m.all.opinion)[3] <- "interpretationKind"
+# m.all.opinion$interpretationKind <- "expensive"
+# 
+# m.all.interpKinds.opinion <- rbind(subset(m.all.interpKinds,interpretationKind!="other"), 
+#                                    m.all.opinion)
+# 
+# m.all.interpKinds.opinion$interpretationKind <- 
+#   factor(m.all.interpKinds.opinion$interpretationKind, levels=c("exact", "fuzzy", "hyperbolic", "expensive"))
+# 
+# 
+# model.all <- rbind(m.all.interpKinds.opinion, 
+#                    data.frame(utterance=c(50,51,50,51,50,51), 
+#                               interpretationKind=c("hyperbolic","hyperbolic",
+#                                                    "hyperbolic","hyperbolic","hyperbolic","hyperbolic"), 
+#                               adjustedProb=c(0,0,0,0,0,0), 
+#                               domain=c("laptop","laptop","electric kettle","electric kettle",
+#                                        "watch","watch")))
+# 
+# 
+# 
+# model.all <- model.all[with(model.all, order(domain, utterance, interpretationKind)),]
+# model.all.comp <- 
+#   human.all[with(human.all, order(domain, utterance, interpretationKind)), ]
+# 
+# model.all.comp$model <- model.all$adjustedProb
+# model.all.comp.noOpinion <- subset(model.all.comp, interpretationKind != "expensive")
 
 ###########
 # plot effects scatter plot
@@ -398,11 +617,13 @@ compare.full.summary <- human.full.summary
 colnames(compare.full.summary)[6] <- "human"
 compare.full.summary$model <- model.full.summary$adjustedProb
 
-my.colors <- c(brewer.pal(3, "Accent"), "grey")
-ggplot(compare.full.summary, aes(x=model, y=human, color=interpretationKind, shape=domain)) +
-  geom_point(size=2.5) +
-  geom_abline(linetype=2) +
+#my.colors <- c(brewer.pal(3, "Dark2"), "grey")
+my.colors <- c("#003399", "#339966", "#FF6633", "grey")
+ggplot(compare.full.summary, aes(x=model, y=human)) +
+  geom_point(size=2.5, aes(x=model, y=human, color=interpretationKind, shape=domain)) +
+  #geom_abline(linetype=2) +
   #geom_text(aes(label=utterance)) +
+  geom_smooth(data=compare.full.summary, aes(x=model, y=human), method=lm, color="black", linetype=2) +
   theme_bw() +
   theme(axis.title.x = element_text(size=18),
         axis.text.x  = element_text(size=12),
@@ -416,8 +637,8 @@ ggplot(compare.full.summary, aes(x=model, y=human, color=interpretationKind, sha
           scale_color_manual(values=my.colors, name="Interpretation Kind", 
                              breaks=c("exact", "fuzzy", "hyperbolic", "other"),
                              labels=c("Exact", "Fuzzy", "Hyperbolic", "Other"))+
-                               scale_shape_discrete(breaks=c("electric kettle", "laptop", "watch"),
-                                                    labels=c("Electric Keltte", "Laptop", "Watch"))
+                               scale_shape_discrete(name="Item", breaks=c("electric kettle", "laptop", "watch"),
+                                                    labels=c("Electric Kettle", "Laptop", "Watch"))
 
 with(compare.full.summary, cor.test(human, model))
 
@@ -572,16 +793,81 @@ ap$utteredPriceRounded <- factor(ap$utteredPriceRounded)
 ap$actualPriceSharpened <- factor(ap$actualPriceSharpened)
 ap$utteredPriceSharpened <- factor(ap$utteredPriceSharpened)
 
+ap$isHyperbole <- ifelse(ap$actualPriceRounded!=ap$utteredPriceRounded,
+                                 "hyperbole", "literal")
+
+summary(lm(data=ap, probOpinion ~ isHyperbole))
+
 ap.summary <- summarySE(ap, measurevar="probOpinion", 
-                        groupvars=c("actualPriceRounded", "utteredPriceRounded", "domain"))
-
-
-ggplot(ap.summary, aes(x=utteredPriceRounded, y=probOpinion, fill=domain)) +
-  geom_bar(stat="identity", color="black") +
+                        groupvars=c("actualPriceRounded", "isHyperbole", "domain"))
+                        #groupvars=c("actualPriceRounded", "isHyperbole"))
+ggplot(ap.summary, aes(x=actualPriceRounded, y=probOpinion, group=isHyperbole, color=domain, shape=isHyperbole, linetype=isHyperbole)) +
+  geom_point(size=3) +
+  geom_line() +
+  #geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
-  facet_grid(domain ~ actualPriceRounded) +
+  facet_grid(domain ~ .) +
   theme_bw() +
-  theme(axis.text.x  = element_text(size=10, angle=-90))
+  theme(axis.text.x  = element_text(size=10, angle=-90)) +
+  scale_shape_manual(values=c(15, 6)) +
+  scale_color_brewer(palette="Accent", guide=FALSE)
+
+#################################
+# Model affect
+#################################
+c.all.withAffect <- subset(c.all, valence=="1")
+colnames(c.all.withAffect)[11] <- "affectProb"
+c.all.noAffect <- subset(c.all, valence=="0")
+colnames(c.all.noAffect)[11] <- "noAffectProb"
+c.affect <- join(c.all.withAffect, c.all.noAffect, by=c("utterance", "meaning", "utteranceRounded", "meaningRounded", "domain", "interpretationKind"))
+c.affect$affectRatio <- c.affect$affectProb / (c.affect$affectProb + c.affect$noAffectProb)
+
+church.affect <- subset(c.affect, as.numeric(as.character(c.affect$utteranceRounded)) >=
+  as.numeric(as.character(c.affect$meaningRounded)))
+
+church.affect$isHyperbole <- ifelse(church.affect$utteranceRounded==church.affect$meaningRounded, "literal", "hyperbole")
+
+church.affect.summary <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("domain", "meaningRounded", "isHyperbole"))
+
+
+ap.summary$type <- "Human"
+
+church.full.affect.summary <- church.affect.summary
+colnames(church.full.affect.summary)[5] <- "probOpinion"
+colnames(church.full.affect.summary)[2] <- "actualPriceRounded"
+church.full.affect.summary$type <- "Full model"
+
+church.noAffectPrior.affect.summary <- church.affect.summary
+colnames(church.noAffectPrior.affect.summary)[5] <- "probOpinion"
+colnames(church.noAffectPrior.affect.summary)[2] <- "actualPriceRounded"
+church.noAffectPrior.affect.summary$type <- "Uniform affect prior"
+
+comp.affect.summary <- rbind(ap.summary, church.full.affect.summary, church.noAffectPrior.affect.summary)
+comp.affect.summary$type <- factor(comp.affect.summary$type, levels=c("Human", "Full model", "Uniform affect prior"))
+colnames(comp.affect.summary)[2] <- "Literalness"
+
+ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Literalness, color=domain, shape=Literalness, linetype=Literalness)) +
+  geom_point(size=3) +
+  geom_line() +
+  #geom_bar(stat="identity", color="black") +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
+  facet_grid(domain ~ type) +
+  theme_bw() +
+  xlab("Price state rounded") +
+  ylab("P(affect | utterance and price state)") +
+  scale_shape_manual(values=c(16, 6)) +
+  scale_color_brewer(palette="Accent", guide=FALSE) +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        legend.title=element_text(size=0), legend.text=element_text(size=14),
+        legend.position=c(0.9, 0.9))
+  
+
+
+
+
+####################
 
 uttered.summary <- summarySE(ap, measurevar="probOpinion",
                              groupvars=c("domain", "utteredPriceRounded"))
