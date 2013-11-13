@@ -6,7 +6,7 @@ f = open(sys.argv[1], "r")
 
 subject_fields = ["workerid", "Answer.gender", "Answer.nativeLanguage", "Answer.income", "Answer.age"]
 item_fields = ["Answer.sentenceIDs", "Answer.domains", "Answer.utteredPrices", "Answer.utteredPricesRounded", "Answer.utteredTypes", "Answer.actualPrices", "Answer.actualPricesRounded", "Answer.actualTypes", "Answer.affects", "Answer.orders", "Answer.buyers"]
-numTrials = 9
+numTrials = 30
 # the order in which the fields are listed
 print "workerID, gender, nativeLanguage, income, age, sentenceID, domain, utteredPrice, utteredPriceRounded, utteredType, actualPrice, actualPriceRounded, actualType, probOpinion, order, buyer, "
 subject_indices = []

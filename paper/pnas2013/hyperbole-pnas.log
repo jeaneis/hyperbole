@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 NOV 2013 17:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  13 NOV 2013 00:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -527,7 +527,11 @@ LaTeX Info: Redefining \] on input line 2667.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-(./hyperbole-pnas.aux)
+(./hyperbole-pnas.aux
+
+LaTeX Warning: Label `model_fit' multiply defined.
+
+)
 \openout1 = `hyperbole-pnas.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
@@ -542,8 +546,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
 LaTeX Font Info:    ... okay on input line 128.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
 LaTeX Font Info:    ... okay on input line 128.
-
-(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count145
 \scratchdimen=\dimen185
@@ -692,78 +695,56 @@ File: human_model_scatter.pdf Graphic file (type pdf)
 <use human_model_scatter.pdf>
 Package pdftex.def Info: human_model_scatter.pdf used on input line 240.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
-\dblfigandtabbox2=\box64
 
-<halo_comp_scatter.pdf, id=6, 722.7pt x 433.62pt>
-File: halo_comp_scatter.pdf Graphic file (type pdf)
- <use halo_comp_scatter.pdf>
-Package pdftex.def Info: halo_comp_scatter.pdf used on input line 249.
-(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
-
-<hyperbole_comp_rounded.pdf, id=7, 722.7pt x 433.62pt>
-File: hyperbole_comp_rounded.pdf Graphic file (type pdf)
-
-<use hyperbole_comp_rounded.pdf>
-Package pdftex.def Info: hyperbole_comp_rounded.pdf used on input line 253.
-(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
-\dblfigandtabbox3=\box65
- <affect_comp.pdf, id=8, 722.7pt x 433.62pt>
-File: affect_comp.pdf Graphic file (type pdf)
-
-<use affect_comp.pdf>
-Package pdftex.def Info: affect_comp.pdf used on input line 262.
-(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
- <goals_comp.pdf, id=9, 722.7pt x 433.62pt>
-File: goals_comp.pdf Graphic file (type pdf)
-
-<use goals_comp.pdf>
-Package pdftex.def Info: goals_comp.pdf used on input line 266.
-(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
-
-Overfull \hbox (1.49265pt too wide) in paragraph at lines 272--277
+Overfull \hbox (5.47108pt too wide) in paragraph at lines 246--251
 \OMS/cmsy/m/n/9 f\OT1/cmr/m/n/9 50\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 50[]\OML/cmm
 /m/it/9 ; \OT1/cmr/m/n/9 500\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 500[]\OML/cmm/m/it
 /9 ; \OT1/cmr/m/n/9 1000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 1000[]\OML/cmm/m/it/9 
 ; \OT1/cmr/m/n/9 5000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 5000[]\OML/cmm/m/it/9 ; \
 OT1/cmr/m/n/9 10000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 10000[]\OMS/cmsy/m/n/9 g$\O
-T1/cmr/m/n/9 . The
+T1/cmr/m/n/9 . Each
  []
 
 [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Reference `full_bar' on page 2 undefined on input line 281.
+LaTeX Warning: Reference `model_effects' on page 2 undefined on input line 255.
 
 
-LaTeX Warning: Reference `model_effects' on page 2 undefined on input line 281.
+\dblfigandtabbox2=\box64
+<halo_comp_scatter.pdf, id=20, 722.7pt x 433.62pt>
+File: halo_comp_scatter.pdf Graphic file (type pdf)
+ <use halo_comp_scatter.pdf>
+Package pdftex.def Info: halo_comp_scatter.pdf used on input line 260.
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
 
+<hyperbole_comp_rounded.pdf, id=21, 722.7pt x 433.62pt>
+File: hyperbole_comp_rounded.pdf Graphic file (type pdf)
 
+<use hyperbole_comp_rounded.pdf>
+Package pdftex.def Info: hyperbole_comp_rounded.pdf used on input line 264.
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
+\dblfigandtabbox3=\box65
+ <affect_comp.pdf, id=22, 722.7pt x 433.62pt>
+File: affect_comp.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `full_bar' on page 2 undefined on input line 284.
+<use affect_comp.pdf>
+Package pdftex.def Info: affect_comp.pdf used on input line 273.
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
+ <goals_comp.pdf, id=23, 722.7pt x 433.62pt>
+File: goals_comp.pdf Graphic file (type pdf)
 
-
-LaTeX Warning: Reference `human_effects' on page 2 undefined on input line 284.
-
-
-
-LaTeX Warning: Reference `model_fit' on page 2 undefined on input line 289.
-
-\figandtabbox0=\box66
-[2 <./model_effects_bar.pdf> <./human_model_scatter.pdf> <./halo_comp_scatter.p
-df> <./hyperbole_comp_rounded.pdf> <./affect_comp.pdf> <./goals_comp.pdf>]
+<use goals_comp.pdf>
+Package pdftex.def Info: goals_comp.pdf used on input line 277.
+(pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
+ [2 <./model_effects_bar.pdf> <./human_model_scatter.pdf>]
 
 LaTeX Warning: Citation `sutton1998reinforcement' on page 3 undefined on input 
-line 339.
+line 330.
 
-
-LaTeX Warning: Reference `eq:speakerprob' on page 3 undefined on input line 352
-.
-
-
-LaTeX Warning: Reference `full_bar' on page 3 undefined on input line 366.
-
-[3]
+[3 <./halo_comp_scatter.pdf> <./hyperbole_comp_rounded.pdf> <./affect_comp.pdf>
+ <./goals_comp.pdf>]
 
  ======================================================================== 
  C A R E F U L !!!!!
@@ -777,79 +758,61 @@ LaTeX Warning: Reference `full_bar' on page 3 undefined on input line 366.
  
  ======================================================================== 
 
-<model_full_bar.pdf, id=78, 722.7pt x 433.62pt>
+<model_full_bar.pdf, id=74, 722.7pt x 433.62pt>
 File: model_full_bar.pdf Graphic file (type pdf)
  <use model_full_bar.pdf>
-Package pdftex.def Info: model_full_bar.pdf used on input line 385.
-(pdftex.def)             Requested size: 529.22142pt x 317.53244pt.
-
-Overfull \hbox (19.22142pt too wide) in paragraph at lines 385--387
- [][] 
- []
+Package pdftex.def Info: model_full_bar.pdf used on input line 377.
+(pdftex.def)             Requested size: 455.24408pt x 273.14896pt.
 
 [4]
+\dblfigandtabbox4=\box66
+ <human_full_bar.pdf, id=82, 722.7pt x 433.62pt>
+File: human_full_bar.pdf Graphic file (type pdf)
+ <use human_full_bar.pdf>
+Package pdftex.def Info: human_full_bar.pdf used on input line 382.
+(pdftex.def)             Requested size: 455.24408pt x 273.14896pt.
+
 
 
  C A R E F U L !! \begin{figure}[h] used on this page !
 
 
-<human_full_bar.pdf, id=82, 722.7pt x 433.62pt>
-File: human_full_bar.pdf Graphic file (type pdf)
- <use human_full_bar.pdf>
-Package pdftex.def Info: human_full_bar.pdf used on input line 390.
-(pdftex.def)             Requested size: 529.22142pt x 317.53244pt.
-
-Overfull \hbox (19.22142pt too wide) in paragraph at lines 390--392
- [][] 
- []
-
-
-Overfull \vbox (4.74998pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (3.74998pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (2.74998pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.74998pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (0.74998pt too high) has occurred while \output is active []
-
-
-[5 <./model_full_bar.pdf>]
-\dblfigandtabbox4=\box67
- <human_effect_bar.pdf, id=91, 722.7pt x 433.62pt>
+<human_effect_bar.pdf, id=83, 722.7pt x 433.62pt>
 File: human_effect_bar.pdf Graphic file (type pdf)
-
-<use human_effect_bar.pdf>
-Package pdftex.def Info: human_effect_bar.pdf used on input line 397.
+ <use human_effect_bar.pdf>
+Package pdftex.def Info: human_effect_bar.pdf used on input line 388.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
- <halo_comp.pdf, id=92, 722.7pt x 433.62pt>
+
+<halo_comp.pdf, id=84, 722.7pt x 433.62pt>
 File: halo_comp.pdf Graphic file (type pdf)
-
-<use halo_comp.pdf>
-Package pdftex.def Info: halo_comp.pdf used on input line 401.
+ <use halo_comp.pdf>
+Package pdftex.def Info: halo_comp.pdf used on input line 392.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
- [6 <./human_effect_bar.pdf> <./halo_comp.pdf> <./human_full_bar.pdf>] [7] (./h
-yperbole-pnas.aux)
+
+Overfull \vbox (25.54793pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (25.54793pt too high) has occurred while \output is active []
+
+
+[5 <./human_full_bar.pdf> <./model_full_bar.pdf>]
+\figandtabbox0=\box67
+ [6 <./human_effect_bar.pdf> <./halo_comp.pdf>] (./hyperbole-pnas.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  11757 strings out of 493488
- 222180 string characters out of 3141326
- 280594 words of memory out of 3000000
+ 222189 string characters out of 3141326
+ 286765 words of memory out of 3000000
  14800 multiletter control sequences out of 15000+200000
  15373 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,12n,57p,1964b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,12n,57p,2197b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.p
 fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
@@ -868,10 +831,10 @@ ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive
 012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/201
 2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2012/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on hyperbole-pnas.pdf (7 pages, 306491 bytes).
+Output written on hyperbole-pnas.pdf (6 pages, 311819 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
+ 170 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

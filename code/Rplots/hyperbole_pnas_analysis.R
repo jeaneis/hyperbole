@@ -182,7 +182,7 @@ levels(church.effects$domain) <- c("Electric Kettle", "Laptop", "Watch")
 
 ## church model
 
-my.colors2 <- c("#99CCFF", "#99FFCC", "#FF9966", "#FF9999")
+my.colors2 <- c("#6699CC", "#66CC99", "#FF9966", "#FFCCCC")
 ggplot(church.effects, aes(x=utterance, y=adjustedProb, fill=interpretationKind)) +
   geom_bar(stat="identity", color="black") +
   #geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se),width=.2) +
@@ -221,13 +221,18 @@ human.halo$utteranceType <- ifelse(as.numeric(as.character(human.halo$utterance)
 human.halo.summary <- summarySE(human.halo, measurevar="diff", groupvars=c("utteranceType", "domain"))
 #human.halo.summary <- summarySE(human.halo, measurevar="ratio", groupvars=c("utteranceType", "domain"))
 
+#########
+# Stats #
+#########
+summary(lm(data=human.halo.summary, diff ~ utteranceType))
+
 ## Visualize human halo ##
 
 #ggplot(human.halo.summary, aes(x=utteranceRounded, y=diff, group=utteranceType, color=domain, shape=utteranceType, linetype=utteranceType)) +
 ggplot(human.halo.summary, aes(x=utteranceType, y=diff, group=domain, color=domain, shape=utteranceType)) +
   geom_point(size=4) +
   #geom_bar(color="black", stat="identity", position=position_dodge()) +
-  geom_line(linetype=2) +
+  geom_line(linetype=2, size=1) +
   geom_errorbar(aes(ymin=diff-se, ymax=diff+se), width=0.05, color="grey")+
   theme_bw() +
   facet_grid(domain~.) +
@@ -301,13 +306,15 @@ ggplot(comp.halo.summary, aes(x=utteranceType, y=diff, fill=utteranceType)) +
         axis.title.y=element_text(size=16), strip.text.x=element_text(size=16)) +
           scale_fill_manual(guide=FALSE, palette="BuPu")
 
-# scatter blot with domains
+# scatter plot with domains
 #ggplot(church.halo.summary, aes(x=utteranceRounded, y=diff, group=utteranceType, color=domain, shape=utteranceType, linetype=utteranceType)) +
+
+my.colors.domains <- c("#ff9896", "#17becf", "#e7ba52")
 ggplot(comp.halo.summary, aes(x=utteranceType, y=diff, group=domain, color=domain, shape=utteranceType)) +
-  geom_point(size=4) +
+  geom_point(size=5) +
   #geom_bar(color="black", stat="identity", position=position_dodge()) +
-  geom_line(linetype=2) +
-  geom_errorbar(aes(ymin=diff-se, ymax=diff+se), width=0.05, color="grey")+
+  geom_line(linetype=2, size=1) +
+  geom_errorbar(aes(ymin=diff-se, ymax=diff+se), width=0.1, color="grey")+
   theme_bw() +
   facet_grid(.~type) +
   ylab("P(exact) - P(fuzzy)") +
@@ -317,7 +324,8 @@ ggplot(comp.halo.summary, aes(x=utteranceType, y=diff, group=domain, color=domai
         axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
         axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
         strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
-          scale_color_brewer(palette="Accent")
+          #scale_color_brewer(palette="Accent")
+          scale_color_manual(values=my.colors.domains)
 
 ############
 # Hyperbole analysis
@@ -330,6 +338,22 @@ human.hyperbole.agg <- aggregate(data=human.hyperbole, interpretationProb ~ utte
 
 human.hyperbole.summary <- summarySE(human.hyperbole.agg, measurevar="interpretationProb", 
                                      groupvars=c("utteranceRounded", "domain"))
+
+#########
+# Stats #
+#########
+
+p <- read.csv("../../data/mTurkExp/hyperboleThreeDomains/prior_normalized.csv")
+p$interpretation <- factor(p$interpretation)
+p$interpretationRounded <- factor(p$interpretationRounded)
+price.prior <- summarySE(data=p, measurevar="interpretationProb", groupvars=c("domain", "interpretationRounded"))[,1:4]
+colnames(price.prior)[2] <- "utteranceRounded"
+colnames(price.prior)[4] <- "prior"
+
+human.hyperbole.prior <- join(human.hyperbole.summary, price.prior, by=c("domain", "utteranceRounded"))
+
+summary(lm(data=human.hyperbole.prior, interpretationProb ~ prior))
+
 # visualize human hyperbole
 ggplot(human.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb, group=domain, color=domain)) +
   geom_point() +
@@ -386,8 +410,8 @@ comp.hyperbole.summary$type <- factor(comp.hyperbole.summary$type, levels=c("Hum
 comp.hyperbole.summary$utteranceRounded <- factor(comp.hyperbole.summary$utteranceRounded)
 
 ggplot(comp.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb, group=domain, color=domain)) +
-  geom_point(size=3) +
-  geom_line(aes(color=domain)) +
+  geom_point(size=5) +
+  geom_line(aes(color=domain), size=1) +
   #geom_text(aes(label=utterance, color=domain)) +
   facet_grid(.~type) +
   geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se), width=0.2, color="grey") +
@@ -398,7 +422,7 @@ ggplot(comp.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb, gro
         axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
         axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
         strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
-          scale_color_brewer(palette="Accent")
+          scale_color_manual(values=my.colors.domains)
 
 
 #######
@@ -406,7 +430,7 @@ ggplot(comp.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb, gro
 #######
 
 ### human ###
-ap <- read.table("../../data/mTurkExp/hyperboleThreeDomains/affect_pairs2_long.csv", 
+ap <- read.table("../../data/mTurkExp/hyperboleThreeDomains/affect_pairs3_long.csv", 
                  strip.white=TRUE, header=TRUE, sep=",")
 ap$actualPriceSharpened <- ifelse(ap$actualType=="sharp", ap$actualPriceRounded+1, ap$actualPriceRounded)
 ap$utteredPriceSharpened <- ifelse(ap$utteredType=="sharp", ap$utteredPriceRounded+1, ap$utteredPriceRounded)
@@ -421,9 +445,11 @@ ap$isHyperbole <- ifelse(ap$actualPriceRounded!=ap$utteredPriceRounded,
 # Stats for human affect effect
 ######
 
-summary(lm(data=ap, probOpinion ~ isHyperbole))
 ap.summary <- summarySE(ap, measurevar="probOpinion", 
                         groupvars=c("actualPriceRounded", "isHyperbole", "domain"))
+
+summary(lm(data=ap.summary, probOpinion ~ isHyperbole))
+
 ggplot(ap.summary, aes(x=actualPriceRounded, y=probOpinion, group=isHyperbole, color=domain, shape=isHyperbole, linetype=isHyperbole)) +
   geom_point(size=3) +
   geom_line() +
@@ -433,7 +459,7 @@ ggplot(ap.summary, aes(x=actualPriceRounded, y=probOpinion, group=isHyperbole, c
   theme_bw() +
   theme(axis.text.x  = element_text(size=10, angle=-90)) +
   scale_shape_manual(values=c(15, 6)) +
-  scale_color_brewer(palette="Accent", guide=FALSE)
+  scale_color_manual(values=my.colors.domains, guide=FALSE)
 
 ### model ###
 
@@ -461,13 +487,13 @@ church.full.affect.summary$type <- "Full model"
 church.noAffectPrior.affect.summary <- church.affect.summary
 church.noAffectPrior.affect.summary$type <- "Uniform affect prior"
 
-comp.affect.summary <- rbind(ap.summary, church.full.affect.summary, church.noAffectPrior.affect.summary)
+comp.affect.summary <- rbind(human.affect.summary, church.full.affect.summary, church.noAffectPrior.affect.summary)
 comp.affect.summary$type <- factor(comp.affect.summary$type, levels=c("Human", "Full model", "Uniform affect prior"))
 colnames(comp.affect.summary)[2] <- "Literalness"
 
 ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Literalness, color=domain, shape=Literalness, linetype=Literalness)) +
-  geom_point(size=3) +
-  geom_line() +
+  geom_point(size=5) +
+  geom_line(size=1) +
   #geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
   facet_grid(domain ~ type) +
@@ -476,7 +502,7 @@ ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Liter
   ylab("P(affect | utterance and price state)") +
   scale_shape_manual(values=c(8, 16)) +
   scale_linetype_manual(values=c(2, 1)) +
-  scale_color_brewer(palette="Accent", guide=FALSE) +
+  scale_color_manual(values=my.colors.domains, guide=FALSE) +
   theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
         axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
         strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
@@ -516,20 +542,22 @@ church.noValence.example <- church.example
 church.noValence.example$type <- "Imprecise goal"
 
 church.noImprecise.example <- church.example
-church.noImprecise.example$type <- "Valence goal"
+church.noImprecise.example$type <- "Affect goal"
 
 comp.goal.example <- rbind(human.example, church.full.example, church.literal.example, 
                            church.noImprecise.example, church.noValence.example)
 
 comp.goal.example$type <- factor(comp.goal.example$type, levels=
-  c("No goals", "Imprecise goal", "Valence goal", "Full model", "Human"))
+  c("No goals", "Imprecise goal", "Affect goal", "Full model", "Human"))
+
+my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
 
 ggplot(comp.goal.example, aes(x=interpretation, y=interpretationProb, fill=type)) +
   geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se), width=0.2) +
   theme_bw() +
   facet_grid(.~type) +
-  scale_fill_brewer(palette="Blues", guide=FALSE) +
+  scale_fill_manual(values=my.colors.goals, guide=FALSE) +
   #geom_text("text", x=1, y=2, label='"The electric kettle cost 1,000 dollars."') +
   ggtitle('"The electric kettle cost 1,000 dollars."') +
   xlab("Interpretation") +
@@ -538,8 +566,6 @@ ggplot(comp.goal.example, aes(x=interpretation, y=interpretationProb, fill=type)
         axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
         strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
         legend.text=element_text(size=0),title=element_text(size=18))
-  
-  
 
 
 #################################
