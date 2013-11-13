@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  13 NOV 2013 00:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  13 NOV 2013 01:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -618,71 +618,8 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 173.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-
-LaTeX Warning: Citation `grice1975' on page 1 undefined on input line 212.
-
-
-LaTeX Warning: Citation `clark1996using' on page 1 undefined on input line 212.
-
-
-
-LaTeX Warning: Citation `frankgoodmanscience' on page 1 undefined on input line
- 214.
-
-
-LaTeX Warning: Citation `goodmanstuhlmueller' on page 1 undefined on input line
- 214.
-
-
-LaTeX Warning: Citation `bergen2012' on page 1 undefined on input line 214.
-
-
-LaTeX Warning: Citation `jager2009pragmatic' on page 1 undefined on input line 
-214.
-
-
-LaTeX Warning: Citation `lasersohn1999pragmatic' on page 1 undefined on input l
-ine 221.
-
-
-LaTeX Warning: Citation `bastiaanse2011rationality' on page 1 undefined on inpu
-t line 221.
-
-
-LaTeX Warning: Citation `krifka2007approximate' on page 1 undefined on input li
-ne 221.
-
-
-LaTeX Warning: Citation `mccarthy2004there' on page 1 undefined on input line 2
-23.
-
-
-LaTeX Warning: Citation `gibbs2000irony' on page 1 undefined on input line 223.
-
-
-
-LaTeX Warning: Citation `cano2003risk' on page 1 undefined on input line 223.
-
-
-LaTeX Warning: Citation `kreuz1995two' on page 1 undefined on input line 223.
-
-
-LaTeX Warning: Citation `kreuz2007lexical' on page 1 undefined on input line 22
-3.
-
-
-LaTeX Warning: Citation `davidov2010semi' on page 1 undefined on input line 223
-.
-
-
-LaTeX Warning: Citation `reyes2011mining' on page 1 undefined on input line 223
-.
-
-
-LaTeX Warning: Citation `van2007algorithm' on page 1 undefined on input line 22
-3.
-
 \dblfigandtabbox1=\box63
+
 <model_effects_bar.pdf, id=4, 722.7pt x 433.62pt>
 File: model_effects_bar.pdf Graphic file (type pdf)
  <use model_effects_bar.pdf>
@@ -713,36 +650,32 @@ LaTeX Warning: Reference `model_effects' on page 2 undefined on input line 255.
 
 
 \dblfigandtabbox2=\box64
-<halo_comp_scatter.pdf, id=20, 722.7pt x 433.62pt>
+<halo_comp_scatter.pdf, id=19, 722.7pt x 433.62pt>
 File: halo_comp_scatter.pdf Graphic file (type pdf)
  <use halo_comp_scatter.pdf>
 Package pdftex.def Info: halo_comp_scatter.pdf used on input line 260.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
 
-<hyperbole_comp_rounded.pdf, id=21, 722.7pt x 433.62pt>
+<hyperbole_comp_rounded.pdf, id=20, 722.7pt x 433.62pt>
 File: hyperbole_comp_rounded.pdf Graphic file (type pdf)
 
 <use hyperbole_comp_rounded.pdf>
 Package pdftex.def Info: hyperbole_comp_rounded.pdf used on input line 264.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
 \dblfigandtabbox3=\box65
- <affect_comp.pdf, id=22, 722.7pt x 433.62pt>
+ <affect_comp.pdf, id=21, 722.7pt x 433.62pt>
 File: affect_comp.pdf Graphic file (type pdf)
 
 <use affect_comp.pdf>
 Package pdftex.def Info: affect_comp.pdf used on input line 273.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
- <goals_comp.pdf, id=23, 722.7pt x 433.62pt>
+ <goals_comp.pdf, id=22, 722.7pt x 433.62pt>
 File: goals_comp.pdf Graphic file (type pdf)
 
 <use goals_comp.pdf>
 Package pdftex.def Info: goals_comp.pdf used on input line 277.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
  [2 <./model_effects_bar.pdf> <./human_model_scatter.pdf>]
-
-LaTeX Warning: Citation `sutton1998reinforcement' on page 3 undefined on input 
-line 330.
-
 [3 <./halo_comp_scatter.pdf> <./hyperbole_comp_rounded.pdf> <./affect_comp.pdf>
  <./goals_comp.pdf>]
 
@@ -806,10 +739,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11757 strings out of 493488
- 222189 string characters out of 3141326
- 286765 words of memory out of 3000000
- 14800 multiletter control sequences out of 15000+200000
+ 11742 strings out of 493488
+ 221965 string characters out of 3141326
+ 286770 words of memory out of 3000000
+ 14785 multiletter control sequences out of 15000+200000
  15373 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,57p,2197b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -819,22 +752,21 @@ fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
 /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
 sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr
-/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/lo
-cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
-/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive
-/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/201
-2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2012/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on hyperbole-pnas.pdf (6 pages, 311819 bytes).
+/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on hyperbole-pnas.pdf (6 pages, 303237 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
+ 166 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

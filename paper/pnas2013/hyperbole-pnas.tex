@@ -209,7 +209,7 @@ pragmatic halo (the imprecise interpretation of round numbers) and hyperbole (th
 
 \dropcap{I}magine a conversation with a friend about a new restaurant where she recently dined. Your friend says, ``It took $30$ minutes to get a table." You are likely to interpret this to mean she waited approximately $30$ minutes. Now suppose your friend says: ``It took $32$ minutes to get a table." You are more likely to interpret the number expression to mean exactly $32$, and believe that she cares to communicate the exact wait time. Suppose she says: ``It took a million hours to get a table." You will probably interpret her to mean that the wait was shorter than a million hours, but importantly that she thinks it took much too long. 
 
-Given the incredible flexibility of language, a crucial part of a listener's job is to understand an utterance even when its literally meaning is extremely unlikely. Non-literal language understanding is one of the biggest challenges in language research, and it has been difficult to build formal models or design empirical studies that capture effects in non-literal language understanding quantitatively. In this paper, we present a computational model that predicts people's non-literal interpretation of number words. We build on a traditional approach in language understanding that views communication as an interaction between rational, cooperative agents \cite{grice1975, clark1996using}, and show how non-literal interpretation of number terms can be explained as effects of probabilistic inference over recursive social models.
+Given the incredible flexibility of language, a crucial part of a listener's job is to understand an utterance even when its literally meaning is extremely unlikely \cite{moreno2007creativity}. Non-literal language understanding is one of the biggest challenges in language research, and it has been difficult to build formal models or design empirical studies that capture effects in non-literal language understanding quantitatively. In this paper, we present a computational model that predicts people's non-literal interpretation of number words. We build on a traditional approach in language understanding that views communication as an interaction between rational, cooperative agents \cite{grice1975, clark1996using}, and show how non-literal interpretation of number terms can be explained as effects of probabilistic inference over recursive social models.
 
 Recent work has shown that modeling communication as recursive social inference is able to quantitatively explain rich phenomena in human pragmatic reasoning \cite{frankgoodmanscience, goodmanstuhlmueller, bergen2012, jager2009pragmatic}. However, a limitation of these models is that they are unable to handle utterances where the intended meaning directly contradicts the literal meaning, as is the case in metaphor (``Juliet is the sun") and hyperbole (``It took a million hours to get a table.") Here we extend the model by introducing uncertainty over the speaker's communicative goal, and propose that non-literal language understanding relies on considering the possibility of communicative goals that are distinct from what is conveyed by the literal meaning of an utterance. More concretely, a listener reasons about a speaker who optimizes informativeness of her utterances given a particular communicative goal; the speaker choses the optimal utterance assuming that the listener is reasoning in this way about the speaker; and so on. In this paper, we show how this framework of recursive social inference can be applied to capture non-literal hyperbolic interpretation of number words.
 % FIXME
@@ -220,7 +220,7 @@ We focus on number words for three reasons: first, despite their flexible and no
 
 Pragmatic halo describes the phenomenon in which people tend to interpret simple number expressions imprecisely and complex number expressions precisely \cite{lasersohn1999pragmatic}. This effect has been formalized via game theory as a rational choice given different costs of utterances \cite{bastiaanse2011rationality, krifka2007approximate}. The model we propose captures these arguments within a Bayesian framework for pragmatic inference. Given uncertainty about whether a speaker wishes to communicate precisely or approximately in addition to differential utterance costs, we show that a rational listener will interpret costlier number words as more precise.
 
-While hyperbolic utterances are literally false, listeners usually successfully infer the speaker's intended meaning and often regard hyperbole as a source of humor or signal of interpersonal closeness \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work on human and machine identification of irony and hyperbole has focused on linguistic cues such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz1995two, kreuz2007lexical, davidov2010semi, reyes2011mining, van2007algorithm}. Here we show that common prior knowledge about the relevant topic also plays an important role in identifying and interpreting hyperbolic statements. That is, part of what makes an utterance likely to receive a hyperbolic interpretation is that both speaker and listener know that the literal meaning is extremely unlikely. Furthermore, given the possibility that the speaker wishes to convey a subjective opinion instead of simply the objective state of the world, the listener can infer the affective subtext that goes beyond the literal meaning of the utterance. 
+While hyperbolic utterances are literally false, listeners usually successfully infer the speaker's intended meaning and often regard hyperbole as a source of humor or signal of interpersonal closeness \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work on human and machine identification of irony and hyperbole has focused on linguistic cues such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz2007lexical, davidov2010semi, reyes2011mining, van2007algorithm}. Here we show that common prior knowledge about the relevant topic also plays an important role in identifying and interpreting hyperbolic statements. That is, part of what makes an utterance likely to receive a hyperbolic interpretation is that both speaker and listener know that the literal meaning is extremely unlikely. Furthermore, given the possibility that the speaker wishes to convey a subjective opinion instead of simply the objective state of the world, the listener can infer the affective subtext that goes beyond the literal meaning of the utterance. 
 
 By modeling language understanding as social inference regarding the communicative goal, meaning, and affective subtext of an utterance, we show that our model captures the non-literal effects of halo and hyperbole as well as their interaction.
 
@@ -240,7 +240,7 @@ By modeling language understanding as social inference regarding the communicati
 \includegraphics[width=8.7cm]{human_model_scatter.pdf}
 \caption{Hello}\label{model_fit}
 \end{minipage}
-\caption{We show the model and human interpretation probabilities for all $300$ items ($10$ utterances crossed with $10$ price states and $3$ item kinds. The model significantly predicts human interpretations with very high correlation ($r=0.97$, $p<0.0001$.)}
+\caption{(a) This plot summarizes pragmatic halo, hyperbole, and affective interpretations of the model. (b) The model significantly predicts human interpretations with high correlation ($r=0.97$, $p<0.0001$) for all $300$ items.}
 \end{figure*}
 
 We test our model's interpretation of number expressions regarding the prices of three kinds of everyday items: \emph{electric kettles}, \emph{watches}, and \emph{laptops}. We focused on price because it is a common and natural topic of conversation in which people use number expressions. We chose the three items because they are common products whose price distributions are quite different from each other.
@@ -264,7 +264,7 @@ Given the formal setup of our model described in the methods section, we obtaine
 \includegraphics[width=8.7cm]{hyperbole_comp_rounded.pdf}
 \caption{Hello}\label{hyperbole}
 \end{minipage}
-\caption{We show the model and human interpretation probabilities for all $300$ items ($10$ utterances crossed with $10$ price states and $3$ item kinds. The model significantly predicts human interpretations with very high correlation ($r=0.97$, $p<0.0001$.)}
+\caption{(a) Compares pragmatic halo. (b) Compares hyperbole. }
 \end{figure*}
 
 \begin{figure*}
@@ -277,7 +277,7 @@ Given the formal setup of our model described in the methods section, we obtaine
 \includegraphics[width=8.7cm]{goals_comp.pdf}
 \caption{Hello}\label{goals}
 \end{minipage}
-%\caption{We show the model and human interpretation probabilities for all $300$ items ($10$ utterances crossed with $10$ price states and $3$ item kinds. The model significantly predicts human interpretations with very high correlation ($r=0.97$, $p<0.0001$.)}
+\caption{(a) Compares affective subtext. (b) Compares communicative goals.}
 \end{figure*}
 
 \subsection{Behavioral experiments}
@@ -452,367 +452,243 @@ Thanks!
 %% following \begin{thebibliography}
 
 \begin{thebibliography}{10}
-\bibitem{BN}
-M.~Belkin and P.~Niyogi, {\em Using manifold structure for partially
-  labelled classification}, Advances in NIPS, 15 (2003).
 
-\bibitem{BBG:EmbeddingRiemannianManifoldHeatKernel}
-P.~B\'erard, G.~Besson, and S.~Gallot, {\em Embedding {R}iemannian
-  manifolds by their heat kernel}, Geom. and Fun. Anal., 4 (1994),
-  pp.~374--398.
+\bibitem{moreno2007creativity}
+Moreno, R.E.V.,
+{\em Creativity and convention: The pragmatics of everyday figurative speech},
+156, (2007)
 
-\bibitem{CLAcha1}
-R.R.~Coifman and S.~Lafon, {\em Diffusion maps}, Appl. Comp. Harm. Anal.,
-  21 (2006), pp.~5--30.
+\bibitem{grice1975}
+Grice, H.P., {\em Logic and conversation},
+(1975), pp.~41--58
 
-\bibitem{DiffusionPNAS}
-R.R.~Coifman, S.~Lafon, A.~Lee, M.~Maggioni, B.~Nadler, F.~Warner, and
-  S.~Zucker, {\em Geometric diffusions as a tool for harmonic analysis and
-  structure definition of data. {P}art {I}: Diffusion maps}, Proc. of Nat.
-  Acad. Sci.,  (2005), pp.~7426--7431.
+\bibitem{clark1996using}
+Clark, H.H., {\em Using language},
+(1996), Cambridge University Press Cambridge
 
-\bibitem{Clementi:LowDimensionaFreeEnergyLandscapesProteinFolding}
-P.~Das, M.~Moll, H.~Stamati, L.~Kavraki, and C.~Clementi, {\em
-  Low-dimensional, free-energy landscapes of protein-folding reactions by
-  nonlinear dimensionality reduction}, P.N.A.S., 103 (2006), pp.~9885--9890.
+\bibitem{frankgoodmanscience}
+Frank, M.C. and Goodman, N.D.,
+{\em Predicting pragmatic reasoning in language games},
+Science, 336(6048), (2012), pp.~998
 
-\bibitem{DoGri}
-D.~Donoho and C.~Grimes, {\em Hessian eigenmaps: new locally linear
-  embedding techniques for high-dimensional data}, Proceedings of the National
-  Academy of Sciences, 100 (2003), pp.~5591--5596.
+\bibitem{goodmanstuhlmueller}
+Goodman, N.D. and Stuhlm{\"u}ller, A.
+{\em Knowledge and implicature: Modeling language understanding as social cognition},
+Proceedings of CogSci conference, (2012)
 
-\bibitem{DoGri:WhenDoesIsoMap}
-D.~L. Donoho and C.~Grimes, {\em When does isomap recover natural
-  parameterization of families of articulated images?}, Tech. Report Tech. Rep.
-  2002-27, Department of Statistics, Stanford University, August 2002.
+\bibitem{bergen2012}
+Bergen, L. and Goodman, G.D. and Levy, R.,
+{\em That's what she (could have) said: How alternative utterances affect language use},
+Proceedings of CogSci conference, (2012)
 
-\bibitem{GruterWidman:GreenFunction}
-M.~Gr\"uter and K.-O. Widman, {\em The {G}reen function for uniformly
-  elliptic equations}, Man. Math., 37 (1982), pp.~303--342.
+\bibitem{jager2009pragmatic}
+J{\"a}ger, G. and Ebert, C.,
+{\em Pragmatic rationalizability},
+Proceedings of Sinn und Bedeutung, 13, (2009), pp.~1--15
 
-\bibitem{Simon:NeumannEssentialSpectrum}
-R.~Hempel, L.~Seco, and B.~Simon, {\em The essential spectrum of neumann
-  laplacians on some bounded singular domains}, 1991.
+\bibitem{lasersohn1999pragmatic}
+Lasersohn, P.,
+{\em Pragmatic halos},
+Language, (1999), pp.~522--551
 
-\bibitem{1}
-Kadison, R.\ V.\ and Singer, I.\ M.\ (1959)
-Extensions of pure states, {\it Amer.\ J.\ Math.\ \bf
-81}, 383-400.
+\bibitem{bastiaanse2011rationality}
+Bastiaanse, H.,
+{\em The rationality of round interpretation},
+Vagueness in communication, (2011), pp.~37--50
 
-\bibitem{2}
-Anderson, J.\ (1981) A conjecture concerning the pure states of
-$B(H)$ and a related theorem. in {\it Topics in Modern Operator
-Theory}, Birkha\"user, pp.\ 27-43.
+\bibitem{krifka2007approximate}
+Krifka, M.,
+{\em Approximate interpretation of number words: A case for strategic communication},
+Cognitive foundations of interpretation, (2007), pp.~111--126
 
-\bibitem{3}
-Anderson, J.\ (1979) Extreme points in sets of
-positive linear maps on $B(H)$. {\it J.\ Funct.\
-Anal.\
-\bf 31}, 195-217.
+\bibitem{mccarthy2004there}
+McCarthy, M. and Carter, R, {\em There's millions of them: hyperbole in everyday conversation},
+Journal of pragmatics, 36(2), (2004), pp.~149--184.
 
-\bibitem{4}
-Anderson, J.\ (1979) Pathology in the Calkin algebra. {\it J.\
-Operator Theory \bf 2}, 159-167.
+\bibitem{gibbs2000irony}
+Gibbs, R.W.,
+{\em Irony in talk among friends},
+Metaphor and symbol, (2000), pp.~5--27
 
-\bibitem{5}
-Johnson, B.\ E.\ and Parrott, S.\ K.\ (1972) Operators commuting
-with a von Neumann algebra modulo the set of compact operators.
-{\it J.\ Funct.\ Anal.\ \bf 11}, 39-61.
+\bibitem{cano2003risk}
+Cano Mora, L.,
+{\em At the Risk of Exaggerating: How Do Listeners React to Hyperbole?},
+Anglogermanica online: Revista electr{\'o}nica peri{\'o}dica de filolog{\'\i}a alemana e inglesa, (2003), pp.~2--13
 
-\bibitem{6}
-Akemann, C.\ and Weaver, N.\ (2004) Consistency of a
-counterexample to Naimark's problem. {\it Proc.\ Nat.\ Acad.\
-Sci.\ USA \bf 101}, 7522-7525.
+\bibitem{kreuz2007lexical}
+Kreuz, R.J. and Caucci, G.M., 
+{\em Lexical influences on the perception of sarcasm},
+Proceedings of the Workshop on Computational Approaches to Figurative Language, (2007), pp.~1--4, {Association for Computational Linguistics}
 
-\bibitem{TSL}
-J.~Tenenbaum, V.~de~Silva, and J.~Langford, {\em A global geometric
-  framework for nonlinear dimensionality reduction}, Science, 290 (2000),
-  pp.~2319--2323.
+\bibitem{davidov2010semi}
+Davidov, D. and Tsur, O. and Rappoport, A.,
+{\em Semi-supervised recognition of sarcastic sentences in twitter and amazon},
+Proceedings of the Fourteenth Conference on Computational Natural Language Learning,
+(2010), pp.~107--116, {Association for Computational Linguistics}
 
-\bibitem{ZhaZha}
-Z.~Zhang and H.~Zha, {\em Principal manifolds and nonlinear dimension
-  reduction via local tangent space alignement}, Tech. Report CSE-02-019,
-  Department of computer science and engineering, Pennsylvania State
-  University, 2002.
+\bibitem{reyes2011mining}
+Reyes, A. and Rosso, P.,
+{\em Mining subjective knowledge from customer reviews: a specific case of irony detection},
+ACL HLT 2011, (2011), pp.~118
+
+\bibitem{van2007algorithm}
+van Kruijsdijk, R.,
+{\em Algorithm Development in Computerized Detection of Sarcasm using Vocal Cues},
+(2007)
+
+\bibitem{sutton1998reinforcement}
+Sutton, R.S. and Barto, A.G.,
+{\em Reinforcement learning: An introduction},
+28, (1998)
+%	
+
+%	}
+%	
+%	
+%	@article{kotthoff2003responding,
+%	  title={Responding to irony in different contexts: On cognition in conversation},
+%	  author={Kotthoff, H.},
+%	  journal={Journal of pragmatics},
+%	  volume={35},
+%	  number={9},
+%	  pages={1387--1411},
+%	  year={2003},
+%	  publisher={Elsevier}
+%	}
+%	
+%	@article{kreuz2000production,
+%	  title={The production and processing of verbal irony},
+%	  author={Kreuz, R.J.},
+%	  journal={Metaphor and Symbol},
+%	  volume={15},
+%	  number={1-2},
+%	  pages={99--107},
+%	  year={2000},
+%	  publisher={Taylor \& Francis}
+%	}
+%	
+%	@article{kreuz1995two,
+%	  title={Two cues for verbal irony: Hyperbole and the ironic tone of voice},
+%	  author={Kreuz, R.J. and Roberts, R.M.},
+%	  journal={Metaphor and symbol},
+%	  volume={10},
+%	  number={1},
+%	  pages={21--31},
+%	  year={1995},
+%	  publisher={Taylor \& Francis}
+%	}
+%	
+%	@article{capelli1990children,
+%	  title={How children understand sarcasm: The role of context and intonation},
+%	  author={Capelli, C.A. and Nakagawa, N. and Madden, C.M.},
+%	  journal={Child Development},
+%	  volume={61},
+%	  number={6},
+%	  pages={1824--1841},
+%	  year={1990},
+%	  publisher={Wiley Online Library}
+%	}
+%	
+
+%	
+
+%	
+
+
 \end{thebibliography}
 
-%@article{mccarthy2004there,
-%  title={ÒThere's millions of themÓ: hyperbole in everyday conversation},
-%  author={McCarthy, M. and Carter, R.},
-%  journal={Journal of pragmatics},
-%  volume={36},
-%  number={2},
-%  pages={149--184},
-%  year={2004},
-%  publisher={Elsevier}
-%}
-%
-%@article{gibbs2000irony,
-%  title={Irony in talk among friends},
-%  author={Gibbs, R.W.},
-%  journal={Metaphor and symbol},
-%  volume={15},
-%  number={1-2},
-%  pages={5--27},
-%  year={2000},
-%  publisher={Taylor \& Francis}
-%}
-%
-%@article{cano2003risk,
-%  title={At the Risk of Exaggerating: How Do Listeners React to Hyperbole?},
-%  author={Cano Mora, L.},
-%  journal={Anglogermanica online: Revista electr{\'o}nica peri{\'o}dica de filolog{\'\i}a alemana e inglesa},
-%  number={2},
-%  pages={2--13},
-%  year={2003}
-%}
-%
-%@article{kotthoff2003responding,
-%  title={Responding to irony in different contexts: On cognition in conversation},
-%  author={Kotthoff, H.},
-%  journal={Journal of pragmatics},
-%  volume={35},
-%  number={9},
-%  pages={1387--1411},
-%  year={2003},
-%  publisher={Elsevier}
-%}
-%
-%@article{kreuz2000production,
-%  title={The production and processing of verbal irony},
-%  author={Kreuz, R.J.},
-%  journal={Metaphor and Symbol},
-%  volume={15},
-%  number={1-2},
-%  pages={99--107},
-%  year={2000},
-%  publisher={Taylor \& Francis}
-%}
-%
-%@article{kreuz1995two,
-%  title={Two cues for verbal irony: Hyperbole and the ironic tone of voice},
-%  author={Kreuz, R.J. and Roberts, R.M.},
-%  journal={Metaphor and symbol},
-%  volume={10},
-%  number={1},
-%  pages={21--31},
-%  year={1995},
-%  publisher={Taylor \& Francis}
-%}
-%
-%@article{capelli1990children,
-%  title={How children understand sarcasm: The role of context and intonation},
-%  author={Capelli, C.A. and Nakagawa, N. and Madden, C.M.},
-%  journal={Child Development},
-%  volume={61},
-%  number={6},
-%  pages={1824--1841},
-%  year={1990},
-%  publisher={Wiley Online Library}
-%}
-%
-%@inproceedings{kreuz2007lexical,
-%  title={Lexical influences on the perception of sarcasm},
-%  author={Kreuz, R.J. and Caucci, G.M.},
-%  booktitle={Proceedings of the Workshop on Computational Approaches to Figurative Language},
-%  pages={1--4},
-%  year={2007},
-%  organization={Association for Computational Linguistics}
-%}
-%
-%@inproceedings{davidov2010semi,
-%  title={Semi-supervised recognition of sarcastic sentences in twitter and amazon},
-%  author={Davidov, D. and Tsur, O. and Rappoport, A.},
-%  booktitle={Proceedings of the Fourteenth Conference on Computational Natural Language Learning},
-%  pages={107--116},
-%  year={2010},
-%  organization={Association for Computational Linguistics}
-%}
-%
-%@article{reyes2011mining,
-%  title={Mining subjective knowledge from customer reviews: a specific case of irony detection},
-%  author={Reyes, A. and Rosso, P.},
-%  journal={ACL HLT 2011},
-%  pages={118},
-%  year={2011},
-%  publisher={Citeseer}
-%}
-%
-%@article{van2007algorithm,
-%  title={Algorithm Development in Computerized Detection of Sarcasm using Vocal Cues},
-%  author={van Kruijsdijk, R.},
-%  year={2007}
-%}
-%
-%@book{moreno2007creativity,
-%  title={Creativity and convention: The pragmatics of everyday figurative speech},
-%  author={Moreno, R.E.V.},
-%  volume={156},
-%  year={2007},
-%  publisher={John Benjamins Publishing Co}
-%}
-%
-%@inproceedings{bergen2012,
-%title = {That's what she (could have) said: How alternative utterances affect language use},
-%author={Bergen, L. and Goodman, G.D. and Levy, R.},
-%year={2012},
-%booktitle={Proceedings of CogSci conference},
-%}
-%
-%
-%@inproceedings{stiller2011ad,
-%  title={Ad-hoc scalar implicature in adults and children},
-%  author={Stiller, A. and Goodman, N.D. and Frank, M.C.},
-%  booktitle={Proceedings of the 33rd Annual Meeting of the Cognitive Science Society},
-%  year={2011}
-%}
-%
-%@article{bastiaanse2011rationality,
-%  title={The rationality of round interpretation},
-%  author={Bastiaanse, H.},
-%  journal={Vagueness in communication},
-%  pages={37--50},
-%  year={2011},
-%  publisher={Springer}
-%}
-%
-%@article{krifka2007approximate,
-%  title={Approximate interpretation of number words: A case for strategic communication},
-%  author={Krifka, M.},
-%  journal={Cognitive foundations of interpretation},
-%  pages={111--126},
-%  year={2007}
-%}
-%
-%@inproceedings{sauerland2007scalar,
-%  title={Scalar vs. epistemic vagueness: Evidence from approximators},
-%  author={Sauerland, U. and Stateva, P.},
-%  booktitle={Proceedings of SALT},
-%  volume={17},
-%  number={0},
-%  pages={228--245},
-%  year={2007}
-%}
-%
-%@article{frankgoodmanscience,
-%  title={Predicting pragmatic reasoning in language games},
-%  author={Frank, M.C. and Goodman, N.D.},
-%  journal={Science},
-%  volume={336},
-%  number={6084},
-%  pages={998},
-%  year={2012}
-%}
-%
-%@article{van2004signalling,
-%  title={Signalling games select Horn strategies},
-%  author={{van Rooij}, R.},
-%  journal={Linguistics and Philosophy},
-%  volume={27},
-%  number={4},
-%  pages={493--527},
-%  year={2004},
-%  publisher={Springer}
-%}
-%
-%@article{van2008games,
-%  title={Games and Quantity implicatures},
-%  author={{van Rooij}, R.},
-%  journal={Journal of Economic Methodology},
-%  volume={15},
-%  number={3},
-%  pages={261--274},
-%  year={2008},
-%  publisher={Taylor \& Francis}
-%}
-%
-%@article{franke2009interpretation,
-%  title={Interpretation of optimal signals},
-%  author={Franke, M.},
-%  journal={New perspectives on games and interaction},
-%  pages={297--310},
-%  year={2009},
-%  publisher={Amsterdam University Press}
-%}
-%
-%
-%@book{sutton1998reinforcement,
-%  title={Reinforcement learning: An introduction},
-%  author={Sutton, R.S. and Barto, A.G.},
-%  volume={28},
-%  year={1998},
-%  publisher={Cambridge Univ Press}
-%}
-%
-%@article{grice1975,
-%	Author = {Grice, H.P.},
-%	Journal = {1975},
-%	Pages = {41--58},
-%	Title = {Logic and conversation},
-%	Year = {1975}}
-%
-%@inproceedings{jager2009pragmatic,
-%  title={Pragmatic rationalizability},
-%  author={J{\"a}ger, G. and Ebert, C.},
-%  booktitle={Proceedings of Sinn und Bedeutung},
-%  volume={13},
-%  pages={1--15},
-%  year={2009}
-%}
-%
-%@article{jager2008game,
-%  title={Game theory in semantics and pragmatics},
-%  author={J{\"a}ger, G.},
-%  journal={manuscript, University of Bielefeld},
-%  year={2008}
-%}
-%
-%@article{cho1987signaling,
-%  title={Signaling games and stable equilibria},
-%  author={Cho, I.K. and Kreps, D.M.},
-%  journal={The Quarterly Journal of Economics},
-%  volume={102},
-%  number={2},
-%  year={1987},
-%  publisher={Oxford University Press}
-%}
-%
-%@article{chen2008selecting,
-%  title={Selecting Cheap-Talk Equilibria},
-%  author={Chen, Y. and Kartik, N. and Sobel, J.},
-%  journal={Econometrica},
-%  volume={76},
-%  number={1},
-%  pages={117--136},
-%  year={2008},
-%  publisher={Wiley Online Library}
-%}
-%
-%@inproceedings{goodmanstuhlmueller,
-%  title={Knowledge and implicature: Modeling language understanding as social cognition},
-%  author={Goodman, N.D. and Stuhlm{\"u}ller, A.},
-%  booktitle={Proceedings of CogSci conference},
-%  year={2012}
-%}
-%
-%
-%@article{lasersohn1999pragmatic,
-%  title={Pragmatic halos},
-%  author={Lasersohn, P.},
-%  journal={Language},
-%  pages={522--551},
-%  year={1999},
-%  publisher={JSTOR}
-%}
-%
-%@book{clark1996using,
-%  title={Using language},
-%  author={Clark, H.H.},
-%  volume={4},
-%  year={1996},
-%  publisher={Cambridge University Press Cambridge}
-%}
+%	
+%	
+%	
+%	@inproceedings{stiller2011ad,
+%	  title={Ad-hoc scalar implicature in adults and children},
+%	  author={Stiller, A. and Goodman, N.D. and Frank, M.C.},
+%	  booktitle={Proceedings of the 33rd Annual Meeting of the Cognitive Science Society},
+%	  year={2011}
+%	}
+%	
+%	
+%	@inproceedings{sauerland2007scalar,
+%	  title={Scalar vs. epistemic vagueness: Evidence from approximators},
+%	  author={Sauerland, U. and Stateva, P.},
+%	  booktitle={Proceedings of SALT},
+%	  volume={17},
+%	  number={0},
+%	  pages={228--245},
+%	  year={2007}
+%	}
+%	
+%	
+%	@article{van2004signalling,
+%	  title={Signalling games select Horn strategies},
+%	  author={{van Rooij}, R.},
+%	  journal={Linguistics and Philosophy},
+%	  volume={27},
+%	  number={4},
+%	  pages={493--527},
+%	  year={2004},
+%	  publisher={Springer}
+%	}
+%	
+%	@article{van2008games,
+%	  title={Games and Quantity implicatures},
+%	  author={{van Rooij}, R.},
+%	  journal={Journal of Economic Methodology},
+%	  volume={15},
+%	  number={3},
+%	  pages={261--274},
+%	  year={2008},
+%	  publisher={Taylor \& Francis}
+%	}
+%	
+%	@article{franke2009interpretation,
+%	  title={Interpretation of optimal signals},
+%	  author={Franke, M.},
+%	  journal={New perspectives on games and interaction},
+%	  pages={297--310},
+%	  year={2009},
+%	  publisher={Amsterdam University Press}
+%	}
+%	
+%	
 
+%	
+
+%	
+%	@article{jager2008game,
+%	  title={Game theory in semantics and pragmatics},
+%	  author={J{\"a}ger, G.},
+%	  journal={manuscript, University of Bielefeld},
+%	  year={2008}
+%	}
+%	
+%	@article{cho1987signaling,
+%	  title={Signaling games and stable equilibria},
+%	  author={Cho, I.K. and Kreps, D.M.},
+%	  journal={The Quarterly Journal of Economics},
+%	  volume={102},
+%	  number={2},
+%	  year={1987},
+%	  publisher={Oxford University Press}
+%	}
+%	
+%	@article{chen2008selecting,
+%	  title={Selecting Cheap-Talk Equilibria},
+%	  author={Chen, Y. and Kartik, N. and Sobel, J.},
+%	  journal={Econometrica},
+%	  volume={76},
+%	  number={1},
+%	  pages={117--136},
+%	  year={2008},
+%	  publisher={Wiley Online Library}
+%	}
+%	
+
+%	
+%	
+
+%	
+%	
 %----------------------------------------------------------------------------------------
 
 \end{article}
