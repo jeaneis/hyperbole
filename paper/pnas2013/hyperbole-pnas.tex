@@ -131,7 +131,7 @@
 %	TITLE AND AUTHORS
 %----------------------------------------------------------------------------------------
 
-\title{Hyperbolically speaking} % For titles, only capitalize the first letter
+\title{Hyperbolically speaking: a computational model of non-literal language understanding} % For titles, only capitalize the first letter
 
 %------------------------------------------------
 
@@ -196,7 +196,7 @@ pragmatic halo (the imprecise interpretation of round numbers) and hyperbole (th
 %% octadecyltrichlorosilane}
 
 % \abbreviations{}
-\abbreviations{IR, Incongruity Resolution}
+%\abbreviations{IR, Incongruity Resolution}
 
 %----------------------------------------------------------------------------------------
 %	PUBLICATION CONTENT
@@ -209,9 +209,9 @@ pragmatic halo (the imprecise interpretation of round numbers) and hyperbole (th
 
 \dropcap{I}magine a conversation with a friend about a new restaurant where she recently dined. Your friend says, ``It took $30$ minutes to get a table." You are likely to interpret this to mean she waited approximately $30$ minutes. Now suppose your friend says: ``It took $32$ minutes to get a table." You are more likely to interpret the number expression to mean exactly $32$, and believe that she cares to communicate the exact wait time. Suppose she says: ``It took a million hours to get a table." You will probably interpret her to mean that the wait was shorter than a million hours, but importantly that she thinks it took much too long. 
 
-Given the incredible flexibility of language, a crucial part of a listener's job is to understand an utterance even when its literally meaning is extremely unlikely \cite{moreno2007creativity}. Non-literal language understanding is one of the biggest challenges in language research, and it has been difficult to build formal models or design empirical studies that capture effects in non-literal language understanding quantitatively. In this paper, we present a computational model that predicts people's non-literal interpretation of number words. We build on a traditional approach in language understanding that views communication as an interaction between rational, cooperative agents \cite{grice1975, clark1996using}, and show how non-literal interpretation of number terms can be explained as effects of probabilistic inference over recursive social models.
+Given the incredible flexibility of language, a crucial part of a listener's job is to understand an utterance even when its literally meaning is extremely unlikely. Non-literal language understanding is one of the biggest challenges in language research, and it has been difficult to build formal models or design empirical studies that capture effects in non-literal language understanding quantitatively. In this paper, we present a computational model that predicts people's non-literal interpretation of number words. We build on a traditional approach in language understanding that views communication as an interaction between rational, cooperative agents \cite{grice1975, clark1996using}, and show that non-literal interpretation of number terms can be explained as effects of probabilistic inference over recursive social models.
 
-Recent work has shown that modeling communication as recursive social inference is able to quantitatively explain rich phenomena in human pragmatic reasoning \cite{frankgoodmanscience, goodmanstuhlmueller, bergen2012, jager2009pragmatic}. However, a limitation of these models is that they are unable to handle utterances where the intended meaning directly contradicts the literal meaning, as is the case in metaphor (``Juliet is the sun") and hyperbole (``It took a million hours to get a table.") Here we extend the model by introducing uncertainty over the speaker's communicative goal, and propose that non-literal language understanding relies on considering the possibility of communicative goals that are distinct from what is conveyed by the literal meaning of an utterance. More concretely, a listener reasons about a speaker who optimizes informativeness of her utterances given a particular communicative goal; the speaker choses the optimal utterance assuming that the listener is reasoning in this way about the speaker; and so on. In this paper, we show how this framework of recursive social inference can be applied to capture non-literal hyperbolic interpretation of number words.
+Recent work has shown that modeling communication as recursive social inference is able to quantitatively explain rich phenomena in human pragmatic reasoning \cite{frankgoodmanscience, goodmanstuhlmueller, bergen2012, jager2009pragmatic}. However, a limitation of these models is that they are unable to handle utterances where the intended meaning directly contradicts the literal meaning, as is the case in metaphor (``Juliet is the sun") and hyperbole (``It took a million hours to get a table"). Here we extend the model by introducing uncertainty over the speaker's communicative goal, and propose that non-literal language understanding relies on considering the possibility of communicative goals that are distinct from what is conveyed by the literal meaning of an utterance. More concretely, a listener reasons about a speaker who optimizes informativeness of her utterances given a particular communicative goal; the speaker choses the optimal utterance assuming that the listener is reasoning in this way about the speaker; and so on. In this paper, we show how this framework of recursive social inference can be applied to capture non-literal hyperbolic interpretation of number words.
 % FIXME
 
 %QUESTION: Should we write more about QUD and communicative goals? Are we using the two terms interchangeably? Which term will be more suitable for our audience?
@@ -220,9 +220,9 @@ We focus on number words for three reasons: first, despite their flexible and no
 
 Pragmatic halo describes the phenomenon in which people tend to interpret simple number expressions imprecisely and complex number expressions precisely \cite{lasersohn1999pragmatic}. This effect has been formalized via game theory as a rational choice given different costs of utterances \cite{bastiaanse2011rationality, krifka2007approximate}. The model we propose captures these arguments within a Bayesian framework for pragmatic inference. Given uncertainty about whether a speaker wishes to communicate precisely or approximately in addition to differential utterance costs, we show that a rational listener will interpret costlier number words as more precise.
 
-While hyperbolic utterances are literally false, listeners usually successfully infer the speaker's intended meaning and often regard hyperbole as a source of humor or signal of interpersonal closeness \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work on human and machine identification of irony and hyperbole has focused on linguistic cues such as a slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz2007lexical, davidov2010semi, reyes2011mining, van2007algorithm}. Here we show that common prior knowledge about the relevant topic also plays an important role in identifying and interpreting hyperbolic statements. That is, part of what makes an utterance likely to receive a hyperbolic interpretation is that both speaker and listener know that the literal meaning is extremely unlikely. Furthermore, given the possibility that the speaker wishes to convey a subjective opinion instead of simply the objective state of the world, the listener can infer the affective subtext that goes beyond the literal meaning of the utterance. 
+While hyperbolic utterances are literally false, listeners usually successfully infer the speaker's intended meaning and often regard hyperbole as a source of humor or signal of interpersonal closeness \cite{mccarthy2004there, gibbs2000irony, cano2003risk}. Previous work on human and machine identification of irony and hyperbole has focused on linguistic cues such as slow speaking rate, heavy stress, nasalization, and interjections \cite{kreuz2007lexical, davidov2010semi, reyes2011mining, van2007algorithm}. Here we show that common prior knowledge about the relevant topic also plays an important role in identifying and interpreting hyperbolic statements. That is, part of what makes an utterance likely to receive a hyperbolic interpretation is that both speaker and listener know that the literal meaning is extremely unlikely. Furthermore, given the possibility that the speaker wishes to convey a subjective opinion instead of simply the objective state of the world, the listener can infer an affective subtext that goes beyond the literal meaning of the utterance. 
 
-By modeling language understanding as social inference regarding the communicative goal, meaning, and affective subtext of an utterance, we show that our model captures the non-literal effects of halo and hyperbole as well as their interaction.
+By modeling language understanding as social inference regarding the communicative goal, meaning, and affective subtext of an utterance, we show that our model captures the non-literal effects of halo and hyperbole.
 
 %The rest of the paper is organized as follows. Section 2 provides an overview of previous work on hyperbole and pragmatics. Section 3 describes the computational model and its predictions. Section 4 describes the behavioral experiment and results. Section 5 compares the model results to the behavioral data and discusses implications. Section 6 proposes directions for future work.
 %%%%
@@ -252,7 +252,7 @@ We define the set of possible price states for the three kinds of items: $S=\{50
 \subsection{Model simulations} 
 %Our model considers the following five communicative goals: whether the speaker wants to convey the price precisely, imprecisely, or not at all, crossed with whether the speaker wants to convey her opinion about the price or not, minus the vacuous goal in which the speaker wants to convey nothing. We assume a uniform prior over goals. The model considers the possible price state meanings $S$ and the prior probability $P(s)$ of each price state for a given kind of item (see Experiment 2(a) in materials). It also considers the prior conditional probability $E(s)$ of a given price state being considered expensive (see Experiment 2(b) in materials). Finally, it considers the cost of each utterance $C(u)$ and assumes that sharp numbers are costlier to utter than round numbers. 
 
-Given the formal setup of our model described in the methods section, we obtained posterior meaning distributions for the ten numerical utterances using the price priors and affect priors for each of the three items. Figure \ref{model_full_bar} in the Appendix shows the full meaning distribution for each utterance across the three item kinds. We seperated interpretations into three separate types: \emph{exact interpretations}, which are interpretations that are identical to the utterance (e.g. when``1000" is interpreted as meaning $1000$); \emph{fuzzy interpretations}, which are interpretations that are the sharp or round counterpart to the utterance (e.g. when ``1000" is interpreted as $1001$); and \emph{hyperbolic interpretations}, which are interpretations that are much smaller than the utterance (e.g. when ``1000" is interpreted as $50$ or $501$). The model also returns the probability of an utterance being interpreted as conveying \emph{affect} about the price being too expensive. Figure \ref{model_effects} summarizes these effects. We first see a basic effect of the prior, in which utterances that are more likely given the price prior of the item are more likely to be interpreted exactly or fuzzily (e.g. ``1000" is more likely to be interpreted exactly or fuzzily for laptops than for electric kettles). The model demonstrates the pragmatic halo effect, in which round utterances such as ``500" and ``1000" are interpreted less exactly and more fuzzily than their sharp counterparts ``501" and ``1001." It also demonstrates the hyperbole effect, in which utterances that are less likely given the price prior are more likely to be interpreted hyperbolically (e.g. ``1000" is more likely to be interpreted as $50, 51, 500,$ or $501$ for electric kettles than for laptops). We also see an interaction between halo and hyperbole, where round utterances such as ``5000" and ``10000" are more likely to be interpreted hyperbolically than their sharp counterparts. Furthermore, utterances whose literal meanings are associated with higher affect priors (such as ``10000" and ``10001") are more likely to be interpreted as conveying affect.
+Given the formal setup of our model described in the methods section, we obtained posterior meaning distributions for the ten numerical utterances using the price priors and affect priors for each of the three items. Figure \ref{model_full_bar} in the Appendix shows the full meaning distribution for each utterance across the three item kinds. We seperated interpretations into three types: \emph{exact interpretations}, which are interpretations that are identical to the utterance (e.g. when``1000" is interpreted as meaning $1000$); \emph{fuzzy interpretations}, which are interpretations that are the sharp or round counterpart to the utterance (e.g. when ``1000" is interpreted as $1001$); and \emph{hyperbolic interpretations}, which are interpretations that are much smaller than the utterance (e.g. when ``1000" is interpreted as $50$ or $501$). The model also returns the probability of an utterance being interpreted as conveying \emph{affect} about the price being too expensive. Figure \ref{model_effects} summarizes these effects. We first see a basic effect of the prior, in which utterances that are more likely given the price prior of the item are more likely to be interpreted exactly or fuzzily (e.g. ``1000" is more likely to be interpreted exactly or fuzzily for laptops than for electric kettles). The model demonstrates the pragmatic halo effect, in which round utterances such as ``500" and ``1000" are interpreted less exactly and more fuzzily than their sharp counterparts ``501" and ``1001." It also demonstrates the hyperbole effect, in which utterances that are less likely given the price prior are more likely to be interpreted hyperbolically (e.g. ``1000" is more likely to be interpreted as $50, 51, 500,$ or $501$ for electric kettles than for laptops). We also see an interaction between halo and hyperbole, where round utterances such as ``5000" and ``10000" are more likely to be interpreted hyperbolically than their sharp counterparts. Furthermore, utterances whose literal meanings are associated with higher affect priors (such as ``10000" and ``10001") are more likely to be interpreted as conveying affect.
 
 \begin{figure*}
 \centering
@@ -281,9 +281,11 @@ Given the formal setup of our model described in the methods section, we obtaine
 \end{figure*}
 
 \subsection{Behavioral experiments}
-Experiment 1a examined humans' interpretation of number words. We used the same set of items, price states $S$, and utterances $U$ as we did in the model. Subjects read scenarios in which a buyer produces an utterance $u$ about the price of an item he just bought. Subjects rate the likelihood of the buyer thinking that the item was expensive, as well as the likelihood that the item actually cost $s$ dollars (see Experiment 1a in materials). Figure \ref{human_full_bar} in the Appendix shows the full meaning distribution for each utterance. To examine the halo effect in humans, we computed the difference between the probability of an exact interpretation and the probability of a fuzzy interpretation for each utterance. Collapsed across items and utterances, this difference is significantly smaller for round numbers than for sharp numbers ($F(1, 4)=16.31,  p < 0.05)$, which indicates that round numbers tend to be interpreted more approximately and have a weaker bias towards exact interpretation than their sharp counterparts. To examine the hyperbole effect, we show that utterances whose literal meanings have low probabilities under the item's prior price distribution are more likely to be interpreted hyperbolically ($F(1, 10) = 44.06, p < 0.0001$).
+Experiment 1a examined humans' interpretation of number words. We used the same set of items, price states $S$, and utterances $U$ as described earlier. Subjects read scenarios in which a buyer produces an utterance $u$ about the price of an item he just bought. Subjects rate the likelihood of the buyer thinking that the item was expensive, as well as the likelihood that the item actually cost $s$ dollars (see Experiment 1a in materials). Figure \ref{human_full_bar} in the Appendix shows the full interpretation distribution for each utterance. 
 
-Experiment 1b examined the affective subtext conveyed using hyperbolic versus literal utterances. Subjects read scenarios in which a speaker just bought an item that cost $s$ dollars and tells her friend that it cost $u$ dollars, where $u >= s$. Subjects rate the likelihood of the buyer thinking that the item was expensive (see Experiment 1b in materials). Results showed that utterances $u$ where $u > s$ are rated as significantly more likely to convey affect than utterances where $u = s$ ($F(1, 25) = 9.592, p < 0.01)$, confirming the hypothesis that listeners infer affective subtext from hyperbolic utterances.
+To examine the halo effect in humans, we computed the difference between the probability of an exact interpretation and the probability of a fuzzy interpretation for each utterance. Collapsed across items and utterances, this difference is significantly smaller for round numbers than for sharp numbers ($F(1, 4)=16.31,  p < 0.05)$, which indicates that round numbers tend to be interpreted more approximately and have a weaker bias towards exact interpretation than their sharp counterparts. To examine the hyperbole effect, we show that utterances whose literal meanings have low probabilities under the item's prior price distribution are more likely to be interpreted hyperbolically ($F(1, 10) = 44.06, p < 0.0001$).
+
+Experiment 1b examined the affective subtext conveyed using hyperbolic versus literal utterances. Subjects read scenarios in which a speaker bought an item that cost $s$ dollars and tells his friend that it cost $u$ dollars, where $u >= s$. Subjects rate the likelihood of the buyer thinking that the item was expensive (see Experiment 1b in materials). Results showed that utterances $u$ where $u > s$ are rated as significantly more likely to convey affect than utterances where $u = s$ ($F(1, 25) = 9.592, p < 0.01)$, confirming the hypothesis that listeners infer affective subtext from hyperbolic utterances.
 %We broke down the interpretations into \emph{exact}, \emph{fuzzy}, and \emph{hyperbolic}. Figure \ref{human_effects} summarizes these effects. We see that round utterances tend to be interpreted less exactly and more fuzzily than their sharp counterparts, and utterances that are less likely given the price prior are more likely to be interpreted hyperbolically. We also see that round utterances are more likely to be interpreted hyperbolically.
 %%TODO
 % Figure out what stats to report here.
@@ -294,9 +296,9 @@ We compared model and human interpretation probabilities for the $300$ items ($I
 % Fix figure numbers
 The left-most panel in Figure 3 shows the halo effect in humans, namely the tendency for round numbers to be interpreted less exactly. This effect is replicated by the full model, but not by a version of the model where the costs of utterances are uniform. This suggests that people take into account utterance cost when inferring exact versus fuzzy interpretations. The leftmost panel in Figure 4 shows humans' probabilities of interpreting each utterance hyperbolically. These probabilities are captured faithfully by the full model, but not by a version of the model where the price prior distribution for each item is uniform. This suggests that people take into account the prior distribution of prices when inferring hyperbolic versus literal interpretations. 
 
-The leftmost panels in Figure 5 show humans' probabilities of inferring affective subtext given a price state and a literal or hyperbolic utterance. Within the same price state, hyperbolic utterances are interpreted as conveying more affect than literal utterances. Across price states, higher price states are associated with higher degrees of affect. Both effects are replicated by the full model, but not by a version of the model where the probability of affect given each price state is uniform. This suggests that the affective subtext conveyed by hyperbolic utterances is driven by prior probabilities of affect given a price state, and also that utterances interpreted hyperbolically convey affective subtext beyond the prior affect associated with the actual state of the world. 
+The leftmost panels in Figure 5 show humans' probabilities of inferring affective subtext given a price state and a literal or hyperbolic utterance. Within the same price state, hyperbolic utterances are interpreted as conveying more affect than literal utterances. Across price states, higher price states are associated with higher degrees of affect. Both effects are replicated by the full model, but not by a version of the model where the probability of affect given each price state is uniform. This suggests that the affective subtext conveyed by hyperbolic utterances is driven by prior probabilities of affect given a price state. Moreover, utterances interpreted hyperbolically convey affective subtext beyond the prior affect associated with the actual state of the world. 
 
-Finally, we show that reasoning about a speaker's communicative goals is crucial for capturing the non-literal interpretation of number words demonstrated by humans. Figure 6 compares different model interpretations of the utterance \emph{``The electric kettle cost $1000$ dollars".} A listener that does not consider alternative communicative goals interprets the utterance literally and places all interpretation mass on the price state $1000$. A listener that considers a speaker whose goal may be to communicate precisely or imprecisely places a significant amount of interpretation mass on the neighboring price state $1001$. A listener that considers a speaker whose goal may be to communicate the precise price state or her affect about the price state can now interpret the utterance hyperbolically and place mass on price states with higher prior probabilities, but places very little mass on the neighboring price state $1001$. Finally, a listener that considers the possibility of precise, imprecise, and affect goals closely fits humans' interpretation of the utterance.
+Finally, we show that reasoning about a speaker's communicative goals is crucial for capturing the non-literal interpretation of number words demonstrated in the behavioral experiment. Figure 6 compares different model interpretations of the utterance \emph{``The electric kettle cost $1000$ dollars."} A listener that does not consider alternative communicative goals interprets the utterance literally and places all interpretation mass on the price state $1000$. A listener that considers a speaker whose goal may be to communicate precisely or imprecisely places a significant amount of interpretation mass on the neighboring price state $1001$. A listener that considers a speaker whose goal may be to communicate the precise price state or her affect about the price state can now interpret the utterance hyperbolically and place mass on price states with higher prior probabilities. However, he places very little mass on the neighboring price state $1001$. Finally, a listener that considers the possibility of precise, imprecise, and affect goals closely fits humans' interpretation of the utterance.
 %------------------------------------------------
 \section{Discussion}
 %Despite having highly standard literal meanings, numbers are often used non-literally in everyday language. 
@@ -382,36 +384,36 @@ To obtain people's prior knowledge of the affect likelihood given a price state,
 \includegraphics[width=16cm]{human_full_bar.pdf}
 \caption{Hello}\label{human_full_bar}
 \end{figure*}
-\begin{figure*}[h]
-\centering
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{human_effect_bar.pdf}
-\caption{Hello}\label{model_effects}
-\end{minipage}\hfill
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{halo_comp.pdf}
-\caption{Vertical panels show results for the three item kinds. Horizontal panels show the three kinds of interpretations, \emph{exact}, \emph{fuzzy}, and \emph{hyperbolic}. The $x$ axis in each panel represents the utterance. The $y$ axis shows the probability of a kind of interpretation given the utterance.}\label{human_effects}
-\end{minipage}
-\end{figure*}
+%\begin{figure*}[h]
+%\centering
+%\begin{minipage}[b]{.49\textwidth}
+%\includegraphics[width=8.7cm]{human_effect_bar.pdf}
+%\caption{Hello}\label{model_effects}
+%\end{minipage}\hfill
+%\begin{minipage}[b]{.49\textwidth}
+%\includegraphics[width=8.7cm]{halo_comp.pdf}
+%\caption{Vertical panels show results for the three item kinds. Horizontal panels show the three kinds of interpretations, \emph{exact}, \emph{fuzzy}, and \emph{hyperbolic}. The $x$ axis in each panel represents the utterance. The $y$ axis shows the probability of a kind of interpretation given the utterance.}\label{human_effects}
+%\end{minipage}
+%\end{figure*}
 
 %%%%
 % QUESTION: Not sure if we want this table....
 %%%
-\begin{table}
-\begin{tabular}{l l}
-\hline
-\textbf{Model} & \textbf{Fit ($R^2$)}\\
-\hline
-Full & $0.938$\\
-Uniform prior & 0.560 \\
-Uniform cost & 0.939 \\
-Uniform affect & 0.921 \\
-No valence goal & 0.528 \\
-No imprecision goal & 0.726 \\
-\hline
-\end{tabular}
-\label{model_fit}
-\end{table}
+%\begin{table}
+%\begin{tabular}{l l}
+%\hline
+%\textbf{Model} & \textbf{Fit ($R^2$)}\\
+%\hline
+%Full & $0.938$\\
+%Uniform prior & 0.560 \\
+%Uniform cost & 0.939 \\
+%Uniform affect & 0.921 \\
+%No valence goal & 0.144 \\
+%No imprecision goal & 0.726 \\
+%\hline
+%\end{tabular}
+%\label{model_fit}
+%\end{table}
 
 
 %----------------------------------------------------------------------------------------
@@ -453,10 +455,10 @@ Thanks!
 
 \begin{thebibliography}{10}
 
-\bibitem{moreno2007creativity}
-Moreno, R.E.V.,
-{\em Creativity and convention: The pragmatics of everyday figurative speech},
-156, (2007)
+%\bibitem{moreno2007creativity}
+%Moreno, R.E.V.,
+%{\em Creativity and convention: The pragmatics of everyday figurative speech},
+%156, (2007)
 
 \bibitem{grice1975}
 Grice, H.P., {\em Logic and conversation},

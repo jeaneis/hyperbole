@@ -1,5 +1,6 @@
 source("summarySE.R")
 source("multiplot.R")
+library(ggplot2)
 
 ################################################################################
 # Human model comparison for all three domains
@@ -63,10 +64,15 @@ summary(lm(data=d.hyperbolic, interpretationProb ~ utteranceType * utteranceRoun
 # ******** Church model *********
 ##############################
 
-### Full model ###
+### Full model (literal is literal) ###
 c1 <- read.csv("../../data/model/church_output_kettle_formatted.csv")
 c2 <- read.csv("../../data/model/church_output_laptop_formatted.csv")
 c3 <- read.csv("../../data/model/church_output_watch_formatted.csv")
+
+### Lower bound ###
+c1 <- read.csv("../../data/model/church_output_kettle_lowerbound_formatted.csv")
+c2 <- read.csv("../../data/model/church_output_laptop_lowerbound_formatted.csv")
+c3 <- read.csv("../../data/model/church_output_watch_lowerbound_formatted.csv")
 
 ### No cost ###
 c1 <- read.csv("../../data/model/church_output_kettle_noCost_formatted.csv")
@@ -114,7 +120,7 @@ c.all$interpretationKind <-
 
 # Loose choice transformation by raising each probability to the power of hardness and 
 # renormalizing to sum up to one within each domain/utterance pair
-hardness = 0.5
+hardness = 0.9
 c.all$raisedProb <- c.all$probability^hardness
 normalizingFactors <- aggregate(data=c.all, raisedProb ~ domain + utterance, FUN=sum)
 colnames(normalizingFactors)[3] <- "normalizing"
@@ -149,6 +155,46 @@ ggplot(c.all, aes(x=meaning, y=adjustedProb, fill=valence)) +
                             axis.text.x  = element_text(size=6, angle=-90),
                             axis.title.y = element_text(size=14),
                             axis.text.y = element_text(size=10))
+
+#################################
+# Full human and model comparison
+#################################
+
+human.full.summary <- summarySE(d, measurevar="interpretationProb",
+                                groupvars=c("utterance", "interpretation", "domain", "interpretationKind", "utteranceType", "utteranceRounded"))
+
+church.full.summary <- church.collapseOpinion
+colnames(church.full.summary)[2] <- "interpretation"
+
+compare.full.summary <- join(human.full.summary, church.full.summary, by=c("utterance", "interpretation", "domain", "interpretationKind"))
+colnames(compare.full.summary)[8] <- "human"
+colnames(compare.full.summary)[14] <- "model"
+with(compare.full.summary, cor.test(human, model))
+
+#my.colors <- c(brewer.pal(3, "Dark2"), "grey")
+my.colors <- c("#003399", "#339966", "#FF6633", "grey")
+ggplot(compare.full.summary, aes(x=model, y=human)) +
+  geom_point(size=2.5, aes(x=model, y=human, color=interpretationKind, shape=domain)) +
+  #geom_abline(linetype=2) +
+  #geom_text(aes(label=utterance)) +
+  geom_smooth(data=compare.full.summary, aes(x=model, y=human), method=lm, color="black", linetype=2) +
+  theme_bw() +
+  theme(axis.title.x = element_text(size=18),
+        axis.text.x  = element_text(size=12),
+        axis.title.y = element_text(size=18),
+        axis.text.y = element_text(size=12),
+        legend.title=element_text(size=14),
+        legend.text=element_text(size=14),
+        legend.position=c(0.85, .3)) +
+  xlab("Model") +
+  ylab("Human") +
+  scale_color_manual(values=my.colors, name="Interpretation Kind", 
+                     breaks=c("exact", "fuzzy", "hyperbolic", "other"),
+                     labels=c("Exact", "Fuzzy", "Hyperbolic", "Other"))+
+  scale_shape_discrete(name="Item", breaks=c("electric kettle", "laptop", "watch"),
+                       labels=c("Electric Kettle", "Laptop", "Watch"))
+
+
 
 ########
 # Plot mmodel effects: exact, fuzzy, hyperbolic, affect
@@ -441,6 +487,9 @@ ap$utteredPriceSharpened <- factor(ap$utteredPriceSharpened)
 ap$isHyperbole <- ifelse(ap$actualPriceRounded!=ap$utteredPriceRounded,
                          "hyperbole", "literal")
 
+#################
+# Aggregate across different hyperbolic utterances
+#################
 ######
 # Stats for human affect effect
 ######
@@ -509,6 +558,53 @@ ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Liter
         legend.title=element_text(size=0), legend.text=element_text(size=14),
         legend.position=c(0.9, 0.9))
 
+#################
+# Scatter plot for each utterance rounded / meaning rounded pair
+#################
+
+human.pair <- summarySE(ap, measurevar="probOpinion", groupvars=c("utteredPriceRounded", "actualPriceRounded", "isHyperbole", "domain"))
+model.pair <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("utteranceRounded", "meaningRounded", "isHyperbole", "domain"))
+colnames(human.pair)[1] <- "utteranceRounded"
+colnames(human.pair)[2] <- "meaningRounded"
+colnames(human.pair)[6] <- "humanAffect"
+colnames(model.pair)[6] <- "modelAffect"
+
+# human
+ggplot(human.pair, aes(x=meaningRounded, y=humanAffect, fill=isHyperbole)) +
+  geom_bar(stat="identity", color="black") +
+  facet_grid(domain~utteranceRounded) +
+  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.2) +
+  theme_bw()
+
+# model
+ggplot(model.pair, aes(x=meaningRounded, y=modelAffect, fill=isHyperbole)) +
+  geom_bar(stat="identity", color="black") +
+  facet_grid(domain~utteranceRounded) +
+  theme_bw()
+
+
+comp.pair <- join(human.pair, model.pair, by=c("utteranceRounded", "meaningRounded", "isHyperbole", "domain"))
+comp.pair$label <- paste(comp.pair$utteranceRounded, comp.pair$meaningRounded, sep=",")
+
+ggplot(comp.pair, aes(x=modelAffect, y=humanAffect)) +
+  #geom_text(aes(label=label), color="dark grey") +
+  geom_point(data=comp.pair, aes(x=modelAffect, y=humanAffect, color=isHyperbole, shape=domain), size=3) +
+  geom_smooth(data=comp.pair, aes(x=modelAffect, y=humanAffect), method=lm, color="black", linetype=2) +
+  #geom_text(aes(label=utteranceRounded)) +
+  theme_bw() +
+  scale_color_brewer(palette="Set1") +
+  xlab("Model") +
+  ylab("Human") +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        legend.title=element_text(size=0), legend.text=element_text(size=14),
+        legend.position=c(0.9, 0.2))
+
+  
+with(comp.pair, cor.test(modelAffect, humanAffect))
+
+
 #########
 # Goals analysis
 #########
@@ -567,45 +663,6 @@ ggplot(comp.goal.example, aes(x=interpretation, y=interpretationProb, fill=type)
         strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
         legend.text=element_text(size=0),title=element_text(size=18))
 
-
-#################################
-# Full human and model comparison
-#################################
-
-human.full.summary <- summarySE(d, measurevar="interpretationProb",
-                                groupvars=c("utterance", "interpretation", "domain", "interpretationKind", "utteranceType", "utteranceRounded"))
-
-church.full.summary <- church.collapseOpinion
-colnames(church.full.summary)[2] <- "interpretation"
-
-compare.full.summary <- join(human.full.summary, church.full.summary, by=c("utterance", "interpretation", "domain", "interpretationKind"))
-colnames(compare.full.summary)[8] <- "human"
-colnames(compare.full.summary)[14] <- "model"
-
-#my.colors <- c(brewer.pal(3, "Dark2"), "grey")
-my.colors <- c("#003399", "#339966", "#FF6633", "grey")
-ggplot(compare.full.summary, aes(x=model, y=human)) +
-  geom_point(size=2.5, aes(x=model, y=human, color=interpretationKind, shape=domain)) +
-  #geom_abline(linetype=2) +
-  #geom_text(aes(label=utterance)) +
-  geom_smooth(data=compare.full.summary, aes(x=model, y=human), method=lm, color="black", linetype=2) +
-  theme_bw() +
-  theme(axis.title.x = element_text(size=18),
-        axis.text.x  = element_text(size=12),
-        axis.title.y = element_text(size=18),
-        axis.text.y = element_text(size=12),
-        legend.title=element_text(size=14),
-        legend.text=element_text(size=14),
-        legend.position=c(0.85, .3)) +
-          xlab("Model") +
-          ylab("Human") +
-          scale_color_manual(values=my.colors, name="Interpretation Kind", 
-                             breaks=c("exact", "fuzzy", "hyperbolic", "other"),
-                             labels=c("Exact", "Fuzzy", "Hyperbolic", "Other"))+
-                               scale_shape_discrete(name="Item", breaks=c("electric kettle", "laptop", "watch"),
-                                                    labels=c("Electric Kettle", "Laptop", "Watch"))
-
-with(compare.full.summary, cor.test(human, model))
 
 #############################
 # Price priors

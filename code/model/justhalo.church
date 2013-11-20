@@ -1,0 +1,56 @@
+;;This is a version of the exaggeration model that uses goals to determine how precise the speaker wants to be, and a goal that determines whether the speaker wants to communicate just the valence, just the world state, or both
+
+
+
+(define states (list '1 '2 '3))
+(define (state-prior) (multinomial states '(0.33 0.33 0.33)))
+
+(define utterances states)
+(define (utterance-prior) (multinomial utterances '(0.2 0.8 0.2)))
+
+
+(define goals (list 'precise 'imprecise))
+(define (goal-prior) (multinomial goals '(0.5 0.5)))
+
+(define (literal-interpretation utterance state)
+  (equal? utterance state))
+
+(define (evaluate-state-goal listener-state speaker-state precision)
+  (if (equal? precision 'precise)
+      (equal? listener-state speaker-state)
+      (<= (abs (- listener-state speaker-state)) 1)))
+
+(define (goal-satisfied? goal listener-state speaker-state)
+  (evaluate-state-goal listener-state speaker-state goal))
+
+
+;;The model has been gutted by errors in the Church implementation. It's currently restricted to hardness=1
+(define speaker
+  (mem (lambda (state goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   
+   utterance
+
+   
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) state)
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define state (state-prior))
+   (define speaker-goal (goal-prior))
+   
+   state
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance state)
+       (equal? utterance
+               (apply multinomial (speaker state speaker-goal (- depth 1)))))
+   ))))
+
+(define depth 1)
+(define hardness 1)
+(define (sample1) (listener '2 depth))
+(sample1)
