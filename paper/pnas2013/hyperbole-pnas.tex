@@ -233,11 +233,11 @@ By modeling language understanding as social inference regarding the communicati
 \begin{figure*}
 \centering
 \begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{model_effects_bar.pdf}
+\includegraphics[width=8.7cm]{model_human_scatter.pdf}
 \caption{Hello}\label{model_effects}
 \end{minipage}\hfill
 \begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{human_model_scatter.pdf}
+\includegraphics[width=8.7cm]{affect_scatter.pdf}
 \caption{Hello}\label{model_fit}
 \end{minipage}
 \caption{(a) This plot summarizes pragmatic halo, hyperbole, and affective interpretations of the model. (b) The model significantly predicts human interpretations with high correlation ($r=0.97$, $p<0.0001$) for all $300$ items.}
@@ -257,11 +257,11 @@ Given the formal setup of our model described in the methods section, we obtaine
 \begin{figure*}
 \centering
 \begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{halo_comp_scatter.pdf}
+\includegraphics[width=8.7cm]{model_comp_halo.pdf}
 \caption{Hello}\label{halo}
 \end{minipage}\hfill
 \begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{hyperbole_comp_rounded.pdf}
+\includegraphics[width=8.7cm]{model_comp_hyperbole.pdf}
 \caption{Hello}\label{hyperbole}
 \end{minipage}
 \caption{(a) Compares pragmatic halo. (b) Compares hyperbole. }
@@ -270,7 +270,7 @@ Given the formal setup of our model described in the methods section, we obtaine
 \begin{figure*}
 \centering
 \begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{affect_comp.pdf}
+\includegraphics[width=8.7cm]{model_comp_affect.pdf}
 \caption{Hello}\label{affect}
 \end{minipage}\hfill
 \begin{minipage}[b]{.49\textwidth}
@@ -358,7 +358,7 @@ After obtaining a posterior distribution for all possible meanings $m$ given an 
 $120$ subjects were recruited on Amazon's Mechanical Turk. Each subject read $15$ scenarios in which a person (e.g. Bob) buys an item (e.g. a watch) and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in \{50, 50\pm k, 500, 500\pm k, 1000, 1000 \pm k, 5000, 5000 \pm k, 10000, 10000 \pm k\}$, where $k$ was randomly selected from the set $\{1, 2, 3\}$ for each trial. We will refer to this set of utterances as $U$. Given an utterance $u$, subjects rated the probability of Bob thinking that the item was expensive. They then rated the probability of the item costing the following amounts of money: $50$, $50\pm k$, $500$, $500\pm k$, $1000$, $1000 \pm k$, $5000$, $5000 \pm k$, $10000$, $10000 \pm k$, where $k$ was randomly selected from the set $\{1, 2, 3\}$ for each trial. We will refer to this set of prices as $S$. Ratings for each price state were on a continuous scale from ``impossible" to ``extremely likely", represented as real values between $0$ and $1$. We normalized subjects' ratings across price points for each trial to sum up to $1$. The average normalized ratings across subjects for each item/utterance pair is shown in Figure \ref{human_full_bar}.
 
 \section{Experiment 1b: Affective subtext}
-$80$ subjects were recruited on Amazon's Mechanical Turk. Each subject read $30$ scenarios in which a person (e.g. Bob) buys an item that costs $s$ dollars and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in U$ and $u >= s$. Subjects then rated how likely Bob thinks the item was expensive on a continuous scale ranging from ``impossible" to "absolutely certain," represented as real values between $0$ and $1$. The average ratings determine the degree of affect conveyed by an utterance given the actual price state.
+$160$ subjects were recruited on Amazon's Mechanical Turk. Each subject read $30$ scenarios in which a person (e.g. Bob) buys an item that costs $s$ dollars and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in U$ and $u >= s$. Subjects then rated how likely Bob thinks the item was expensive on a continuous scale ranging from ``impossible" to "absolutely certain," represented as real values between $0$ and $1$. The average ratings determine the degree of affect conveyed by an utterance given the actual price state.
 
 \section{Experiment 2a: Price prior}
 To obtain people's prior knowledge of the price distributions for electric kettles, laptops, and watches, $30$ subjects were recruited from Amazon's Mechanical Turk. Each subject rated the probability of an electric kettle, laptop, and watch costing $s$ dollars, where $s \in S$ (see Experiment 1a). Ratings for each price state were on a continuous scale from ``impossible" to ``Extremely likely", represented as real values between $0$ and $1$. We normalized subjects' ratings across price points for each trial to sum up to $1$. The average normalized ratings across subjects for each item were taken as the prior probability distribution of item prices. These price distributions were used in the model to determine the prior probability of each price state.

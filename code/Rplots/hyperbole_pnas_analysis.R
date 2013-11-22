@@ -36,8 +36,8 @@ ggplot(full.summary, aes(x=interpretation, y=interpretationProb)) +
   ggtitle("Human") +
   theme(axis.title.x = element_text(size=14),
         axis.text.x  = element_text(size=6, angle=-90),
-        axis.title.y = element_text(size=0),
-        axis.text.y = element_text(size=0))
+        axis.title.y = element_text(size=14),
+        axis.text.y = element_text(size=14))
 
 #######################
 # STATS!!!! For human effects
@@ -555,7 +555,7 @@ ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Liter
   geom_point(size=5) +
   geom_line(size=1) +
   #geom_bar(stat="identity", color="black") +
-  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2) +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2, color="dark gray") +
   facet_grid(domain ~ type) +
   theme_bw() +
   xlab("Price state rounded") +
@@ -613,7 +613,7 @@ ggplot(comp.pair, aes(x=modelAffect, y=humanAffect)) +
         strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
         legend.title=element_text(size=0), legend.text=element_text(size=14),
         legend.position=c(0.9, 0.2))
-
+# 0.7567
   
 with(comp.pair, cor.test(modelAffect, humanAffect))
 
