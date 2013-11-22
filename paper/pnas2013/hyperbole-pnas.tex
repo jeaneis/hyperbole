@@ -314,7 +314,11 @@ Our model and behavioral results reveal complex patterns in the non-literal inte
 
 \begin{materials}
 \section{Model}
-Here we describe our model in detail. Let $u$ be the utterance a speaker utters. Let $m$ be the meaning interpretation a listener infers. $m$ has two dimensions, one concerning the actual price state $s$, and one concerning the speaker's affect $a$. Given the set of price states $S$ and set of affect states $A$, the set of possible meanings $M$ is given by $M = S X A$. We denote each possible meaning interpretation as $m_{sa}$, where $s \in S$ and $a \in \{0, 1\}$ ($0$ means no affect and $1$ means with affect). Let $g$ be the communicative goal, which also has two dimensions, one concerning the price state, and the other concerning the speaker's affect. We denote each communicative goal as $g_{pe}$ where $p \in \{s', s, 0 \}$ ($s'$ means communicate precise price state, $s$ means communicate imprecise price state, and $0$ means do not communicate price state) and $e \in \{a, 0\}$ ($a$ means communicate affect and $0$ means do not communicate affect). An interpreted meaning $m_{sa}$ satisfies the speaker's goal $g_{s'0}$ if $s$ is equal to the true price state and $a = 0$. $m_{s0}$ satisfies the goal $g_{s0}$ if $s$ is equal to the true price state $\pm 1$ and $a = 0$.$m_{sa}$ satisfies the goal $g_{0a}$ if $a = 1$. The probability of a price state $s$ is taken from an empirically derived price prior $P(s)$, and the probability of an affect given a price state $s$ is taken from an empirically derived conditional affect prior $E(s)$ (see Experiments 2a and 2b).
+Here we describe our model in detail. Let $u$ be the utterance a speaker utters. Let $m$ be the meaning that is known to the speaker. $m$ has two dimensions, one concerning the actual price state $s$, and one concerning the speaker's affect $a$. Given the set of price states $S$ and set of affect states $A$, the set of possible meanings $M$ is given by $M = S \times A$. We denote each possible meaning as $m_{s,a}$, where $s \in S$ and $a \in A=\{0, 1\}$ ($0$ means no affect and $1$ means with affect). 
+
+Let $g$ be the communicative goal, which also has two dimensions, one concerning the price state, and the other concerning the speaker's affect. We denote each communicative goal as $g_{\mathbf{s},\mathbf{a}}$ where $\mathbf{s} \in 2^{S}$ and $\mathbf{a} \in 2^{A}$. The goal $g_{\mathbf{s},\mathbf{a}}$ is a function $g_{\mathbf{s},\mathbf{a}}: M \rightarrow \{0,1\}$, such that $g_{\mathbf{s},\mathbf{a}}(m_{s,a})=1$ if and only if $s \in \mathbf{s}, a \in \mathbf{a}$. Thus, a goal specifies a subset of price states and affects, and a meaning satisfies this goal if it belongs to this subset; such a subset will be referred to as a goal state. We assume that there are two types of price-related goal states: the speaker either wants to communicate the price state exactly or approximately. Exact goals are represented by subsets that consist of a single price state, i.e. $\mathbf{s}=\{i\}$ (for some $i \in S$), and approximate goals are represented by subsets that consist of the price states within a distance of 1 of some state, i.e. $\mathbf{s}=\{j | j \in S, |j-i|\leq 1\}$. 
+
+The prior probability of a price state $s$ is taken from an empirically derived price prior $P_S(s)$, and the probability of an affect $a$ given a price state $s$ is taken from an empirically derived conditional affect prior $P_A(a|s)$ (see Experiments 2a and 2b). The probability distribution $P_G(\cdot|m_{s,a})$ over goals given that teh speaker knows meaning $m_{s,a}$ is defined to be uniform over goals consistent with $m_{s,a}$, i.e. uniform over goals $g_{\mathbf{s},\mathbf{a}}$ such that $g_{\mathbf{s},\mathbf{a}}(m_{s,a})=1$. This is equivalent to assuming that the speaker either wants to communicate their meaning exactly or approximately.
 
 A literal listener $L_0$ provides the base case for recursive social reasoning between the speaker and listener. $L_0$ interprets an utterance $u$ literally without taking into account the speaker's communicative goals:
 
@@ -322,38 +326,33 @@ A literal listener $L_0$ provides the base case for recursive social reasoning b
 %\text{
 \[ L_0(m_{s,a} |u) = \left\{ 
   \begin{array}{l l}
-    E(s) & \quad \text{if $s$ = $u$ and $a$ = 1}\\
-    1 - E(s) & \quad \text{if $s$ = $u$ and $a$ = 0}\\
+    P_A(a|s) & \quad \text{if $s$ = $u$}\\
     0 & \quad \text{otherwise}
   \end{array} \right.\]
  % }
 %\end{equation}
 
-The speaker $S_n$ is assumed to be a rational planner who optimizes the probability that the listener will infer a meaning $m$ that satisfies the speaker's communicative goal while minimizing the cost of her utterance. $S_n$ chooses utterances according to a softmax decision rule that describes an approximately rational planner \cite{sutton1998reinforcement}:
+The speaker $S_n$ is assumed to be a rational planner who optimizes the probability that the listener will infer a meaning $m$ that satisfies her communicative goal while minimizing the cost of her utterance. $S_n$ chooses utterances according to a softmax decision rule that describes an approximately rational planner \cite{sutton1998reinforcement}:
 \begin{equation}\label{eq:speakerprob}
-S_n(u | m, g) \propto e^{\lambda U_n(u | m, g)},
+S_n(u | g_{\mathbf{s},\mathbf{a}}) \propto e^{\lambda U_n(u |  g_{\mathbf{s},\mathbf{a}})}
 \end{equation}
 where the constant $\lambda$ captures the degree of optimality of the speaker. (We used $\lambda=1$ in the model simulations described).
-The speaker wants to minimize both the cost $C(u)$ of the utterance and the surprisal of the intended meaning $m$ with respect to the communicative goal. Importantly, the information value of the intended meaning $m$ is $0$ if the communicative goal is not satisfied. So the utility function $U_n$ is defined by:
-%\begin{equation}\label{eq:speakerutility}
-\[ U_n(u | m, g)  = \left\{ 
-  \begin{array}{l l}
-    \log (L_{n}(m | u)) - C(u) & \quad \text{if $g$ satisfied}\\
-    -C(u) & \quad \text{otherwise}
-  \end{array} \right.\]
-%\end{equation}
+The speaker wants to minimize both the cost $C(u)$ of the utterance and the surprisal of her goal state. The utility function $U_n$ is therefore defined by:
+\begin{equation}
+U_n(u |  g_{\mathbf{s},\mathbf{a}}) = \log (P(g_{\mathbf{s},\mathbf{a}}(L_n(m|u)) =1) - C(u)
+\end{equation}
 which combined with equation \ref{eq:speakerprob} leads to:
 \begin{equation}\label{eq:speakersimplified}
-S_n(u | m, g) \propto (L_{n}(m | u)e^{-c(u)}) ^\lambda.
+S_n(u | m, g) \propto (P(g_{\mathbf{s},\mathbf{a}}(L_n(m|u)) =1)\cdot e^{-c(u)}) ^\lambda.
 \end{equation}
 
 The listener $L_n$ performs Bayesian inference to guess the intended meaning given the prior $P$ and his internal model of the speaker. To determine the speaker's intended meaning, the listener will marginalize over the possible goals under consideration.
 
 \begin{equation}\label{eq:listenerdict}
-L_n(m|u) \propto \sum_{i }P(m)P(g)S_{n-1}(u | m,g).
+L_n(m_{s,a}|u) \propto \sum_{g }P_S(s)P_A(a|s)P_G(g|m_{s,a})S_{n-1}(u | g).
 \end{equation}
 
-After obtaining a posterior distribution for all possible meanings $m$ given an utterance $u$, we performed a loose choice transformation on the distribution with $\lambda = 0.5$ in order to compare with behavioral results.
+After obtaining a posterior distribution for all possible meanings $m$ given an utterance $u$, we performed a Luce choice transformation on the distribution with $\lambda = 0.5$ in order to compare with behavioral results.
 
 \section{Experiment 1a: Halo and hyperbole}
 $120$ subjects were recruited on Amazon's Mechanical Turk. Each subject read $15$ scenarios in which a person (e.g. Bob) buys an item (e.g. a watch) and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in \{50, 50\pm k, 500, 500\pm k, 1000, 1000 \pm k, 5000, 5000 \pm k, 10000, 10000 \pm k\}$, where $k$ was randomly selected from the set $\{1, 2, 3\}$ for each trial. We will refer to this set of utterances as $U$. Given an utterance $u$, subjects rated the probability of Bob thinking that the item was expensive. They then rated the probability of the item costing the following amounts of money: $50$, $50\pm k$, $500$, $500\pm k$, $1000$, $1000 \pm k$, $5000$, $5000 \pm k$, $10000$, $10000 \pm k$, where $k$ was randomly selected from the set $\{1, 2, 3\}$ for each trial. We will refer to this set of prices as $S$. Ratings for each price state were on a continuous scale from ``impossible" to ``extremely likely", represented as real values between $0$ and $1$. We normalized subjects' ratings across price points for each trial to sum up to $1$. The average normalized ratings across subjects for each item/utterance pair is shown in Figure \ref{human_full_bar}.
