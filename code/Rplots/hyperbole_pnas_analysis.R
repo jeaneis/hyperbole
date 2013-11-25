@@ -487,7 +487,7 @@ ggplot(comp.hyperbole.summary, aes(x=utteranceRounded, y=interpretationProb, gro
 #######
 
 ### human ###
-ap <- read.table("../../data/mTurkExp/hyperboleThreeDomains/affect_pairs3_long.csv", 
+ap <- read.table("../../data/mTurkExp/hyperboleThreeDomains/affect_pairs_160_long.csv", 
                  strip.white=TRUE, header=TRUE, sep=",")
 ap$actualPriceSharpened <- ifelse(ap$actualType=="sharp", ap$actualPriceRounded+1, ap$actualPriceRounded)
 ap$utteredPriceSharpened <- ifelse(ap$utteredType=="sharp", ap$utteredPriceRounded+1, ap$utteredPriceRounded)
