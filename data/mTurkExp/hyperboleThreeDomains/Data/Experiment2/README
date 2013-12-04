@@ -1,0 +1,4 @@
+Experiment2 is the affect pairs experiment.
+raw.txt is the raw data downloaded directly from mTurk.
+clean.txt is the raw data minus unnecessary fields (produced by processRaw.py raw.txt)
+long.csv is the data in long form, with each item/utterance/meaning in one line (produced by processClean.py clean.txt)

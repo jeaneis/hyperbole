@@ -1,0 +1,6 @@
+Experiment 1 is the full halo and hyperbole experiment.
+raw.txt is the raw data directly downloaded from mTurk.
+clean.txt is the raw data minus unnecessary fields (produced by processRaw.py raw.txt)
+long.csv is in semi-long form, with each item/utterance pair in one line, but ratings for all meanings in one line (produced by processClean.py clean.txt)
+stretched.csv is in long form, with each item/utterance/meaning in one line. Unormalized. (produced by processLong.py long.csv)
+normalized.csv is in long form, with each item/utternace/meaning in one line. Normalized so the ratings for each item/utterance pair sums to 1. (produced by processLong_normalize.py long.csv)

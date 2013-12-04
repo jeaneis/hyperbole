@@ -7,6 +7,43 @@ library(ggplot2)
 ################################################################################
 
 #######################
+# Normalize human data by scaling first
+#######################
+
+d1 <- read.csv("../../data/mTurkExp/hyperboleThreeDomains/data1017_stretched.csv")
+d1$utteranceRounded <- factor(d1$utteranceRounded)
+d1$utterance <- factor(d1$utterance)
+d1$interpretationRounded <- factor(d1$interpretationRounded)
+d1$interpretation <- factor(d1$interpretation)
+
+d1$interpretationKind <- 
+  ifelse(as.numeric(d1$utteranceRounded) > as.numeric(d1$interpretationRounded), "hyperbolic", 
+         ifelse(d1$utterance==d1$interpretation, "exact",
+                ifelse(d1$utteranceRounded==d1$interpretationRounded, "fuzzy", "other")))
+######################
+# Plot human full interpretation distribution
+######################
+full.summary1 <- summarySE(d1, measurevar="interpretationProb",
+                          groupvars=c("utterance", "interpretation", "domain"))
+
+full.summary1$interpretation <- factor(full.summary1$interpretation)
+ggplot(full.summary1, aes(x=interpretation, y=interpretationProb)) +
+  geom_bar(stat="identity", color="black", fill="#FF9999") +
+  geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se),width=0.2) +
+  facet_grid(domain ~ utterance) +
+  theme_bw() +
+  ylab("Probability") +
+  xlab("Interpretation") +
+  ggtitle("Human") +
+  theme(axis.title.x = element_text(size=14),
+        axis.text.x  = element_text(size=6, angle=-90),
+        axis.title.y = element_text(size=14),
+        axis.text.y = element_text(size=14))
+
+
+
+
+#######################
 # human data for all domains
 #######################
 d <- read.csv("../../data/mTurkExp/hyperboleThreeDomains/data1017_normalized.csv")
@@ -115,7 +152,7 @@ c.all <- rbind(c1, c2, c3)
 c.all$utterance <- factor(c.all$utterance)
 c.all$meaning <- factor(c.all$meaning)
 c.all$valence <- factor(c.all$valence)
-# mark data fram with needed information for analysis
+# mark data frame with needed information for analysis
 c.all$utteranceRounded <- factor(floor(as.numeric(as.character(c.all$utterance))/ 10)*10)
 c.all$meaningRounded <- factor(floor(as.numeric(as.character(c.all$meaning))/ 10)*10)
 c.all$interpretationKind <- 
@@ -123,7 +160,7 @@ c.all$interpretationKind <-
          ifelse(c.all$utterance==c.all$meaning, "exact",
                 ifelse(c.all$utteranceRounded==c.all$meaningRounded, "fuzzy", "other")))
 
-# Loose choice transformation by raising each probability to the power of hardness and 
+# Luce choice transformation by raising each probability to the power of hardness and 
 # renormalizing to sum up to one within each domain/utterance pair
 hardness = 0.34
 c.all$raisedProb <- c.all$probability^hardness
@@ -613,9 +650,58 @@ ggplot(comp.pair, aes(x=modelAffect, y=humanAffect)) +
         strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
         legend.title=element_text(size=0), legend.text=element_text(size=14),
         legend.position=c(0.9, 0.2))
-# 0.7567
+# 0.7717
   
 with(comp.pair, cor.test(modelAffect, humanAffect))
+
+
+### no collapsing
+
+human.pair.noCollapse <- summarySE(ap, measurevar="probOpinion", groupvars=c("utteredPriceSharpened", "actualPriceSharpened", "isHyperbole", "domain"))
+model.pair.noCollapse <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("utterance", "meaning", "isHyperbole", "domain"))
+colnames(human.pair.noCollapse)[1] <- "utterance"
+colnames(human.pair.noCollapse)[2] <- "meaning"
+colnames(human.pair.noCollapse)[6] <- "humanAffect"
+colnames(model.pair.noCollapse)[6] <- "modelAffect"
+
+# human
+ggplot(human.pair.noCollapse, aes(x=meaning, y=humanAffect, fill=isHyperbole)) +
+  geom_bar(stat="identity", color="black") +
+  facet_grid(domain~utterance) +
+  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.2) +
+  theme_bw()
+
+# model
+ggplot(model.pair.noCollapse, aes(x=meaning, y=modelAffect, fill=isHyperbole)) +
+  geom_bar(stat="identity", color="black") +
+  facet_grid(domain~utterance) +
+  theme_bw()
+
+
+model.pair.noCollapse$se <- NULL
+comp.pair.noCollapse <- join(human.pair.noCollapse, model.pair.noCollapse, 
+                             by=c("utterance", "meaning", "isHyperbole", "domain"))
+comp.pair.noCollapse$label <- 
+  paste(comp.pair.noCollapse$utterance, comp.pair.noCollapse$meaning, sep=",")
+
+ggplot(comp.pair.noCollapse, aes(x=modelAffect, y=humanAffect)) +
+  #geom_text(aes(label=label), color="dark grey") +
+  geom_point(data=comp.pair.noCollapse, aes(x=modelAffect, y=humanAffect, color=isHyperbole, shape=domain), size=3) +
+  geom_smooth(data=comp.pair.noCollapse, aes(x=modelAffect, y=humanAffect), method=lm, color="black", linetype=2) +
+  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.01, color="gray") +
+  #geom_text(aes(label=utteranceRounded)) +
+  theme_bw() +
+  scale_color_brewer(palette="Set1") +
+  xlab("Model") +
+  ylab("Human") +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        legend.title=element_text(size=0), legend.text=element_text(size=14),
+        legend.position=c(0.9, 0.2))
+# 0.7717
+
+with(comp.pair.noCollapse, cor.test(modelAffect, humanAffect))
 
 ############
 # Split-half correlation for humans
