@@ -155,7 +155,7 @@ for (i in seq(from=15, to=40, by=0.01)) {
            ifelse(d1$utterance==d1$interpretation, "exact",
                   ifelse(d1$utteranceRounded==d1$interpretationRounded, "fuzzy", "other")))
   
-  d1$raisedProb <- d1$interpretationProb^i
+  d1$raisedProb <- d1$interpretationProb^bestHardness
   normalizingFactors <- aggregate(data=d1, raisedProb ~ workerID + domain + utterance, FUN=sum)
   colnames(normalizingFactors)[4] <- "normalizing"
   d1 <- join(d1, normalizingFactors, by=c("workerID", "domain", "utterance"))
