@@ -180,7 +180,7 @@ of the United States of America}
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-One of the most puzzling and important facts about communication is that people do not always mean what they say; speakers often use imprecise, exaggerated, or otherwise literally false descriptions to communicate experiences and opinions. Here we focus on the nonliteral interpretation of number words, in particular hyperbole (interpreting unlikely numbers as exaggerated and conveying affect) and pragmatic halo (interpreting round numbers imprecisely). We provide a computational model of number interpretation as social inference regarding the communicative goal, meaning, and affective subtext of an utterance. We show that our model predicts humans' interpretation of number words with high accuracy. Our model is the first computational model that quantitatively predicts a range of nonliteral effects in number interpretation, and our modeling framework provides a theory of nonliteral language understanding more generally.
+One of the most puzzling and important facts about communication is that people do not always mean what they say; speakers often use imprecise, exaggerated, or otherwise literally false descriptions to communicate experiences and opinions. Here we focus on the nonliteral interpretation of number words, in particular hyperbole (interpreting unlikely numbers as exaggerated and conveying affect) and pragmatic halo (interpreting round numbers imprecisely). We provide a computational model of number interpretation as social inference regarding the communicative goal, meaning, and affective subtext of an utterance. We show that our model predicts humans' interpretation of number words with high accuracy. Our model is the first computational model that quantitatively predicts nonliteral effects in number interpretation, and our modeling framework provides a theory of nonliteral language understanding more generally.
 \end{abstract}
 
 %------------------------------------------------
@@ -209,7 +209,7 @@ One of the most puzzling and important facts about communication is that people 
 
 \dropcap{I}magine a friend describing a new restaurant where she recently dined. Your friend says, ``It took 30 minutes to get a table." You are likely to interpret this to mean she waited approximately 30 minutes. Suppose she says: ``It took 32 minutes to get a table." You are more likely to interpret this to mean exactly 32 minutes. Now, suppose she says: ``It took a million years to get a table." You will probably interpret this to mean that the wait was shorter than a million years, but importantly that she thinks it took much too long. One of the most fascinating facts about communication is that people do not always mean what they say---a crucial part of a listener's job is to understand an utterance even when its literal meaning is false. People's ability to interpret nonliteral language poses a critical puzzle for research on language understanding.
 
-% Some sentences very similar to cogsci paper.A rich body of literature in psychology and linguistics has examined how people use and understand nonliteral language (1-4). However, much of the previous literature has been qualitative, with little focus on analyzing aspects of an utterance that predict the quantitative details of people's figurative interpretations. Here we present a model that formalizes and integrates three general principals of language and communication to explain the computational basis of nonliteral language understanding. First, speakers and listeners communicate with the assumption that their interlocutors are rational and cooperative agents; second, speaker and listener utilize common ground---their shared knowledge of the world---to communicate effectively; third, listeners assume that speakers choose utterances to maximize informativeness and relevance with respect to their communicative goals. The ideas we propose here have connections to Gricean pragmatics and relevance theory. Rather than view nonliteral language as a separate mode of communication that requires specialized language processing strategies, several scholars have argued that basic principles of communication drive the meaning that a listener infers from a figurative utterance (Sperber $\&$ Wilson, 2008; Wilson $\&$ Carston, 2006). Relevance theory, in particular, posits that listeners interpret utterances with the assumption that speakers produced them because they are maximally relevant. Proponents of the theory argue that this principle of relevance explains how listeners infer the meaning of a metaphor as well as other forms of loose talk where the meaning of an utterance is underspecified (Sperber $\&$ Wilson, 1985; Wilson $\&$ Sperber, 2002). By formalizing a notion of informativeness and relevance in a computational model and applying it to a case study on number words, we show that nonliteral interpretations can arise from these components and their interactions alone without positing dedicated processing mechanisms for nonliteral language.
+% Some sentences very similar to cogsci paper.A rich body of literature in psychology and linguistics has examined how people use and understand nonliteral language \cite{roberts1994} (1-4). However, much of the work has been qualitative, with little focus on analyzing aspects of an utterance that predict the quantitative details of people's figurative interpretations. Here we present a model that formalizes and integrates three general principals of language and communication to explain the computational basis of nonliteral language understanding. First, speakers and listeners communicate with the assumption that their interlocutors are rational and cooperative agents; second, speaker and listener utilize common ground---their shared knowledge of the world---to communicate effectively; third, listeners assume that speakers choose utterances to maximize informativeness and relevance with respect to their communicative goals. The ideas we propose here have connections to Gricean pragmatics and relevance theory. Rather than view nonliteral language as a separate mode of communication that requires specialized language processing strategies, several scholars have argued that basic principles of communication drive the meaning that a listener infers from a figurative utterance (Sperber $\&$ Wilson, 2008; Wilson $\&$ Carston, 2006). Relevance theory, in particular, posits that listeners interpret utterances with the assumption that speakers produced them because they are maximally relevant. Proponents of the theory argue that this principle of relevance explains how listeners infer the meaning of a metaphor as well as other forms of loose talk where the meaning of an utterance is underspecified (Sperber $\&$ Wilson, 1985; Wilson $\&$ Sperber, 2002). By formalizing a notion of informativeness and relevance in a computational model and applying it to a case study on number words, we show that nonliteral interpretations can arise from these components and their interactions alone without positing dedicated processing mechanisms for nonliteral language.
 A recent body of work has formalized communication as an interaction between rational and cooperative agents. These models view pragmatic language understanding as probabilistic inference over recursive social models and are able to quantitatively explain a range of phenomena in human pragmatic reasoning (7, 8, 9, 10). At the core of these models, a listener and a speaker recursively reason about each other to arrive at pragmatically enriched meanings. Given an intended meaning $m$, speaker $S_n$ reasons about listener $L_{n-1}$ and chooses utterance $u$ based on the probability that the listener will successfully infer the intended meaning (9):
 $$
 S_n (u|m) \propto L_{n-1} (m|u) \cdot e^{-C(u)}
@@ -220,7 +220,7 @@ $$
 L_n (m|u) \propto P(m)S_n (u|m)
 $$
 %The recursion begins with a naïve listener, $L_0$, who interprets $u$ literally.
-This framework predicts that it is never optimal for a speaker to choose an utterance whose literal meaning directly contradicts her intended meaning. However, this is precisely the case in nonliteral language. For example, ``Juliet is the sun” conveys that Juliet is a beautiful woman and not, in fact, the sun, and ``It took a million years to get a table" conveys that the wait time was long but not, in fact, a million years. This suggests that the basic model is incomplete and requires additional elements to explain nonliteral communication.
+This framework predicts that it is never optimal for a speaker to choose an utterance whose literal meaning directly contradicts her intended meaning. However, this is precisely the case in nonliteral language. For example, ``Juliet is the sun” conveys that Juliet is a beautiful woman and not, in fact, the sun, and ``It took a million years to get a table" conveys that the wait time was long but not a million years. This suggests that the basic model is incomplete and requires additional elements to explain nonliteral communication.
 
 Previous work has examined people's reasons for using figurative language and suggested that certain discourse goals, such as conveying emotion and emphasis, are best satisfied by nonliteral language (1). Here we propose that language understanding in general, and nonliteral language understanding in particular, relies on reasoning about communicative goals during interpretation. We introduce a model in which the listener is uncertain about the speaker's communicative goal and performs joint inference on both the goal and the intended meaning. Importantly, the interpretation space has multiple dimensions, and different communicative goals are satisfied by different aspects of the inferred meaning. A speaker's goal may be to maximize the probability of successfully conveying information along one dimension of meaning but not another, which makes it possible for a literally false utterance to be optimal as long as it is informative along the target dimension. We explore the case where the interpretation space has two dimensions: the state of the world and the speaker's affect. The speaker is now modeled as
 $$
@@ -297,7 +297,7 @@ We tested our model on number words referring to the prices of three types of ev
 
 \section{Discussion}We have presented the first computational model of nonliteral language understanding that quantitatively predicts people's hyperbolic and imprecise interpretations of number words.  Our model and behavioral results show that complex patterns in nonliteral number interpretation depend on common ground between speaker and listener, consideration of communicative efficiency, and reasoning about relevance to the speaker's communicative goal.
 
-The model presented here is intended to give a computational account of how people utilize prior knowledge and pragmatic reasoning to arrive at potentially nonliteral interpretations; it does not serve to predict process-level details, such as whether literal interpretations must be considered before they are rejected in favor of nonliteral interpretations. Instead, our goal was to show that formalizations of basic communicative principles such as informativeness and relevance can explain nonliteral language understanding as well as its rhetorical effects. We were able to examine nonliteral language at a fine-grained level and understand how the quantitative details of an utterance in context predict specific interpretations of a number word. Our model's predictions closely match humans' judgments of hyperbole, a complex phenomenon previously beyond the scope of computational models. By capturing the communicative goals in other figures of speech such as irony and metaphor, we hope to extend our model to explain nonliteral language understanding more broadly. We believe that this framework significantly advances the flexibility and richness of formal models of language understanding, such that some day probabilistic models will explain \emph{everything} (hyperbolically speaking). 
+The model presented here is intended to give a computational account of how people utilize prior knowledge and pragmatic reasoning to arrive at potentially nonliteral interpretations. However, it does not serve to predict process-level details, such as whether literal interpretations must be considered before they are rejected in favor of nonliteral interpretations. Instead, our goal was to show that formalizations of basic communicative principles such as informativeness and relevance can explain nonliteral language understanding as well as its rhetorical effects. We were able to examine nonliteral language at a fine-grained level and understand how the quantitative details of an utterance in context predict specific interpretations of a number word. Our model's predictions closely match humans' judgments of hyperbole, a complex phenomenon previously beyond the scope of computational models. By capturing the communicative goals in other figures of speech such as irony and metaphor, we hope to extend our model to explain nonliteral language understanding more broadly. We believe that this framework significantly advances the flexibility and richness of formal models of language understanding, such that some day probabilistic models will explain \emph{everything} (hyperbolically speaking). 
 
 %----------------------------------------------------------------------------------------
 %	MATERIALS AND METHODS
@@ -470,13 +470,20 @@ Thanks!
 %{\em Creativity and convention: The pragmatics of everyday figurative speech},
 %156, (2007)
 
-\bibitem{grice1975}
-Grice, H.P., {\em Logic and conversation},
-(1975), pp.~41--58
+\bibitem{roberts1994}
+Roberts, R.M. and Kreuz, R.J., {\em Why do people use figurative language?}, (1994), Psychological Science. 5(3), pp. ~159--163
 
-\bibitem{clark1996using}
-Clark, H.H., {\em Using language},
-(1996), Cambridge University Press Cambridge
+\bibitem{dews1999}
+Dews, S. and Winner, E. {\em Obligatory processing of literal and nonliteral meanings in verbal irony}, (1999), Journal of Pragmatics. 31(12), pp~1579--1599.
+
+\bibitem{glucksberg2001}Glucksberg, S. {\em Understanding figurative language: From metaphors to idioms}, (2001), Oxford Univ. Press.
+
+\bibitem{gibbs1999}
+Gibbs, R. {\em Figurative language}, (1999), The MIT encyclopedia of the cognitive sciences, pp.~314--315.
+
+\bibitem{grice1975}Grice, H.P. {\em Logic and conversation}, (1975), pp.~41--58.
+
+\bibitem{clark1996}Clark, H.H. {\em Using language} (1996) Cambridge University Press, Vol. 4
 
 \bibitem{frankgoodmanscience}
 Frank, M.C. and Goodman, N.D.,
@@ -498,6 +505,26 @@ J{\"a}ger, G. and Ebert, C.,
 {\em Pragmatic rationalizability},
 Proceedings of Sinn und Bedeutung, 13, (2009), pp.~1--15
 
+\bibitem{mccarthy2004there}
+McCarthy, M. and Carter, R, {\em There's millions of them: hyperbole in everyday conversation},
+Journal of pragmatics, 36(2), (2004), pp.~149--184.
+
+\bibitem{gibbs2000irony}
+Gibbs, R.W.,
+{\em Irony in talk among friends},
+Metaphor and symbol, (2000), pp.~5--27
+
+\bibitem{gibbs1991}Gibbs, R.W. and O'Brien J., {\em Psychological aspects of irony understanding}, Journal of pragmatics,16(6), (1991), pp.~523--530
+
+\bibitem{lasersohn1999}
+Lasersohn, P., {\em Pragmatic halos}, Language, (1991), pp.~522--551%	15.	H. Bastiaanse, The rationality of round interpretation. In Vagueness in communication. 37-50 (2011).%	16.	M. Krifka, Approximate interpretation of number words: A case for strategic communication. Cognitive foundations of interpretation. 111-126 (2007).%	17.	J. Van der Henst, L. Carles, D. Sperber, Truthfulness and Relevance in Telling the Time. Mind and Language. 17(5) (2002).%	18.	R. S. Sutton, A. G. Barto, Reinforcement learning: an introduction, Vol. 1, No. 1. (Cambridge: MIT press, 1998).
+%
+
+\bibitem{jager2009pragmatic}
+J{\"a}ger, G. and Ebert, C.,
+{\em Pragmatic rationalizability},
+Proceedings of Sinn und Bedeutung, 13, (2009), pp.~1--15
+
 \bibitem{lasersohn1999pragmatic}
 Lasersohn, P.,
 {\em Pragmatic halos},
@@ -513,14 +540,6 @@ Krifka, M.,
 {\em Approximate interpretation of number words: A case for strategic communication},
 Cognitive foundations of interpretation, (2007), pp.~111--126
 
-\bibitem{mccarthy2004there}
-McCarthy, M. and Carter, R, {\em There's millions of them: hyperbole in everyday conversation},
-Journal of pragmatics, 36(2), (2004), pp.~149--184.
-
-\bibitem{gibbs2000irony}
-Gibbs, R.W.,
-{\em Irony in talk among friends},
-Metaphor and symbol, (2000), pp.~5--27
 
 \bibitem{cano2003risk}
 Cano Mora, L.,
