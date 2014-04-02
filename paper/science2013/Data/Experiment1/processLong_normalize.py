@@ -46,4 +46,4 @@ for l in f:
             else:
                 interpretationRounded = str(int(interpretation) -1)
                 interpretationType = "sharp"
-            print ",".join(toks[0:10]) + "," + utterance + "," + utteranceExactType + "," + ",".join(toks[19:21]) + "," + interpretation + "," + interpretationType + "," + interpretationRounded  + "," + str(responses[i])
+            print ",".join(toks[0:10]) + "," + utterance + "," + utteranceExactType + "," + ",".join(toks[20:22]) + "," + interpretation + "," + interpretationType + "," + interpretationRounded  + "," + str(responses[i])

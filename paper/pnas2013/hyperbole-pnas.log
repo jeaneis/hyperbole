@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  25 NOV 2013 11:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  27 JAN 2014 01:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -623,11 +623,9 @@ File: model_human_scatter.pdf Graphic file (type pdf)
 <use model_human_scatter.pdf>
 Package pdftex.def Info: model_human_scatter.pdf used on input line 236.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <affect_scatter.pdf, id=5, 867.24pt x 578.16pt>
-File: affect_scatter.pdf Graphic file (type pdf)
-
-<use affect_scatter.pdf>
-Package pdftex.def Info: affect_scatter.pdf used on input line 240.
+File: model_human_scatter.pdf Graphic file (type pdf)
+ <use model_human_scatter.pdf>
+Package pdftex.def Info: model_human_scatter.pdf used on input line 240.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 
 Overfull \hbox (5.47108pt too wide) in paragraph at lines 246--251
@@ -647,13 +645,13 @@ LaTeX Warning: Reference `model_effects' on page 2 undefined on input line 255.
 
 
 \dblfigandtabbox2=\box64
-<model_comp_halo.pdf, id=19, 867.24pt x 578.16pt>
+<model_comp_halo.pdf, id=18, 867.24pt x 578.16pt>
 File: model_comp_halo.pdf Graphic file (type pdf)
  <use model_comp_halo.pdf>
 Package pdftex.def Info: model_comp_halo.pdf used on input line 260.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 
-<model_comp_hyperbole.pdf, id=20, 867.24pt x 578.16pt>
+<model_comp_hyperbole.pdf, id=19, 867.24pt x 578.16pt>
 File: model_comp_hyperbole.pdf Graphic file (type pdf)
 
 <use model_comp_hyperbole.pdf>
@@ -661,21 +659,20 @@ Package pdftex.def Info: model_comp_hyperbole.pdf used on input line 264.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 \dblfigandtabbox3=\box65
 
-<model_comp_affect.pdf, id=21, 867.24pt x 578.16pt>
+<model_comp_affect.pdf, id=20, 867.24pt x 578.16pt>
 File: model_comp_affect.pdf Graphic file (type pdf)
 
 <use model_comp_affect.pdf>
 Package pdftex.def Info: model_comp_affect.pdf used on input line 273.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <goals_comp.pdf, id=22, 722.7pt x 433.62pt>
+ <goals_comp.pdf, id=21, 722.7pt x 433.62pt>
 File: goals_comp.pdf Graphic file (type pdf)
 
 <use goals_comp.pdf>
 Package pdftex.def Info: goals_comp.pdf used on input line 277.
 (pdftex.def)             Requested size: 247.53888pt x 148.52057pt.
- [2 <./model_human_scatter.pdf> <./affect_scatter.pdf>]
-[3 <./model_comp_halo.pdf> <./model_comp_hyperbole.pdf> <./model_comp_affect.pd
-f> <./goals_comp.pdf>]
+ [2 <./model_human_scatter.pdf>] [3 <./model_comp_halo.pdf> <./model_comp_hyper
+bole.pdf> <./model_comp_affect.pdf> <./goals_comp.pdf>]
 
  ======================================================================== 
  C A R E F U L !!!!!
@@ -689,7 +686,7 @@ f> <./goals_comp.pdf>]
  
  ======================================================================== 
 
-<model_full_bar.pdf, id=74, 722.7pt x 433.62pt>
+<model_full_bar.pdf, id=64, 722.7pt x 433.62pt>
 File: model_full_bar.pdf Graphic file (type pdf)
  <use model_full_bar.pdf>
 Package pdftex.def Info: model_full_bar.pdf used on input line 378.
@@ -697,7 +694,7 @@ Package pdftex.def Info: model_full_bar.pdf used on input line 378.
 
 [4]
 \dblfigandtabbox4=\box66
- <human_full_bar.pdf, id=84, 722.7pt x 433.62pt>
+ <human_full_bar.pdf, id=74, 722.7pt x 433.62pt>
 File: human_full_bar.pdf Graphic file (type pdf)
  <use human_full_bar.pdf>
 Package pdftex.def Info: human_full_bar.pdf used on input line 383.
@@ -715,10 +712,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 11725 strings out of 493488
- 221651 string characters out of 3141326
- 288720 words of memory out of 3000000
- 14769 multiletter control sequences out of 15000+200000
+ 11720 strings out of 493488
+ 221542 string characters out of 3141326
+ 288719 words of memory out of 3000000
+ 14765 multiletter control sequences out of 15000+200000
  15642 words of font info for 57 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,57p,2188b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -740,10 +737,10 @@ e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/20
 12/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on hyperbole-pnas.pdf (6 pages, 302510 bytes).
+Output written on hyperbole-pnas.pdf (6 pages, 293442 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
+ 148 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 

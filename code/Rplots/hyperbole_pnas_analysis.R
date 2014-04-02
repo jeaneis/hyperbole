@@ -63,18 +63,23 @@ full.summary <- summarySE(d, measurevar="interpretationProb",
                           groupvars=c("utterance", "interpretation", "domain"))
 
 full.summary$interpretation <- factor(full.summary$interpretation)
-ggplot(full.summary, aes(x=interpretation, y=interpretationProb)) +
-  geom_bar(stat="identity", color="black", fill="#FF9999") +
+ggplot(full.summary, aes(x=interpretation, y=interpretationProb, fill=domain)) +
+  geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se),width=0.2) +
   facet_grid(domain ~ utterance) +
   theme_bw() +
   ylab("Probability") +
   xlab("Interpretation") +
-  ggtitle("Human") +
+  #ggtitle("Human") +
   theme(axis.title.x = element_text(size=14),
-        axis.text.x  = element_text(size=6, angle=-90),
+        axis.text.x  = element_text(size=8, angle=-90),
         axis.title.y = element_text(size=14),
-        axis.text.y = element_text(size=14))
+        axis.text.y = element_text(size=14),
+        #axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
+        #axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=14), strip.text.y=element_text(size=14)) +
+  #scale_color_brewer(palette="Accent")
+  scale_fill_manual(values=my.colors.domains, legend=FALSE)
 
 #######################
 # STATS!!!! For human effects
@@ -292,8 +297,17 @@ ggplot(church.effects, aes(x=utterance, y=adjustedProb, fill=interpretationKind)
 # Halo analysis
 ###############
 
-#### Human ####
+#### Human individaul ####
 
+d.halo <- join(d.exact, d.fuzzy, by=c("workerID", "domain", "utterance"))
+colnames(d.halo)[7] <- "probExact"
+colnames(d.halo)[11] <- "probFuzzy"
+d.halo$diff <- d.halo$probExact - d.halo$probFuzzy
+d.halo.summary <- summarySE(d.halo, measurevar="diff", groupvars=c("utteranceType", "domain"))
+summary(lm(data=d.halo.summary, diff ~ utteranceType))
+
+
+#### Human ####
 human.full.summary <- summarySE(d, measurevar="interpretationProb",
                                 groupvars=c("utterance", "interpretation", "domain", "interpretationKind", "utteranceType", "utteranceRounded"))
 human.full.summary <- human.full.summary[with(human.full.summary, order(domain, utterance, interpretation)),]
@@ -316,7 +330,7 @@ human.halo.summary <- summarySE(human.halo, measurevar="diff", groupvars=c("utte
 #########
 # Stats #
 #########
-summary(lm(data=human.halo.summary, diff ~ utteranceType))
+summary(lm(data=human.halo, diff ~ utteranceType))
 
 ## Visualize human halo ##
 
@@ -327,7 +341,7 @@ ggplot(human.halo.summary, aes(x=utteranceType, y=diff, group=domain, color=doma
   geom_line(linetype=2, size=1) +
   geom_errorbar(aes(ymin=diff-se, ymax=diff+se), width=0.05, color="grey")+
   theme_bw() +
-  facet_grid(domain~.) +
+  #facet_grid(domain~.) +
   ylab("P(exact) - P(fuzzy)") +
   xlab("Utterance Type") +
   theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14), 
@@ -376,14 +390,14 @@ ggplot(church.halo.summary, aes(x=utteranceType, y=diff, group=domain, color=dom
 
 ##### human + model #####
 
-human.halo.summary$type <- "Human"
+d.halo.summary$type <- "Human"
 church.full.halo.summary <- church.halo.summary
 church.full.halo.summary$type <-"Full model"
 
 church.noCost.halo.summary <- church.halo.summary
 church.noCost.halo.summary$type <- "Uniform utterance cost"
 
-comp.halo.summary <- rbind(human.halo.summary, church.full.halo.summary, church.noCost.halo.summary)
+comp.halo.summary <- rbind(d.halo.summary, church.full.halo.summary, church.noCost.halo.summary)
 comp.halo.summary$type <- factor(comp.halo.summary$type, levels=c("Human", "Full model", "Uniform utterance cost"))
 
 # bar plot without domains
@@ -763,8 +777,8 @@ comp.goal.example <- rbind(human.example, church.full.example, church.literal.ex
 comp.goal.example$type <- factor(comp.goal.example$type, levels=
   c("No goals", "Imprecise goal", "Affect goal", "Full model", "Human"))
 
-my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
-
+#my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
+my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#ff9896")
 ggplot(comp.goal.example, aes(x=interpretation, y=interpretationProb, fill=type)) +
   geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se), width=0.2) +
