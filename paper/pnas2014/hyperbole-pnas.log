@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 APR 2014 22:49
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  4 APR 2014 17:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -527,11 +527,7 @@ LaTeX Info: Redefining \] on input line 2667.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-(./hyperbole-pnas.aux
-
-LaTeX Warning: Label `jager2009pragmatic' multiply defined.
-
-)
+(./hyperbole-pnas.aux)
 \openout1 = `hyperbole-pnas.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
@@ -546,7 +542,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
 LaTeX Font Info:    ... okay on input line 129.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
 LaTeX Font Info:    ... okay on input line 129.
- (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count145
 \scratchdimen=\dimen185
@@ -619,7 +616,6 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 174.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 Missing character: There is no Õ in font cmr9!
-Missing character: There is no Ó in font cmr9!
 Missing character: There is no Õ in font cmr9!
  [1
 
@@ -675,8 +671,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--276
 
 Missing character: There is no Õ in font cmr9!
 Missing character: There is no Õ in font cmr9!
-[2 <./model_effects.pdf>]
 Missing character: There is no Õ in font cmr9!
+[2 <./model_effects.pdf>]
 \dblfigandtabbox3=\box66
  <affect_scatter.pdf, id=33, 867.24pt x 578.16pt>
 File: affect_scatter.pdf Graphic file (type pdf)
@@ -692,27 +688,14 @@ Package pdftex.def Info: model_comp_affect.pdf used on input line 298.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 Missing character: There is no Õ in font cmr9!
  [3 <./model_human_scatter.pdf> <./model_comp_goals.pdf> <./model_comp_hyperbol
-e.pdf> <./model_comp_halo.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 318--321
-\OMS/cmsy/m/n/9 f\OT1/cmr/m/n/9 50\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 51\OML/cmm/m
-/it/9 ; \OT1/cmr/m/n/9 500\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 501\OML/cmm/m/it/9 ;
- \OT1/cmr/m/n/9 1000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 1001\OML/cmm/m/it/9 ; \OT1
-/cmr/m/n/9 5000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 5001\OML/cmm/m/it/9 ; \OT1/cmr/
-m/n/9 10000\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 10001\OMS/cmsy/m/n/9 g$ \materialfo
-nt and as-
- []
-
-[4 <./affect_scatter.pdf> <./model_comp_affect.pdf>]
+e.pdf> <./model_comp_halo.pdf>] [4 <./affect_scatter.pdf> <./model_comp_affect.
+pdf>]
 Missing character: There is no Õ in font cmss10!
 Missing character: There is no Õ in font cmss10!
 Missing character: There is no Õ in font cmss10!
 Missing character: There is no Õ in font cmss10!
-
-Overfull \vbox (2.0pt too high) has occurred while \output is active []
-
+Missing character: There is no Õ in font cmss10!
  [5]
-Missing character: There is no Õ in font cmss10!
-
 
  ======================================================================== 
  C A R E F U L !!!!!
@@ -729,68 +712,67 @@ Missing character: There is no Õ in font cmss10!
 <model_bar.pdf, id=92, 867.24pt x 578.16pt>
 File: model_bar.pdf Graphic file (type pdf)
  <use model_bar.pdf>
-Package pdftex.def Info: model_bar.pdf used on input line 403.
+Package pdftex.def Info: model_bar.pdf used on input line 405.
 (pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
 
-Overfull \hbox (6.172pt too wide) in paragraph at lines 403--405
+Overfull \hbox (6.172pt too wide) in paragraph at lines 405--407
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--405
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
 
  []
 
 <human_bar.pdf, id=93, 867.24pt x 578.16pt>
 File: human_bar.pdf Graphic file (type pdf)
  <use human_bar.pdf>
-Package pdftex.def Info: human_bar.pdf used on input line 407.
+Package pdftex.def Info: human_bar.pdf used on input line 409.
 (pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
 
-Overfull \hbox (6.172pt too wide) in paragraph at lines 407--409
+Overfull \hbox (6.172pt too wide) in paragraph at lines 409--411
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--409
+Underfull \hbox (badness 10000) in paragraph at lines 409--411
 
  []
 
-[6 <./model_bar.pdf> <./human_bar.pdf>] [7] (./hyperbole-pnas.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+Missing character: There is no Ô in font cmssbx10!
+Missing character: There is no Õ in font cmssbx10!
+[6 <./model_bar.pdf> <./human_bar.pdf>] (./hyperbole-pnas.aux) ) 
 Here is how much of TeX's memory you used:
- 11736 strings out of 493488
- 221766 string characters out of 3141326
- 281778 words of memory out of 3000000
- 14779 multiletter control sequences out of 15000+200000
+ 11734 strings out of 493488
+ 221716 string characters out of 3141326
+ 281743 words of memory out of 3000000
+ 14777 multiletter control sequences out of 15000+200000
  15642 words of font info for 57 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,12n,57p,2069b,338s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb>
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><
-/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
-sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
-/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
-ocal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loc
-al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
-/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/201
-2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on hyperbole-pnas.pdf (7 pages, 314120 bytes).
+ 56i,12n,57p,1973b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2
+012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2012
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2012/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2012/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2012/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2012/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2012/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2012/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2012/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2012/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2012/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on hyperbole-pnas.pdf (6 pages, 312251 bytes).
 PDF statistics:
- 169 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
+ 164 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
