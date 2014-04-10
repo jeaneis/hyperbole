@@ -88,19 +88,19 @@
 %% The AMS math files are commonly used to gain access to useful features
 %% like extended math fonts and math commands.
 \usepackage{multirow}
-%\usepackage{url}
 %\usepackage{caption}
 %\usepackage{subcaption}
-%\usepackage{etex}
+\usepackage{etex}
 \usepackage{color}
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{decorations.shapes}
 \usepackage{amssymb,amsfonts,amsmath}
 \usepackage{xspace}
 \newcommand{\dictionary}{\ensuremath{\mathcal{D}}\xspace}
 \usepackage{soul}
+%\usepackage{hyperref}
 
 %------------------------------------------------
 % OPTIONAL MACRO FILES
@@ -231,7 +231,7 @@ Previous work has examined people's communicative reasons for using figurative l
 $$
 S_n  (u | g) \propto \sum_{s,a} L_n (s,a|u)g(s,a) \cdot e^{-C(u)}
 $$
-where the intended meaning includes $s$ (the state of the world) and  $a$ (the speaker's affect). $g$ is a function that denotes whether a communicative goal is satisfied by $s$ and $a$, and $C$ is a function for utterance costs (see Methods for details). The listener then performs joint inference on both the goal and the meaning: \hl{$L_0$ doesn't consider goals..}
+where the intended meaning includes $s$ (the state of the world) and  $a$ (the speaker's affect). $g$ is a function that denotes whether a communicative goal is satisfied by $s$ and $a$, and $C$ is a function for utterance costs. A literal listener interprets utterances literally without reasoning about the speaker. A pragmatic listener performs joint inference on both the speaker's goal and her intended meaning (see Materials): \hl{Fixed:$L_0$ doesn't consider goals..}
 $$
 L_n (s,a | u) \propto \sum_g P_S(s) P_A(a|s) P_G(g|s,a) S_{n-1} (u|g)
 $$
@@ -248,7 +248,7 @@ We aim to capture two particular well-known phenomena regarding number interpret
 \section{Results}
 
 %Given that knowledge of a domain's prior distribution drives hyperbolic interpretations, we predict that the same number word used in different domains will elicit different interpretations.
-We tested our model on number words that refer to the prices of three types of everyday items: electric kettles, watches, and laptops. We selected these items because they have distinct price distributions, the prior $P_S$, which we measured empirically by asking participants to rate the probability of various prices for the three items (see Experiment 3a in Methods). We also obtained an affect prior, $P_A$, by asking participants to rate the probability of a speaker thinking that an item is too expensive given a price state (see Experiment 3b). \hl{awk} A speaker can say, ``The electric kettle cost $u$ dollars," for $u \in U$, and a listener can interpret this to mean that the kettle cost $s$ dollars, for $s \in S$. Each utterance is either ``round" (divisible by 10 and less costly to utter) or ``sharp" (not divisible by 10 and more costly to utter). A formal description of these assumptions is in the Methods section.
+We tested our model on number words that refer to the prices of three types of everyday items: electric kettles, watches, and laptops. We selected these items because they have distinct price distributions, the prior $P_S$, which we measured empirically by asking participants to rate the probability of various prices for the three items (see Experiment 3a in Methods). We also obtained an affect prior, $P_A$, by asking participants to rate the probability of a speaker thinking that an item is too expensive given a price state (see Experiment 3b). \hl{fixed} We aim to model people's interpretations of utterances such as, ``The electric kettle cost $u$ dollars," for $u \in U$. A listener can interpret this utterance to mean that the kettle cost $s$ dollars, for $s \in S$. Each number word is either ``round" (divisible by 10 and less costly to utter) or ``sharp" (not divisible by 10 and more costly to utter). A formal description of these assumptions is in the Methods section.
 
 \begin{figure}[t]
 \centering

@@ -1,4 +1,5 @@
-\def\currversion{April 15, 2008}
+%\def\currversion{April 15, 2008}
+\def\currversion{October 04, 2013}
 
   %*****************************************************************%
   %*                                                               *%
@@ -18,7 +19,7 @@
 
 \typeout{^^J^^J
 Two Column Journal Style for the^^J
-Proceedings of the National Academy of Science 
+Proceedings of the National Academy of Science
 ^^J
 Written by Amy Hendrickson, TeXnology, Inc., 9/04^^J
 ^^J
@@ -40,8 +41,8 @@ This version is dated \currversion^^J^^J}
    {\setlength\paperheight {250mm}%
     \setlength\paperwidth  {176mm}}
 \DeclareOption{letterpaper}
-   {\setlength\paperheight {11in}%
-    \setlength\paperwidth  {8.5in}}
+   {\setlength\paperheight {16in}%
+    \setlength\paperwidth  {13.5in}}
 \DeclareOption{legalpaper}
    {\setlength\paperheight {14in}%
     \setlength\paperwidth  {8.5in}}
@@ -52,6 +53,10 @@ This version is dated \currversion^^J^^J}
    {\setlength\@tempdima   {\paperheight}%
     \setlength\paperheight {\paperwidth}%
     \setlength\paperwidth  {\@tempdima}}
+\DeclareOption{pnaspaper}
+   {\setlength\paperheight {11.87in}%
+    \setlength\paperwidth  {9.12in}}
+
 \fi
 \if@compatibility
   \renewcommand\@ptsize{0}
@@ -88,8 +93,18 @@ This version is dated \currversion^^J^^J}
       }%
    \renewcommand\newblock{\par}}%
 }
-\ExecuteOptions{letterpaper,twoside,onecolumn,final}
+\ExecuteOptions{pnaspaper,twoside,onecolumn,final}
 \ProcessOptions
+
+\AtBeginDocument{
+\RequirePackage[cam,center]{crop}
+\paperwidth=8.125in
+\paperheight=10.875in
+\renewcommand*\CROP@horigin{-.5truein}
+\renewcommand*\CROP@vorigin{-.5truein}
+}%
+
+
 %% size10.clo ==>>
 \renewcommand\normalsize{%
    \@setfontsize\normalsize\@ixpt\@xpt
@@ -110,8 +125,8 @@ This version is dated \currversion^^J^^J}
    \abovedisplayshortskip \z@ \@plus2\p@
    \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
    \def\@listi{\leftmargin\leftmargini
-               \topsep 0\p@ 
-               \parsep 0\p@ 
+               \topsep 0\p@
+               \parsep 0\p@
                \itemsep \parsep}%
    \belowdisplayskip \abovedisplayskip
 }
@@ -136,7 +151,7 @@ This version is dated \currversion^^J^^J}
 \if@twocolumn
   \setlength\parindent{1em}
 \else
-  \setlength\parindent{15\p@}
+  \setlength\parindent{9\p@}%15\p@}
 \fi
 \setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
 \setlength\medskipamount{6\p@ \@plus 2\p@ \@minus 2\p@}
@@ -144,7 +159,7 @@ This version is dated \currversion^^J^^J}
 \setlength\headheight{12\p@}
 \setlength\headsep   {25\p@}
 \setlength\topskip   {10\p@}
-\setlength\footskip{20\p@}
+\setlength\footskip{30\p@}
 \if@compatibility \setlength\maxdepth{4\p@} \else
 \setlength\maxdepth{.5\topskip} \fi
 \if@compatibility
@@ -240,7 +255,7 @@ This version is dated \currversion^^J^^J}
   \setlength\topmargin{27pt}
 \else
   \setlength\topmargin{\paperheight}
-  \addtolength\topmargin{-2in}
+  \addtolength\topmargin{-3.3in}
   \addtolength\topmargin{-\headheight}
   \addtolength\topmargin{-\headsep}
   \addtolength\topmargin{-\textheight}
@@ -319,19 +334,21 @@ This version is dated \currversion^^J^^J}
       \let\@evenhead\relax
    \def\@oddhead{\hfill\rlap{\hskip14pt\vtop to 0pt{\vskip-1pt\makesidesquares
 \vss}}}%
-\def\@oddfoot{{\dospecialaccents%
+\def\@oddfoot{%
+%\leftnumber
+{\dospecialaccents%
 \iftitlepage\global\titlepagefalse%
 \footlinefont
 \ifodd\c@page
 \hbox to \textwidth{\footlinefont \let\it\footlineit
-\theurl\hfill\footlinefont PNAS\hskip6pt  \vrule depth 2pt\hskip6pt 
-{\foliofont\theissuedate}\hskip6pt\vrule\hskip6pt\thevolume\hskip6pt 
+\theurl\hfill\footlinefont PNAS\hskip6pt  \vrule depth 2pt\hskip6pt
+{\foliofont\theissuedate}\hskip6pt\vrule\hskip6pt\thevolume\hskip6pt
 \vrule\hskip6pt\theissuenumber\hskip6pt \vrule\hskip6pt
-\the\c@page{\footlineit--}\expandafter\ifx\csname 
-lastpage\endcsname\relax ??\else\lastpage\fi}%
+{\foliofont\the\c@page{\footlineit--}\expandafter\ifx\csname
+lastpage\endcsname\relax ??\else\lastpage\fi}}%
 \else
 \hbox to \textwidth{\footlinefont \let\it\footlineit
-{\foliofont\the\c@page{\footlineit--}\expandafter\ifx\csname 
+{\foliofont\the\c@page{\footlineit--}\expandafter\ifx\csname
 lastpage\endcsname\relax ??\else\lastpage\fi}\hskip6pt
 \vrule depth 2pt\hskip6pt PNAS\hskip6pt
 \vrule\hskip6pt{\foliofont\theissuedate}\hskip6pt\vrule\hskip6pt
@@ -344,7 +361,8 @@ lastpage\endcsname\relax ??\else\lastpage\fi}\hskip6pt
 \hskip6pt\vrule depth2pt\hskip6pt\thevolume\hskip6pt\vrule depth 2pt\hskip6pt\theissuenumber\hskip6pt\vrule\hskip6pt{\foliofont\the\c@page}}%
 \else%
 \hbox to\textwidth{\let\it\footlineit\footlinefont{\foliofont \the\c@page}%
-\hskip6pt\vrule depth 2pt height 6pt\hskip6pt\theurl\hfill\thefootlineauthor}\fi\fi}}
+\hskip6pt\vrule depth 2pt height 6pt\hskip6pt\theurl\hfill\thefootlineauthor}\fi\fi}%\rightnumber
+}
 \let\@evenfoot\@oddfoot
 %
       \let\@mkboth\markboth
@@ -370,7 +388,7 @@ lastpage\endcsname\relax ??\else\lastpage\fi}\hskip6pt
 \expandafter\ifx\csname affil\the\affilcount\endcsname\relax
 \global\advance\c@footnote by1
 \expandafter\xdef\csname affilsymb\the\affilcount\endcsname%
-{\the\c@footnote}{$^{\@fnsymbol\c@footnote}$}% 
+{\the\c@footnote}{$^{\@fnsymbol\c@footnote}$}%
 \expandafter\gdef\csname affil\the\affilcount\endcsname{#2}\else
 $^{\expandafter\@fnsymbol\csname affilsymb\the\affilcount\endcsname}$
 \fi\authorfont}
@@ -424,7 +442,7 @@ $^{\expandafter\@fnsymbol\csname affilsymb\the\affilcount\endcsname}$
 \raggedright
 \affilcount=0
 \footnotesize\affilfont
-\loop \ifnum\affilcount< \saveaffilcount 
+\loop \ifnum\affilcount< \saveaffilcount
 \expandafter\ifx\csname affil\the\affilcount\endcsname\relax\else
 $^{\expandafter\@fnsymbol\csname affilsymb\the\affilcount\endcsname}$%
 \csname affil\the\affilcount\endcsname,\fi
@@ -724,15 +742,23 @@ of the National Academy of Sciences of the United States of America}
 \long\def\@makecaption#1#2{%
 \ifx\@captype\xtable
 \let\currtabcaption\relax
-\gdef\currtabcaption{
-\tabnumfont\relax #1. \tabtextfont\relax#2\par
-\vskip\belowcaptionskip
-}
+%\gdef\currtabcaption{%
+%\tabnumfont\relax #1.\tabtextfont\hskip8\p@\relax#2\par
+%\vskip\belowcaptionskip
+%}
+\vskip\abovecaptionskip
+  \sbox\@tempboxa{\tabnumfont#1.\tabtextfont\hskip8\p@\relax #2}%
+  \ifdim \wd\@tempboxa >\hsize
+\tabnumfont\relax #1.\tabtextfont\hskip8\p@\relax#2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
 \else
  \vskip\abovecaptionskip
-  \sbox\@tempboxa{\fignumfont#1.\figtextfont\hskip.5em\relax #2}%
+  \sbox\@tempboxa{\fignumfont#1.\figtextfont\hskip8\p@\relax #2}%
   \ifdim \wd\@tempboxa >\hsize
-\fignumfont\relax #1.\figtextfont\hskip.5em\relax#2\par
+\fignumfont\relax #1.\figtextfont\hskip8\p@\relax#2\par
   \else
     \global \@minipagefalse
     \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
@@ -843,10 +869,25 @@ of the National Academy of Sciences of the United States of America}
 \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
 
+%\renewcommand\footnoterule{%
+%  \kern-3\p@
+%  \hrule\@width6pc%.4\columnwidth
+%  \kern2.6\p@}
 \renewcommand\footnoterule{%
-  \kern-3\p@
-  \hrule\@width6pc%.4\columnwidth
-  \kern2.6\p@}
+\ifx \@significancetext\@empty
+			\kern-3\p@
+				\hrule\@width6pc%.4\columnwidth
+				\kern2.6\p@
+\else
+			\ifnum\thepage=1
+				\renewcommand\footnoterule{}
+			\else
+				\kern-3\p@
+				\hrule\@width6pc%.4\columnwidth
+				\kern2.6\p@
+			\fi
+\fi
+			}
 \newcommand\@makefntext[1]{%
     \parindent 1em%
     \noindent
@@ -883,12 +924,33 @@ of the National Academy of Sciences of the United States of America}
 %%%%%%%%%%%%%%%%%
 % Additions to article.cls for PNASONE ==>>
 %%%%%%%%%%%%%%%%%
-\hoffset-.25in
+\hoffset-.5in
 \pagestyle{headings}
 \textwidth= 42.5pc
-\textheight= 56.5pc
+\textheight= 56.2pc
 
 \def\xrelax{\relax}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% For Line numbers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{cms}
+
+\def\leftnumber{\setlength{\unitlength}{1pt}
+\begin{picture}(0,0)
+\multiput(-45,688)(0,-10){68}{\addtocounter
+{cms}{1}{\fontsize{9}{10.5}\selectfont\arabic{cms}\par}}
+\end{picture}
+}
+
+\def\rightnumber{\setlength{\unitlength}{1pt}
+\begin{picture}(0,0)
+\multiput(6,688)(0,-10){68}{\addtocounter
+{cms}{1}{\fontsize{9}{10.5}\selectfont\arabic{cms}\par}}
+\end{picture}
+}
+%%%%%%%%%%%%%%%%%%%%%%%% For Line numbers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%
@@ -923,8 +985,8 @@ of the National Academy of Sciences of the United States of America}
 
 %\let\footnote\endnotes
 
-     \setlength\oddsidemargin   {0\p@}
-     \setlength\evensidemargin   {0\p@}
+     \setlength\oddsidemargin   {3\p@}
+     \setlength\evensidemargin   {-3\p@}
 
 
 \def\dropcap#1{\setbox1=\hbox{\dropcapfont\uppercase{#1}\hskip1pt}
@@ -1004,15 +1066,15 @@ of the National Academy of Sciences of the United States of America}
 %%                                                                      %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%% 
-%%% Double column output routines, 
+%%%%%%%%
+%%% Double column output routines,
 %%% with single and double column insertions,
-%%% to be positioned at page or column top, page or column bottom, page 
+%%% to be positioned at page or column top, page or column bottom, page
 %%% or column center, or full page floating insertion.
 %%% This code was originally based on Frank Mittlebach's multicol.sty.
 %%% The concept of how to balance columns is due to Donald Knuth. The
-%%% way to integrate the changed output routine into the standard LaTeX 
-%%% output routine is due to Frank. 
+%%% way to integrate the changed output routine into the standard LaTeX
+%%% output routine is due to Frank.
 %%% The method of making the single and double column insertions and the
 %%% changes in the output routines to accomodate these features are mine.
 %%% A.H., August 2004
@@ -1029,7 +1091,7 @@ of the National Academy of Sciences of the United States of America}
 \newdimen\belowtabcaptionskip
 
 %% Parameters you can set:
-\columnsep=16pt
+\columnsep=13.5pt%16pt
 \newdimen\saveparskip
 \saveparskip=\parskip
 
@@ -1042,7 +1104,7 @@ of the National Academy of Sciences of the United States of America}
 \newdimen\PushOneColBotFig
 
 \PushOneColTopFig=5.5pt %% push down from top of text page
-\PushOneColBotFig=-4.5pt % 
+\PushOneColBotFig=-4.5pt %
 
 %%
 \newdimen\PushOneColTopTab
@@ -1068,7 +1130,7 @@ of the National Academy of Sciences of the United States of America}
 %%
 
 \newskip\intextfloatskip
-\intextfloatskip=20pt %%  Space between figure or table and text. 
+\intextfloatskip=20pt %%  Space between figure or table and text.
          %% (Need to subtract 4pt to get what you want)
 
 %% Normal and Appendix Figure and Table Numbers
@@ -1089,7 +1151,7 @@ of the National Academy of Sciences of the United States of America}
 %%% New version of \@makecol that includes dbltopins and dblbotins,
 %%% insertions that span both columns at the top and bottom of text page.
 
-%%% 
+%%%
 
 \def\new@makecol{\setbox\@outputbox
      \vbox{\boxmaxdepth \maxdepth
@@ -1098,7 +1160,7 @@ of the National Academy of Sciences of the United States of America}
 \ifdim\ht\dblbotins<1pt\else\unvbox\dblbotins\fi%
 \ifvoid\footins\else\vskip\skip\footins\footnoterule\unvbox\footins\fi\vss}
 %\global\savefigandtabnumber\figandtabnumber
-%\global\advance\savefigandtabnumber by 1 %% Because loop stops one short 
+%\global\advance\savefigandtabnumber by 1 %% Because loop stops one short
                                          %% of the total number of figs
 \global\savedblfigandtabnumber\dblfigandtabnumber
    \xdef\@freelist{\@freelist\@midlist}\gdef\@midlist{}\@combinefloats
@@ -1107,11 +1169,11 @@ of the National Academy of Sciences of the United States of America}
    \vskip-\dimen128\@textbottom}%
    \global\maxdepth\@maxdepth}
 
-%% 
+%%
 \let\@makecol\new@makecol %%
 
 %% Default Latex output routine, to return to after balance columns
-%% This should make it possible to capture the output routine of 
+%% This should make it possible to capture the output routine of
 %% any version of 2e as well as 2.09. ==>>
 
 \edef\curroutput{\the\output}
@@ -1134,7 +1196,7 @@ of the National Academy of Sciences of the United States of America}
 \advance\checkforspace by -2\ht\dblbotins
 \advance\checkforspace by -2\dp\dblbotins
 \ifdim\checkforspace<36pt\ifnonewpage\else\newpage\fi\fi
-\begingroup 
+\begingroup
 %
 \expandafter\gdef\csname plate*\endcsname{\twocolplate}
 \expandafter\gdef\csname endplate*\endcsname{\endtwocolfloat}
@@ -1166,13 +1228,13 @@ of the National Academy of Sciences of the United States of America}
    %  without discretionary hyphens
   \advance\@colroom-\ht\partialpage
   \advance\@colroom-\dp\partialpage
-\vsize=\@colroom 
+\vsize=\@colroom
 % Changed to \@colroom rather than 2\@colroom. Each column is output
 % separately so we can find out if there are top or bottom inserts
 % in first column.
 %%
-  \hsize\textwidth \advance\hsize-\columnsep 
-  \divide\hsize by 2 
+  \hsize\textwidth \advance\hsize-\columnsep
+  \divide\hsize by 2
   \linewidth\hsize %% particular to LaTeX
   \columnwidth=\hsize
 %% OR, you can substitute these lines:
@@ -1198,7 +1260,7 @@ of the National Academy of Sciences of the United States of America}
 \advance\checkforspace by -2\ht\dblbotins
 \advance\checkforspace by -2\dp\dblbotins
 \ifdim\checkforspace<36pt\newpage\fi
-\begingroup 
+\begingroup
 \expandafter\gdef\csname plate*\endcsname{\twocolplate}
 \expandafter\gdef\csname endplate*\endcsname{\endtwocolfloat}
 %
@@ -1215,7 +1277,7 @@ of the National Academy of Sciences of the United States of America}
 \global\firstsectionfalse
 \hsize=\mycolumnwidth
 \linewidth=\mycolumnwidth
-  \vbadness10001 
+  \vbadness10001
 \hbadness5000
   \tolerance5000
 \widowpenalty=0 \clubpenalty=0
@@ -1223,7 +1285,7 @@ of the National Academy of Sciences of the United States of America}
 \vskip1sp\ignorespaces}
 
 \def\draftcolumns{\par \penalty\z@
-\begingroup 
+\begingroup
 \expandafter\gdef\csname plate*\endcsname{\twocolplate}
 \expandafter\gdef\csname endplate*\endcsname{\endtwocolfloat}
 %
@@ -1245,7 +1307,7 @@ of the National Academy of Sciences of the United States of America}
 \linewidth=\textwidth
   \vbadness10001 \hbadness5000
   \tolerance5000
-\parskip  \saveparskip 
+\parskip  \saveparskip
 \vskip1sp\ignorespaces}
 
 \newbox\savetopinsert
@@ -1283,9 +1345,9 @@ of the National Academy of Sciences of the United States of America}
 \newdimen\FigSpace
 \newbox\testdblbotins
 
-\def\makeuppage{% 
+\def\makeuppage{%
 %%
-\FigSpace=.9\@colroom %% 
+\FigSpace=.9\@colroom %%
 \advance\FigSpace by-\ht\testdblbotins
 \advance\FigSpace by-\dp\testdblbotins
 \advance\FigSpace by-\ht\dbltopins
@@ -1296,13 +1358,13 @@ of the National Academy of Sciences of the United States of America}
 % write top figures and tables into this box
 \redefiningtrue
 \global\loopnum=0 \global\checkheight=0pt
-\loop\ifnum\loopnum<\firstcolsavefignum 
+\loop\ifnum\loopnum<\firstcolsavefignum
  %
 \expandafter\ifx\csname topfloat\the\loopnum\endcsname\empty
 \else
 \expandafter\ifx\csname topfloat\the\loopnum\endcsname\relax
 \else
-\global\advance\checkheight by 
+\global\advance\checkheight by
 \expandafter\csname totalht\the\loopnum\endcsname\relax
 \fi\fi
 \ifdim\checkheight>\FigSpace \relax
@@ -1322,14 +1384,14 @@ of the National Academy of Sciences of the United States of America}
 \global\setbox\savebotinsert=\vbox{%
   %% Write bottom figures and tables into this box
 \redefiningtrue
-\global\loopnum=0 
+\global\loopnum=0
 \global\checkheight=0pt
-\loop\ifnum\loopnum<\firstcolsavefignum 
+\loop\ifnum\loopnum<\firstcolsavefignum
 \expandafter\ifx\csname botfloat\the\loopnum\endcsname\empty
 \else
 \expandafter\ifx\csname botfloat\the\loopnum\endcsname\relax
 \else
-\global\advance\checkheight by 
+\global\advance\checkheight by
 \expandafter\csname totalht\the\loopnum\endcsname\relax
 \fi\fi
 \ifdim\checkheight>\ColUsed
@@ -1357,7 +1419,7 @@ of the National Academy of Sciences of the United States of America}
 \else
 \expandafter\ifx\csname topfloat\the\loopnum\endcsname\relax
 \else
-\global\advance\checkheight by 
+\global\advance\checkheight by
 \expandafter\csname totalht\the\loopnum\endcsname\relax
 \fi\fi
 \ifdim\checkheight>\FigSpace
@@ -1375,7 +1437,7 @@ of the National Academy of Sciences of the United States of America}
 }
 \fi
 %
-\ColUsed=\FigSpace %% 
+\ColUsed=\FigSpace %%
 \advance\ColUsed by-\ht\secondsavetopinsert
 \advance\ColUsed by-\dp\secondsavetopinsert
 %
@@ -1390,7 +1452,7 @@ of the National Academy of Sciences of the United States of America}
 \else
 \expandafter\ifx\csname botfloat\the\loopnum\endcsname\relax
 \else
-\global\advance\checkheight by 
+\global\advance\checkheight by
 \expandafter\csname totalht\the\loopnum\endcsname\relax
 \fi\fi
 \ifdim\checkheight>\ColUsed
@@ -1416,26 +1478,26 @@ of the National Academy of Sciences of the United States of America}
    \dimen@\@colroom
 %% Leave space if there is a two-column wide bottom insertion:
 %
-\global\setbox\dblbotins=\vbox{% 
+\global\setbox\dblbotins=\vbox{%
 \hsize=\textwidth
 \linewidth=\textwidth
 \captionwidth=\widecaptionwidth
 \unvbox\dblbotins %% avoid eradicating this if it has anything in it
 %% Write dblspan bottom figures and tables into this box
 \redefiningtrue
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\savedblfigandtabnumber %%
 \csname dblbotfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
 \csname dblbotfloat\the\dblloopnum\endcsname
 }
    \ifvoid\dblbotins \else
-      \advance\dimen@-\ht\dblbotins   
-      \advance\dimen@-\dp\dblbotins   
+      \advance\dimen@-\ht\dblbotins
+      \advance\dimen@-\dp\dblbotins
 \fi
-% 
+%
 %% Leave space if there is a two-column wide top insertion:
-   \ifvoid\dbltopins\else 
+   \ifvoid\dbltopins\else
       \advance\dimen@-\ht\dbltopins
       \advance\dimen@-\dp\dbltopins
 \fi
@@ -1453,9 +1515,9 @@ of the National Academy of Sciences of the United States of America}
 \ifdim\ht\savebotinsert>0pt
 \advance\firstcol by-\ht\savebotinsert
 \advance\firstcol by-\dp\savebotinsert\fi
-\fi% 
-%%% KLUDGE below 
-\advance\firstcol by-3pt %% We need this to avoid        
+\fi%
+%%% KLUDGE below
+\advance\firstcol by-3pt %% We need this to avoid
                          %% error messages about overfull boxes.
 %
 \secondcol=\dimen@
@@ -1479,7 +1541,7 @@ of the National Academy of Sciences of the United States of America}
                           %% error messages about overfull boxes.
 %
 %% Cutting the amount of text that will fit from box255:
-   \splittopskip=\topskip %% 
+   \splittopskip=\topskip %%
    \splitmaxdepth\maxdepth
 \setbox\thefirstbox \vsplit\@cclv to\firstcol
 \setbox\thesecondbox \vsplit\@cclv to\secondcol
@@ -1490,7 +1552,7 @@ of the National Academy of Sciences of the United States of America}
 \box\thefirstbox%
 \ifvoid\savebotinsert\else\vfill\unvbox\savebotinsert\fi%
 }
-% 
+%
 %% Making a text box that includes the inserts, column to the right:
 \setbox\secondcolbox\vbox to\dimen@{%
 \ifvoid\secondsavetopinsert\else\unvbox\secondsavetopinsert\fi%
@@ -1500,14 +1562,14 @@ of the National Academy of Sciences of the United States of America}
 }
 % Put back any text material that is not used:
   \ifvoid\@cclv \else
-       \unvbox\@cclv 
+       \unvbox\@cclv
        \penalty\outputpenalty\fi
    \setbox\@cclv\vbox{\page@sofar}%
    \@makecol\@outputpage
    \global\@colroom\@colht
-% Changed this so that each column will be output separately, 
+% Changed this so that each column will be output separately,
 % so we have a chance to see if there are any insertions in the first
-% column. 
+% column.
 %
 %% Do Page Inserts here, so that if there are any two col top inserts
 %% They will be numbered after Page Inserts.
@@ -1526,18 +1588,18 @@ of the National Academy of Sciences of the United States of America}
 \unvbox\dbltopins
 %% Write dblspan bottom figures and tables into this box
 \redefiningtrue %
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\savedblfigandtabnumber
 \csname dbltopfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
-\csname dbltopfloat\the\dblloopnum\endcsname% 
+\csname dbltopfloat\the\dblloopnum\endcsname%
                                 %Save one for next page?
 %\vskip24pt
 }
 %**
 %
 %% dblfigandtabnumber rather than savedblfigandtabnumber here
-\global\setbox\testdblbotins=\vbox{% 
+\global\setbox\testdblbotins=\vbox{%
 \let\c@figure\bogus
 \let\c@table\bogus
 \let\c@plate\bogus
@@ -1547,7 +1609,7 @@ of the National Academy of Sciences of the United States of America}
 \copy\dblbotins %% avoid eradicating this if it has anything in it
 %% Write dblspan bottom figures and tables into this box
 \redefiningfalse
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\dblfigandtabnumber %%
 \csname dblbotfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
@@ -1579,7 +1641,7 @@ of the National Academy of Sciences of the United States of America}
 
 \newdimen\savelastskip
 %%+++
-\def\endtwocolumns{% 
+\def\endtwocolumns{%
 %\par\penalty0
 \splittopskip=\topskip
 \splitmaxdepth\maxdepth
@@ -1590,7 +1652,7 @@ of the National Academy of Sciences of the United States of America}
 \ifdim\ht\endcolsavebotinsert>1pt
 \unvbox\endcolsavebotinsert%
 \fi
-\par\penalty\z@ 
+\par\penalty\z@
 \output={\global\setbox\testpagesize=\vbox{%
 \unvbox\@cclv\ifdim\savelastskip>0pt \vskip-\savelastskip\fi}}\eject
  %%
@@ -1599,7 +1661,7 @@ of the National Academy of Sciences of the United States of America}
  %%
 \dimen0=\ht\testpagesize
 \advance\dimen0 by\dp\testpagesize
-\unvbox\testpagesize %% 
+\unvbox\testpagesize %%
 %% Above needed to see if we have more than one page worth of text.
 %%
 \advance\dimen0 by \topskip
@@ -1655,11 +1717,11 @@ of the National Academy of Sciences of the United States of America}
 \unvbox\dbltopins
 %% Write dblspan bottom figures and tables into this box
 \redefiningtrue %
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\dblfigandtabnumber
 \csname dbltopfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
-\csname dbltopfloat\the\dblloopnum\endcsname% 
+\csname dbltopfloat\the\dblloopnum\endcsname%
 %                           %Save one for next page?
 \vskip3pt%% kludge
 \vskip-\intextfloatskip
@@ -1677,21 +1739,21 @@ of the National Academy of Sciences of the United States of America}
 %
 \global\setbox\endcolsavebotinsert=\vbox{%
 %% drop figures and tables into this box
-\global\loopnum=0 
+\global\loopnum=0
 \redefiningtrue
 \loop\ifnum\loopnum<\figandtabnumber
 \csname botfloat\the\loopnum\endcsname
 \global\advance\loopnum by1\repeat
 \csname botfloat\the\loopnum\endcsname}
 %
-\global\setbox\dblbotins=\vbox{% 
+\global\setbox\dblbotins=\vbox{%
 \hsize=\textwidth
 \linewidth=\textwidth
 \captionwidth=\widecaptionwidth
 \unvbox\dblbotins %% avoid eradicating this if it has anything in it
 % Write dblspan bottom figures and tables into this box
 \redefiningtrue
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\dblfigandtabnumber %%
 \csname dblbotfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
@@ -1706,11 +1768,11 @@ of the National Academy of Sciences of the United States of America}
 \unvbox\dbltopins
 % Write dblspan bottom figures and tables into this box
 \redefiningtrue %
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\dblfigandtabnumber
 \csname dbltopfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
-\csname dbltopfloat\the\dblloopnum\endcsname% 
+\csname dbltopfloat\the\dblloopnum\endcsname%
 %
 %\global\setbox\dblbotins=\vbox
 \hsize=\textwidth
@@ -1719,7 +1781,7 @@ of the National Academy of Sciences of the United States of America}
 \unvbox\dblbotins %% avoid eradicating this if it has anything in it
 % Write dblspan bottom figures and tables into this box
 \redefiningtrue
-\global\dblloopnum=0 
+\global\dblloopnum=0
 \loop\ifnum\dblloopnum<\dblfigandtabnumber %%
 \csname dblbotfloat\the\dblloopnum\endcsname
 \global\advance\dblloopnum by1\repeat
@@ -1742,7 +1804,7 @@ of the National Academy of Sciences of the United States of America}
 %
 \global\setbox\endcolsavebotinsert=\vbox{%
 %% drop figures and tables into this box
-\global\loopnum=0 
+\global\loopnum=0
 \redefiningtrue
 \loop\ifnum\loopnum<\figandtabnumber
 \csname botfloat\the\loopnum\endcsname
@@ -1779,7 +1841,7 @@ of the National Academy of Sciences of the United States of America}
        \hss\vrule\@width\columnseprule\hss}%
      \box\z@}}
 
-%%% AH: Version for two column output. %% 
+%%% AH: Version for two column output. %%
 \def\page@sofar{\unvbox\partialpage
 \wd\firstcolbox\hsize
 \wd\secondcolbox\hsize
@@ -1791,34 +1853,34 @@ of the National Academy of Sciences of the United States of America}
 
 
 %% Variant on \@outputpage to use for floating page insert:
-\def\insertpage{\begingroup\catcode`\ =10 
+\def\insertpage{\begingroup\catcode`\ =10
      \let\-\@dischyph \let\'\@acci \let\`\@accii \let\=\@acciii
-     \if@twoside 
+     \if@twoside
        \ifodd\count\z@ \let\@thehead\@oddhead \let\@thefoot\@oddfoot
             \let\@themargin\oddsidemargin
           \else \let\@thehead\@evenhead
           \let\@thefoot\@evenfoot \let\@themargin\evensidemargin
      \fi\fi
      \shipout
-     \vbox{\normalsize \baselineskip\z@ \lineskip\z@ 
-           \let\par\@@par %% 
+     \vbox{\normalsize \baselineskip\z@ \lineskip\z@
+           \let\par\@@par %%
            \vskip \topmargin \moveright\@themargin
            \vbox{\setbox\@tempboxa
                    \vbox to\headheight{\vfil \hbox to\textwidth
                                        {\let\label\@gobble \let\index\@gobble
-                                         \@thehead}} %% 
+                                         \@thehead}} %%
                  \dp\@tempboxa\z@
                  \box\@tempboxa
                  \vskip \headsep
 %% change from \@outputpage below
-\vbox to\textheight{\vfil 
+\vbox to\textheight{\vfil
 \hsize=\textwidth
 \linewidth=\textwidth
 \csname pagefloat\the\pageloopnum \endcsname
 }
                  \baselineskip\footskip
-                 \hbox to\textwidth{\let\label\@gobble 
-                           \let\index\@gobble  %% 
+                 \hbox to\textwidth{\let\label\@gobble
+                           \let\index\@gobble  %%
                            \@thefoot}}}\global\@colht\textheight
            \endgroup\stepcounter{page}\let\firstmark\botmark
 \global\advance\pageloopnum by1
@@ -1830,12 +1892,12 @@ of the National Academy of Sciences of the United States of America}
 
 \def\balance@columns{% can't throw in figs here because we
                 % aren't doing eject, so they will be lost
-\ifdim\ht\dbltopins>1pt 
+\ifdim\ht\dbltopins>1pt
   \advance\@colroom-\ht\dbltopins
   \advance\@colroom-\dp\dbltopins
 \advance\@colroom-\baselineskip
 \fi
-\ifdim\ht\dblbotins>1pt 
+\ifdim\ht\dblbotins>1pt
  \advance\@colroom-\ht\dblbotins
   \advance\@colroom-\dp\dblbotins
 \fi
@@ -1847,7 +1909,7 @@ of the National Academy of Sciences of the United States of America}
                                   %topskip
    \divide\dimen@2%
 %
-{\vbadness\@M 
+{\vbadness\@M
    \splittopskip=\topskip
    \loop{\process@cols\@ne{\global\setbox\count@
                              \box\voidb@x}}%
@@ -1861,7 +1923,7 @@ of the National Academy of Sciences of the United States of America}
    \dimen@\ht\thr@@
    \process@cols\z@{\@tempcnta\count@
         \advance\@tempcnta\@ne
-        \setbox\count@\vtop to\dimen@ %% 
+        \setbox\count@\vtop to\dimen@ %%
            {\unvbox\@tempcnta}}%
    \global\vsize\@colroom
    \global\advance\vsize\ht\partialpage
@@ -1881,7 +1943,7 @@ of the National Academy of Sciences of the United States of America}
 %%% columns.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-%% Single column inserts: 
+%% Single column inserts:
 
 \let\savecaption\caption
 \let\xsavecaption\savecaption
@@ -1903,7 +1965,7 @@ of the National Academy of Sciences of the United States of America}
 \@ifnextchar[\lookforposition{\lookforposition[e]}
 }
 
-%% This is used in case we get more than one letter, i.e., 
+%% This is used in case we get more than one letter, i.e.,
 %% \begin{figure}[htp]. This macro picks up only the first letter.
 
 \def\defone#1#2*{\def\one{#1}}
@@ -2101,12 +2163,12 @@ of the National Academy of Sciences of the United States of America}
 \def\dblcatchlabel#1{\expandafter%
 \gdef\csname dbllabel\the\dblfigandtabnumber\endcsname{\savelabel{#1}}}
 
-%%  
+%%
 
 \def\startonecolfloat{%
 \expandafter\newbox\csname figandtabbox\the\figandtabnumber\endcsname%
 \global\setbox\csname figandtabbox\the\figandtabnumber\endcsname=
-\vbox\bgroup%  
+\vbox\bgroup%
 \ifcaptypefig\else
 \ifcaptypeplate\def\@captype{plate}
 \else
@@ -2122,7 +2184,7 @@ of the National Academy of Sciences of the United States of America}
 
 \newif\ifredefining
 
-                  
+
 \newbox\sizeoffloat
 
 \def\endonecolfloat{%
@@ -2158,7 +2220,7 @@ of the National Academy of Sciences of the United States of America}
   \csname letteredcaption\the\loopnum\endcsname%
   \csname continuedcaption\the\loopnum\endcsname%
   \csname letteredcontcaption\the\loopnum\endcsname}%
-  \vskip\intextfloatskip%% 
+  \vskip\intextfloatskip%%
   \vskip-4pt %% probably an artifact of topskip??
   \ifredefining%
   \csname label\the\loopnum\endcsname%
@@ -2174,7 +2236,7 @@ of the National Academy of Sciences of the United States of America}
   \csname letteredcaption\the\loopnum\endcsname
   \csname continuedcaption\the\loopnum\endcsname
   \csname letteredcontcaption\the\loopnum\endcsname}
-  \vskip\intextfloatskip %% 
+  \vskip\intextfloatskip %%
   \vskip-4pt %% probably an artifact of topskip??
   \ifredefining
   \csname label\the\loopnum\endcsname
@@ -2239,7 +2301,7 @@ of the National Academy of Sciences of the United States of America}
   \vskip.5\intextfloatskip
   \unvbox\csname figandtabbox\the\loopnum\endcsname%
 \vskip\PushOneColBotTab
-}% 
+}%
 \ifredefining%
 \csname label\the\loopnum\endcsname
 \expandafter\gdef\csname botfloat\the\loopnum\endcsname{}\fi}%
@@ -2276,7 +2338,7 @@ of the National Academy of Sciences of the United States of America}
   \csname pletteredcaption\the\pageloopnum\endcsname
   \csname pcontinuedcaption\the\pageloopnum\endcsname
   \csname pletteredcontcaption\the\pageloopnum\endcsname
-}  \vskip\intextfloatskip %% 
+}  \vskip\intextfloatskip %%
 \xdef\@currentlabel{\thefigure}%
   \csname plabel\the\pageloopnum\endcsname
 \expandafter\gdef\csname pagefloat\the\pageloopnum\endcsname{}}%
@@ -2293,7 +2355,7 @@ of the National Academy of Sciences of the United States of America}
   \csname pletteredcaption\the\pageloopnum\endcsname
   \csname pcontinuedcaption\the\pageloopnum\endcsname
   \csname pletteredcontcaption\the\pageloopnum\endcsname
-}  \vskip\intextfloatskip %% 
+}  \vskip\intextfloatskip %%
 \xdef\@currentlabel{\thefigure}%
   \csname plabel\the\pageloopnum\endcsname
 \expandafter\gdef\csname pagefloat\the\pageloopnum\endcsname{}}%
@@ -2304,7 +2366,7 @@ of the National Academy of Sciences of the United States of America}
 \linewidth=\textwidth
 \iflandscapetable
 \dimen0=\textheight
-\advance\dimen0 by-\textwidth 
+\advance\dimen0 by-\textwidth
 \hsize=\textheight
 \linewidth=\textheight\fi%
 \csname pcaption\the\pageloopnum\endcsname
@@ -2313,7 +2375,7 @@ of the National Academy of Sciences of the United States of America}
 \csname pletteredcontcaption\the\pageloopnum\endcsname
   \vskip\intextfloatskip
   \unvbox\csname pagebox\the\pageloopnum\endcsname}
-  \vskip\intextfloatskip %% 
+  \vskip\intextfloatskip %%
 \csname plabel\the\pageloopnum\endcsname
 \expandafter\gdef\csname pagefloat\the\pageloopnum\endcsname{}}\fi\fi}
 
@@ -2382,7 +2444,7 @@ C A R E F U L !! \string\begin{table}[h] used on this page !^^J^^J}
 \def\one{i}\fi
 \else%\ifappendon\def\one{h}\fi
 \fi%
-\if\one h 
+\if\one h
 \ifcaptypeplate\else
 \ifcaptypefig
 \dofigmessage
@@ -2476,7 +2538,7 @@ C A R E F U L !! \string\begin{table}[h] used on this page !^^J^^J}
 \def\thesavedcaption{\relax}
 
 \newbox\herebox
-%% either figure [h] or table [h] 
+%% either figure [h] or table [h]
 \newif\ifhere
 \def\doonecolfighere{\vskip1sp\bgroup%
 \heretrue%
@@ -2538,9 +2600,9 @@ C A R E F U L !! \string\begin{table}[h] used on this page !^^J^^J}
 
 \def\doerr{%
 \typeout{\space\space\space\space\space\space\space\space\space}
-\typeout{Sorry! 
+\typeout{Sorry!
 Your choices following \string\figure\space or \string\table\space^^J%
-are only [h] for `here', [t] for `top', [b] for `bottom', or [p] 
+are only [h] for `here', [t] for `top', [b] for `bottom', or [p]
 for `page'.^^J%
 I have ignored the [\one] and inserted the figure or table at this
 point^^J%
@@ -2555,7 +2617,7 @@ on the page. See documentation if you need more help.}
 \def\centertabular{\bgroup\centering\savetabular}
 \def\endcentertabular{\saveendtabular\vskip1pt\egroup}
 
-%%% 
+%%%
 
 \newbox\dbltopins
 \newbox\dblbotins
@@ -2572,12 +2634,12 @@ on the page. See documentation if you need more help.}
 \global\captypefigfalse
 \def\@captype{plate}
 \@ifnextchar[\twolookforposition{\twolookforposition[t]}}%
-                                                        
+
 \def\twocoltable{\vskip1pt\tabletextsize
 \global\captypefigfalse
 \global\captypeplatefalse
 \def\@captype{table}
-\@ifnextchar[\twolookforposition{\twolookforposition[t]}}% 
+\@ifnextchar[\twolookforposition{\twolookforposition[t]}}%
 
 \newcount\dblfigandtabnumber
 \dblfigandtabnumber=1
@@ -2636,7 +2698,7 @@ on the page. See documentation if you need more help.}
 \ifredefining%
 \xdef\@currentlabel{\thefigure}%
 \csname dbllabel\the\dblloopnum\endcsname\fi}%
-  \vskip\intextfloatskip %% 
+  \vskip\intextfloatskip %%
   \vskip-5pt% because there is a space above the top of text, from topskip?
 \ifredefining%
 \expandafter\gdef\csname dbltopfloat\the\dblloopnum\endcsname{}\fi}%
@@ -2652,7 +2714,7 @@ on the page. See documentation if you need more help.}
 \ifredefining%
 \xdef\@currentlabel{\theplate}%
 \csname dbllabel\the\dblloopnum\endcsname\fi}%
-  \vskip\intextfloatskip %% 
+  \vskip\intextfloatskip %%
   \vskip-5pt% because there is a space above the top of text, from topskip?
 \ifredefining%
 \expandafter\gdef\csname dbltopfloat\the\dblloopnum\endcsname{}\fi}%
@@ -2665,7 +2727,7 @@ on the page. See documentation if you need more help.}
   \csname dblletteredcontcaption\the\dblloopnum\endcsname%
   \vskip\captionskip%
   \copy\csname dblfigandtabbox\the\dblloopnum\endcsname}%
-  \vskip\intextfloatskip %% 
+  \vskip\intextfloatskip %%
   \vskip-5pt% because there is a space above the top of text, from topskip?
 \ifredefining%
 \csname dbllabel\the\dblloopnum\endcsname%
@@ -2709,7 +2771,7 @@ on the page. See documentation if you need more help.}
 \else% table
 \expandafter\gdef\csname dblbotfloat\the\dblfigandtabnumber\endcsname{%
   \vskip\intextfloatskip
-\vbox{%  
+\vbox{%
   \csname dblcaption\the\dblloopnum\endcsname%
   \csname dblletteredcaption\the\dblloopnum\endcsname%
   \csname dblcontinuedcaption\the\dblloopnum\endcsname%
@@ -2812,7 +2874,7 @@ on the page. See documentation if you need more help.}
 \fi%
 %\ifappendon\def\one{h}\fi%
 %%
-\if\one h% 
+\if\one h%
   \ifcaptypeplate%
   \else%
     \ifcaptypefig%
@@ -2823,7 +2885,7 @@ on the page. See documentation if you need more help.}
   \fi%
     \ifgalley%
      \gdef\dbltoporbotfloat{dbltopfloat}%
-     \else% not galley ==> 
+     \else% not galley ==>
      \let\go\dodblfigurehere%
     \expandafter\gdef\csname endfigure*\endcsname{\enddodblfigurehere}%
     \expandafter\gdef\csname endtable*\endcsname{\enddodblfigurehere}%
@@ -2877,7 +2939,7 @@ on the page. See documentation if you need more help.}
 
 \splittopskip=\topskip
 
-\def~{\penalty\@M{ }} 
+\def~{\penalty\@M{ }}
 
 \def\mathleftline{\vskip-\parskip
 \hbox to\textwidth{\hrulefill\hskip.5\textwidth}\vskip-\abovedisplayskip}
@@ -2893,12 +2955,39 @@ on the page. See documentation if you need more help.}
 \let\savefigure\figure
 \let\saveendfigure\endfigure
 
+
+%%%Packages installing
+\RequirePackage{graphicx}
+\RequirePackage{epstopdf}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+
+
+
+\RequirePackage[usenames]{xcolor}
+\definecolor{signitext}{cmyk}{1,.45,0,.18}
+\definecolor{signiback}{cmyk}{.15,.07,0,.03}
+\gdef\significancetext#1{\gdef\@significancetext{#1}}
+\let\@significancetext\@empty
+
 \def\article{\twocolumns
 \bgroup
-    \renewcommand\thefootnote{}%
-\footnotetext{\vbox to 3.7cm{\sectionfont Reserved for Publication Footnotes\vfill}}
+\setlength{\fboxsep}{6pt}
+\ifx \@significancetext\@empty
+\renewcommand\thefootnote{}%
+\footnotetext{\vbox to 3.7cm{\significanceheadfont Reserved for Publication Footnotes\vfill}}%
+\else
+\renewcommand\thefootnote{}%
+\footnotetext{\vbox{\fcolorbox{signitext}{signiback}{\parbox{232pt}{\par\vspace*{2pt}{\significanceheadfont \color{signitext}Significance}\par\vspace*{12pt}%
+                                                    {\color{signitext}\significancefont\@significancetext}}}\par\vspace*{4.5pt}
+                				   {\vbox to 3.7cm{\significanceheadfont Reserved for Publication Footnotes\vfill}}}}
+\fi
 \egroup
 }
+
+
+
 \def\endarticle{\endtwocolumns\newpage
 \expandafter\gdef\csname table*\endcsname{\@dblfloat{table}}
 \expandafter\gdef\csname endtable*\endcsname{\end@dblfloat}
@@ -2925,7 +3014,7 @@ on the page. See documentation if you need more help.}
 \def\inlinefrac#1#2{%
    \mbox{\raisebox{.8mm}{%
        $\textstyle #1$%
-                        } 
+                        }
       $\!\!\! / \!\!\!$
       \raisebox{-.8mm}{$\textstyle #2$}}%
                        }
@@ -2934,7 +3023,7 @@ on the page. See documentation if you need more help.}
 \newcount\tablenotenum
 
 \def\tablenote#1{\global\advance\tablenotenum by 1\relax
-$^{\@fnsymbol{\the\tablenotenum}}$\expandafter\gdef\csname 
+$^{\@fnsymbol{\the\tablenotenum}}$\expandafter\gdef\csname
 tabnote\the\tablenotenum\endcsname{#1}}
 
 \def\tablenotes{\tablenoteloopnum=\tablenotenum
@@ -2948,7 +3037,7 @@ tabnote\the\tablenotenum\endcsname{#1}}
 \noindent
 \global\advance\tablenotenum by 1
 \ifnum\tablenotenum<\tablenoteloopnum
-$^{\@fnsymbol{\the\tablenotenum}}$\csname 
+$^{\@fnsymbol{\the\tablenotenum}}$\csname
 tabnote\the\tablenotenum\endcsname
 \repeat}
 }
@@ -3034,7 +3123,7 @@ tabnote\the\tablenotenum\endcsname
 \let\makesidesquares\relax
 \newif\iffirsttime
 
-\def\thanks#1{\footnotemark \protected@xdef \@thanks 
+\def\thanks#1{\footnotemark \protected@xdef \@thanks
 {\@thanks \protect \footnotetext [\the \c@footnote ]{\hsize=247pt\relax #1}}}
 
 %% Keywords
@@ -3044,7 +3133,7 @@ tabnote\the\tablenotenum\endcsname
 \gdef\keywords{\bgroup\catcode`|=\active\xkeywords}
 \gdef\xkeywords#1{\vskip1sp\noindent{\let|=\linewithspace
 \affilfont#1}\vskip11pt\egroup}
-} 
+}
 
 \def\abbreviations#1{\vskip1sp\noindent{\affilfont Abbreviations: #1}\vskip12pt}
 
@@ -3126,9 +3215,9 @@ tabnote\the\tablenotenum\endcsname
 \font\sideboxfont= \helvetica at 6pt
 
 %% Running feet
-  \font\footlinefont=\frutiger at7pt
-  \font\footlineit=\helveticaoblique at7pt
-  \font\foliofont=\frutigerbold at 7pt
+  \font\footlinefont=\frutiger at6.5pt%7pt
+  \font\footlineit=\helveticaoblique at6.5pt%7pt
+  \font\foliofont=\frutigerbold at6.5pt%7pt
 
 \font\titlefont=\frutigerboldcondensed at 22pt % 24pt baseline
   \font\authorfont=\frutigerbold at 9pt % 11 pt baseline
@@ -3147,14 +3236,18 @@ tabnote\the\tablenotenum\endcsname
 \font\sectionfont=\frutigerbold at 10pt
 \font\subsectionfont=\frutigerbold at9pt
 
+\font\significanceheadfont=\frutigerbold at 9pt
+\font\significancefont=\frutigerbold at 8pt
+
+
 %% Theorem fonts
   \font\theoremfont=\frutigerbold at 8pt
 
 %ok
-%% Caption 
+%% Caption
   \font\fignumfont=\frutigerbold at 9pt
 \font\xfigtextfont=\frutiger at 7pt
-  \def\figtextfont{\small\dospecialaccents\xfigtextfont} 
+  \def\figtextfont{\small\dospecialaccents\xfigtextfont}
 
 %% Table font
 \font\tabletextfont=\frutiger at 9pt
@@ -3184,7 +3277,7 @@ tabnote\the\tablenotenum\endcsname
    \let\@classz\@tabclassz
    \let\@classiv\@tabclassiv \let\\\@tabularcr\@tabarray}
 
-%%%%%%% Jan 2008 Changes:   
+%%%%%%% Jan 2008 Changes:
    \def\materials{\vskip6pt\bgroup
 \parskip=8pt
 \baselineskip=9pt
@@ -3212,7 +3305,7 @@ tabnote\the\tablenotenum\endcsname
 
 \newbox\tablewide
 \def\endtabular{\crcr\egroup\egroup $\egroup\egroup
-\centerline{\vbox{\hsize\wd\tablewide 
+\centerline{\vbox{\hsize\wd\tablewide
 \currtabcaption\vskip1pt
 }}
 \dimen0=\wd\tablewide
@@ -3238,13 +3331,13 @@ tabnote\the\tablenotenum\endcsname
 \let\currtabcaption\relax
 
 
-\def\footcomment#1{\typeout{^^J^^J The \string\footcomment{}\space command is 
+\def\footcomment#1{\typeout{^^J^^J The \string\footcomment{}\space command is
 No Longer Used^^J^^J}}
 
-\def\track#1{\typeout{^^J^^J The \string\track{}\space command is 
+\def\track#1{\typeout{^^J^^J The \string\track{}\space command is
 No Longer Used^^J^^J}}
 
-\def\conflictofinterest#1{\typeout{^^J^^J The \string\conflictofinterest{}\space command is 
+\def\conflictofinterest#1{\typeout{^^J^^J The \string\conflictofinterest{}\space command is
 No Longer Used^^J^^J}}
 
 %% nothing will happen, so PNAS can get info, but nothing will be printed
