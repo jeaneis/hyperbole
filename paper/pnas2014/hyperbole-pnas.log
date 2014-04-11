@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  11 APR 2014 11:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  11 APR 2014 11:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -761,7 +761,7 @@ y9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7
 .pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.p
 fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/latxfont/lci
 rcle1.pfb>
-Output written on hyperbole-pnas.pdf (7 pages, 313123 bytes).
+Output written on hyperbole-pnas.pdf (7 pages, 313164 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams
