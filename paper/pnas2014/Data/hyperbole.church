@@ -26,13 +26,13 @@
 (define hardness 1)
 
 ;; Define communicative goals and goal priors
-(define goals (list 'state-and-affect-precise 
-                    'state-and-affect-imprecise  
-                    'just-state-precise 
-                    'just-state-imprecise 
-                    'just-affect))
+;(define goals (list 'state-and-affect-precise 
+;                    'state-and-affect-imprecise  
+;                    'just-state-precise 
+;                    'just-state-imprecise 
+;                    'just-affect))
 
-(define (goal-prior) (multinomial goals '(0.17 0.17 0.17 0.17 0.34)))
+;(define (goal-prior) (multinomial goals '(0.17 0.17 0.17 0.17 0.34)))
 
 ;; Define limited goals and goal priors
 
@@ -42,8 +42,8 @@
 ;(define goals (list 'just-state-precise 'just-state-imprecise))
 ;(define (goal-prior) (multinomial goals '(0.5 0.5)))
 
-;(define goals (list 'just-state-precise 'state-and-affect-precise 'just-affect))
-;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+(define goals (list 'just-state-precise 'state-and-affect-precise 'just-affect))
+(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
 
 
 ;; Define possible price states
@@ -53,9 +53,9 @@
 (define utterances states)
 
 ;; Utterance cost
-(define (utterance-prior) (multinomial utterances '(0.18 0.1 0.18 0.1 0.18 0.1 0.18 0.1 0.18 0.1)))
+;(define (utterance-prior) (multinomial utterances '(0.18 0.1 0.18 0.1 0.18 0.1 0.18 0.1 0.18 0.1)))
 ; Uniform cost
-;(define (utterance-prior) (multinomial utterances '(0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1)))
+(define (utterance-prior) (multinomial utterances '(0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1)))
 
 ;; Define affects. 0 is no affect; 1 is with affect
 (define affects (list '0 '1))

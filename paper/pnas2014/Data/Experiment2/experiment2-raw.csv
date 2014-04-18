@@ -1,4 +1,4 @@
-workerID,domain,utteranceExact,uttereanceRounded,utteranceType,stateExact,stateRounded,stateType,affectProb,order
+workerID,domain,utteranceExact,utteranceRounded,utteranceType,stateExact,stateRounded,stateType,affectProb,order
 1, electric kettle,1000,1000,round,500,500,round,0.975,1
 1, electric kettle,10000,10000,round,9999,10000,sharp,0.5,2
 1, watch,4997,5000,sharp,52,50,sharp,0.25,3

@@ -1,12 +1,12 @@
-source("summarySE.R")
-source("multiplot.R")
+source("../summarySE.R")
+source("../multiplot.R")
 library(ggplot2)
 
 #########################################
 # Model prdictions
 #########################################
 #model <- read.csv("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions.csv")
-model <- read.csv("Data/Model/FullModel/predictions.csv")
+model <- read.csv("Model/FullModel/predictions.csv")
 
 # Code "rounded" version of utterance and state
 model$utteranceRounded <- (floor(model$utterance/10))*10
@@ -167,7 +167,7 @@ figure2a <- ggplot(compare, aes(x=modelProb, y=stateProb)) +
   scale_x_continuous(expand=c(0, 0), limits=c(0,0.4)) +
   scale_y_continuous(expand=c(0, 0)) +
   expand_limits(y=0,x=0) +
-  scale_color_manual(values=my.colors, name="Interpretation Kind", 
+  scale_color_manual(values=my.colors.4effects, name="Interpretation Kind", 
                      breaks=c("exact", "fuzzy", "hyperbolic", "other"),
                      labels=c("Exact", "Fuzzy", "Hyperbolic", "Other"))+
   scale_shape_discrete(name="Item", breaks=c("electric kettle", "laptop", "watch"),
@@ -176,7 +176,7 @@ figure2a <- ggplot(compare, aes(x=modelProb, y=stateProb)) +
 with(compare, cor.test(modelProb, stateProb))
 
 #################
-# Fig. 2(B)
+# Make comparison models
 #################
 makeModel <- function(filename){
   m <- read.csv(filename)
@@ -204,9 +204,14 @@ makeModel <- function(filename){
   return(m.state)
 }
 
-model.noAffectGoal <- makeModel("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions-noAffectGoal")
-model.noImpreciseGoal <- makeModel("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions-noImpreciseGoal")
+#################
+# Fig. 2(B): Goals
+#################
 
+#model.noAffectGoal <- makeModel("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions-noAffectGoal")
+#model.noImpreciseGoal <- makeModel("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions-noImpreciseGoal")
+model.noAffectGoal <- makeModel("Model/JustStateGoals/predictions.csv")
+model.noImpreciseGoal <- makeModel("Model/JustPreciseAndAffectGoals/predictions.csv")
 this.domain <- "electric kettle"
 this.utterance <- "1000"
 model.literal.example <- data.frame(utterance=c(this.utterance), state=c(this.utterance), domain=c(this.domain),
@@ -237,9 +242,9 @@ goals.comparison$state <- factor(goals.comparison$state,
                                  levels=c("50","51","500","501","1000","1001","5000","5001","10000","10001"))
 
 #### colors for paper
-# my.colors.goals<- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
+ my.colors.goals<- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
 #### colors for presentation
-my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#cc6699", "#ff9896")
+# my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#cc6699", "#ff9896")
 figure2b <- ggplot(goals.comparison, aes(x=state, y=modelProb, fill=type)) +
   geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2) +
@@ -256,7 +261,7 @@ figure2b <- ggplot(goals.comparison, aes(x=state, y=modelProb, fill=type)) +
   scale_y_continuous(expand=c(0, 0))
 
 ##############
-# Figure 3A
+# Figure 3A: Uniform priors
 ##############
 exp1.hyperbole <- subset(exp1, interpretationKind=="hyperbolic")
 exp1.hyperbole.agg <- aggregate(data=exp1.hyperbole, 
@@ -270,7 +275,8 @@ model.hyperbole.agg$domain <- factor(model.hyperbole.agg$domain)
 model.hyperbole.summary <- summarySE(model.hyperbole.agg, measurevar="modelProb",
                                       groupvars=c("utteranceRounded", "domain"))
 
-model.noPriors <- makeModel("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions-noPrior.csv")
+#model.noPriors <- makeModel("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions-noPrior.csv")
+model.noPriors <- makeModel("Model/UniformPriors/predictions.csv")
 model.noPriors.hyperbole <- subset(model.noPriors, interpretationKind=="hyperbolic")
 model.noPriors.hyperbole.agg <- aggregate(data=model.noPriors.hyperbole,
                                           modelProb ~ utterance + domain + utteranceRounded, FUN=sum)
@@ -301,12 +307,220 @@ figure3a <- ggplot(priors.comparison, aes(x=utteranceRounded, y=modelProb, group
         strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
   scale_color_manual(values=my.colors.domains)
 
+#################
+# Fig. 3(B): Uniform utterance costs
+#################
+
+exp1.exact <- subset(exp1, interpretationKind=="exact")
+exp1.exact.agg <- aggregate(data=exp1.exact, 
+                                stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+exp1.fuzzy <- subset(exp1, interpretationKind=="fuzzy")
+exp1.fuzzy.agg <- aggregate(data=exp1.fuzzy,
+                            stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+
+exp1.exact.summary <- aggregate(data=exp1.exact.agg, stateProb ~ 
+                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
+exp1.fuzzy.summary <- aggregate(data=exp1.fuzzy.agg, stateProb ~ 
+                                  utterance + utteranceType + utteranceRounded + domain, FUN=mean)
+colnames(exp1.exact.summary)[5] <- "probExact"
+colnames(exp1.fuzzy.summary)[5] <- "probFuzzy"
+exp1.halo <- join(exp1.exact.summary, exp1.fuzzy.summary, by=c("utterance", "utteranceType", "utteranceRounded", "domain"))
+exp1.halo$halo <- exp1.halo$probExact - exp1.halo$probFuzzy
+exp1.halo.summary <- summarySE(exp1.halo, measurevar="halo", groupvars=c("utteranceType", "domain"))
+
+model.exact <- subset(model.state, interpretationKind=="exact")
+model.fuzzy <- subset(model.state, interpretationKind=="fuzzy")
+colnames(model.exact)[7] <- "probExact"
+colnames(model.fuzzy)[7] <- "probFuzzy"
+
+model.halo <- join(model.exact, model.fuzzy, by=c("domain", "utterance", "utteranceRounded",
+                                                  "stateRounded"))
+model.halo$utteranceType <- ifelse(as.numeric(as.character(model.halo$utterance))==
+                                     as.numeric(as.character(model.halo$utteranceRounded)), "round", "sharp")
+model.halo$halo <- model.halo$probExact - model.halo$probFuzzy
+model.halo.summary <- summarySE(model.halo, measurevar="halo", groupvars=c("utteranceType", "domain"))
+
+model.noCost <- makeModel("Model/UniformCost/predictions.csv")
+model.noCost.agg <- aggregate(data=model.noCost,
+                              modelProb ~ domain + utterance + utteranceRounded + 
+                                state + stateRounded + interpretationKind, FUN=sum)
+model.noCost.exact <- subset(model.noCost.agg, interpretationKind=="exact")
+model.noCost.fuzzy <- subset(model.noCost.agg, interpretationKind=="fuzzy")
+colnames(model.noCost.exact)[7] <- "probExact"
+colnames(model.noCost.fuzzy)[7] <- "probFuzzy"
+model.noCost.halo <- join(model.noCost.exact, model.noCost.fuzzy, by=c("domain", "utterance",
+                                                                       "utteranceRounded", "stateRounded"))
+model.noCost.halo$halo <- model.noCost.halo$probExact - model.noCost.halo$probFuzzy
+model.noCost.halo$utteranceType <- ifelse(as.numeric(as.character(model.noCost.halo$utterance))==
+                                     as.numeric(as.character(model.noCost.halo$utteranceRounded)), "round", "sharp")
+
+model.noCost.halo.summary <- summarySE(model.noCost.halo, measurevar="halo", groupvars=c("utteranceType", "domain"))
+
+exp1.halo.summary$type <- "Human"
+model.halo.summary$type <- "Full model"
+model.noCost.halo.summary$type <- "Uniform utterance cost"
+
+cost.comparison <- rbind(exp1.halo.summary, model.halo.summary, model.noCost.halo.summary)
+cost.comparison$type <- factor(cost.comparison$type, levels=c("Human", "Full model", "Uniform utterance cost"))
+figure3b <- ggplot(cost.comparison, aes(x=utteranceType, y=halo, group=domain, color=domain, shape=utteranceType)) +
+  geom_point(size=5) +
+  #geom_bar(color="black", stat="identity", position=position_dodge()) +
+  geom_line(linetype=2, size=1) +
+  geom_errorbar(aes(ymin=halo-se, ymax=halo+se), width=0.1, color="grey")+
+  theme_bw() +
+  facet_grid(.~type) +
+  ylab("P(exact) - P(fuzzy)") +
+  xlab("Utterance Type") +
+  scale_shape_discrete(guide=FALSE) +
+  theme(legend.title=element_text(size=0), legend.position=c(0.8, 0.85),
+        axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
+  #scale_color_brewer(palette="Accent")
+  scale_color_manual(values=my.colors.domains)
 
 
-######
-# Hyperbole
-######
+#################
+# Fig. 4(A): Affect scatter plot
+#################
 
-######
-# Halo
-######
+exp2 <- read.table("http://stanford.edu/~justinek/hyperbole-paper/data/experiment2-raw.csv", 
+                   strip.white=TRUE, header=TRUE, sep=",")
+exp2$isHyperbole <- ifelse(exp2$utteranceRounded > exp2$stateRounded,
+                         "hyperbolic", "literal")
+
+exp2.summary <- summarySE(exp2, measurevar="affectProb", 
+                        groupvars=c("utteranceRounded", "stateRounded", "isHyperbole", "domain"))
+
+# only consider utterance/state pairs where utterance >= state
+model.affect <- subset(model, as.numeric(as.character(utteranceRounded)) >= 
+                         as.numeric(as.character(stateRounded)) & affect=="1")
+colnames(model.affect)[11] <- "probOfAffect"
+model.affect <- join(model.affect, model.state, by=c("domain", "utterance", "state", "utteranceRounded",
+                                                     "stateRounded", "interpretationKind"))
+
+model.affect$modelAffectProb <- model.affect$probOfAffect / model.affect$modelProb
+
+model.affect$isHyperbole <- ifelse(as.numeric(as.character(model.affect$utteranceRounded)) >
+                                     as.numeric(as.character(model.affect$stateRounded)),
+                                   "hyperbolic", "literal")
+exp2.summary$utteranceRounded <- factor(exp2.summary$utteranceRounded)
+exp2.summary$stateRounded <- factor(exp2.summary$stateRounded)
+affect.compare <- join(exp2.summary, model.affect, by=c("domain", "utteranceRounded", 
+                                                        "stateRounded", "isHyperbole"))
+
+ggplot(affect.compare, aes(x=modelAffectProb, y=affectProb)) +
+  #geom_text(aes(label=label), color="dark grey") +
+  geom_errorbar(aes(ymin=affectProb-se, ymax=affectProb+se), width=0.01, color="gray") +
+  geom_point(aes(x=modelAffectProb, y=affectProb, color=isHyperbole, shape=domain), size=3) +
+  geom_smooth(data=affect.compare, aes(x=modelAffectProb, y=affectProb), method=lm, color="black", linetype=2) +
+  #geom_text(aes(label=utteranceRounded)) +
+  theme_bw() +
+  scale_color_brewer(palette="Set1") +
+  xlab("Model") +
+  ylab("Human") +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        legend.title=element_text(size=0), legend.text=element_text(size=14),
+        legend.position=c(0.9, 0.2))
+
+with(affect.compare, cor.test(modelAffectProb, affectProb))
+
+#################
+# Fig. 4(B): Affect priors comparison
+#################
+
+c.all.withAffect <- subset(c.all, valence=="1")
+colnames(c.all.withAffect)[11] <- "affectProb"
+c.all.noAffect <- subset(c.all, valence=="0")
+colnames(c.all.noAffect)[11] <- "noAffectProb"
+c.affect <- join(c.all.withAffect, c.all.noAffect, by=c("utterance", "meaning", "utteranceRounded", "meaningRounded", "domain", "interpretationKind"))
+c.affect$affectRatio <- c.affect$affectProb / (c.affect$affectProb + c.affect$noAffectProb)
+
+church.affect <- subset(c.affect, as.numeric(as.character(c.affect$utteranceRounded)) >=
+                          as.numeric(as.character(c.affect$meaningRounded)))
+
+church.affect$isHyperbole <- ifelse(church.affect$utteranceRounded==church.affect$meaningRounded, "literal", "hyperbole")
+
+church.affect.summary <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("domain", "meaningRounded", "isHyperbole"))
+
+colnames(church.affect.summary)[2] <- "actualPriceRounded"
+colnames(church.affect.summary)[5] <- "probOpinion"
+
+human.affect.summary <- ap.summary
+human.affect.summary$type <- "Human"
+church.full.affect.summary <- church.affect.summary
+church.full.affect.summary$type <- "Full model"
+church.noAffectPrior.affect.summary <- church.affect.summary
+church.noAffectPrior.affect.summary$type <- "Uniform affect prior"
+
+comp.affect.summary <- rbind(human.affect.summary, church.full.affect.summary, church.noAffectPrior.affect.summary)
+comp.affect.summary$type <- factor(comp.affect.summary$type, levels=c("Human", "Full model", "Uniform affect prior"))
+colnames(comp.affect.summary)[2] <- "Literalness"
+
+ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Literalness, color=domain, shape=Literalness, linetype=Literalness)) +
+  geom_point(size=5) +
+  geom_line(size=1) +
+  #geom_bar(stat="identity", color="black") +
+  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2, color="dark gray") +
+  facet_grid(domain ~ type) +
+  theme_bw() +
+  xlab("Price state rounded") +
+  ylab("P(affect | utterance and price state)") +
+  scale_shape_manual(values=c(8, 16)) +
+  scale_linetype_manual(values=c(2, 1)) +
+  scale_color_manual(values=my.colors.domains, guide=FALSE) +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        legend.title=element_text(size=0), legend.text=element_text(size=14),
+        legend.position=c(0.9, 0.9))
+
+#################
+# Scatter plot for each utterance rounded / meaning rounded pair
+#################
+
+human.pair <- summarySE(ap, measurevar="probOpinion", groupvars=c("utteredPriceRounded", "actualPriceRounded", "isHyperbole", "domain"))
+model.pair <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("utteranceRounded", "meaningRounded", "isHyperbole", "domain"))
+colnames(human.pair)[1] <- "utteranceRounded"
+colnames(human.pair)[2] <- "meaningRounded"
+colnames(human.pair)[6] <- "humanAffect"
+colnames(model.pair)[6] <- "modelAffect"
+
+# human
+ggplot(human.pair, aes(x=meaningRounded, y=humanAffect, fill=isHyperbole)) +
+  geom_bar(stat="identity", color="black") +
+  facet_grid(domain~utteranceRounded) +
+  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.2) +
+  theme_bw()
+
+# model
+ggplot(model.pair, aes(x=meaningRounded, y=modelAffect, fill=isHyperbole)) +
+  geom_bar(stat="identity", color="black") +
+  facet_grid(domain~utteranceRounded) +
+  theme_bw()
+
+
+model.pair$se <- NULL
+comp.pair <- join(human.pair, model.pair, by=c("utteranceRounded", "meaningRounded", "isHyperbole", "domain"))
+comp.pair$label <- paste(comp.pair$utteranceRounded, comp.pair$meaningRounded, sep=",")
+
+ggplot(comp.pair, aes(x=modelAffect, y=humanAffect)) +
+  #geom_text(aes(label=label), color="dark grey") +
+  geom_point(data=comp.pair, aes(x=modelAffect, y=humanAffect, color=isHyperbole, shape=domain), size=3) +
+  geom_smooth(data=comp.pair, aes(x=modelAffect, y=humanAffect), method=lm, color="black", linetype=2) +
+  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.01, color="gray") +
+  #geom_text(aes(label=utteranceRounded)) +
+  theme_bw() +
+  scale_color_brewer(palette="Set1") +
+  xlab("Model") +
+  ylab("Human") +
+  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        legend.title=element_text(size=0), legend.text=element_text(size=14),
+        legend.position=c(0.9, 0.2))
+# 0.7717
+
+with(comp.pair, cor.test(modelAffect, humanAffect))

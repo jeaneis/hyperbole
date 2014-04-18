@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  16 APR 2014 20:53
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  17 APR 2014 15:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -714,20 +714,20 @@ Overfull \vbox (2.0pt too high) has occurred while \output is active []
 <model_bar.pdf, id=92, 867.24pt x 578.16pt>
 File: model_bar.pdf Graphic file (type pdf)
  <use model_bar.pdf>
-Package pdftex.def Info: model_bar.pdf used on input line 409.
+Package pdftex.def Info: model_bar.pdf used on input line 407.
 (pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
 
-Overfull \hbox (6.172pt too wide) in paragraph at lines 409--410
+Overfull \hbox (6.172pt too wide) in paragraph at lines 407--408
 [][] 
  []
 
 <human_bar.pdf, id=93, 867.24pt x 578.16pt>
 File: human_bar.pdf Graphic file (type pdf)
  <use human_bar.pdf>
-Package pdftex.def Info: human_bar.pdf used on input line 412.
+Package pdftex.def Info: human_bar.pdf used on input line 410.
 (pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
 
-Overfull \hbox (6.172pt too wide) in paragraph at lines 412--413
+Overfull \hbox (6.172pt too wide) in paragraph at lines 410--411
 [][] 
  []
 
@@ -761,7 +761,7 @@ y9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7
 .pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.p
 fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/latxfont/lci
 rcle1.pfb>
-Output written on hyperbole-pnas.pdf (7 pages, 313608 bytes).
+Output written on hyperbole-pnas.pdf (7 pages, 313844 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams
