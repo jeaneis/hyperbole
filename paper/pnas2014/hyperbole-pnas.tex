@@ -337,7 +337,7 @@ Let $u$ be the utterance a speaker utters. The meaning of the utterance has two 
 \[\left\{ 
   \begin{array}{l l}
     f_{e}(s) =  s \\
-    f_{f}(s) = \text{Round}(s),\\
+    f_{a}(s) = \text{Round}(s),\\
   \end{array} \right.\]
 where Round$(s)$ denotes the multiple of $10$ which is closest to $s$.
 
@@ -349,7 +349,7 @@ Depending on whether the relevant dimension is the price state, affect, or both,
     r_{a}(s, a) = a\\
     r_{s,a}(s, a) = s, a
       \end{array} \right.\]
-A communicative goal $g$ is then defined as $g(s, a) = r(f(s), a)$, which results in $2 \times 3 = 6$ types of goals (note that $r_a(f_e(s), a)$ and $r_a(f_f(s), a)$ are equivalent).
+A communicative goal $g$ is then defined as $g(s, a) = r(f(s), a)$, which results in $2 \times 3 = 6$ types of goals (note that $r_a(f_e(s), a)$ and $r_a(f_a(s), a)$ are equivalent).
 
 A literal listener $L_0$ provides the base case for recursive social reasoning between the speaker and listener. $L_0$ interprets an utterance $u$ literally without taking into account the speaker's communicative goals:
 
