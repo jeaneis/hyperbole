@@ -204,6 +204,29 @@ makeModel <- function(filename){
   return(m.state)
 }
 
+makeModelKeepAffect <- function(filename){
+  m <- read.csv(filename)
+  # Code "rounded" version of utterance and state
+  m$utteranceRounded <- (floor(m$utterance/10))*10
+  m$stateRounded <- (floor(m$state/10)) * 10
+  m$utterance <- factor(m$utterance)
+  m$state <- factor(m$state)
+  m$affect <- factor(m$affect)
+  m$utteranceRounded <- factor(m$utteranceRounded)
+  m$stateRounded <- factor(m$stateRounded)
+  # Code interpretation kind
+  m$interpretationKind <- 
+    ifelse(as.numeric(m$utteranceRounded) > as.numeric(m$stateRounded), "hyperbolic", 
+           ifelse(m$utterance==m$state, "exact",
+                  ifelse(m$utteranceRounded==m$stateRounded, "fuzzy", "other")))
+  m$raisedProb <- m$probability^bestAlpha
+  normalizingFactors <- aggregate(data=m, raisedProb ~ domain + utterance, FUN=sum)
+  colnames(normalizingFactors)[3] <- "normalizing"
+  m <- join(m, normalizingFactors, by=c("domain", "utterance"))
+  m$modelProb <- m$raisedProb / m$normalizing
+  return(m)
+}
+
 #################
 # Fig. 2(B): Goals
 #################
@@ -431,39 +454,49 @@ with(affect.compare, cor.test(modelAffectProb, affectProb))
 # Fig. 4(B): Affect priors comparison
 #################
 
-c.all.withAffect <- subset(c.all, valence=="1")
-colnames(c.all.withAffect)[11] <- "affectProb"
-c.all.noAffect <- subset(c.all, valence=="0")
-colnames(c.all.noAffect)[11] <- "noAffectProb"
-c.affect <- join(c.all.withAffect, c.all.noAffect, by=c("utterance", "meaning", "utteranceRounded", "meaningRounded", "domain", "interpretationKind"))
-c.affect$affectRatio <- c.affect$affectProb / (c.affect$affectProb + c.affect$noAffectProb)
+model.affect.givenState <- summarySE(model.affect, measurevar="modelAffectProb",
+                                     groupvars=c("stateRounded", "isHyperbole", "domain"))
 
-church.affect <- subset(c.affect, as.numeric(as.character(c.affect$utteranceRounded)) >=
-                          as.numeric(as.character(c.affect$meaningRounded)))
+exp2.affect.givenState <- summarySE(exp2.summary, measurevar="affectProb",
+                                    groupvars=c("stateRounded", "isHyperbole", "domain"))
 
-church.affect$isHyperbole <- ifelse(church.affect$utteranceRounded==church.affect$meaningRounded, "literal", "hyperbole")
+model.noAffectPrior <- makeModelKeepAffect("Model/UniformAffectPriors/predictions.csv")
+model.noAffectPrior.state <- makeModel("Model/UniformAffectPriors/predictions.csv")
 
-church.affect.summary <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("domain", "meaningRounded", "isHyperbole"))
+model.noAffectPrior.affect <- subset(model.noAffectPrior, as.numeric(as.character(utteranceRounded)) >= 
+                         as.numeric(as.character(stateRounded)) & affect=="1")
 
-colnames(church.affect.summary)[2] <- "actualPriceRounded"
-colnames(church.affect.summary)[5] <- "probOpinion"
 
-human.affect.summary <- ap.summary
-human.affect.summary$type <- "Human"
-church.full.affect.summary <- church.affect.summary
-church.full.affect.summary$type <- "Full model"
-church.noAffectPrior.affect.summary <- church.affect.summary
-church.noAffectPrior.affect.summary$type <- "Uniform affect prior"
+colnames(model.noAffectPrior.affect)[11] <- "probOfAffect"
+model.noAffectPrior.affect <- join(model.noAffectPrior.affect,
+                                   model.noAffectPrior.state, by=c("domain", "utterance", "state", "utteranceRounded",
+                                                     "stateRounded", "interpretationKind"))
 
-comp.affect.summary <- rbind(human.affect.summary, church.full.affect.summary, church.noAffectPrior.affect.summary)
-comp.affect.summary$type <- factor(comp.affect.summary$type, levels=c("Human", "Full model", "Uniform affect prior"))
-colnames(comp.affect.summary)[2] <- "Literalness"
+model.noAffectPrior.affect$modelAffectProb <- model.noAffectPrior.affect$probOfAffect / model.noAffectPrior.affect$modelProb
 
-ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Literalness, color=domain, shape=Literalness, linetype=Literalness)) +
+model.noAffectPrior.affect$isHyperbole <- ifelse(as.numeric(as.character(model.noAffectPrior.affect$utteranceRounded)) >
+                                     as.numeric(as.character(model.noAffectPrior.affect$stateRounded)),
+                                   "hyperbolic", "literal")
+
+model.noAffectPrior.affect.givenState <- summarySE(model.noAffectPrior.affect, measurevar="modelAffectProb",
+                                     groupvars=c("stateRounded", "isHyperbole", "domain"))
+
+exp2.affect.givenState$type <- "Human"
+model.affect.givenState$type <- "Full model"
+model.noAffectPrior.affect.givenState$type <- "Uniform affect prior"
+
+colnames(model.affect.givenState)[5] <- "affectProb"
+colnames(model.noAffectPrior.affect.givenState)[5] <- "affectProb"
+
+affect.compare.priors <- rbind(exp2.affect.givenState,
+                               model.affect.givenState, model.noAffectPrior.affect.givenState)
+
+affect.compare.priors$type <- factor(affect.compare.priors$type, levels=c("Human", "Full model", "Uniform affect prior"))
+ggplot(affect.compare.priors, aes(x=stateRounded, y=affectProb, group=isHyperbole, color=domain, shape=isHyperbole, linetype=isHyperbole)) +
   geom_point(size=5) +
   geom_line(size=1) +
   #geom_bar(stat="identity", color="black") +
-  geom_errorbar(aes(ymin=probOpinion-se, ymax=probOpinion+se), width=0.2, color="dark gray") +
+  geom_errorbar(aes(ymin=affectProb-se, ymax=affectProb+se), width=0.2, color="dark gray") +
   facet_grid(domain ~ type) +
   theme_bw() +
   xlab("Price state rounded") +
@@ -477,50 +510,4 @@ ggplot(comp.affect.summary, aes(x=actualPriceRounded, y=probOpinion, group=Liter
         legend.title=element_text(size=0), legend.text=element_text(size=14),
         legend.position=c(0.9, 0.9))
 
-#################
-# Scatter plot for each utterance rounded / meaning rounded pair
-#################
 
-human.pair <- summarySE(ap, measurevar="probOpinion", groupvars=c("utteredPriceRounded", "actualPriceRounded", "isHyperbole", "domain"))
-model.pair <- summarySE(church.affect, measurevar="affectRatio", groupvars=c("utteranceRounded", "meaningRounded", "isHyperbole", "domain"))
-colnames(human.pair)[1] <- "utteranceRounded"
-colnames(human.pair)[2] <- "meaningRounded"
-colnames(human.pair)[6] <- "humanAffect"
-colnames(model.pair)[6] <- "modelAffect"
-
-# human
-ggplot(human.pair, aes(x=meaningRounded, y=humanAffect, fill=isHyperbole)) +
-  geom_bar(stat="identity", color="black") +
-  facet_grid(domain~utteranceRounded) +
-  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.2) +
-  theme_bw()
-
-# model
-ggplot(model.pair, aes(x=meaningRounded, y=modelAffect, fill=isHyperbole)) +
-  geom_bar(stat="identity", color="black") +
-  facet_grid(domain~utteranceRounded) +
-  theme_bw()
-
-
-model.pair$se <- NULL
-comp.pair <- join(human.pair, model.pair, by=c("utteranceRounded", "meaningRounded", "isHyperbole", "domain"))
-comp.pair$label <- paste(comp.pair$utteranceRounded, comp.pair$meaningRounded, sep=",")
-
-ggplot(comp.pair, aes(x=modelAffect, y=humanAffect)) +
-  #geom_text(aes(label=label), color="dark grey") +
-  geom_point(data=comp.pair, aes(x=modelAffect, y=humanAffect, color=isHyperbole, shape=domain), size=3) +
-  geom_smooth(data=comp.pair, aes(x=modelAffect, y=humanAffect), method=lm, color="black", linetype=2) +
-  geom_errorbar(aes(ymin=humanAffect-se, ymax=humanAffect+se), width=0.01, color="gray") +
-  #geom_text(aes(label=utteranceRounded)) +
-  theme_bw() +
-  scale_color_brewer(palette="Set1") +
-  xlab("Model") +
-  ylab("Human") +
-  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
-        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
-        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
-        legend.title=element_text(size=0), legend.text=element_text(size=14),
-        legend.position=c(0.9, 0.2))
-# 0.7717
-
-with(comp.pair, cor.test(modelAffect, humanAffect))
