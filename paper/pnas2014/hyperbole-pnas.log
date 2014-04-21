@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  21 APR 2014 13:11
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  21 APR 2014 13:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -585,11 +585,7 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen186
 \SOUL@ulht=\dimen187
 )
-(./hyperbole-pnas.aux
-
-LaTeX Warning: Label `eq:speakersimplified' multiply defined.
-
-)
+(./hyperbole-pnas.aux)
 \openout1 = `hyperbole-pnas.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
@@ -604,7 +600,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
 LaTeX Font Info:    ... okay on input line 130.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
 LaTeX Font Info:    ... okay on input line 130.
- (/usr/local/texlive/2012/texmf-dist/tex/latex/crop/crop.sty
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/crop/crop.sty
 Package: crop 2003/05/20 v1.9 crop marks (mf)
 \stockwidth=\dimen188
 \stockheight=\dimen189
@@ -741,39 +738,36 @@ Overfull \hbox (6.172pt too wide) in paragraph at lines 423--424
 Missing character: There is no ï in font cmssbx10!
 Missing character: There is no ¿ in font cmssbx10!
 Missing character: There is no ½ in font cmssbx10!
- [7] (./hyperbole-pnas.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+ [7] (./hyperbole-pnas.aux) ) 
 Here is how much of TeX's memory you used:
  12040 strings out of 493488
  225285 string characters out of 3141326
- 287121 words of memory out of 3000000
+ 287082 words of memory out of 3000000
  15073 multiletter control sequences out of 15000+200000
  16141 words of font info for 59 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,57p,3059b,389s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9
-.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
-fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></u
-sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loc
-al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/t
-exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/
-2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/20
-12/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2012/t
-exmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on hyperbole-pnas.pdf (7 pages, 328699 bytes).
+</usr/local/texlive/2012/texmf-dist/fonts/type1/pu
+blic/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr6.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmssbx10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmssi10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy6.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy8.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7
+.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.p
+fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcirc
+le1.pfb>
+Output written on hyperbole-pnas.pdf (7 pages, 328289 bytes).
 PDF statistics:
  173 PDF objects out of 1000 (max. 8388607)
  125 compressed objects within 2 object streams
