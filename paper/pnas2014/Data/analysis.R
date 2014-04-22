@@ -50,7 +50,7 @@ figureS2 <- ggplot(exp1.summary, aes(x=state, y=stateProb)) +
   theme_bw() +
   ylab("Probability") +
   xlab("Interpretation") +
-  ggtitle("Human") +
+  #ggtitle("Human") +
   theme(axis.title.x = element_text(size=14),
         axis.text.x  = element_text(size=6, angle=-90),
         axis.title.y = element_text(size=14),
