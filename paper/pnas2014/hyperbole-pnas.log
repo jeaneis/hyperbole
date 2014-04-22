@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  21 APR 2014 14:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  21 APR 2014 23:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -588,18 +588,18 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 (./hyperbole-pnas.aux)
 \openout1 = `hyperbole-pnas.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/crop/crop.sty
 Package: crop 2003/05/20 v1.9 crop marks (mf)
@@ -628,12 +628,12 @@ Package crop Info: using `pdftex' graphics driver on input line 607.
 \makeMPintoPDFobject=\count154
 \everyMPtoPDFconversion=\toks36
 ) ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 175.
+LaTeX Font Info:    Try loading font information for U+msa on input line 176.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 175.
+LaTeX Font Info:    Try loading font information for U+msb on input line 176.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -645,10 +645,10 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 <model_effects.pdf, id=22, 867.24pt x 578.16pt>
 File: model_effects.pdf Graphic file (type pdf)
  <use model_effects.pdf>
-Package pdftex.def Info: model_effects.pdf used on input line 257.
+Package pdftex.def Info: model_effects.pdf used on input line 258.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 
-Overfull \hbox (1.6528pt too wide) in paragraph at lines 256--260
+Overfull \hbox (1.6528pt too wide) in paragraph at lines 257--261
  [][] 
  []
 
@@ -657,13 +657,13 @@ Overfull \hbox (1.6528pt too wide) in paragraph at lines 256--260
 File: model_human_scatter.pdf Graphic file (type pdf)
 
 <use model_human_scatter.pdf>
-Package pdftex.def Info: model_human_scatter.pdf used on input line 265.
+Package pdftex.def Info: model_human_scatter.pdf used on input line 266.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 
 <model_comp_goals.pdf, id=24, 867.24pt x 578.16pt>
 File: model_comp_goals.pdf Graphic file (type pdf)
  <use model_comp_goals.pdf>
-Package pdftex.def Info: model_comp_goals.pdf used on input line 269.
+Package pdftex.def Info: model_comp_goals.pdf used on input line 270.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 \dblfigandtabbox2=\box65
 
@@ -671,21 +671,21 @@ Package pdftex.def Info: model_comp_goals.pdf used on input line 269.
 File: model_comp_hyperbole.pdf Graphic file (type pdf)
 
 <use model_comp_hyperbole.pdf>
-Package pdftex.def Info: model_comp_hyperbole.pdf used on input line 278.
+Package pdftex.def Info: model_comp_hyperbole.pdf used on input line 279.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 
 <model_comp_halo.pdf, id=26, 867.24pt x 578.16pt>
 File: model_comp_halo.pdf Graphic file (type pdf)
  <use model_comp_halo.pdf>
-Package pdftex.def Info: model_comp_halo.pdf used on input line 282.
+Package pdftex.def Info: model_comp_halo.pdf used on input line 283.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
 
-Overfull \hbox (0.86115pt too wide) in paragraph at lines 277--287
+Overfull \hbox (0.86115pt too wide) in paragraph at lines 278--288
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--287
+Underfull \hbox (badness 10000) in paragraph at lines 278--288
 
  []
 
@@ -695,76 +695,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 277--287
 File: affect_scatter.pdf Graphic file (type pdf)
 
 <use affect_scatter.pdf>
-Package pdftex.def Info: affect_scatter.pdf used on input line 305.
+Package pdftex.def Info: affect_scatter.pdf used on input line 306.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
  <model_comp_affect.pdf, id=37, 867.24pt x 578.16pt>
 File: model_comp_affect.pdf Graphic file (type pdf)
 
 <use model_comp_affect.pdf>
-Package pdftex.def Info: model_comp_affect.pdf used on input line 309.
+Package pdftex.def Info: model_comp_affect.pdf used on input line 310.
 (pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
  [3 <./model_human_scatter.pdf> <./model_comp_goals.pdf> <./model_comp_hyperbol
 e.pdf> <./model_comp_halo.pdf>] [4 <./affect_scatter.pdf> <./model_comp_affect.
-pdf>] [5]
-Overfull \hbox (16.34692pt too wide) in paragraph at lines 417--419
-[]\OT1/cmtt/m/n/9 http://stanford.edu/~justinek/hyperbole-paper/materials/ 
+pdf>]
+Overfull \hbox (2.34386pt too wide) in paragraph at lines 410--410
+$[]$[]\OT1/cmtt/m/n/6 http://stanford.edu/~justinek/hyperbole-paper/data/experi
+ment1-normalized.csv| 
+ []
+
+
+Overfull \vbox (2.0pt too high) has occurred while \output is active []
+
+ [5]
+Overfull \hbox (5.5314pt too wide) in paragraph at lines 416--416
+$[]$[]\OT1/cmtt/m/n/6 http://stanford.edu/~justinek/hyperbole-paper/data/experi
+ment3a-normalized.csv| 
  []
 
 \dblfigandtabbox4=\box67
 <model_bar.pdf, id=93, 867.24pt x 578.16pt>
 File: model_bar.pdf Graphic file (type pdf)
  <use model_bar.pdf>
-Package pdftex.def Info: model_bar.pdf used on input line 424.
+Package pdftex.def Info: model_bar.pdf used on input line 425.
 (pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
 
-Overfull \hbox (6.172pt too wide) in paragraph at lines 424--425
+Overfull \hbox (6.172pt too wide) in paragraph at lines 425--426
 [][] 
  []
 
 <human_bar.pdf, id=94, 867.24pt x 578.16pt>
 File: human_bar.pdf Graphic file (type pdf)
  <use human_bar.pdf>
-Package pdftex.def Info: human_bar.pdf used on input line 427.
+Package pdftex.def Info: human_bar.pdf used on input line 428.
 (pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
 
-Overfull \hbox (6.172pt too wide) in paragraph at lines 427--428
+Overfull \hbox (6.172pt too wide) in paragraph at lines 428--429
 [][] 
  []
 
-[6 <./model_bar.pdf> <./human_bar.pdf>]
-Missing character: There is no ï in font cmssbx10!
-Missing character: There is no ¿ in font cmssbx10!
-Missing character: There is no ½ in font cmssbx10!
- [7] (./hyperbole-pnas.aux) ) 
+[6 <./model_bar.pdf> <./human_bar.pdf>] [7] (./hyperbole-pnas.aux) ) 
 Here is how much of TeX's memory you used:
- 12040 strings out of 493488
- 225285 string characters out of 3141326
- 286082 words of memory out of 3000000
- 15073 multiletter control sequences out of 15000+200000
- 16141 words of font info for 59 fonts, out of 3000000 for 9000
+ 12041 strings out of 493488
+ 225303 string characters out of 3141326
+ 285082 words of memory out of 3000000
+ 15074 multiletter control sequences out of 15000+200000
+ 16142 words of font info for 59 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,12n,57p,3059b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2012/texmf-dist/fonts/type1/pu
-blic/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr6.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmss10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmssbx10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmssi10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy6.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy8.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7
-.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.p
-fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcirc
-le1.pfb>
-Output written on hyperbole-pnas.pdf (7 pages, 327851 bytes).
+ 56i,12n,57p,3121b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local
+/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/loca
+l/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/
+texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2012/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2012/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2012/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2012/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2012/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2012/texmf-dist/fon
+ts/type1/public/amsfonts/latxfont/lcircle1.pfb>
+Output written on hyperbole-pnas.pdf (7 pages, 325609 bytes).
 PDF statistics:
  173 PDF objects out of 1000 (max. 8388607)
  125 compressed objects within 2 object streams
