@@ -805,7 +805,8 @@ p$interpretationRounded <- factor(p$interpretationRounded)
 p.summary <- summarySE(data=p, measurevar="interpretationProb", groupvars=c("domain", "interpretation"))
 
 ggplot(p.summary, aes(x=interpretation, y=interpretationProb)) +
-  geom_bar(stat="identity", color="black", fill="#FF9999") +
+  #geom_bar(stat="identity", color="black", fill="#FF9999") +
+  geom_bar(stat="identity", color="black", fill="gray") +
   geom_errorbar(aes(ymin=interpretationProb-se, ymax=interpretationProb+se),width=0.2) +
   facet_grid(domain ~ .) +
   theme_bw() +

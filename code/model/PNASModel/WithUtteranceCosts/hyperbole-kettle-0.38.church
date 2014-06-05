@@ -1,0 +1,121 @@
+(define (utterance-prior) (multinomial utterances '(0.38 0.1 0.38 0.1 0.38 0.1 0.38 0.1 0.38 0.1)))
+;; Missing utterance costs
+
+;; Price priors for the three domains (taken from Experiment 3a)
+; Kettle priors
+(define (state-prior) (multinomial states '(0.4205 0.3865 0.0533 0.0538 0.0223 0.0211 0.0112 0.0111 0.0083 0.0120)))
+; Laptop priors
+;(define (state-prior) (multinomial states '(0.0219 0.0213 0.2002 0.1939 0.2149 0.1926 0.0599 0.0536 0.0206 0.0211)))
+; Watch priors
+;(define (state-prior) (multinomial states '(0.2300 0.2425 0.1305 0.1225 0.0784 0.0715 0.0414 0.0417 0.0211 0.0204)))
+
+; Uniform priors
+;(define (state-prior) (multinomial states '(0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1)))
+
+
+;; For each price state, probability that speaker that speaker has affect (taken from Experiment 3b)
+; Kettle
+(define affect-prior (list (list '50 '0.3173) (list '51 '0.3173) (list '500 '0.7920)  (list '501 '0.7920) (list '1000 '0.8933) (list '1001 '0.8933)(list '5000 0.9524) (list '5001 0.9524) (list '10000 0.9864) (list '10001 0.9864)))
+; Laptop
+;(define affect-prior (list (list '50 '0.0393) (list '51 '0.0393) (list '500 '0.3779)  (list '501 '0.3779) (list '1000 '0.6281) (list '1001 '0.6281)(list '5000 0.8947) (list '5001 0.8947) (list '10000 0.9655) (list '10001 0.9655)))
+; Watch
+;(define affect-prior (list (list '50 '0.2287) (list '51 '0.2287) (list '500 '0.6900)  (list '501 '0.6900) (list '1000 '0.8324) (list '1001 '0.8324)(list '5000 0.9359) (list '5001 0.9359) (list '10000 0.9911) (list '10001 0.9911)))
+
+; Uniform affect prior
+;(define affect-prior (list (list '50 '0.1) (list '51 '0.1) (list '500 '0.1)  (list '501 '0.1) (list '1000 '0.1) (list '1001 '0.1)(list '5000 0.1) (list '5001 0.1) (list '10000 0.1) (list '10001 0.1)))
+
+;; Parameters
+(define depth 1)
+(define hardness 1)
+
+;; Define communicative goals and goal priors
+(define goals (list 'state-and-affect-precise 
+                    'state-and-affect-imprecise  
+                    'just-state-precise 
+                    'just-state-imprecise 
+                    'just-affect))
+
+(define (goal-prior) (multinomial goals '(0.17 0.17 0.17 0.17 0.34)))
+
+;; Define limited goals and goal priors
+
+;(define goals (list 'just-state-precise))
+;(define (goal-prior) (multinomial goals '(1)))
+
+;(define goals (list 'just-state-precise 'just-state-imprecise))
+;(define (goal-prior) (multinomial goals '(0.5 0.5)))
+
+;(define goals (list 'just-state-precise 'state-and-affect-precise 'just-affect))
+;(define (goal-prior) (multinomial goals '(0.33 0.33 0.33)))
+
+
+;; Define possible price states
+(define states (list '50 '51 '500 '501 '1000 '1001 '5000 '5001 '10000 '10001))
+
+;; Define possible utterances (same as price states)
+(define utterances states)
+
+;; Define affects. 0 is no affect; 1 is with affect
+(define affects (list '0 '1))
+
+(define (sample-affect state prior)
+  (let ((current-state-affect-pair (first prior)))
+    (if (equal? state (first current-state-affect-pair))
+        (if (flip (second current-state-affect-pair))
+            '1
+            '0)
+        (sample-affect state (rest prior)))))
+
+
+(define (literal-interpretation utterance state)
+  (equal? utterance state))
+
+(define (roundify state)
+  (*(round (/ state 10)) 10 ))
+
+(define (evaluate-state-goal listener-state speaker-state precision)
+  (if (equal? precision 'precise)
+      (equal? listener-state speaker-state)
+      ;(<= (abs (- listener-state speaker-state)) 1)))
+      (equal? (roundify listener-state) (roundify speaker-state))))
+
+(define (goal-satisfied? goal listener-state-affect-pair speaker-state speaker-affect)
+  (case goal
+    (('state-and-affect-precise) (and (evaluate-state-goal (first listener-state-affect-pair) speaker-state 'precise)
+                               (equal? (second listener-state-affect-pair) speaker-affect)))
+    (('state-and-affect-imprecise) (and (evaluate-state-goal (first listener-state-affect-pair) speaker-state 'imprecise)
+                               (equal? (second listener-state-affect-pair) speaker-affect)))
+    (('just-state-precise) (evaluate-state-goal (first listener-state-affect-pair) speaker-state 'precise))
+    (('just-state-imprecise) (evaluate-state-goal (first listener-state-affect-pair) speaker-state 'imprecise))
+    (('just-affect) (equal? (second listener-state-affect-pair) speaker-affect))))
+
+
+(define speaker
+  (mem (lambda (state affect goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) state affect)
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define state (state-prior))
+   (define affect (sample-affect state affect-prior))
+   (define speaker-goal (goal-prior))
+   
+   (list state affect)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance state)
+       (equal? utterance
+               (apply multinomial (speaker state affect speaker-goal (- depth 1)))))
+   ))))
+
+(define (sample-one utterance) 
+  (listener utterance depth))
+
+(list (sample-one '50) (sample-one '51) (sample-one '500) 
+      (sample-one '501) (sample-one '1000) (sample-one '1001)
+      (sample-one '5000) (sample-one '5001) (sample-one '10000) (sample-one '10001))

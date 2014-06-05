@@ -3,26 +3,6 @@ source("../multiplot.R")
 library(ggplot2)
 
 #########################################
-# Model prdictions
-#########################################
-#model <- read.csv("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions.csv")
-model <- read.csv("Model/FullModel/predictions.csv")
-
-# Code "rounded" version of utterance and state
-model$utteranceRounded <- (floor(model$utterance/10))*10
-model$stateRounded <- (floor(model$state/10)) * 10
-model$utterance <- factor(model$utterance)
-model$state <- factor(model$state)
-model$affect <- factor(model$affect)
-model$utteranceRounded <- factor(model$utteranceRounded)
-model$stateRounded <- factor(model$stateRounded)
-# Code interpretation kind
-model$interpretationKind <- 
-  ifelse(as.numeric(model$utteranceRounded) > as.numeric(model$stateRounded), "hyperbolic", 
-         ifelse(model$utterance==model$state, "exact",
-                ifelse(model$utteranceRounded==model$stateRounded, "fuzzy", "other")))
-
-#########################################
 # Experiment 1
 #########################################
 exp1 <- read.csv("http://stanford.edu/~justinek/hyperbole-paper/data/experiment1-normalized.csv")
@@ -43,27 +23,112 @@ exp1.summary <- summarySE(exp1, measurevar="stateProb",
 #########
 # Fig.S2
 #########
-figureS2 <- ggplot(exp1.summary, aes(x=state, y=stateProb)) +
-  geom_bar(stat="identity", color="black", fill="#FF9999") +
-  geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se),width=0.2) +
-  facet_grid(domain ~ utterance) +
-  theme_bw() +
-  ylab("Probability") +
-  xlab("Interpretation") +
-  #ggtitle("Human") +
-  theme(axis.title.x = element_text(size=14),
-        axis.text.x  = element_text(size=6, angle=-90),
-        axis.title.y = element_text(size=14),
-        axis.text.y = element_text(size=14))
+#   figureS2 <- ggplot(exp1.summary, aes(x=state, y=stateProb)) +
+#     geom_bar(stat="identity", color="black", fill="#FF9999") +
+#     geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se),width=0.2) +
+#     facet_grid(domain ~ utterance) +
+#     theme_bw() +
+#     ylab("Probability") +
+#     xlab("Interpretation") +
+#     #ggtitle("Human") +
+#     theme(axis.title.x = element_text(size=14),
+#           axis.text.x  = element_text(size=6, angle=-90),
+#           axis.title.y = element_text(size=14),
+#           axis.text.y = element_text(size=14))
+#   
 
-###########################
-# Fit Luce choice parameter
-###########################
+
+#########################################
+# Model prdictions
+#########################################
+#model <- read.csv("http://stanford.edu/~justinek/hyperbole-paper/data/model-predictions.csv")
+#model <- read.csv("Model/FullModel/predictions.csv")
 bestFit = 0
+bestCost = 0
 bestAlpha = 0
-for (i in seq(from=0.1, to=1, by=0.01)) {
+bestModel <- data.frame()
+parameters <- data.frame()
+for (cost in seq(from=0.11, to=0.4, by=0.01)) {
+  #model <- read.csv("/Users/justinek/Documents/Grad_school/Research/Hyperbole/hyperbole_github/code/model/PNASModel/ParsedOutput/output-0.11.txt")
+  model <- read.csv(paste("/Users/justinek/Documents/Grad_school/Research/Hyperbole/hyperbole_github/code/model/PNASModel/ParsedOutput/output-", 
+                          cost, ".txt", sep=""))
+                    
+  # Code "rounded" version of utterance and state
+  model$utteranceRounded <- (floor(model$utterance/10))*10
+  model$stateRounded <- (floor(model$state/10)) * 10
+  model$utterance <- factor(model$utterance)
+  model$state <- factor(model$state)
+  model$affect <- factor(model$affect)
+  model$utteranceRounded <- factor(model$utteranceRounded)
+  model$stateRounded <- factor(model$stateRounded)
+  # Code interpretation kind
+  model$interpretationKind <- 
+    ifelse(as.numeric(model$utteranceRounded) > as.numeric(model$stateRounded), "hyperbolic", 
+           ifelse(model$utterance==model$state, "exact",
+                  ifelse(model$utteranceRounded==model$stateRounded, "fuzzy", "other")))
+  
+  ###########################
+  # Fit Luce choice parameter
+  ###########################
+  for (i in seq(from=0.2, to=0.4, by=0.01)) {
+    model.fit <- model
+    model.fit$raisedProb <- model.fit$probability^i
+    normalizingFactors <- aggregate(data=model.fit, raisedProb ~ domain + utterance, FUN=sum)
+    colnames(normalizingFactors)[3] <- "normalizing"
+    model.fit <- join(model.fit, normalizingFactors, by=c("domain", "utterance"))
+    model.fit$adjustedProb <- model.fit$raisedProb / model.fit$normalizing
+    # Marginalize over affect
+    model.fit.state <- aggregate(data=model.fit, adjustedProb ~ 
+                                   utterance + state + domain + utteranceRounded +
+                                          stateRounded + interpretationKind, FUN=sum)
+    # Change column names
+    colnames(model.fit.state)[7] <- "model"
+    compare <- join(exp1.summary, model.fit.state, by=c("utterance", "state", "domain", "interpretationKind"))
+    colnames(compare)[10] <- "human"
+    
+    r <- with(compare, cor(human, model))
+    parameters <- rbind(parameters, data.frame(alpha=i, cost=cost, cor=r))
+    if (r > bestFit) {
+      bestFit <- r
+      bestAlpha <- i
+      bestCost <- cost
+      bestModel <- model
+    }
+  }
+}
+
+
+bestFit = 0
+bestCost = 0
+bestAlpha = 0
+bestModel <- data.frame()
+
+for (row in seq(from=1, to=nrow(parameters.range), by=1)) {
+  params <- parameters.range[row,]
+  alpha <- params$alpha
+  cost <-params$cost
+  model <- read.csv(paste("/Users/justinek/Documents/Grad_school/Research/Hyperbole/hyperbole_github/code/model/PNASModel/ParsedOutput/output-", 
+                          cost, ".txt", sep=""))
+  
+  # Code "rounded" version of utterance and state
+  model$utteranceRounded <- (floor(model$utterance/10))*10
+  model$stateRounded <- (floor(model$state/10)) * 10
+  model$utterance <- factor(model$utterance)
+  model$state <- factor(model$state)
+  model$affect <- factor(model$affect)
+  model$utteranceRounded <- factor(model$utteranceRounded)
+  model$stateRounded <- factor(model$stateRounded)
+  # Code interpretation kind
+  model$interpretationKind <- 
+    ifelse(as.numeric(model$utteranceRounded) > as.numeric(model$stateRounded), "hyperbolic", 
+           ifelse(model$utterance==model$state, "exact",
+                  ifelse(model$utteranceRounded==model$stateRounded, "fuzzy", "other")))
+  
+  ###########################
+  # Fit Luce choice parameter
+  ###########################
   model.fit <- model
-  model.fit$raisedProb <- model.fit$probability^i
+  model.fit$raisedProb <- model.fit$probability^alpha
   normalizingFactors <- aggregate(data=model.fit, raisedProb ~ domain + utterance, FUN=sum)
   colnames(normalizingFactors)[3] <- "normalizing"
   model.fit <- join(model.fit, normalizingFactors, by=c("domain", "utterance"))
@@ -71,22 +136,65 @@ for (i in seq(from=0.1, to=1, by=0.01)) {
   # Marginalize over affect
   model.fit.state <- aggregate(data=model.fit, adjustedProb ~ 
                                  utterance + state + domain + utteranceRounded +
-                                        stateRounded + interpretationKind, FUN=sum)
-  # Change column names
-  colnames(model.fit.state)[7] <- "model"
-  compare <- join(exp1.summary, model.fit.state, by=c("utterance", "state", "domain", "interpretationKind"))
-  colnames(compare)[10] <- "human"
+                                 stateRounded + interpretationKind, FUN=sum)
   
-  r <- with(compare, cor(human, model))
+  exp1.exact <- subset(exp1, interpretationKind=="exact")
+  exp1.exact.agg <- aggregate(data=exp1.exact, 
+                              stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+  exp1.fuzzy <- subset(exp1, interpretationKind=="fuzzy")
+  exp1.fuzzy.agg <- aggregate(data=exp1.fuzzy,
+                              stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+  
+  exp1.exact.summary <- aggregate(data=exp1.exact.agg, stateProb ~ 
+                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
+  exp1.fuzzy.summary <- aggregate(data=exp1.fuzzy.agg, stateProb ~ 
+                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
+  colnames(exp1.exact.summary)[5] <- "probExact"
+  colnames(exp1.fuzzy.summary)[5] <- "probFuzzy"
+  exp1.halo <- join(exp1.exact.summary, exp1.fuzzy.summary, by=c("utterance", "utteranceType", "utteranceRounded", "domain"))
+  exp1.halo$humanHalo <- exp1.halo$probExact - exp1.halo$probFuzzy
+  
+  model.exact <- subset(model.fit.state, interpretationKind=="exact")
+  model.fuzzy <- subset(model.fit.state, interpretationKind=="fuzzy")
+  colnames(model.exact)[7] <- "probExact"
+  colnames(model.fuzzy)[7] <- "probFuzzy"
+  
+  model.halo <- join(model.exact, model.fuzzy, by=c("domain", "utterance", "utteranceRounded",
+                                                    "stateRounded"))
+  model.halo$utteranceType <- ifelse(as.numeric(as.character(model.halo$utterance))==
+                                       as.numeric(as.character(model.halo$utteranceRounded)), "round", "sharp")
+  model.halo$modelHalo <- model.halo$probExact - model.halo$probFuzzy
+  
+  compare.halo <- join(exp1.halo, model.halo, by=c("utterance", "domain", "utteranceRounded"))
+  
+  r <- with(compare.halo, cor(humanHalo, modelHalo))
   if (r > bestFit) {
     bestFit <- r
-    bestAlpha <- i
+    bestAlpha <- alpha
+    bestCost <- cost
+    bestModel <- model
   }
 }
 
 ##########################
 # Compute model predictions with best parameter fit
 ##########################
+model <- read.csv(paste("/Users/justinek/Documents/Grad_school/Research/Hyperbole/hyperbole_github/code/model/PNASModel/ParsedOutput/output-", 
+                        bestCost, ".txt", sep=""))
+
+# Code "rounded" version of utterance and state
+model$utteranceRounded <- (floor(model$utterance/10))*10
+model$stateRounded <- (floor(model$state/10)) * 10
+model$utterance <- factor(model$utterance)
+model$state <- factor(model$state)
+model$affect <- factor(model$affect)
+model$utteranceRounded <- factor(model$utteranceRounded)
+model$stateRounded <- factor(model$stateRounded)
+# Code interpretation kind
+model$interpretationKind <- 
+  ifelse(as.numeric(model$utteranceRounded) > as.numeric(model$stateRounded), "hyperbolic", 
+         ifelse(model$utterance==model$state, "exact",
+                ifelse(model$utteranceRounded==model$stateRounded, "fuzzy", "other")))
 model$raisedProb <- model$probability^bestAlpha
 normalizingFactors <- aggregate(data=model, raisedProb ~ domain + utterance, FUN=sum)
 colnames(normalizingFactors)[3] <- "normalizing"
@@ -137,6 +245,18 @@ levels(model.effects$domain) <- c("Electric Kettle", "Laptop", "Watch")
 
 figure1 <- ggplot(model.effects, aes(x=utterance, y=modelProb, fill=interpretationKind)) +
   geom_bar(stat="identity", color="black") +
+  facet_grid(interpretationKind ~ domain, scales="free_y") +
+  theme_bw() +
+  scale_fill_manual(guide=FALSE, values=my.colors.effects) +
+  theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
+        axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
+  xlab("Utterance") +
+  ylab("Probability")
+
+ggplot(subset(model.effects, interpretationKind=="Exact" | interpretationKind=="Fuzzy"), 
+       aes(x=utterance, y=modelProb, fill=interpretationKind)) +
+  geom_bar(stat="identity", color="black") +
   facet_grid(interpretationKind ~ domain) +
   theme_bw() +
   scale_fill_manual(guide=FALSE, values=my.colors.effects) +
@@ -145,6 +265,21 @@ figure1 <- ggplot(model.effects, aes(x=utterance, y=modelProb, fill=interpretati
         axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
   xlab("Utterance") +
   ylab("Probability")
+
+
+ggplot(subset(exp1.summary, interpretationKind=="exact" | interpretationKind=="fuzzy"), 
+              aes(x=utterance, y=stateProb, fill=interpretationKind)) +
+  geom_bar(stat="identity", color="black") +
+  geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se), width=0.2) +
+  facet_grid(interpretationKind ~ domain) +
+  theme_bw() +
+  scale_fill_manual(guide=FALSE, values=my.colors.effects) +
+  theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+        axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
+        axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
+  xlab("Utterance") +
+  ylab("Probability")
+  
 
 ##########
 # Fig. 2(A): Model predictions versus average human responses
@@ -174,6 +309,8 @@ figure2a <- ggplot(compare, aes(x=modelProb, y=stateProb)) +
                        labels=c("Electric Kettle", "Laptop", "Watch"))
 
 with(compare, cor.test(modelProb, stateProb))
+
+parameters.range <- subset(parameters, cor > 0.9675213 & cor < 0.9793)
 
 #################
 # Make comparison models
