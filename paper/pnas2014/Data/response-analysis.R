@@ -171,6 +171,9 @@ with(order.compare.halo, t.test(firstProbFuzzy, lastProbFuzzy))
 with(subset(order.compare.halo, utteranceType=="round"), t.test(firstHalo, lastHalo))
 with(subset(order.compare.halo, utteranceType=="sharp"), t.test(firstHalo, lastHalo))
 
+summary(lm(data=order.compare.halo, firstHalo ~ utteranceType))
+summary(lm(data=order.compare.halo, lastHalo ~ utteranceType))
+
 ##########################
 # Compute model predictions with best parameter fit
 ##########################
