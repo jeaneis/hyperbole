@@ -682,7 +682,7 @@ ggplot(affect.compare.priors, aes(x=stateRounded, y=affectProb, group=isHyperbol
   theme_bw() +
   xlab("Price state") +
   ylab("Probability of affect interpretation") +
-  scale_shape_manual(values=c(23, 21), labels=c("Hyperbolic", "Literal")) +
+  scale_shape_manual(values=c(25, 21), labels=c("Hyperbolic", "Literal")) +
   scale_linetype_manual(values=c(2, 1), guide=FALSE) +
   scale_fill_manual(values=my.colors.domains, guide=FALSE) +
   scale_color_manual(values=my.colors.domains, guide=FALSE) +
