@@ -5,7 +5,8 @@ library(ggplot2)
 #########################################
 # Experiment 1
 #########################################
-exp1 <- read.csv("http://stanford.edu/~justinek/hyperbole-paper/data/experiment1-normalized.csv")
+#exp1 <- read.csv("http://stanford.edu/~justinek/hyperbole-paper/data/experiment1-normalized.csv")
+exp1 <- read.csv("Experiment1/experiment1-normalized.csv")
 # Code interpretation kind
 exp1$interpretationKind <-
   ifelse(as.numeric(exp1$utteranceRounded) > as.numeric(exp1$stateRounded), "hyperbolic",
@@ -23,20 +24,19 @@ exp1.summary <- summarySE(exp1, measurevar="stateProb",
 #########
 # Fig.S2
 #########
-#   figureS2 <- ggplot(exp1.summary, aes(x=state, y=stateProb)) +
-#     geom_bar(stat="identity", color="black", fill="#FF9999") +
-#     geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se),width=0.2) +
-#     facet_grid(domain ~ utterance) +
-#     theme_bw() +
-#     ylab("Probability") +
-#     xlab("Interpretation") +
-#     #ggtitle("Human") +
-#     theme(axis.title.x = element_text(size=14),
-#           axis.text.x  = element_text(size=6, angle=-90),
-#           axis.title.y = element_text(size=14),
-#           axis.text.y = element_text(size=14))
-#   
-
+  figure5b <- ggplot(exp1.summary, aes(x=state, y=stateProb)) +
+    geom_bar(stat="identity", color="black", fill="#FF9999") +
+    geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se),width=0.2) +
+    facet_grid(domain ~ utterance) +
+    theme_bw() +
+    ylab("Probability") +
+    xlab("Interpretation") +
+    #ggtitle("Human") +
+  theme(axis.title.x = element_text(size=16),
+      axis.text.x  = element_text(size=8, angle=-90),
+      axis.title.y = element_text(size=16),
+      axis.text.y = element_text(size=12),
+      strip.text.x=element_text(size=16), strip.text.y=element_text(size=16)) 
 
 #########################################
 # Model prdictions
@@ -97,8 +97,41 @@ for (cost in seq(from=0.11, to=0.4, by=0.01)) {
   }
 }
 
+parameters.range <- subset(parameters, cor > 0.9675213 & cor < 0.9793)
 
-bestFit = 0
+computeHalo <- function(exp1) {
+  exp1.exact <- subset(exp1, interpretationKind=="exact")
+  exp1.exact.agg <- aggregate(data=exp1.exact, 
+                              stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+  exp1.fuzzy <- subset(exp1, interpretationKind=="fuzzy")
+  exp1.fuzzy.agg <- aggregate(data=exp1.fuzzy,
+                              stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
+  
+  exp1.exact.summary <- aggregate(data=exp1.exact.agg, stateProb ~ 
+                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
+  exp1.fuzzy.summary <- aggregate(data=exp1.fuzzy.agg, stateProb ~ 
+                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
+  colnames(exp1.exact.summary)[5] <- "probExact"
+  colnames(exp1.fuzzy.summary)[5] <- "probFuzzy"
+  exp1.halo <- join(exp1.exact.summary, exp1.fuzzy.summary, by=c("utterance", "utteranceType", "utteranceRounded", "domain"))
+  exp1.halo$humanHalo <- exp1.halo$probExact - exp1.halo$probFuzzy
+  return(exp1.halo)
+}
+
+computeHaloDiff <- function(exp1) {
+  exp1.halo <- computeHalo(exp1)
+  exp1.halo.round <- subset(exp1.halo, utteranceType=="round")
+  exp1.halo.sharp <- subset(exp1.halo, utteranceType=="sharp")
+  colnames(exp1.halo.round)[7] <- "haloRound"
+  colnames(exp1.halo.sharp)[7] <- "haloSharp"
+  
+  exp1.halo.diff <- join(exp1.halo.round, exp1.halo.sharp, by=c("utteranceRounded", "domain"))
+  exp1.halo.diff$humanHaloDiff <- exp1.halo.diff$haloSharp - exp1.halo.diff$haloRound
+  return(exp1.halo.diff)
+}
+
+
+bestFit = 100
 bestCost = 0
 bestAlpha = 0
 bestModel <- data.frame()
@@ -137,44 +170,38 @@ for (row in seq(from=1, to=nrow(parameters.range), by=1)) {
   model.fit.state <- aggregate(data=model.fit, adjustedProb ~ 
                                  utterance + state + domain + utteranceRounded +
                                  stateRounded + interpretationKind, FUN=sum)
-  
-  exp1.exact <- subset(exp1, interpretationKind=="exact")
-  exp1.exact.agg <- aggregate(data=exp1.exact, 
-                              stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
-  exp1.fuzzy <- subset(exp1, interpretationKind=="fuzzy")
-  exp1.fuzzy.agg <- aggregate(data=exp1.fuzzy,
-                              stateProb ~ utterance + utteranceType + utteranceRounded + domain + workerID, FUN=sum)
-  
-  exp1.exact.summary <- aggregate(data=exp1.exact.agg, stateProb ~ 
-                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
-  exp1.fuzzy.summary <- aggregate(data=exp1.fuzzy.agg, stateProb ~ 
-                                    utterance + utteranceType + utteranceRounded + domain, FUN=mean)
-  colnames(exp1.exact.summary)[5] <- "probExact"
-  colnames(exp1.fuzzy.summary)[5] <- "probFuzzy"
-  exp1.halo <- join(exp1.exact.summary, exp1.fuzzy.summary, by=c("utterance", "utteranceType", "utteranceRounded", "domain"))
-  exp1.halo$humanHalo <- exp1.halo$probExact - exp1.halo$probFuzzy
-  
   model.exact <- subset(model.fit.state, interpretationKind=="exact")
   model.fuzzy <- subset(model.fit.state, interpretationKind=="fuzzy")
   colnames(model.exact)[7] <- "probExact"
   colnames(model.fuzzy)[7] <- "probFuzzy"
-  
   model.halo <- join(model.exact, model.fuzzy, by=c("domain", "utterance", "utteranceRounded",
                                                     "stateRounded"))
   model.halo$utteranceType <- ifelse(as.numeric(as.character(model.halo$utterance))==
                                        as.numeric(as.character(model.halo$utteranceRounded)), "round", "sharp")
   model.halo$modelHalo <- model.halo$probExact - model.halo$probFuzzy
+  model.halo.round <- subset(model.halo, utteranceType=="round")
+  model.halo.sharp <-subset(model.halo, utteranceType=="sharp")
+  colnames(model.halo.round)[12] <- "modelHaloRound"
+  colnames(model.halo.sharp)[12] <- "modelHaloSharp"
+  model.halo.diff <- join(model.halo.round, model.halo.sharp, by=c("utteranceRounded", "domain"))
+  model.halo.diff$modelHaloDiff <- model.halo.diff$modelHaloSharp - model.halo.diff$modelHaloRound
+  #exp1.halo <- computeHalo(exp1)
+  #compare.halo <- join(exp1.halo, model.halo, by=c("utterance", "domain", "utteranceRounded"))
+  exp1.halo.diff <- computeHaloDiff(exp1)
+  compare.halo.diff <- join(exp1.halo.diff, model.halo.diff, by=c("utteranceRounded", "domain"))
   
-  compare.halo <- join(exp1.halo, model.halo, by=c("utterance", "domain", "utteranceRounded"))
+  #r <- with(compare.halo, cor(humanHalo, modelHalo))
+  r <- rmse(compare.halo.diff$modelHaloDiff, compare.halo.diff$humanHaloDiff)
   
-  r <- with(compare.halo, cor(humanHalo, modelHalo))
-  if (r > bestFit) {
+  if (r < bestFit) {
     bestFit <- r
     bestAlpha <- alpha
     bestCost <- cost
     bestModel <- model
   }
 }
+
+
 
 ##########################
 # Compute model predictions with best parameter fit
@@ -208,21 +235,23 @@ model.state <- aggregate(data=model, modelProb ~
 #######
 # Fig.S1
 #######
-figureS1 <- ggplot(model.state, aes(x=state, y=modelProb)) +
+figure5a <- ggplot(model.state, aes(x=state, y=modelProb)) +
   geom_bar(stat="identity", color="black", fill="gray") +
   facet_grid(domain ~ utterance) +
   theme_bw() +
   ylab("Probability") +
   xlab("Interpretation") +
-  theme(axis.title.x = element_text(size=14),
-        axis.text.x  = element_text(size=6, angle=-90),
-        axis.title.y = element_text(size=14),
-        axis.text.y = element_text(size=14))
+  theme(axis.title.x = element_text(size=16),
+        axis.text.x  = element_text(size=8, angle=-90),
+        axis.title.y = element_text(size=16),
+        axis.text.y = element_text(size=12),
+        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16))
 
 ######
 # Fig. 1: interpretation kinds (Exact, Fuzzy, Hyperbolic, Affective)
 ######
-my.colors.effects <- c("#6699CC", "#66CC99", "#FF9966", "#FFCCCC")
+#my.colors.effects <- c("#6699CC", "#66CC99", "#FF9966", "#FFCCCC")
+my.colors.effects <- c("#225ea8", "#41b6c4", "#a1dab4", "#ffffcc")
 # Aggregate model over valence and different ways to be hyperbolic
 model.stateKinds <- aggregate(data=model, modelProb ~ domain + utterance + interpretationKind,
                                FUN=sum)
@@ -241,76 +270,79 @@ model.effects <- rbind(model.effects,
                                             "watch","watch")))
 
 levels(model.effects$interpretationKind)<- c("Exact", "Fuzzy", "Hyperbolic", "Affective")
-levels(model.effects$domain) <- c("Electric Kettle", "Laptop", "Watch")
+levels(model.effects$domain) <- c("Electric kettle", "Laptop", "Watch")
 
 figure1 <- ggplot(model.effects, aes(x=utterance, y=modelProb, fill=interpretationKind)) +
   geom_bar(stat="identity", color="black") +
   facet_grid(interpretationKind ~ domain, scales="free_y") +
   theme_bw() +
   scale_fill_manual(guide=FALSE, values=my.colors.effects) +
-  theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
-        axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
-        axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
+  theme(strip.text.x=element_text(size=20), strip.text.y=element_text(size=20),
+        axis.text.y=element_text(size=16), axis.title.y=element_text(size=20),
+        axis.text.x=element_text(size=16, angle=-90, hjust=-0.01,vjust=0.3), 
+        axis.title.x=element_text(size=20)) +
   xlab("Utterance") +
   ylab("Probability")
 
-ggplot(subset(model.effects, interpretationKind=="Exact" | interpretationKind=="Fuzzy"), 
-       aes(x=utterance, y=modelProb, fill=interpretationKind)) +
-  geom_bar(stat="identity", color="black") +
-  facet_grid(interpretationKind ~ domain) +
-  theme_bw() +
-  scale_fill_manual(guide=FALSE, values=my.colors.effects) +
-  theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
-        axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
-        axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
-  xlab("Utterance") +
-  ylab("Probability")
-
-
-ggplot(subset(exp1.summary, interpretationKind=="exact" | interpretationKind=="fuzzy"), 
-              aes(x=utterance, y=stateProb, fill=interpretationKind)) +
-  geom_bar(stat="identity", color="black") +
-  geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se), width=0.2) +
-  facet_grid(interpretationKind ~ domain) +
-  theme_bw() +
-  scale_fill_manual(guide=FALSE, values=my.colors.effects) +
-  theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
-        axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
-        axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
-  xlab("Utterance") +
-  ylab("Probability")
+# ggplot(subset(model.effects, interpretationKind=="Exact" | interpretationKind=="Fuzzy"), 
+#        aes(x=utterance, y=modelProb, fill=interpretationKind)) +
+#   geom_bar(stat="identity", color="black") +
+#   facet_grid(interpretationKind ~ domain) +
+#   theme_bw() +
+#   scale_fill_manual(guide=FALSE, values=my.colors.effects) +
+#   theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+#         axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
+#         axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
+#   xlab("Utterance") +
+#   ylab("Probability")
+# 
+# 
+# ggplot(subset(exp1.summary, interpretationKind=="exact" | interpretationKind=="fuzzy"), 
+#               aes(x=utterance, y=stateProb, fill=interpretationKind)) +
+#   geom_bar(stat="identity", color="black") +
+#   geom_errorbar(aes(ymin=stateProb-se, ymax=stateProb+se), width=0.2) +
+#   facet_grid(interpretationKind ~ domain) +
+#   theme_bw() +
+#   scale_fill_manual(guide=FALSE, values=my.colors.effects) +
+#   theme(strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+#         axis.text.y=element_text(size=12), axis.title.y=element_text(size=16),
+#         axis.text.x=element_text(size=14, angle=-90, hjust=-0.01,vjust=0.3), axis.title.x=element_text(size=16)) +
+#   xlab("Utterance") +
+#   ylab("Probability")
   
 
 ##########
 # Fig. 2(A): Model predictions versus average human responses
 ##########
-my.colors.4effects <- c("#003399", "#339966", "#FF6633", "grey")
+my.colors.4effects <- c("#225ea8", "#41b6c4", "#a1dab4", "grey")
 compare <- join(exp1.summary, model.state, by=c("utterance", "state", "domain"))
 figure2a <- ggplot(compare, aes(x=modelProb, y=stateProb)) +
-  geom_point(size=2.5, aes(x=modelProb, y=stateProb, color=interpretationKind, shape=domain)) +
+  geom_point(size=5, aes(x=modelProb, y=stateProb, fill=interpretationKind, shape=domain)) +
+  #geom_point(size=5, aes(x=modelProb, y=stateProb, fill=interpretationKind, shape=domain)) +
   geom_smooth(data=compare, aes(x=modelProb, y=stateProb), method=lm, color="black", linetype=2) +
   theme_bw() +
-  theme(axis.title.x = element_text(size=18),
-        axis.text.x  = element_text(size=12),
-        axis.title.y = element_text(size=18),
-        axis.text.y = element_text(size=12),
-        legend.title=element_text(size=14),
+  theme(axis.title.x = element_text(size=20),
+        axis.text.x  = element_text(size=16),
+        axis.title.y = element_text(size=20),
+        axis.text.y = element_text(size=16),
+        legend.title=element_text(size=16),
         legend.text=element_text(size=14),
         legend.position=c(0.85, .3)) +
   xlab("Model") +
   ylab("Human") +
-  scale_x_continuous(expand=c(0, 0), limits=c(0,0.4)) +
+  scale_x_continuous(expand=c(0, 0), limits=c(0,0.35)) +
   scale_y_continuous(expand=c(0, 0)) +
   expand_limits(y=0,x=0) +
-  scale_color_manual(values=my.colors.4effects, name="Interpretation Kind", 
+  scale_fill_manual(values=my.colors.4effects, name="Interpretation type", 
+                     guide=guide_legend(override.aes=aes(shape=21)),
                      breaks=c("exact", "fuzzy", "hyperbolic", "other"),
-                     labels=c("Exact", "Fuzzy", "Hyperbolic", "Other"))+
-  scale_shape_discrete(name="Item", breaks=c("electric kettle", "laptop", "watch"),
+                     labels=c("Exact", "Fuzzy", "Hyperbolic", "Other")) +
+  scale_shape_manual(values=c(21, 24, 22), name="Item", breaks=c("electric kettle", "laptop", "watch"),
                        labels=c("Electric Kettle", "Laptop", "Watch"))
+  #scale_shape_discrete(name="Item type", breaks=c("electric kettle", "laptop", "watch"),
+  #                     labels=c("Electric kettle", "Laptop", "Watch"))
 
 with(compare, cor.test(modelProb, stateProb))
-
-parameters.range <- subset(parameters, cor > 0.9675213 & cor < 0.9793)
 
 #################
 # Make comparison models
@@ -402,7 +434,8 @@ goals.comparison$state <- factor(goals.comparison$state,
                                  levels=c("50","51","500","501","1000","1001","5000","5001","10000","10001"))
 
 #### colors for paper
- my.colors.goals<- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
+#my.colors.goals<- c("#d9d9d9", "#dadaeb", "#bcbddc", "#9edae5", "#17becf")
+my.colors.goals <- c("#d9d9d9", "#edf8fb", "#b3cde3", "#8c96c6", "#88419d")
 #### colors for presentation
 # my.colors.goals <- c("#d9d9d9", "#dadaeb", "#bcbddc", "#cc6699", "#ff9896")
 figure2b <- ggplot(goals.comparison, aes(x=state, y=modelProb, fill=type)) +
@@ -414,9 +447,9 @@ figure2b <- ggplot(goals.comparison, aes(x=state, y=modelProb, fill=type)) +
   ggtitle('"The electric kettle cost 1,000 dollars."') +
   xlab("Interpretation") +
   ylab("Probability") +
-  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90, vjust=0.3),
-        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
-        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
+  theme(axis.title.x=element_text(size=20), axis.text.x=element_text(size=18, angle=-90, vjust=0.3),
+        axis.title.y=element_text(size=20), axis.text.y=element_text(size=18),
+        strip.text.x=element_text(size=20),
         legend.text=element_text(size=0),title=element_text(size=18)) +
   scale_y_continuous(expand=c(0, 0))
 
@@ -451,21 +484,25 @@ model.noPriors.hyperbole.summary$type <- "Uniform price prior"
 
 priors.comparison <- rbind(exp1.hyperbole.summary, model.hyperbole.summary, model.noPriors.hyperbole.summary)
 priors.comparison$type <- factor(priors.comparison$type, levels=c("Human", "Full model", "Uniform price prior"))
-my.colors.domains <- c("#ff9896", "#17becf", "#e7ba52")
-figure3a <- ggplot(priors.comparison, aes(x=utteranceRounded, y=modelProb, group=domain, color=domain)) +
-  geom_point(size=5) +
+
+my.colors.domains <- c("#8dd3c7", "#bebada", "#fb8072")
+
+figure3a <- ggplot(priors.comparison, aes(x=utteranceRounded, y=modelProb, group=domain, fill=domain, shape=domain)) +
+  geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2, color="#666666") +
+  geom_point(size=6) +
   geom_line(aes(color=domain), size=1) +
   #geom_text(aes(label=utterance, color=domain)) +
   facet_grid(.~type) +
-  geom_errorbar(aes(ymin=modelProb-se, ymax=modelProb+se), width=0.2, color="grey") +
   theme_bw() +
-  xlab("Utterance rounded") +
-  ylab("P(hyperbole)") +
+  xlab("Utterance") +
+  ylab("Probability of hyperbolic interpretation") +
   theme(legend.title=element_text(size=0), legend.position=c(0.8, 0.85),
-        axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
-        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
-        strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
-  scale_color_manual(values=my.colors.domains)
+        axis.title.x=element_text(size=20), axis.text.x=element_text(size=18, angle=-90),
+        axis.title.y=element_text(size=20), axis.text.y=element_text(size=16),
+        strip.text.x=element_text(size=20), legend.text=element_text(size=16)) +
+  scale_color_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
+  scale_fill_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
+  scale_shape_manual(values=c(21, 24, 22), labels=c("Electric kettle", "Laptop", "Watch"))
 
 #################
 # Fig. 3(B): Uniform utterance costs
@@ -522,22 +559,25 @@ model.noCost.halo.summary$type <- "Uniform utterance cost"
 
 cost.comparison <- rbind(exp1.halo.summary, model.halo.summary, model.noCost.halo.summary)
 cost.comparison$type <- factor(cost.comparison$type, levels=c("Human", "Full model", "Uniform utterance cost"))
-figure3b <- ggplot(cost.comparison, aes(x=utteranceType, y=halo, group=domain, color=domain, shape=utteranceType)) +
-  geom_point(size=5) +
+cost.comparison$utteranceType <- factor(cost.comparison$utteranceType, levels=c("sharp", "round"))
+figure3b <- ggplot(cost.comparison, aes(x=utteranceType, y=halo, group=domain, fill=domain, shape=domain)) +
+  geom_errorbar(aes(ymin=halo-se, ymax=halo+se), width=0.1, color="#666666") +
+  geom_point(size=6) +
   #geom_bar(color="black", stat="identity", position=position_dodge()) +
-  geom_line(linetype=2, size=1) +
-  geom_errorbar(aes(ymin=halo-se, ymax=halo+se), width=0.1, color="grey")+
+  geom_line(linetype=2, size=1, aes(color=domain)) +
   theme_bw() +
   facet_grid(.~type) +
-  ylab("P(exact) - P(fuzzy)") +
+  ylab("Bias towards exact interpretation") +
   xlab("Utterance Type") +
-  scale_shape_discrete(guide=FALSE) +
+  #scale_shape_discrete(guide=FALSE) +
   theme(legend.title=element_text(size=0), legend.position=c(0.8, 0.85),
-        axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
-        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
-        strip.text.x=element_text(size=16), legend.text=element_text(size=14)) +
+        axis.title.x=element_text(size=20), axis.text.x=element_text(size=18),
+        axis.title.y=element_text(size=20), axis.text.y=element_text(size=16),
+        strip.text.x=element_text(size=20), legend.text=element_text(size=16)) +
   #scale_color_brewer(palette="Accent")
-  scale_color_manual(values=my.colors.domains)
+  scale_color_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
+  scale_fill_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
+  scale_shape_manual(values=c(21, 24, 22), labels=c("Electric kettle", "Laptop", "Watch"))
 
 
 #################
@@ -571,18 +611,21 @@ affect.compare <- join(exp2.summary, model.affect, by=c("domain", "utteranceRoun
 
 ggplot(affect.compare, aes(x=modelAffectProb, y=affectProb)) +
   #geom_text(aes(label=label), color="dark grey") +
-  geom_errorbar(aes(ymin=affectProb-se, ymax=affectProb+se), width=0.01, color="gray") +
-  geom_point(aes(x=modelAffectProb, y=affectProb, color=isHyperbole, shape=domain), size=3) +
+  geom_errorbar(aes(ymin=affectProb-se, ymax=affectProb+se), width=0.01, color="#666666") +
+  geom_point(aes(x=modelAffectProb, y=affectProb, fill=isHyperbole, shape=domain), size=5) +
   geom_smooth(data=affect.compare, aes(x=modelAffectProb, y=affectProb), method=lm, color="black", linetype=2) +
   #geom_text(aes(label=utteranceRounded)) +
   theme_bw() +
-  scale_color_brewer(palette="Set1") +
+  scale_shape_manual(values=c(21, 24, 22), name="Item type", 
+                     labels=c("Electric kettle", "Laptop", "Watch")) +
+  scale_fill_manual(guide=guide_legend(override.aes=aes(shape=21)),
+                    values=c("#a1dab4", "#225ea8"), name="Interpretation type",
+                     labels=c("Hyperbolic", "Literal")) +
   xlab("Model") +
   ylab("Human") +
-  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14),
-        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
-        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
-        legend.title=element_text(size=0), legend.text=element_text(size=14),
+  theme(axis.title.x=element_text(size=20), axis.text.x=element_text(size=14),
+        axis.title.y=element_text(size=20), axis.text.y=element_text(size=14),
+        legend.title=element_text(size=16), legend.text=element_text(size=14),
         legend.position=c(0.9, 0.2))
 
 with(affect.compare, cor.test(modelAffectProb, affectProb))
@@ -629,22 +672,24 @@ affect.compare.priors <- rbind(exp2.affect.givenState,
                                model.affect.givenState, model.noAffectPrior.affect.givenState)
 
 affect.compare.priors$type <- factor(affect.compare.priors$type, levels=c("Human", "Full model", "Uniform affect prior"))
-ggplot(affect.compare.priors, aes(x=stateRounded, y=affectProb, group=isHyperbole, color=domain, shape=isHyperbole, linetype=isHyperbole)) +
+affect.compare.priors$domain <- factor(affect.compare.priors$domain, labels=c("Electric kettle", "Laptop", "Watch"))
+ggplot(affect.compare.priors, aes(x=stateRounded, y=affectProb, group=isHyperbole, fill=domain, shape=isHyperbole, linetype=isHyperbole)) +
+  geom_errorbar(aes(ymin=affectProb-se, ymax=affectProb+se), width=0.2, color="#666666") +
   geom_point(size=5) +
-  geom_line(size=1) +
+  geom_line(size=1, aes(color=domain)) +
   #geom_bar(stat="identity", color="black") +
-  geom_errorbar(aes(ymin=affectProb-se, ymax=affectProb+se), width=0.2, color="dark gray") +
   facet_grid(domain ~ type) +
   theme_bw() +
-  xlab("Price state rounded") +
-  ylab("P(affect | utterance and price state)") +
-  scale_shape_manual(values=c(8, 16)) +
-  scale_linetype_manual(values=c(2, 1)) +
+  xlab("Price state") +
+  ylab("Probability of affect interpretation") +
+  scale_shape_manual(values=c(23, 21), labels=c("Hyperbolic", "Literal")) +
+  scale_linetype_manual(values=c(2, 1), guide=FALSE) +
+  scale_fill_manual(values=my.colors.domains, guide=FALSE) +
   scale_color_manual(values=my.colors.domains, guide=FALSE) +
-  theme(axis.title.x=element_text(size=16), axis.text.x=element_text(size=14, angle=-90),
-        axis.title.y=element_text(size=16), axis.text.y=element_text(size=14),
-        strip.text.x=element_text(size=16), strip.text.y=element_text(size=16),
-        legend.title=element_text(size=0), legend.text=element_text(size=14),
+  theme(axis.title.x=element_text(size=20), axis.text.x=element_text(size=16, angle=-90),
+        axis.title.y=element_text(size=20), axis.text.y=element_text(size=16),
+        strip.text.x=element_text(size=20), strip.text.y=element_text(size=20),
+        legend.title=element_text(size=0), legend.text=element_text(size=16),
         legend.position=c(0.9, 0.9))
 
 

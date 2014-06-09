@@ -166,13 +166,37 @@ exp1.last.summary <- summarySE(exp1.last, measurevar="stateProb",
                                             "state", "stateType", "stateRounded", "interpretationKind"))
 
 with(order.compare.halo, t.test(firstHalo, lastHalo, paired=TRUE))
-with(order.compare.halo, t.test(firstProbExact, lastProbExact))
-with(order.compare.halo, t.test(firstProbFuzzy, lastProbFuzzy))
-with(subset(order.compare.halo, utteranceType=="round"), t.test(firstHalo, lastHalo))
-with(subset(order.compare.halo, utteranceType=="sharp"), t.test(firstHalo, lastHalo))
+with(order.compare.halo, t.test(firstProbExact, lastProbExact, paired=TRUE))
+with(order.compare.halo, t.test(firstProbFuzzy, lastProbFuzzy, paired=TRUE))
+with(subset(order.compare.halo, utteranceType=="round"), t.test(firstHalo, lastHalo, paired=TRUE))
+with(subset(order.compare.halo, utteranceType=="sharp"), t.test(firstHalo, lastHalo, paired=TRUE))
 
 summary(lm(data=order.compare.halo, firstHalo ~ utteranceType))
 summary(lm(data=order.compare.halo, lastHalo ~ utteranceType))
+
+########################
+# Order effects
+########################
+exp1.first <- subset(exp1, order <= 5)
+exp1.last <- subset(exp1, order >= 10)
+
+exp1.first.mean <- aggregate(data=exp1.first, stateProb ~ domain + utterance + utteranceType + 
+                               utteranceRounded + state + stateType + 
+                               stateRounded + interpretationKind, FUN=mean)
+exp1.last.mean <- aggregate(data=exp1.last, stateProb ~ domain + utterance + utteranceType + 
+                               utteranceRounded + state + stateType + 
+                               stateRounded + interpretationKind, FUN=mean)
+colnames(exp1.first.mean)[9] <- "firstProb"
+colnames(exp1.last.mean)[9] <- "lastProb"
+
+order.compare <- join(exp1.first.mean, exp1.last.mean, by=c("domain", "utterance",
+                                                            "utteranceType", "utteranceRounded",
+                                                            "state", "stateType", "stateRounded",
+                                                            "interpretationKind"))
+
+with(subset(order.compare, interpretationKind=="exact" & utteranceType=="sharp"), t.test(firstProb, lastProb, paired=TRUE))
+with(subset(order.compare, interpretationKind=="fuzzy" & utteranceType=="round"), t.test(firstProb, lastProb, paired=TRUE))
+with(subset(order.compare, interpretationKind=="hyperbolic"), t.test(firstProb, lastProb, paired=TRUE))
 
 ##########################
 # Compute model predictions with best parameter fit
