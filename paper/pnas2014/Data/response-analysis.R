@@ -186,6 +186,13 @@ exp1.first.mean <- aggregate(data=exp1.first, stateProb ~ domain + utterance + u
 exp1.last.mean <- aggregate(data=exp1.last, stateProb ~ domain + utterance + utteranceType + 
                                utteranceRounded + state + stateType + 
                                stateRounded + interpretationKind, FUN=mean)
+exp1.first.mean$order = "first"
+exp1.last.mean$order = "last"
+exp1.ordereffects <- rbind(exp1.first.mean, exp1.last.mean)
+exp1.ordereffects$interpretationKind <- factor(exp1.ordereffects$interpretationKind)
+exp1.ordereffects$order <- factor(exp1.ordereffects$order)
+
+anova(lm(data=exp1.ordereffects, stateProb ~ interpretationKind * order))
 colnames(exp1.first.mean)[9] <- "firstProb"
 colnames(exp1.last.mean)[9] <- "lastProb"
 

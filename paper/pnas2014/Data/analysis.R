@@ -325,8 +325,8 @@ figure2a <- ggplot(compare, aes(x=modelProb, y=stateProb)) +
         axis.text.x  = element_text(size=16),
         axis.title.y = element_text(size=20),
         axis.text.y = element_text(size=16),
-        legend.title=element_text(size=16),
-        legend.text=element_text(size=14),
+        legend.title=element_text(size=18),
+        legend.text=element_text(size=18),
         legend.position=c(0.85, .3)) +
   xlab("Model") +
   ylab("Human") +
@@ -499,7 +499,7 @@ figure3a <- ggplot(priors.comparison, aes(x=utteranceRounded, y=modelProb, group
   theme(legend.title=element_text(size=0), legend.position=c(0.8, 0.85),
         axis.title.x=element_text(size=20), axis.text.x=element_text(size=18, angle=-90),
         axis.title.y=element_text(size=20), axis.text.y=element_text(size=16),
-        strip.text.x=element_text(size=20), legend.text=element_text(size=16)) +
+        strip.text.x=element_text(size=20), legend.text=element_text(size=18)) +
   scale_color_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
   scale_fill_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
   scale_shape_manual(values=c(21, 24, 22), labels=c("Electric kettle", "Laptop", "Watch"))
@@ -573,7 +573,7 @@ figure3b <- ggplot(cost.comparison, aes(x=utteranceType, y=halo, group=domain, f
   theme(legend.title=element_text(size=0), legend.position=c(0.8, 0.85),
         axis.title.x=element_text(size=20), axis.text.x=element_text(size=18),
         axis.title.y=element_text(size=20), axis.text.y=element_text(size=16),
-        strip.text.x=element_text(size=20), legend.text=element_text(size=16)) +
+        strip.text.x=element_text(size=20), legend.text=element_text(size=18)) +
   #scale_color_brewer(palette="Accent")
   scale_color_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
   scale_fill_manual(values=my.colors.domains, labels=c("Electric kettle", "Laptop", "Watch")) +
@@ -625,8 +625,8 @@ ggplot(affect.compare, aes(x=modelAffectProb, y=affectProb)) +
   ylab("Human") +
   theme(axis.title.x=element_text(size=20), axis.text.x=element_text(size=14),
         axis.title.y=element_text(size=20), axis.text.y=element_text(size=14),
-        legend.title=element_text(size=16), legend.text=element_text(size=14),
-        legend.position=c(0.9, 0.2))
+        legend.title=element_text(size=18), legend.text=element_text(size=18),
+        legend.position=c(0.8, 0.2))
 
 with(affect.compare, cor.test(modelAffectProb, affectProb))
 
@@ -689,7 +689,7 @@ ggplot(affect.compare.priors, aes(x=stateRounded, y=affectProb, group=isHyperbol
   theme(axis.title.x=element_text(size=20), axis.text.x=element_text(size=16, angle=-90),
         axis.title.y=element_text(size=20), axis.text.y=element_text(size=16),
         strip.text.x=element_text(size=20), strip.text.y=element_text(size=20),
-        legend.title=element_text(size=0), legend.text=element_text(size=16),
-        legend.position=c(0.9, 0.9))
+        legend.title=element_text(size=0), legend.text=element_text(size=18),
+        legend.position=c(0.8, 0.9))
 
 
