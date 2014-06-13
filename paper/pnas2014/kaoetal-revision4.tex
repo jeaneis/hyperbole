@@ -279,7 +279,7 @@ We tested our model on number words that refer to the prices of three types of e
 \begin{minipage}[b]{.49\textwidth}
 \includegraphics[width=8.7cm]{figure1-revised.pdf}
 %\includegraphics[width=8.7cm]{model_effects.pdf}
-\caption{Model predictions of interpretations given utterances. Each bar shows the probability of a type of interpretation that the model generates given an utterance about an item. Exact interpretations are more likely given sharp rather than round utterances. Fuzzy interpretations are slightly more likely given round utterances. Hyperbolic and affective interpretations are more likely given higher utterances.} 
+\caption{Model predictions of interpretations given utterances. Each bar in the first three rows shows the probability of a type of interpretation given an utterance. Exact interpretations are more likely given sharp rather than round utterances. Fuzzy interpretations are slightly more likely given round utterances. Hyperbolic  interpretations are more likely given more extreme utterances. The final row shows the probability of interpreted affect.} 
 \label{model_effects}
 \end{minipage}\hfill
 \end{figure}
@@ -291,7 +291,7 @@ We tested our model on number words that refer to the prices of three types of e
 \end{minipage}
 \begin{minipage}[b]{.49\textwidth}
 \includegraphics[width=8.7cm]{figure2b-revised.pdf}
-\caption{(a) Model predictions v.s. average human responses from Experiment 1. Each point represents an utterance and price state pair ($u, s$). The x-coordinate of each point is the probability of the model interpreting utterance $u$ as meaning price state $s$; the y-coordinate is the probability for humans. Colors indicate types of interpretations; shapes indicate items. Correlation between model and human interpretations is $0.968$ ($95\%$ CI in grey). (b) Comparing models with different communicative goals to human interpretations of the utterance ``The electric kettle cost 1,000 dollars." A model that considers both affect and precision goals (full model) most closely matches human data.}
+\caption{(a) Model predictions v.s. average human responses from Experiment 1. Each point represents an utterance and price state pair ($u, s$). The x-coordinate of each point is the probability of the model interpreting utterance $u$ as meaning price state $s$; the y-coordinate is the empirical probability. Correlation between model and human interpretations is $0.968$ ($95\%$ CI in grey). (b) Comparison of models with different communicative goals and human interpretations for the utterance ``The electric kettle cost 1,000 dollars." A model that considers both affect and precision goals (full model) most closely matches human data.}
 \end{minipage}\hfill
 \label{model_fit_and_halo}
 \end{figure*}
@@ -306,7 +306,7 @@ We tested our model on number words that refer to the prices of three types of e
 \includegraphics[width=8.7cm]{figure3b-revised.pdf}
 \caption{Hello}
 \end{minipage}\hfill
-\caption{(a) Probability of hyperbolic interpretation given utterances. Leftmost panel shows human data (error bars are standard errors). A full model that uses price priors measured in Experiment 3a demonstrates similar hyperbole effects and distinguishes among item types; a model that uses uniform price priors does not. (b) Halo effect as measure by bias towards exact interpretation for round/sharp utterance types. Humans' bias towards exact interpretation is significantly higher for sharp numbers. A full model that assigns higher costs to sharp numbers captures this result; a model that uses uniform utterance costs does not.}
+\caption{(a) Probability of hyperbolic interpretation given utterances. Leftmost panel shows human data (error bars are standard errors). A full model that uses price priors measured in Experiment 3a demonstrates similar hyperbole effects and distinguishes among item types; a model that uses uniform price priors does not. (b) Halo effect as measure by bias towards exact interpretation for round/sharp utterance types. Humans' bias towards exact interpretation is significantly higher for sharp numbers. A full model that assigns higher cost to sharp numbers captures this result; a model that uses uniform utterance cost does not.}
 \label{hyperbole_and_affect}
 \end{figure*}
 
@@ -376,7 +376,7 @@ While our model is currently limited to two dimensions of meaning and correspond
 \begin{minipage}[b]{.495\textwidth}
 \includegraphics[width=9cm]{figure5b-revised.pdf}
 \end{minipage}
-\caption{(a) Posterior price state distributions predicted by the model given utterances. Each panel shows the interpretation distribution of an utterance about an item. (b) Price state distributions rated by participants given utterances. Each panel shows the interpretation distribution of an utterance about an item. Error bars are standard errors.}
+\caption{(a) Posterior price state distributions predicted by the model given utterances. Each panel shows the interpretation distribution of an utterance. (b) Price state distributions rated by participants given utterances. Each panel shows the interpretation distribution of an utterance. Error bars are standard errors.}
 \end{figure*}
 \section{Model}
 Let $u$ be an utterance. The meaning of $u$ has two dimensions: the actual price state $s$ and the speaker's affect $a$. We defined the set of price states $S=\{50, 51, 500, 501, 1000, 1001, 5000, 5001, 10000, 10001\}$. We assumed that the set of utterances $U$ is identical to $S$. We defined the set of affect states $A=\{0, 1\}$ (0 means no affect and 1 means with affect---this binarization is purely for simplicity). Given $S$ and $A$, the set of possible meanings $M$ is given by $M = S \times A$. We denote each meaning as $s, a$, where $s \in S$ and $a \in A$. 
