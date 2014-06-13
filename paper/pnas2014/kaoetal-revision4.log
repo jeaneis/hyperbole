@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  13 JUN 2014 10:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  13 JUN 2014 10:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -508,7 +508,7 @@ eriment3b.html|
 Here is how much of TeX's memory you used:
  3704 strings out of 493488
  48369 string characters out of 3141326
- 137851 words of memory out of 3000000
+ 137869 words of memory out of 3000000
  6947 multiletter control sequences out of 15000+200000
  16137 words of font info for 59 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -533,7 +533,7 @@ fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><
 /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle
 1.pfb>
-Output written on kaoetal-revision4.pdf (7 pages, 335675 bytes).
+Output written on kaoetal-revision4.pdf (7 pages, 335690 bytes).
 PDF statistics:
  170 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams
