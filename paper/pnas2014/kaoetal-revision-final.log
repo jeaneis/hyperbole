@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  13 JUN 2014 16:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  13 JUN 2014 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -467,10 +467,18 @@ Overfull \hbox (13.84094pt too wide) in paragraph at lines 451--451
 nt1-normalized.csv| 
  []
 
-Missing character: There is no Ò in font cmss10!
-Missing character: There is no Ó in font cmss10!
-Missing character: There is no Õ in font cmss10!
-Missing character: There is no Õ in font cmss10!
+Missing character: There is no ï in font cmss10!
+Missing character: There is no ¿ in font cmss10!
+Missing character: There is no ½ in font cmss10!
+Missing character: There is no ï in font cmss10!
+Missing character: There is no ¿ in font cmss10!
+Missing character: There is no ½ in font cmss10!
+Missing character: There is no ï in font cmss10!
+Missing character: There is no ¿ in font cmss10!
+Missing character: There is no ½ in font cmss10!
+Missing character: There is no ï in font cmss10!
+Missing character: There is no ¿ in font cmss10!
+Missing character: There is no ½ in font cmss10!
 
 Overfull \vbox (2.0pt too high) has occurred while \output is active []
 
@@ -522,7 +530,7 @@ i7.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9
 .pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.p
 fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/latxfont/lci
 rcle1.pfb>
-Output written on kaoetal-revision-final.pdf (7 pages, 332146 bytes).
+Output written on kaoetal-revision-final.pdf (7 pages, 332286 bytes).
 PDF statistics:
  170 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams
