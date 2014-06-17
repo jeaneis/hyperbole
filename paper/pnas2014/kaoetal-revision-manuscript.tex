@@ -236,7 +236,7 @@ L_1 (m|u) \propto P(m)S_1 (u|m)
 Since the RSA framework operates under the assumption that speakers optimize informativeness, it predicts that choosing an utterance whose literal meaning directly contradicts the intended meaning is never optimal. However, this contradictory use is precisely the case in nonliteral language. For example, people understand the utterance ``It took a million years to get a table" to mean that the wait time was long but not, in fact, a million years, resulting in a contradiction between literal and interpreted meaning. This suggests that the basic RSA model is incomplete and requires additional elements to explain nonliteral communication.
 
 Previous work has examined people's communicative reasons for using figurative language and suggested that certain goals, such as conveying emotion and emphasis, are commonly satisfied by nonliteral language \cite{roberts1994}. A natural extension is thus to add an affective dimension to the meaning of utterances, which has interesting connections to previous work on expressives \cite{potts2007expressive}. However, simply adding this dimension is insufficient; it is still unclear how people infer affect from an utterance whose literal semantics is unconnected to affect (such as number terms). 
-Here we additionally extend the RSA framework to represent alternative communicative goals, such that a speaker can want to convey information about one dimension but not another. We show that the combination of these two extensions is sufficient to give rise to nonliteral understanding of language.
+Here we additionally extend the RSA framework to represent alternative communicative goals, such that a speaker can want to convey information about one dimension but not another. We show that the combination of these two extensions is sufficient to give rise to nonliteral understanding of language. 
 
 We explore the case where the interpretation space has two dimensions: the state of the world and the speaker's affect or opinion\footnote{In what follows we describe the subtext dimension as ``affect,'' but it could be other kinds of speaker attitude, \emph{mutatis mutandis}.}. The speaker is now modeled as: 
 \begin{equation}
@@ -256,10 +256,10 @@ We aim to capture two well-known phenomena regarding number interpretation: hype
 %------------------------------------------------
 
 \section{Results}
-We tested our model on number words that refer to the prices of three types of everyday items: electric kettles, watches, and laptops. We selected these items because they have distinct price distributions, $P_S$, which we measured empirically by asking participants to rate the probability of various prices for the three items (see Experiment 3a). We also obtained an affect prior, $P_A$, by asking participants to rate the probability of a speaker thinking that an item is too expensive given a price state (Experiment 3b). Using these priors, which capture purely nonlinguistic knowledge, we aimed to model people's interpretations of utterances such as, ``The electric kettle cost $u$ dollars." Each number $u$ is either ``round" (divisible by 10 and less costly to utter) or ``sharp" (not divisible by 10 and more costly to utter). A formal description of model assumptions is in Materials and Methods.
+We tested our model on number words that refer to the prices of three types of everyday items: electric kettles, watches, and laptops. We selected these items because they have distinct price distributions, $P_S$, which we measured empirically by asking participants to rate the probability of various prices for the three items (see Experiment 3a). We also obtained an affect prior, $P_A$, by asking participants to rate the probability of a speaker thinking that an item is too expensive given a price state (Experiment 3b). Using these priors, which capture purely nonlinguistic knowledge, we aimed to model people's interpretations of utterances such as, ``The electric kettle cost $u$ dollars." A formal description of model assumptions is in Materials and Methods.
 
 \subsection{Model simulations}
-Using the price priors and affect priors measured for each of the three items, we obtained the meaning distributions predicted by the model for all utterances (see Figure \ref{figure5}(a)). Figure \ref{figure1} summarizes this distribution into different types of interpretations. The first three are model interpretations regarding the price state: exact (e.g.,  ``1000" interpreted as $1000$), fuzzy (e.g. ``1000" interpreted as 1001), and hyperbolic (e.g. ``1000" interpreted as 100). Round utterances such as ``500" and ``1000" are interpreted less exactly and more fuzzily than their sharp counterparts, which captures pragmatic halo. Utterances whose literal meanings are less likely given the price prior are more likely to be interpreted hyperbolically (e.g. ``1000" is more likely to be interpreted hyperbolically for electric kettles than laptops), which captures a basic feature of hyperbole. Affective interpretation refers to the probability that an utterance conveys the speaker's opinion that the price is expensive. Utterances whose literal meanings are associated with higher affect priors (such as ``10000" and ``10001") are more likely to be interpreted as conveying affect, which predicts the affective subtext of hyperbole. 
+Using the price priors and affect priors measured for each of the three items, we obtained the meaning distributions predicted by the model for all utterances (see Figure \ref{figure5}(a)). Figure \ref{figure1} summarizes this distribution into different types of interpretations. The first three are model interpretations regarding the price state: exact (e.g.,  ``1000" interpreted as $1000$), fuzzy (e.g. ``1000" interpreted as 1001), and hyperbolic (e.g. ``1000" interpreted as 100). Round utterances (divisible by $10$) such as ``500" and ``1000" are interpreted less exactly and more fuzzily than their sharp counterparts, which captures pragmatic halo. Utterances whose literal meanings are less likely given the price prior are more likely to be interpreted hyperbolically (e.g. ``1000" is more likely to be interpreted hyperbolically for electric kettles than laptops), which captures a basic feature of hyperbole. Affective interpretation refers to the probability that an utterance conveys the speaker's opinion that the price is expensive. Utterances whose literal meanings are associated with higher affect priors (such as ``10000" and ``10001") are more likely to be interpreted as conveying affect, which predicts the affective subtext of hyperbole. 
 
 To build intuition for these predictions, consider a pragmatic listener who reasons about a speaker and analyzes her choice of utterance. The pragmatic listener hears ``10,000 dollars" and knows that its literal meaning is extremely unlikely. Given that the speaker reasons about a literal listener who interprets ``10,000 dollars" literally and believes that the speaker very likely thinks it is expensive, ``10,000 dollars" is an  informative utterance if the speaker's goal is to communicate an opinion that the kettle is expensive (without concern for the actual price). Since the pragmatic listener uses this information to perform joint inference on the speaker's communicative goal and the meaning of the utterance, he infers that ``10,000 dollars" is likely to mean less than 10,000 dollars but that the speaker thinks it is too expensive.
 
@@ -341,7 +341,7 @@ The pragmatic listener $L_1$ performs Bayesian inference to guess the intended m
 L_1({s,a}|u) \propto \sum_{g }P_S(s)P_A(a|s)P_G(g)S_{1}(u | s, a, g)
 \end{equation}
 %
-The prior probability of $s$ is taken from an empirically derived price prior $P_S$, and the probability of $a$ given $s$ is taken from an empirically derived conditional affect prior $P_A$ (see Experiments 3a and 3b). The probability distribution $P_G$ is defined to be uniform. We used $C(u) = 1$ when $u$ is a round number (divisible by $10$) and treated the sharp/round cost ratio as a free parameter that we fit to data (see Experiment 1). We obtained a posterior distribution for all possible meanings $s, a$ given an utterance $u$. Raw data for model predictions are here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/data/model-predictions.csv}}. Figure 5a shows the full posterior distributions for all utterances.
+The prior probability of $s$ is taken from an empirically derived price prior $P_S$, and the probability of $a$ given $s$ is taken from an empirically derived conditional affect prior $P_A$ (see Experiments 3a and 3b). The probability distribution $P_G$ is defined to be uniform. We used $C(u) = 1$ when $u$ is a round number (divisible by $10$) and treated the sharp/round cost ratio as a free parameter that we fit to data (see Experiment 1). We obtained a posterior distribution for all possible meanings $s, a$ given an utterance $u$. Raw data for model predictions are here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/data/model-predictions.csv}}. Figure \ref{figure5}(a) shows the full posterior distributions for all utterances.
 
 \section{Experiment 1: Halo and hyperbole}
 120 participants were recruited on Amazon's Mechanical Turk. We restricted participants to those with IP addresses in the United States (same for all experiments reported). Each participant read 15 scenarios in which a person (e.g. Bob) buys an item (e.g. a watch) and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in \{50, 50 \pm k, 500, 500 \pm k, 1000, 1000 \pm k, 5000, 5000 \pm k, 10000, 10000 \pm k\}$, where $k$ was randomly selected from the set $\{1, 2, 3\}$ for each trial. We refer to this set of utterances as $U$. Given an utterance $u$, participants rated the probability of Bob thinking that the item was expensive. They then rated the probability of the item costing the following amounts of money: $50, 50 \pm k, 500, 500 \pm k, 1000, 1000 \pm k, 5000, 5000 \pm k, 10000, 10000 \pm k$, where $k$ was randomly selected from $\{1, 2, 3\}$ for each trial. We refer to this set of prices as $S$. Ratings for each price state were on a continuous scale from ``impossible" to ``extremely likely," represented as real values between 0 and 1. There are a total of 30 possible trial configurations (3 Items $\times$ 10 Utterances). We randomized the order of the trials as well as the names of the buyers (same for all experiments). See stimuli for Experiment 1 here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/materials/experiment1.html}}.
@@ -350,10 +350,10 @@ We normalized participants' ratings across price states for each trial to sum up
 %
 We jointly fit $\lambda$ and the model's cost ratio $C$ to optimize correlation with the behavioral data. The best fit was with $\lambda=0.36$ and $C=1.3$, resulting in a correlation of $r = 0.974$ ($95 \%$ CI = $[0.9675, 0.9793]$). The range of cost ratios that produces correlations within this confidence interval is $[1.1, 3.7]$, which is quite broad, suggesting that the overall model fit is not very sensitive to the cost ratio. To further capture the details of the halo effect, we jointly fit $\lambda$ and $C$ within this range to a measure that is more sensitive to utterance cost: We computed the difference between the probabilities of exact versus fuzzy interpretations for each utterance, which gives us each utterance's bias towards exact interpretation. We then computed the difference in this bias for sharp versus round numbers, which gives us a ``halo'' score for each sharp/round pair. We fit $\lambda$ and $C$ to minimize the mean squared error between the model and humans' halo scores. We found that the cost ratio that best captures the magnitude and pattern of the halo effect found in participants' data is $3.4$, while $\lambda = 0.25$. This produces an overall correlation of $0.9677$ with human data from Experiment 1. All figures and analyses that we report in the main text are with these parameter values. 
 
-For the analysis reported in Figure 3a, we computed the probability of a participant interpreting an utterance $u$ as hyperbolic by summing up ratings for each interpreted price state $s$ where $u>s$. Since our analysis of hyperbole does not involve utterance costs, we collapsed across round and sharp versions of utterances and price states. For example, ``1001" interpreted as 1000 does not count as hyperbole. Since 50 and 51 are the lowest available price states, the probabilities for hyperbolic interpretation of utterances ``50" and ``51" are 0. We computed the average probability of a hyperbolic interpretation across subjects for each utterance. We then showed the hyperbole effect with a linear regression model, using prior probabilities for the utterances' literal meanings as predictor and probabilities for hyperbolic interpretation as response. Results indicated that participants were more likely to interpret utterances as hyperbolic when their literal meanings have lower prior probabilities ($F(1, 10) = 44.06, p < 0.0001$). Ford Figure 3b, we analyzed the pragmatic halo effect by computing each subject's bias for interpreting an utterance $u$ exactly versus fuzzily. Bias was measured by subtracting the probability of a fuzzy interpretation from the probability of an exact interpretation. We then obtained the average bias for each utterance across subjects. We showed that the average bias for exact interpretation is significantly higher for sharp utterances than for round utterances ($F(1, 28)=18.94,  p < 0.001$). 
+For the analysis reported in Figure \ref{figure3}(a), we computed the probability of a participant interpreting an utterance $u$ as hyperbolic by summing up ratings for each interpreted price state $s$ where $u>s$. Since our analysis of hyperbole does not involve utterance costs, we collapsed across round and sharp versions of utterances and price states. For example, ``1001" interpreted as 1000 does not count as hyperbole. Since 50 and 51 are the lowest available price states, the probabilities for hyperbolic interpretation of utterances ``50" and ``51" are 0. We computed the average probability of a hyperbolic interpretation across subjects for each utterance. We then showed the hyperbole effect with a linear regression model, using prior probabilities for the utterances' literal meanings as predictor and probabilities for hyperbolic interpretation as response. Results indicated that participants were more likely to interpret utterances as hyperbolic when their literal meanings have lower prior probabilities ($F(1, 10) = 44.06, p < 0.0001$). For Figure \ref{figure3}(b), we analyzed the pragmatic halo effect by computing each subject's bias for interpreting an utterance $u$ exactly versus fuzzily. Bias was measured by subtracting the probability of a fuzzy interpretation from the probability of an exact interpretation. We then obtained the average bias for each utterance across subjects. We showed that the average bias for exact interpretation is significantly higher for sharp utterances than for round utterances ($F(1, 28)=18.94,  p < 0.001$). 
 
 \section{Experiment 2: Affective subtext}
-160 participants were recruited on Amazon's Mechanical Turk. Each participant read 30 scenarios in which a person (e.g. Bob) buys an item that costs s dollars and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in U$ and $u \geq s$. Participants then rated how likely Bob thinks the item was expensive on a continuous scale ranging from ``impossible" to ``absolutely certain," represented as real values between 0 and 1. There are a total of 180 trial configurations (3 Items $\times$ 60 $\{u, s\}$ pairs where $u\geq s$). The stimuli for Experiment 2 can be found here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/materials/experiment2.html}}; the raw data here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/data/experiment2-raw.csv}}. Since our analysis of affective subtext does not involve utterance cost, for the analyses reported in Figure 4a and 4b, we collapsed round and sharp versions of each utterance and price state such that there are a total of 45 utterance/price state pairs under consideration. Utterances $u$ for which $u=s$ are considered literal; utterances $u$ for which $u>s$ are hyperbolic. For the analysis reported in Figure 4b, we obtained average ratings of affect for each utterance given that it is literal or hyperbolic. A linear regression model showed that hyperbolic utterances are rated as having significantly higher affect than literal utterances across price states ($F(1, 25) = 12.57, p < 0.005$). 
+160 participants were recruited on Amazon's Mechanical Turk. Each participant read 30 scenarios in which a person (e.g. Bob) buys an item that costs s dollars and is asked by a friend whether the item is expensive. Bob responds by saying ``It cost $u$ dollars," where $u \in U$ and $u \geq s$. Participants then rated how likely Bob thinks the item was expensive on a continuous scale ranging from ``impossible" to ``absolutely certain," represented as real values between 0 and 1. There are a total of 180 trial configurations (3 Items $\times$ 60 $\{u, s\}$ pairs where $u\geq s$). The stimuli for Experiment 2 can be found here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/materials/experiment2.html}}; the raw data here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/data/experiment2-raw.csv}}. Since our analysis of affective subtext does not involve utterance cost, for the analyses reported in Figure \ref{figure4}(a) and \ref{figure4}(b), we collapsed round and sharp versions of each utterance and price state such that there are a total of 45 utterance/price state pairs under consideration. Utterances $u$ for which $u=s$ are considered literal; utterances $u$ for which $u>s$ are hyperbolic. For the analysis reported in Figure \ref{figure4}(b), we obtained average ratings of affect for each utterance given that it is literal or hyperbolic. A linear regression model showed that hyperbolic utterances are rated as having significantly higher affect than literal utterances across price states ($F(1, 25) = 12.57, p < 0.005$). 
 
 \section{Experiment 3a: Price prior}
 To obtain people's prior knowledge of the price distributions for electric kettles, laptops, and watches, 30 participants were recruited from Amazon's Mechanical Turk. Each participant rated the probability of someone buying an electric kettle, laptop, and watch that cost $s$ dollars ($s \in S$), without any linguistic input from the buyer. Ratings for each price state were on a continuous scale from ``impossible" to ``extremely likely," represented as real values between 0 and 1. The stimuli for Experiment 3a can be found here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/materials/experiment3a.html}}. We normalized participants' ratings across price points for each trial to sum up to 1. The average normalized ratings for each item were taken as the prior probability distribution of item prices. These price distributions were used in the model as $P_S$ to determine the prior probability of each price state. The normalized ratings can be found here\footnote{\texttt{http://stanford.edu/\textasciitilde justinek/hyperbole-paper/data/experiment3a-normalized.csv}}.
@@ -409,21 +409,6 @@ Glucksberg, S. (2001) {\em Understanding figurative language: From metaphors to 
 \bibitem{gibbs1999}
 Gibbs, R. (1999) {\em Figurative language}. {\it MIT Encyc. of the Cognitive Sciences}: 314-315.
 
-\bibitem{grice1975}
-Grice, H.P. (1975) {\em Logic and conversation}:41-58.
-
-\bibitem{clark1996}
-Clark, H.H. (1996) {\em Using language.} {\it Cambridge University Press Vol 4}
-
-\bibitem{relevance}
-Sperber, D., Wilson, D., Ziran, H. (1986). {\em Relevance: Communication and Cognition}.
-
-\bibitem{wilson2006}
-Wilson, D., Carston, R. (2006) {\em Metaphor, relevance and the 'emergent property' issue.} {\it Mind and Language.} 21(3):404-433.
-
-\bibitem{loosetalk}
-Sperber, D., Wilson, D. (1985) {\em Loose talk.} {\it In Proc. of the Aristotelian Society}:153-171.
-
 \bibitem{frankgoodmanscience}
 Frank, M.C.,Goodman, N.D. (2012)
 {\em Predicting pragmatic reasoning in language games},
@@ -439,17 +424,32 @@ Bergen, L., Goodman, G.D., Levy, R. (2012)
 {\em That's what she (could have) said: How alternative utterances affect language use}. {\it 
 Proc. of CogSci conference}.
 
+\bibitem{jager2009pragmatic}
+J{\"a}ger, G., Ebert, C. (2009)
+{\em Pragmatic rationalizability}.
+{\it Proc. of Sinn und Bedeutung} 13:1-15
+
+\bibitem{grice1975}
+Grice, H.P. (1975) {\em Logic and conversation}:41-58.
+
+\bibitem{clark1996}
+Clark, H.H. (1996) {\em Using language.} {\it Cambridge University Press Vol 4}
+
+\bibitem{relevance}
+Sperber, D., Wilson, D., Ziran, H. (1986). {\em Relevance: Communication and Cognition}.
+
+\bibitem{wilson2006}
+Wilson, D., Carston, R. (2006) {\em Metaphor, relevance and the 'emergent property' issue.} {\it Mind and Language.} 21(3):404-433.
+
+\bibitem{loosetalk}
+Sperber, D., Wilson, D. (1985) {\em Loose talk.} {\it In Proc. of the Aristotelian Society}:153-171.
+
 \bibitem{sutton1998reinforcement}
 Sutton, R.S., Barto, A.G. (1998)
 {\em Reinforcement learning: An introduction}
 
 \bibitem{potts2007expressive}
 Potts, C. (2007) {\em The expressive dimension}. {\it Theoretical linguistics}, 33(2):165-198
-
-\bibitem{jager2009pragmatic}
-J{\"a}ger, G., Ebert, C. (2009)
-{\em Pragmatic rationalizability}.
-{\it Proc. of Sinn und Bedeutung} 13:1-15
 
 \bibitem{mccarthy2004there}
 McCarthy, M., Carter, R. (2004) {\em There's millions of them: hyperbole in everyday conversation}. {\it
@@ -527,55 +527,35 @@ Van der Henst, J., Carles, L., Sperber, D. (2002) {\em Truthfulness and Relevanc
 \begin{figure}
 \centering
 \begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{figure1-revised.pdf}
-\caption{Model predictions of interpretations given utterances. Each bar in the first three rows shows the probability of a type of interpretation given an utterance. Exact interpretations are more likely given sharp rather than round utterances; fuzzy interpretations are slightly more likely given round utterances; hyperbolic  interpretations are more likely given more extreme utterances. The final row shows the probability of interpreted affect.} 
+%\includegraphics[width=8.7cm]{figure1-revised.pdf}
 \end{minipage}\hfill
+\caption{Model predictions of interpretations given utterances. Each bar in the first three rows shows the probability of a type of interpretation given an utterance. Exact interpretations are more likely given sharp rather than round utterances; fuzzy interpretations are slightly more likely given round utterances; hyperbolic  interpretations are more likely given more extreme utterances. The final row shows the probability of an affective interpretation.} 
 \label{figure1}
 \end{figure}
 
 \begin{figure*}
 \centering
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{figure2a-revised.pdf}
-\end{minipage}
-\begin{minipage}[b]{.49\textwidth}
-\end{minipage}\hfill
-\includegraphics[width=8.7cm]{figure2b-revised.pdf}
+%\includegraphics{figure2.eps}
 \caption{(a) Model predictions v.s. average human responses from Experiment 1. Each point represents an utterance and price state pair ($u, s$). The x-coordinate of each point is the probability of the model interpreting utterance $u$ as meaning price state $s$; the y-coordinate is the empirical probability. Correlation between model and human interpretations is $0.968$ ($95\%$ confidence region in grey). (b) Comparison of models with different communicative goals and human interpretations for the utterance ``The electric kettle cost 1,000 dollars." A model that considers both affect and precision goals (full model) most closely matches human data.}
 \label{figure2}
 \end{figure*}
 
 \begin{figure*}
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{figure3a-revised.pdf}
-\end{minipage}
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{figure3b-revised.pdf}
-\end{minipage}\hfill
+%\includegraphics{figure3.eps}
 \caption{(a) Probability of hyperbolic interpretation given utterances. Leftmost panel shows human data (error bars are standard errors). A full model that uses price priors measured in Experiment 3a demonstrates similar hyperbole effects and distinguishes among item types; a model that uses uniform price priors does not. (b) Halo effect as measure by bias towards exact interpretation for round/sharp utterance types. Humans' bias towards exact interpretation is significantly higher for sharp numbers. A full model that assigns higher cost to sharp numbers captures this result; a model that uses uniform utterance cost does not.}
 \label{figure3}
 \end{figure*}
 
 \begin{figure*}
 \centering
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{figure4a-revised.pdf}
-\end{minipage}
-\begin{minipage}[b]{.49\textwidth}
-\includegraphics[width=8.7cm]{figure4b-revised.pdf}
-\end{minipage}
+%\includegraphics{figure4.eps}
 \caption{(a) Model predictions of affect v.s. human responses from Experiment 2. Each point represents an utterance and price state pair $(u, s)$. For pairs where $u = s$, the utterance is literal; for $u > s$, the utterance is hyperbolic. The x-coordinate of each point is the model's prediction of the probability that the utterance/price state pair conveys affect; the y-coordinate is participants' affect ratings (error bars are standard error). Correlation between model and humans is $0.775$ ($95\%$ confidence region in grey). (b) Probability of interpreting a hyperbolic/literal utterance as conveying affect. For the same price state, humans infer higher probability of affect given hyperbolic utterances than literal. A model that uses affect priors measured in Experiment 3b captures this result; a model that uses uniform affect priors does not.}
 \label{figure4}
 \end{figure*}
 
 \begin{figure*}
 \centering
-\begin{minipage}[b]{.495\textwidth}
-\includegraphics[width=9cm]{figure5a-revised.pdf}
-\end{minipage}
-\begin{minipage}[b]{.495\textwidth}
-\includegraphics[width=9cm]{figure5b-revised.pdf}
-\end{minipage}
+%\includegraphics{figure5.eps}
 \caption{(a) Posterior price state distributions predicted by the model given utterances. Each panel shows the interpretation distribution of an utterance. (b) Price state distributions rated by participants given utterances. Each panel shows the interpretation distribution of an utterance. Error bars are standard errors.}
 \label{figure5}
 \end{figure*}

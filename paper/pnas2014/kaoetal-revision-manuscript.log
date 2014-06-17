@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  16 JUN 2014 21:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  16 JUN 2014 22:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -392,105 +392,42 @@ Overfull \hbox (1.09076pt too wide) in paragraph at lines 362--362
 eriment3b.html| 
  []
 
-[5] <figure1-revised.pdf, id=35, 867.24pt x 578.16pt>
-File: figure1-revised.pdf Graphic file (type pdf)
+[5] [6] (./kaoetal-revision-manuscript.aux)
 
-<use figure1-revised.pdf>
-Package pdftex.def Info: figure1-revised.pdf used on input line 530.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure2a-revised.pdf, id=36, 867.24pt x 578.16pt>
-File: figure2a-revised.pdf Graphic file (type pdf)
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-<use figure2a-revised.pdf>
-Package pdftex.def Info: figure2a-revised.pdf used on input line 539.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure2b-revised.pdf, id=37, 867.24pt x 578.16pt>
-File: figure2b-revised.pdf Graphic file (type pdf)
-
-<use figure2b-revised.pdf>
-Package pdftex.def Info: figure2b-revised.pdf used on input line 543.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure3a-revised.pdf, id=38, 867.24pt x 578.16pt>
-File: figure3a-revised.pdf Graphic file (type pdf)
-
-<use figure3a-revised.pdf>
-Package pdftex.def Info: figure3a-revised.pdf used on input line 550.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure3b-revised.pdf, id=39, 867.24pt x 578.16pt>
-File: figure3b-revised.pdf Graphic file (type pdf)
-
-<use figure3b-revised.pdf>
-Package pdftex.def Info: figure3b-revised.pdf used on input line 553.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure4a-revised.pdf, id=40, 867.24pt x 578.16pt>
-File: figure4a-revised.pdf Graphic file (type pdf)
-
-<use figure4a-revised.pdf>
-Package pdftex.def Info: figure4a-revised.pdf used on input line 562.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure4b-revised.pdf, id=41, 867.24pt x 578.16pt>
-File: figure4b-revised.pdf Graphic file (type pdf)
-
-<use figure4b-revised.pdf>
-Package pdftex.def Info: figure4b-revised.pdf used on input line 565.
-(pdftex.def)             Requested size: 247.53888pt x 165.02432pt.
- <figure5a-revised.pdf, id=42, 867.24pt x 578.16pt>
-File: figure5a-revised.pdf Graphic file (type pdf)
-
-<use figure5a-revised.pdf>
-Package pdftex.def Info: figure5a-revised.pdf used on input line 574.
-(pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
-
-Overfull \hbox (3.62729pt too wide) in paragraph at lines 574--575
-[][] 
- []
-
-<figure5b-revised.pdf, id=43, 867.24pt x 578.16pt>
-File: figure5b-revised.pdf Graphic file (type pdf)
- <use figure5b-revised.pdf>
-Package pdftex.def Info: figure5b-revised.pdf used on input line 577.
-(pdftex.def)             Requested size: 256.0748pt x 170.71451pt.
-
-Overfull \hbox (3.62729pt too wide) in paragraph at lines 577--578
-[][] 
- []
-
-[6 <./figure1-revised.pdf> <./figure2a-revised.pdf> <./figure2b-revised.pdf> <.
-/figure3a-revised.pdf> <./figure3b-revised.pdf>] [7 <./figure4a-revised.pdf> <.
-/figure4b-revised.pdf> <./figure5a-revised.pdf> <./figure5b-revised.pdf>]
-(./kaoetal-revision-manuscript.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 3669 strings out of 493315
- 47945 string characters out of 6137904
- 137811 words of memory out of 5000000
- 7057 multiletter control sequences out of 15000+600000
+ 3624 strings out of 493315
+ 46879 string characters out of 6137904
+ 137812 words of memory out of 5000000
+ 7021 multiletter control sequences out of 15000+600000
  16137 words of font info for 59 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,12n,37p,2395b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
-pe1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2013/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmss10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmssbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmssi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy5.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti7.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmti9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/latxfon
-t/lcircle1.pfb>
-Output written on kaoetal-revision-manuscript.pdf (7 pages, 331566 bytes).
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb>
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.p
+fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></u
+sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/
+local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loc
+al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2
+013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
+Output written on kaoetal-revision-manuscript.pdf (6 pages, 234037 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
+ 99 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
