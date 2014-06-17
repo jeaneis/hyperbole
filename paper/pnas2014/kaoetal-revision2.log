@@ -248,4 +248,75 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/local/texlive/2013/texmf-dist/tex/lat
+(/usr/local/texlive/2013/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Package option `usenames' ignored on input line 216.
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+\captionwidth=\dimen132
+\widecaptionwidth=\dimen133
+\tablenoteloopnum=\count118
+\tablenotenum=\count119
+\c@theorem=\count120
+\c@lemma=\count121
+\c@definition=\count122
+\c@claim=\count123
+\c@alemma=\count124
+\c@remark=\count125
+\tablewide=\box51
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/footmisc/footmisc.sty
+Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
+\FN@temptoken=\toks21
+\footnotemargin=\dimen134
+\c@pp@next@reset=\count126
+\c@@fnserial=\count127
+Package footmisc Info: Declaring symbol style bringhurst on input line 855.
+Package footmisc Info: Declaring symbol style chicago on input line 863.
+Package footmisc Info: Declaring symbol style wiley on input line 872.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 883.
+
+Package footmisc Info: Declaring symbol style lamport* on input line 903.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
+.
+)
+(./kaoetal-revision2.aux)
+Runaway argument?
+{\contentsline {figure}{\numberline {4}{\ignorespaces (a) Model predi\ETC.
+./kaoetal-revision2.tex:131: File ended while scanning use of \@writefile.
+<inserted text> 
+                \par 
+l.131 \begin{document}
+                      
+? 
+./kaoetal-revision2.tex:131: Emergency stop.
+<inserted text> 
+                \par 
+l.131 \begin{document}
+                      
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 3043 strings out of 493315
+ 39042 string characters out of 6137904
+ 109582 words of memory out of 5000000
+ 6490 multiletter control sequences out of 15000+600000
+ 7867 words of font info for 28 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 49i,0n,37p,885b,46s stack positions out of 5000i,500n,10000p,200000b,80000s
+./kaoetal-revision2.tex:131:  ==> Fatal error occurred, no output PDF file prod
+uced!
